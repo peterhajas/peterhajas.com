@@ -13,6 +13,8 @@ rm -r $OUTPUT_PATH
 mkdir $OUTPUT_PATH
 
 # Time to build the site!
+
+# Grab all the markdown files and make them into HTML
 for markdownFile in $(find . -name '*.md'); do
     FILENAME=$(basename $markdownFile)
     OUTPUTNAME=${FILENAME%.*}.html
@@ -29,6 +31,9 @@ for markdownFile in $(find . -name '*.md'); do
     # Do the actual markdown generation
     cat $markdownFile | markdown > $OUTPATH
 done
+
+# Copy over the media directory
+cp -r media out/
 
 # Finally, remove readme from output (we don't want included)
 rm $OUTPUT_PATH/readme*
