@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Check that we have markdown installed
+WORKING_DIR=$(pwd)
+HAS_MARKDOWN=$(which markdown | wc -l)
+if [ $HAS_MARKDOWN -eq 0 ]; then
+    echo "Please install markdown"
+    exit -1
+fi
+
+OUTPUT_PATH="out"
+rm -r $OUTPUT_PATH
+mkdir $OUTPUT_PATH
+
+# Time to build the site!
+for markdownFile in $(find . -name '*.md'); do
+    FILENAME=$(basename $markdownFile)
+    FULLPATH=$(dirname $markdownFile)
+    RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
+    RELATIVE_DIR=${RELATIVE_DIR/./}
+    OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$FILENAME"
+    # Make directories until the outpath
+    mkdir -p $OUTPATH
+    # ...but delete the actual directory that was made for this filename
+    rm -r $OUTPATH
+    # Touch the file we'll output to
+    touch $OUTPATH
+    # Do the actual markdown generation
+    cat $markdownFile | markdown > $OUTPATH
+done
