@@ -30,7 +30,19 @@ for markdownFile in $(find . -name '*.md'); do
     touch $OUTPATH
     # Do the actual markdown generation
     cat $markdownFile | markdown > $OUTPATH
+
+    # Do some post-processing
+    # Insert before.html at the beginning
+    cat before.html $OUTPATH > temp
+
+    # Insert after.html at the end
+    cat temp after.html > $OUTPATH
+
+    rm temp
 done
+
+# Copy over css
+cp style.css out/
 
 # Copy over the media directory
 cp -r media out/
