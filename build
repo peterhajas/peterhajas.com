@@ -29,3 +29,6 @@ for markdownFile in $(find . -name '*.md'); do
     # Do the actual markdown generation
     cat $markdownFile | markdown > $OUTPATH
 done
+
+# Finally, remove readme from output (we don't want included)
+rm $OUTPUT_PATH/readme*
