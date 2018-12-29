@@ -15,7 +15,7 @@ mkdir $OUTPUT_PATH
 # Time to build the site!
 for markdownFile in $(find . -name '*.md'); do
     FILENAME=$(basename $markdownFile)
-    OUTPUTNAME=${FILENAME%.md}.html
+    OUTPUTNAME=${FILENAME%.*}.html
     FULLPATH=$(dirname $markdownFile)
     RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
     RELATIVE_DIR=${RELATIVE_DIR/./}
