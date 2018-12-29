@@ -15,10 +15,11 @@ mkdir $OUTPUT_PATH
 # Time to build the site!
 for markdownFile in $(find . -name '*.md'); do
     FILENAME=$(basename $markdownFile)
+    OUTPUTNAME=${FILENAME%.md}.html
     FULLPATH=$(dirname $markdownFile)
     RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
     RELATIVE_DIR=${RELATIVE_DIR/./}
-    OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$FILENAME"
+    OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
     # Make directories until the outpath
     mkdir -p $OUTPATH
     # ...but delete the actual directory that was made for this filename
