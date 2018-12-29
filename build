@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Check that we have markdown installed
+METADATA_LINE_COUNT=4
 WORKING_DIR=$(pwd)
 HAS_MARKDOWN=$(which markdown | wc -l)
 if [ $HAS_MARKDOWN -eq 0 ]; then
@@ -17,6 +18,15 @@ mkdir $OUTPUT_PATH
 # Grab all the markdown files and make them into HTML
 for markdownFile in $(find . -name '*.md'); do
     FILENAME=$(basename $markdownFile)
+    TITLE=${FILENAME%.*}
+    METADATA=$(cat $markdownFile | head -n $METADATA_LINE_COUNT)
+    HAS_METADATA=$(echo "$METADATA" | head -n 1)
+    if [ $HAS_METADATA = "<!--" ]; then
+        TITLE=$(echo "$METADATA" | head -n 2 | tail -n 1)
+        DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
+        # Date conversions in macOS: https://stackoverflow.com/a/43927574
+    fi
+
     OUTPUTNAME=${FILENAME%.*}.html
     FULLPATH=$(dirname $markdownFile)
     RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
@@ -37,8 +47,9 @@ for markdownFile in $(find . -name '*.md'); do
 
     # Insert after.html at the end
     cat temp after.html > $OUTPATH
-
     rm temp
+
+    sed -i '' -e "s/TITLE_HERE/$TITLE/g" $OUTPATH
 done
 
 # Copy over css
