@@ -70,6 +70,8 @@ rm temp
 
 # Copy over css
 cp style.css out/
+# Yes, this is a hack.
+cp style.css out/*/
 
 # Copy over the media directory
 cp -r media out/
