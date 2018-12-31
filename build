@@ -32,6 +32,7 @@ for markdownFile in $(find . -name '*.md' | sort); do
     RELATIVE_DIR=${RELATIVE_DIR/./}
     OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
     TITLE=${FILENAME%.*}
+    PRETTY_DATE=""
     PATH_RELATIVE_TO_OUTPATH="$RELATIVE_DIR/$OUTPUTNAME"
 
     METADATA=$(cat $markdownFile | head -n $METADATA_LINE_COUNT)
@@ -40,11 +41,10 @@ for markdownFile in $(find . -name '*.md' | sort); do
         TITLE=$(echo "$METADATA" | head -n 2 | tail -n 1)
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
-        # This would add the date to the index, but we need to convert it to
-        # *some* timezone from UTC. It's unclear what this should be.
-        # echo -e "$DATE " >> index.md
+        PRETTY_DATE=$(date -jf '%Y%m%d %H:%M' +'%B %e, %Y' "$DATE")
         echo -e "<li class='indexItem'>\n" >> index.md
         echo -e "### [$TITLE]($PATH_RELATIVE_TO_OUTPATH)\n" >> index.md
+        echo -e "$PRETTY_DATE\n" >> index.md
         cat $markdownFile >> index.md
         echo -e "</li>\n" >> index.md
 
@@ -67,7 +67,10 @@ for markdownFile in $(find . -name '*.md' | sort); do
     # Insert after.html at the end
     cat temp after.html > $OUTPATH
 
+    # Insert title
     sed -i '' -e "s/TITLE_HERE/$TITLE/g" $OUTPATH
+    # Insert date if necessary
+    sed -i '' -e "s/DATE_HERE/$PRETTY_DATE/g" $OUTPATH
 done
 
 # sort dated_entries > dated_entries
