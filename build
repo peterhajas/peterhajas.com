@@ -16,6 +16,7 @@ mkdir $OUTPUT_PATH
 
 # We'll also use Markdown for the index
 touch index.md
+echo -e "<ul>" >> index.md
 touch temp
 
 # Time to build the site!
@@ -39,9 +40,10 @@ for markdownFile in $(find . -name '*.md' | sort); do
         # This would add the date to the index, but we need to convert it to
         # *some* timezone from UTC. It's unclear what this should be.
         # echo -e "$DATE " >> index.md
-        echo -e "- [$TITLE]($RELATIVE_DIR/$OUTPUTNAME)\n" >> index.md
+        echo -e "<li>\n" >> index.md
+        echo -e "[$TITLE]($RELATIVE_DIR/$OUTPUTNAME)\n" >> index.md
         cat $markdownFile >> index.md
-        echo -e "\n" >> index.md
+        echo -e "</li>\n" >> index.md
     fi
 
     # Make directories until the outpath
