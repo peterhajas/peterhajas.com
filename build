@@ -9,29 +9,38 @@ if [ $HAS_MARKDOWN -eq 0 ]; then
     exit -1
 fi
 
+# Create the output path
 OUTPUT_PATH="out"
 rm -r $OUTPUT_PATH
 mkdir $OUTPUT_PATH
 
+# We'll also use Markdown for the index
+touch index.md
+touch temp
+
 # Time to build the site!
 
 # Grab all the markdown files and make them into HTML
-for markdownFile in $(find . -name '*.md'); do
+for markdownFile in $(find . -name '*.md' | sort); do
     FILENAME=$(basename $markdownFile)
+    OUTPUTNAME=${FILENAME%.*}.html
+    FULLPATH=$(dirname $markdownFile)
+    RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
+    RELATIVE_DIR=${RELATIVE_DIR/./}
+    OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
     TITLE=${FILENAME%.*}
+
     METADATA=$(cat $markdownFile | head -n $METADATA_LINE_COUNT)
     HAS_METADATA=$(echo "$METADATA" | head -n 1)
     if [ $HAS_METADATA = "<!--" ]; then
         TITLE=$(echo "$METADATA" | head -n 2 | tail -n 1)
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
+        echo -e "- [$TITLE]($RELATIVE_DIR/$OUTPUTNAME)\n" >> index.md
+        cat $markdownFile >> index.md
+        echo -e "\n" >> index.md
     fi
 
-    OUTPUTNAME=${FILENAME%.*}.html
-    FULLPATH=$(dirname $markdownFile)
-    RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
-    RELATIVE_DIR=${RELATIVE_DIR/./}
-    OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
     # Make directories until the outpath
     mkdir -p $OUTPATH
     # ...but delete the actual directory that was made for this filename
@@ -47,10 +56,12 @@ for markdownFile in $(find . -name '*.md'); do
 
     # Insert after.html at the end
     cat temp after.html > $OUTPATH
-    rm temp
 
     sed -i '' -e "s/TITLE_HERE/$TITLE/g" $OUTPATH
 done
+
+rm index.md
+rm temp
 
 # Copy over css
 cp style.css out/
