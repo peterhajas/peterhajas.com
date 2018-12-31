@@ -36,6 +36,9 @@ for markdownFile in $(find . -name '*.md' | sort); do
         TITLE=$(echo "$METADATA" | head -n 2 | tail -n 1)
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
+        # This would add the date to the index, but we need to convert it to
+        # *some* timezone from UTC. It's unclear what this should be.
+        # echo -e "$DATE " >> index.md
         echo -e "- [$TITLE]($RELATIVE_DIR/$OUTPUTNAME)\n" >> index.md
         cat $markdownFile >> index.md
         echo -e "\n" >> index.md
