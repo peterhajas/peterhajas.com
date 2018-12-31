@@ -48,7 +48,7 @@ for markdownFile in $(find . -name '*.md' | sort); do
         cat $markdownFile >> index.md
         echo -e "</li>\n" >> index.md
 
-        echo -e "$DATE $markdownFile $PATH_RELATIVE_TO_OUTPATH $TITLE \n" >> dated_entries
+        echo "$DATE $markdownFile $PATH_RELATIVE_TO_OUTPATH $TITLE" >> dated_entries
     fi
 
     # Make directories until the outpath
