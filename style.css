@@ -3,6 +3,13 @@
 body {
     font-size: 18px;
     color: #333;
+    max-width: 40em;
+    margin: auto;
+}
+
+blockquote {
+    width: 90%;
+    margin: auto;
 }
 
 p {
