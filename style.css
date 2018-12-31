@@ -9,6 +9,16 @@ body {
     padding: 10px;
 }
 
+#content {
+    padding-top: 20pt;
+    padding-bottom: 20pt;
+}
+
+.indexItem {
+    padding-top: 10pt;
+    padding-bottom: 10pt;
+}
+
 blockquote {
     width: 90%;
     min-height: 3em;
@@ -52,4 +62,3 @@ h2 {
 h3 {
     font-size: 1.5em;
 }
-
