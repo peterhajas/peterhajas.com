@@ -5,13 +5,51 @@ body {
     color: #333;
     max-width: 40em;
     margin: auto;
+    font-size: 16pt;
+    padding: 10px;
 }
 
 blockquote {
     width: 90%;
+    min-height: 3em;
     margin: auto;
+    background-color: #00000011;
+    align-items: center;
 }
 
 p {
     line-height: 1.4em;
 }
+
+hr {
+    margin: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: #ff6400;
+}
+
+pre {
+    width: 90%;
+    min-height: 3em;
+    margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: sans-serif;
+    font-weight: 999;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
