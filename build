@@ -11,14 +11,14 @@ fi
 
 # Create the output path
 OUTPUT_PATH="out"
+OUTPUT_INDEX=$OUTPUT_PATH/index.html
 rm -r $OUTPUT_PATH
 mkdir $OUTPUT_PATH
 
 # We'll also use Markdown for the index
-rm dated_entries
+# We'll do this by keeping track of all the entries *by date* and then sorting
+# them after we process them
 touch dated_entries
-touch index.md
-echo -e "<ul id='index'>" >> index.md
 touch temp
 
 # Time to build the site!
@@ -42,12 +42,6 @@ for markdownFile in $(find . -name '*.md' | sort); do
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
         PRETTY_DATE=$(date -jf '%Y%m%d %H:%M' +'%B %e, %Y' "$DATE")
-        echo -e "<li class='indexItem'>\n" >> index.md
-        echo -e "### [$TITLE]($PATH_RELATIVE_TO_OUTPATH)\n" >> index.md
-        echo -e "$PRETTY_DATE\n" >> index.md
-        cat $markdownFile >> index.md
-        echo -e "</li>\n" >> index.md
-
         echo "$DATE $markdownFile $PATH_RELATIVE_TO_OUTPATH $TITLE" >> dated_entries
     fi
 
@@ -78,9 +72,35 @@ sort --reverse dated_entries > temp
 cp temp dated_entries
 
 # Now process the dated entries into the index
+touch the_index
+echo -e "<ul id='index'>" >> the_index
+while read datedEntry; do
+    DATE=$(echo $datedEntry | awk '{ print $1 $2}')
+    MARKDOWN_FILE=$(echo $datedEntry | awk '{ print $3 }')
+    OUTLINK=$(echo $datedEntry | awk '{ print $4 }')
+    TITLE=$(echo $datedEntry | cut -d " " -f 5-)
 
-rm index.md
+    PRETTY_DATE=$(date -jf '%Y%m%d%H:%M' +'%B %e, %Y' "$DATE")
+    echo -e "<li class='indexItem'>\n" >> the_index
+    echo -e "### [$TITLE]($OUTLINK)\n" >> the_index
+    echo -e "$PRETTY_DATE\n" >> the_index
+    cat $MARKDOWN_FILE >> the_index
+    echo -e "</li>\n" >> the_index
+done < dated_entries
+echo -e "</ul>" >> the_index
+
+cat before.html > $OUTPUT_INDEX
+cat the_index | markdown >> $OUTPUT_INDEX
+cat after.html >> $OUTPUT_INDEX
+
+# Strip out title and date from index
+sed -i '' -e "s/TITLE_HERE//g" $OUTPUT_INDEX
+# Insert date if necessary
+sed -i '' -e "s/DATE_HERE//g" $OUTPUT_INDEX
+
 rm temp
+rm dated_entries
+rm the_index
 
 # Copy over css
 cp style.css out/
