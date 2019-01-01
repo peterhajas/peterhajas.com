@@ -37,7 +37,7 @@ for markdownFile in $(find . -name '*.md' | sort); do
 
     METADATA=$(cat $markdownFile | head -n $METADATA_LINE_COUNT)
     HAS_METADATA=$(echo "$METADATA" | head -n 1)
-    if [ $HAS_METADATA = "<!--" ]; then
+    if [ "$HAS_METADATA" = "<!--" ]; then
         TITLE=$(echo "$METADATA" | head -n 2 | tail -n 1)
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
