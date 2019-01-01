@@ -26,8 +26,7 @@ body {
 }
 
 .indexItem {
-    padding-top: 10pt;
-    padding-bottom: 10pt;
+    padding-bottom: 20pt;
 }
 
 .indexItem li {
@@ -69,7 +68,6 @@ pre {
 h1, h2, h3, h4, h5, h6 {
     font-family: sans-serif;
     font-weight: 999;
-    margin-bottom: 1rem;
 }
 
 h1 {
