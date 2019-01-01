@@ -3,7 +3,7 @@ New Site, Who Dis?
 20181231 17:35
 -->
 
-This is the first post on my new website! You're reading this on the *brand new* [peterhajas.com](peterhajas.com). Let's break it down.
+This is the first post on my new website! You're reading this on the *brand new* [peterhajas.com](http://peterhajas.com). Let's break it down.
 
 #### A (not so new) domain
 
