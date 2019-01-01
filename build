@@ -82,8 +82,8 @@ while read datedEntry; do
 
     PRETTY_DATE=$(date -jf '%Y%m%d%H:%M' +'%B %e, %Y' "$DATE")
     echo -e "<li class='indexItem'>\n" >> the_index
-    echo -e "## [$TITLE]($OUTLINK)\n" >> the_index
-    echo -e "### $PRETTY_DATE\n" >> the_index
+    echo -e "<h2 id='title'><a href='$OUTLINK'>$TITLE</a></h2>\n" >> the_index
+    echo -e "<h3 id='date'>$PRETTY_DATE</h3>\n" >> the_index
     cat $MARKDOWN_FILE >> the_index
     echo -e "</li>\n" >> the_index
 done < dated_entries
