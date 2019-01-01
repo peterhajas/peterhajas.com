@@ -7,7 +7,7 @@ This is the first post on my new website! You're reading this on the *brand new*
 
 #### A (not so new) domain
 
-It's worth noting that this page is also hosted on [peter.haj.as](peter.haj.as). I have had this domain from American Samoa for some time. I love the idea of domains that are people's names with no added punctuation, and this one fits the bill for me.
+It's worth noting that this page is also hosted on [peter.haj.as](peter.haj.as). I have had this domain from American Samoa for some time. I love the idea of domains that are people's names with no added alphanumeric characters, and this one fits the bill for me.
 
 #### My own static site generator - what could possibly go wrong?
 
