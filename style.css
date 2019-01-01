@@ -1,3 +1,8 @@
+/* Here is a CSS cheat sheet: */
+/* - # for ids */
+/* - . for classes */
+/* - a b for all b inside a */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -17,6 +22,14 @@ body {
 .indexItem {
     padding-top: 10pt;
     padding-bottom: 10pt;
+}
+
+.indexItem li {
+    list-style-type: disc;
+}
+
+#index {
+    list-style-type: none;
 }
 
 blockquote {
