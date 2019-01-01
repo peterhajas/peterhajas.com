@@ -17,6 +17,8 @@ This site is still statically-generated from Markdown, but it's now done with a 
 
 The site generates quickly, and it's been a great learning opportunity! For example, I learned how to format dates using `date` (see [here](https://github.com/peterhajas/peterhajas.com/blob/master/build#L44)). I'm still learning (I don't know web layout very well, for example) but I think it's better to jump in with both feet when learning something new.
 
+The site is missing some stuff (like RSS support), but I plan to iterate on it over time.
+
 #### Hopefully I'll write more
 
 All of this is for naught if I don't actually *use the damn thing* to write and think out loud.
