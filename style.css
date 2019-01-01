@@ -11,6 +11,7 @@ body {
     margin: auto;
     font-size: 16pt;
     padding: 10px;
+    text-rendering: optimizeLegibility;
 }
 
 #content {
