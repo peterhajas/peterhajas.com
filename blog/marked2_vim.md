@@ -9,7 +9,7 @@ This site is written using [Markdown](https://daringfireball.net/projects/markdo
 
 > allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)
 
-It's a commont technique for writing blogs, as it lets the author write text in the text editor of their choice.
+It's a common technique for writing blogs, as it lets the author write text in the text editor of their choice.
 
 I write this page in `vim`, which is a command line text editor. I love `vim` for many reasons that are outside the scope of this post. I've been using it as my primary editor for almost 5 years. I wanted a good solution for writing Markdown in `vim`.
 
@@ -47,7 +47,7 @@ This is great! Using this and the macOS `open` command, we can at least *launch*
 
     !open -a Marked\ 2.app
 
-But what about opening the current file? `vim` lets us use `%` from Ex commands as a standin for the path to the current file. So we can do something like:
+But what about opening the current file? `vim` lets us use `%` from Ex commands as a stand-in for the path to the current file. So we can do something like:
 
     !echo %
 
@@ -69,7 +69,7 @@ This will open the current file in Marked, but will leave us at the shell with "
 
 ##### Defining a mapping
 
-We can use a `vim` mapping to call the function for us. A mapping lets us take a key combination and map it to a command. For the key combination, I like to use `<leader>`, which is a user-controlled modifier in `vim`. This means that `<leader> _` is wide open for use in your `.vimrc`. For my `leader` key, I use `,` (comma), as it's near the other modifiers on a US keyboard. For `leader` mappings, I like a mneumonic key combination, as it makes it easier to remember.
+We can use a `vim` mapping to call the function for us. A mapping lets us take a key combination and map it to a command. For the key combination, I like to use `<leader>`, which is a user-controlled modifier in `vim`. This means that `<leader> _` is wide open for use in your `.vimrc`. For my `leader` key, I use `,` (comma), as it's near the other modifiers on a US keyboard. For `leader` mappings, I like a mnemonic key combination, as it makes it easier to remember.
 
 A good choice for this mapping, which is applicable for **M**arkdown and for opening **M**arked, is `<leader>m`. Our mapping to call the function might look like this:
 
