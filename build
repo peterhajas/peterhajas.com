@@ -36,7 +36,6 @@ for markdownFile in $(find . -name '*.md' | sort); do
     PATH_RELATIVE_TO_OUTPATH="$RELATIVE_DIR/$OUTPUTNAME"
 
     METADATA=$(cat $markdownFile | head -n $METADATA_LINE_COUNT)
-    echo "$METADATA"
     HAS_METADATA=$(echo "$METADATA" | head -n 2 | tail -n 1)
     if [ "$HAS_METADATA" = "<!--" ]; then
         TITLE=$(echo "$METADATA" | head -n 3 | tail -n 1)
