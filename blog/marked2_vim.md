@@ -77,6 +77,7 @@ A good choice for this mapping, which is applicable for **M**arkdown and for ope
     nmap <silent> <leader>m :call OpenInMarked2()
 
 Here's a decoder ring for what these commands mean:
+
     - `nmap` means a mapping that exists in `vim`'s normal mode
     - `<silent>` means the mapping will not be echoed on the command line
     - `<leader>m` is the mapping we've picked for this particular command
