@@ -78,11 +78,11 @@ A good choice for this mapping, which is applicable for **M**arkdown and for ope
 
 Here's a decoder ring for what these commands mean:
 
-    - `nmap` means a mapping that exists in `vim`'s normal mode
-    - `<silent>` means the mapping will not be echoed on the command line
-    - `<leader>m` is the mapping we've picked for this particular command
-    - `:call` will call a particular function
-    - `OpenInMarked2()` is the name of the function we'd like to call
+- `nmap` means a mapping that exists in `vim`'s normal mode
+- `<silent>` means the mapping will not be echoed on the command line
+- `<leader>m` is the mapping we've picked for this particular command
+- `:call` will call a particular function
+- `OpenInMarked2()` is the name of the function we'd like to call
 
 If you add this mapping and function to your `.vimrc`, you'll see that it works *kind of*. You have to hit enter to get the command to actually run, and then after doing so you're left at the shell, so you need to hit enter **again** before returning to the editor.
 
