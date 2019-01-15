@@ -25,24 +25,18 @@ body {
     padding-bottom: 20pt;
 }
 
-.indexItem {
-    padding-bottom: 20pt;
-}
-
-.indexItem li {
-    list-style-type: disc;
-}
-
-#index {
-    list-style-type: none;
-}
-
 blockquote {
     width: 90%;
     min-height: 3em;
     margin: auto;
-    background-color: #00000011;
     align-items: center;
+    border-left-width: .125em;
+    border-left-color: black;
+    border-left-style: solid;
+}
+
+blockquote p {
+    padding-left: 0.5em;
 }
 
 p {
@@ -84,7 +78,29 @@ h3 {
 }
 
 ul {
+    width: 90%;
+    margin: auto;
     margin-bottom: 1rem;
+}
+
+ol {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+#index {
+    width: 100%;
+    list-style-type: none;
+}
+
+.indexItem {
+    padding-bottom: 20pt;
+    width: 100%;
+}
+
+.indexItem li {
+    list-style-type: disc;
 }
 
 .peterAvatar {
