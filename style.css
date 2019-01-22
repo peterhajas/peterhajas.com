@@ -14,6 +14,10 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+img {
+    max-width: 100%;
+}
+
 .date {
     font-style: italic;
     font-weight: 400;
