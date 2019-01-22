@@ -41,7 +41,8 @@ blockquote p {
 
 p {
     line-height: 1.4em;
-    margin-bottom: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 hr {
