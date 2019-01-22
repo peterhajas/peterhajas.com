@@ -108,5 +108,9 @@ cp style.css out/
 # Copy over the media directory
 cp -r media out/
 
+# Strip exif data
+exiftool -all= out/media/*
+rm out/media/*_original
+
 # Finally, remove readme from output (we don't want included)
 rm $OUTPUT_PATH/readme*
