@@ -114,7 +114,7 @@ for MEDIA_FILE in $(find out/media); do
     IS_IMAGE=$(echo "$MEDIA_INFO" | grep "image data" | wc -l)
     if (( $IS_IMAGE > 0 )); then
         # It's an image. Strip exif
-        exiftool -overwrite_original -all= $MEDIA_FILE
+        exiftool -overwrite_original -all= $MEDIA_FILE 1>/dev/null
     fi
 done
 
