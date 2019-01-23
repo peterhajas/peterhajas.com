@@ -112,8 +112,15 @@ cp -r media out/
 for MEDIA_FILE in $(find out/media); do
     MEDIA_INFO=$(file $MEDIA_FILE)
     IS_IMAGE=$(echo "$MEDIA_INFO" | grep "image data" | wc -l)
+    FILENAME=$(basename $MEDIA_FILE)
+    EXTENSION="${FILENAME##*.}"
     if (( $IS_IMAGE > 0 )); then
-        # It's an image. Strip exif
+        # Let ffmpeg process the image to get it to be smaller
+        TEMP_OUTPUT="temp.$EXTENSION"
+        ffmpeg -i $MEDIA_FILE $TEMP_OUTPUT 1>/dev/null 2>/dev/null
+        mv $TEMP_OUTPUT $MEDIA_FILE
+
+        # Strip exif
         exiftool -overwrite_original -all= $MEDIA_FILE 1>/dev/null
     fi
 done

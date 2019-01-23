@@ -12,10 +12,11 @@ If you want to build the website, you can use the included `build` script to gen
 
     $ ./build
 
-Note that this relies on a few prerequisites:
+Note that this relies on some dependencies:
 - the macOS `date` binary
 - a `markdown` binary (I use the one from MultiMarkdown)
-- `exiftool`
+- `exiftool` (for stripping exif)
+- `ffmpeg` (for image recompression)
 
 This will create a new directory called `out`. It's automatically ignored by `git` thanks to a rule in the `.gitignore`.
 
