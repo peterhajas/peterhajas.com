@@ -108,9 +108,15 @@ cp style.css out/
 # Copy over the media directory
 cp -r media out/
 
-# Strip exif data
-exiftool -all= out/media/*
-rm out/media/*_original
+# Perform post-processing on media
+for MEDIA_FILE in $(find out/media); do
+    MEDIA_INFO=$(file $MEDIA_FILE)
+    IS_IMAGE=$(echo "$MEDIA_INFO" | grep "image data" | wc -l)
+    if (( $IS_IMAGE > 0 )); then
+        # It's an image. Strip exif
+        exiftool -overwrite_original -all= $MEDIA_FILE
+    fi
+done
 
 # Finally, remove readme from output (we don't want included)
 rm $OUTPUT_PATH/readme*
