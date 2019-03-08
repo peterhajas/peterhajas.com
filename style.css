@@ -100,7 +100,9 @@ table {
 }
 
 td {
-    padding: 1pt;
+    padding: 8pt;
+    padding-top: 0.5pt;
+    padding-bottom: 0.5pt;
 }
 
 figcaption {
