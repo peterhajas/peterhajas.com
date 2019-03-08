@@ -16,6 +16,8 @@ body {
 
 img {
     max-width: 100%;
+    display: block;
+    margin: auto;
 }
 
 .date {
@@ -130,6 +132,7 @@ figcaption {
 
 footer {
     height: 3em;
+    text-align: center;
 }
 
 footer * {
