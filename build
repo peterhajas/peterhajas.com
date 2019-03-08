@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Check that we have markdown installed
+# Check that we have mmd installed
 METADATA_LINE_COUNT=5
 WORKING_DIR=$(pwd)
-HAS_MARKDOWN=$(which markdown | wc -l)
+HAS_MARKDOWN=$(which mmd | wc -l)
 if [ $HAS_MARKDOWN -eq 0 ]; then
-    echo "Please install markdown"
+    echo "Please install mmd"
     exit -1
 fi
 
@@ -52,7 +52,7 @@ for markdownFile in $(find . -name '*.md' | sort); do
     # Touch the file we'll output to
     touch $OUTPATH
     # Do the actual markdown generation
-    cat $markdownFile | markdown > $OUTPATH
+    cat $markdownFile | mmd > $OUTPATH
 
     # Do some post-processing
     # Insert before.html at the beginning
@@ -90,7 +90,7 @@ done < dated_entries
 echo -e "</ul>" >> the_index
 
 cat before.html > $OUTPUT_INDEX
-cat the_index | markdown >> $OUTPUT_INDEX
+cat the_index | mmd >> $OUTPUT_INDEX
 cat after.html >> $OUTPUT_INDEX
 
 # Strip out title and date from index

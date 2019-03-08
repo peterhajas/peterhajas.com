@@ -94,6 +94,19 @@ ol {
     margin-bottom: 1rem;
 }
 
+table {
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+td {
+    padding: 1pt;
+}
+
+figcaption {
+    display: none;
+}
+
 #index {
     width: 100%;
     list-style-type: none;
