@@ -94,6 +94,4 @@ We can add a press of the enter key to our mapping using `<CR>`. This acts as th
 
 which is the mapping you'll find in my [`.vimrc`](https://github.com/peterhajas/dotfiles/blob/master/vim/.vimrc).
 
----
-
 I hope you found this post helpful. I have been using `OpenInMarked2` to help me write Markdown for 2 years now, and I think it's a cool example of how to extend `vim` to fit your needs.
