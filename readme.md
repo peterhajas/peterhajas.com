@@ -14,7 +14,7 @@ If you want to build the website, you can use the included `build` script to gen
 
 Note that this relies on some dependencies:
 - the macOS `date` binary
-- a `markdown` binary (I use the one from MultiMarkdown)
+- a `mmd` (MultiMarkdown) binary
 - `exiftool` (for stripping exif)
 - `ffmpeg` (for image recompression)
 
