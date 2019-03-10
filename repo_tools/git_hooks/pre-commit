@@ -1,0 +1,2 @@
+#!/bin/sh
+exiftool -overwrite_original -all= media/*

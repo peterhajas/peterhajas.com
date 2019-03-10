@@ -12,6 +12,9 @@ if [ $HAS_MARKDOWN -eq 0 ]; then
     exit -1
 fi
 
+# Run the repo_setup script
+./repo_setup
+
 # Create the output path
 OUTPUT_PATH="out"
 OUTPUT_INDEX=$OUTPUT_PATH/index.html
