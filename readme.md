@@ -12,11 +12,14 @@ If you want to build the website, you can use the included `build` script to gen
 
     $ ./build
 
+This script will also lay down some git hooks used by the site. For example, all exif data is stripped from `media`.
+
 Note that this relies on some dependencies:
 - the macOS `date` binary
 - a `mmd` (MultiMarkdown) binary
 - `exiftool` (for stripping exif)
 - `ffmpeg` (for image recompression)
+- `python` (for sub-second dates)
 
 This will create a new directory called `out`. It's automatically ignored by `git` thanks to a rule in the `.gitignore`.
 
