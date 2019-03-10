@@ -76,10 +76,22 @@ for markdownFile in $(find . -name '*.md' | sort); do
 
     # Insert title for the <title> tag
     sed -i '' -e "s/TITLE_FOR_PAGE_HERE/$PAGE_TITLE/g" $OUTPATH
-    # Insert page title
-    sed -i '' -e "s/TITLE_HERE/$TITLE/g" $OUTPATH
-    # Insert date if necessary
-    sed -i '' -e "s/DATE_HERE/$PRETTY_DATE/g" $OUTPATH
+
+    if [ "$TITLE" == "" ]; then
+        # If we have no title, omit the line from the page
+        sed -i '' '/TITLE_HERE/d' ./$OUTPATH
+    else
+        # Otherwise, insert the title
+        sed -i '' -e "s/TITLE_HERE/$TITLE/g" $OUTPATH
+    fi
+
+    if [ "$DATE" == "" ]; then
+        # If we have no date, omit the line from the page
+        sed -i '' '/DATE_HERE/d' ./$OUTPATH
+    else
+        # Otherwise, insert the date
+        sed -i '' -e "s/DATE_HERE/$PRETTY_DATE/g" $OUTPATH
+    fi
 done
 
 # sort dated_entries > dated_entries
