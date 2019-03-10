@@ -32,6 +32,9 @@ for markdownFile in $(find . -name '*.md' | sort); do
     RELATIVE_DIR=${RELATIVE_DIR/./}
     OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
     TITLE=""
+    PAGE_TITLE=${FILENAME%.*}
+    # Uppercase page titles coming from filenames
+    PAGE_TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${PAGE_TITLE:0:1})${PAGE_TITLE:1}"
     PRETTY_DATE=""
     PATH_RELATIVE_TO_OUTPATH="$RELATIVE_DIR/$OUTPUTNAME"
 
@@ -39,6 +42,7 @@ for markdownFile in $(find . -name '*.md' | sort); do
     HAS_METADATA=$(echo "$METADATA" | head -n 2 | tail -n 1)
     if [ "$HAS_METADATA" = "<!--" ]; then
         TITLE=$(echo "$METADATA" | head -n 3 | tail -n 1)
+        PAGE_TITLE=$TITLE
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
         PRETTY_DATE=$(date -jf '%Y%m%d %H:%M' +'%B %e, %Y' "$DATE")
@@ -61,7 +65,9 @@ for markdownFile in $(find . -name '*.md' | sort); do
     # Insert after.html at the end
     cat temp after.html > $OUTPATH
 
-    # Insert title
+    # Insert title for the <title> tag
+    sed -i '' -e "s/TITLE_FOR_PAGE_HERE/$PAGE_TITLE/g" $OUTPATH
+    # Insert page title
     sed -i '' -e "s/TITLE_HERE/$TITLE/g" $OUTPATH
     # Insert date if necessary
     sed -i '' -e "s/DATE_HERE/$PRETTY_DATE/g" $OUTPATH
@@ -93,9 +99,10 @@ cat before.html > $OUTPUT_INDEX
 cat the_index | mmd >> $OUTPUT_INDEX
 cat after.html >> $OUTPUT_INDEX
 
+# Insert a reasonable page title
+sed -i '' -e "s/TITLE_FOR_PAGE_HERE/Index/g" $OUTPUT_INDEX
 # Strip out title and date from index
 sed -i '' -e "s/TITLE_HERE//g" $OUTPUT_INDEX
-# Insert date if necessary
 sed -i '' -e "s/DATE_HERE//g" $OUTPUT_INDEX
 
 rm temp
