@@ -2,7 +2,7 @@
 # This script performs repository set up. It's run on every run of `build`, so
 # it should always be enabled
 
-echo "laying down git hooks..."
+echo -n "laying down git hooks..."
 rm .git/hooks/*
 cp repo_tools/git_hooks/* .git/hooks/
-echo "done"
+echo " done"

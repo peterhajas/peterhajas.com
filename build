@@ -30,6 +30,7 @@ touch temp
 # Time to build the site!
 
 MARKDOWN_START_TIME=$(eval $GET_TIME)
+echo -n "markdown..."
 
 # Grab all the markdown files and make them into HTML
 for markdownFile in $(find . -name '*.md' | sort); do
@@ -120,9 +121,10 @@ rm the_index
 MARKDOWN_END_TIME=$(eval $GET_TIME)
 MARKDOWN_ELAPSED=$(echo "$MARKDOWN_END_TIME - $MARKDOWN_START_TIME" | bc)
 
-echo "processed markdown in $MARKDOWN_ELAPSED"
+echo " done (in $MARKDOWN_ELAPSED)"
 
 MEDIA_START_TIME=$(eval $GET_TIME)
+echo -n "media..."
 
 # Copy over css
 cp style.css out/
@@ -149,7 +151,7 @@ done
 
 MEDIA_END_TIME=$(eval $GET_TIME)
 MEDIA_ELAPSED=$(echo "$MEDIA_END_TIME - $MEDIA_START_TIME" | bc)
-echo "processed media in $MEDIA_ELAPSED"
+echo " done (in $MEDIA_ELAPSED)"
 
 # Finally, remove readme from output (we don't want included)
 rm $OUTPUT_PATH/readme*
