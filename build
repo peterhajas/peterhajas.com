@@ -107,8 +107,8 @@ cat after.html >> $OUTPUT_INDEX
 # Insert a reasonable page title
 sed -i '' -e "s/TITLE_FOR_PAGE_HERE/Index/g" $OUTPUT_INDEX
 # Strip out title and date from index
-sed -i '' -e "s/TITLE_HERE//g" $OUTPUT_INDEX
-sed -i '' -e "s/DATE_HERE//g" $OUTPUT_INDEX
+sed -i '' '/TITLE_HERE/d' ./$OUTPUT_INDEX
+sed -i '' '/DATE_HERE/d' ./$OUTPUT_INDEX
 
 rm temp
 rm dated_entries
