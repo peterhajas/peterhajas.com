@@ -1,2 +1,4 @@
 #!/bin/sh
-exiftool -overwrite_original -all= media/*
+exiftool -quiet -ignoreMinorErrors -overwrite_original -all= media/*.jpeg 2>>/dev/null
+exiftool -quiet -ignoreMinorErrors -overwrite_original -all= media/*.jpg 2>>/dev/null
+exiftool -quiet -ignoreMinorErrors -overwrite_original -all= media/*.png 2>>/dev/null
