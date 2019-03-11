@@ -32,6 +32,44 @@ touch temp
 MARKDOWN_START_TIME=$(eval $GET_TIME)
 echo -n "markdown..."
 
+# First, build the index
+# Process all the markdown files and look for dated ones for the index
+for markdownFile in $(find . -name '*.md' | sort); do
+    FILENAME=$(basename $markdownFile)
+    OUTPUTNAME=${FILENAME%.*}.html
+    FULLPATH=$(dirname $markdownFile)
+    RELATIVE_DIR=${FULLPATH/$WORKING_DIR/$OUTPUTPATH}
+    RELATIVE_DIR=${RELATIVE_DIR/./}
+    OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
+    PATH_RELATIVE_TO_OUTPATH="$RELATIVE_DIR/$OUTPUTNAME"
+
+    METADATA=$(cat $markdownFile | head -n $METADATA_LINE_COUNT)
+    HAS_METADATA=$(echo "$METADATA" | head -n 2 | tail -n 1)
+    if [ "$HAS_METADATA" = "<!--" ]; then
+        TITLE=$(echo "$METADATA" | head -n 3 | tail -n 1)
+        DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
+        echo "$DATE $markdownFile $PATH_RELATIVE_TO_OUTPATH $TITLE" >> dated_entries
+    fi
+done
+
+# Sort entries by date
+sort --reverse dated_entries > temp
+cp temp dated_entries
+
+# Put entries into index.md
+touch index.md
+while read datedEntry; do
+    DATE=$(echo $datedEntry | awk '{ print $1 $2}')
+    MARKDOWN_FILE=$(echo $datedEntry | awk '{ print $3 }')
+    OUTLINK=$(echo $datedEntry | awk '{ print $4 }')
+    TITLE=$(echo $datedEntry | cut -d " " -f 5-)
+
+    PRETTY_DATE=$(date -jf '%Y%m%d%H:%M' +'%B %e, %Y' "$DATE")
+    echo -e "<h2 class='title'><a href='$OUTLINK'>$TITLE</a></h2>\n" >> index.md
+    echo -e "<h3 class='date'>$PRETTY_DATE</h3>\n" >> index.md
+    cat $MARKDOWN_FILE >> index.md
+done < dated_entries
+
 # Grab all the markdown files and make them into HTML
 for markdownFile in $(find . -name '*.md' | sort); do
     FILENAME=$(basename $markdownFile)
@@ -41,6 +79,7 @@ for markdownFile in $(find . -name '*.md' | sort); do
     RELATIVE_DIR=${RELATIVE_DIR/./}
     OUTPATH="$OUTPUT_PATH$RELATIVE_DIR/$OUTPUTNAME"
     TITLE=""
+    DATE=""
     PAGE_TITLE=${FILENAME%.*}
     # Uppercase page titles coming from filenames
     PAGE_TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${PAGE_TITLE:0:1})${PAGE_TITLE:1}"
@@ -55,7 +94,6 @@ for markdownFile in $(find . -name '*.md' | sort); do
         DATE=$(echo "$METADATA" | tail -n 2 | head -n 1)
         # Date conversions in macOS: https://stackoverflow.com/a/43927574
         PRETTY_DATE=$(date -jf '%Y%m%d %H:%M' +'%B %e, %Y' "$DATE")
-        echo "$DATE $markdownFile $PATH_RELATIVE_TO_OUTPATH $TITLE" >> dated_entries
     fi
 
     # Make directories until the outpath
@@ -94,37 +132,9 @@ for markdownFile in $(find . -name '*.md' | sort); do
     fi
 done
 
-# sort dated_entries > dated_entries
-sort --reverse dated_entries > temp
-cp temp dated_entries
-
-# Now process the dated entries into the index
-touch the_index
-while read datedEntry; do
-    DATE=$(echo $datedEntry | awk '{ print $1 $2}')
-    MARKDOWN_FILE=$(echo $datedEntry | awk '{ print $3 }')
-    OUTLINK=$(echo $datedEntry | awk '{ print $4 }')
-    TITLE=$(echo $datedEntry | cut -d " " -f 5-)
-
-    PRETTY_DATE=$(date -jf '%Y%m%d%H:%M' +'%B %e, %Y' "$DATE")
-    echo -e "<h2 class='title'><a href='$OUTLINK'>$TITLE</a></h2>\n" >> the_index
-    echo -e "<h3 class='date'>$PRETTY_DATE</h3>\n" >> the_index
-    cat $MARKDOWN_FILE >> the_index
-done < dated_entries
-
-cat before.html > $OUTPUT_INDEX
-cat the_index | mmd >> $OUTPUT_INDEX
-cat after.html >> $OUTPUT_INDEX
-
-# Insert a reasonable page title
-sed -i '' -e "s/TITLE_FOR_PAGE_HERE/Index/g" $OUTPUT_INDEX
-# Strip out title and date from index
-sed -i '' '/TITLE_HERE/d' ./$OUTPUT_INDEX
-sed -i '' '/DATE_HERE/d' ./$OUTPUT_INDEX
-
 rm temp
 rm dated_entries
-rm the_index
+rm index.md
 
 MARKDOWN_END_TIME=$(eval $GET_TIME)
 MARKDOWN_ELAPSED=$(echo "$MARKDOWN_END_TIME - $MARKDOWN_START_TIME" | bc)
