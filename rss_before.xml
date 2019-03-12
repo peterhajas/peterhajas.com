@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="rss.css" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<channel>
+<title>Peter Hajas</title>
+<description>Posts by Peter Hajas</description>
+<language>en-us</language>
+<link>http://peter.haj.as/rss.xml</link>
+<atom:link href="http://peter.haj.as/rss.xml" rel="self" type="application/rss+xml" />

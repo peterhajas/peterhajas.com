@@ -18,6 +18,7 @@ fi
 # Create the output path
 OUTPUT_PATH="out"
 OUTPUT_INDEX=$OUTPUT_PATH/index.html
+OUTPUT_RSS=$OUTPUT_PATH/rss.xml
 rm -r $OUTPUT_PATH
 mkdir $OUTPUT_PATH
 
@@ -56,7 +57,10 @@ done
 sort --reverse dated_entries > temp
 cp temp dated_entries
 
-# Put entries into index.md
+# Put in RSS prequel
+cat rss_before.xml > $OUTPUT_RSS
+
+# Put entries into index.md and rss
 touch index.md
 while read datedEntry; do
     DATE=$(echo $datedEntry | awk '{ print $1 $2}')
@@ -65,10 +69,20 @@ while read datedEntry; do
     TITLE=$(echo $datedEntry | cut -d " " -f 5-)
 
     PRETTY_DATE=$(date -jf '%Y%m%d%H:%M' +'%B %e, %Y' "$DATE")
+    RSS_DATE=$(date -jf '%Y%m%d%H:%M' +'%a, %d %b %Y %H:%M:%S %Z' "$DATE")
     echo -e "<h2 class='title'><a href='$OUTLINK'>$TITLE</a></h2>\n" >> index.md
     echo -e "<h3 class='date'>$PRETTY_DATE</h3>\n" >> index.md
     cat $MARKDOWN_FILE >> index.md
+
+    echo -e "<item>\n<title>$TITLE</title>\n<guid>$OUTLINK</guid>" >> $OUTPUT_RSS
+    echo -e "<pubDate>$RSS_DATE</pubDate>" >> $OUTPUT_RSS
+    echo -e "<description><![CDATA[\n" >> $OUTPUT_RSS
+    cat $MARKDOWN_FILE | mmd >> $OUTPUT_RSS
+    echo -e "]]></description>\n</item>" >> $OUTPUT_RSS
 done < dated_entries
+
+# Put in the RSS epilogue
+cat rss_after.xml >> $OUTPUT_RSS
 
 # Grab all the markdown files and make them into HTML
 for markdownFile in $(find . -name '*.md' | sort); do
