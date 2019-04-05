@@ -9,6 +9,8 @@ body {
     margin: auto;
     padding: 10px;
     text-rendering: optimizeLegibility;
+    color: black;
+    background: white;
 }
 
 img {
@@ -144,4 +146,18 @@ footer {
 footer * {
     height: 3em;
     vertical-align: middle;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: white;
+        background: black;
+    }
+
+    .date {
+        color: #777;
+    }
+    blockquote {
+        border-left-color: white;
+    }
 }
