@@ -1,4 +1,4 @@
 #!/bin/bash
 
 ./build
-rsync -azvvrP --exclude '.*' out/* peterhajas.com:/var/www
+rsync -azvvrP --exclude '.*' out/* peterhajas.com:/var/www/html
