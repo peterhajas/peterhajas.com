@@ -30,6 +30,7 @@ img {
 }
 
 blockquote {
+    font-style: italic;
     width: 90%;
     margin: auto;
     align-items: center;
@@ -54,7 +55,7 @@ hr {
 
 a {
     text-decoration: none;
-    color: #fd6000;
+    color: rgba(253, 96, 0, 1);
 }
 
 code {
@@ -65,6 +66,8 @@ pre {
     width: 90%;
     margin: auto;
     white-space: pre-wrap;
+    color: #444;
+    background-color: rgba(253, 96, 0, 0.089);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -157,7 +160,13 @@ footer * {
     .date {
         color: #777;
     }
+
     blockquote {
         border-left-color: white;
+
+    }
+
+    pre {
+        color: #bbb;
     }
 }
