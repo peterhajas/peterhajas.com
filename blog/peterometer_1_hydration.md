@@ -6,7 +6,7 @@ Peterometer Chapter 1: Tracking Hydration
 
 *This is the first in a series of posts I hope to write about building tools for "Peterometer", a way to visualize stats I've collected about myself.*
 
-#### Inspiration for Peterometer
+# Inspiration for Peterometer
 
 I've long been inspired by people who build beautiful visualizations of their gathered metrics. For example, Nicholas Felton's annual reports. Here is an example [from his 2007 report](http://feltron.com/FAR07.html):
 
@@ -22,11 +22,11 @@ He has some great posts about his creative process [here](https://blog.gyrosco.p
 
 These visualizations are really cool ways to show stats gathered about your life. I've recently been getting more into tracking my day-to-day life, and experimenting with visualization techniques to showcase this data.
 
-#### Hydration Tracking
+# Hydration Tracking
 
 Since December 2018, I've been tracking my hydration every day. Every time I finish drinking something, I log the type of drink it was, and how much of it I drank. I log the data using the [WaterMinder](http://waterminder.com) app on my watch and phone. WaterMinder lets you have saved drinks, which is really helpful if you drink the same thing often (my Nalgene, a cup of coffee from the machine at work, etc.)
 
-#### Some Visualizations
+# Some Visualizations
 
 WaterMinder lets you export your data in CSV format. With a [little bit of Python](https://github.com/peterhajas/peterometer/blob/master/hydration/waterminder_parse.py), we can parse this into a ["stream" stacked area chart](http://leebyron.com/streamgraph/) to show how I hydrate myself:
 

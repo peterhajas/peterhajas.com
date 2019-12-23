@@ -4,50 +4,87 @@
 /* - a b for all b inside a */
 
 body {
-    font-size: 16pt;
-    max-width: 40em;
-    margin: auto;
-    padding: 10px;
-    text-rendering: optimizeLegibility;
-    color: black;
+    font-family: Georgia, serif;
     background: white;
+    color: black;
+    margin: auto;
+    max-width: 45em;
+    text-rendering: optimizeLegibility;
 }
 
 img {
     max-width: 100%;
-    display: block;
-    margin: auto;
+}
+
+p, header, .title, .date, h1, h2, h3, h4, h5, h6, img, ul, ol, table, pre {
+    line-height: 1.5;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+}
+
+/* turn off padding for nested lists */
+ul ul, ol ol, ul ol, ol ul {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+header, h1, h2, h3, h4, h5, h6, .title, .date {
+    /* font-family: sans-serif; */
+    font-weight: 999;
+}
+
+header {
+    padding-top: 4.5rem;
+}
+
+header h1 {
+    font-size: 3em;
+}
+
+.title {
+    font-size: 2em;
 }
 
 .date {
+    color: #999;
+    font-size: 1.5em;
     font-style: italic;
     font-weight: 400;
-    color: #999;
 }
 
-#content {
-    padding-top: 20pt;
+blockquote, pre, ul, ol {
+    margin: auto;
+}
+
+blockquote, ul, ol {
+    width: 90%;
+}
+
+blockquote, pre {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 blockquote {
     font-style: italic;
-    width: 90%;
-    margin: auto;
-    align-items: center;
     border-left-width: .125em;
     border-left-color: black;
     border-left-style: solid;
 }
 
-blockquote p {
-    padding-left: 0.5em;
+/* this styling match the blockquote above */
+th {
+    border-bottom-width: .125em;
+    border-bottom-color: black;
+    border-bottom-style: solid;
 }
 
-p {
-    line-height: 1.4em;
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+blockquote * {
+    padding-left: 0.5em;
+    padding-top: 0;
+    padding-bottom: 0;
 }
+
 
 hr {
     margin: 1em;
@@ -59,49 +96,26 @@ a {
 }
 
 code {
-    font-family: monospace;
+    font-family: Menlo, monospace;
 }
 
 pre {
-    width: 90%;
-    margin: auto;
     white-space: pre-wrap;
-    color: #444;
     background-color: rgba(253, 96, 0, 0.089);
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: sans-serif;
-    font-weight: 999;
-    padding-top: 7pt;
-    padding-bottom: 7pt;
+    padding: 20pt;
+    vertical-align: middle;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 1.25em;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 1.125em;
 }
 
-h3 {
-    font-size: 1.5em;
-}
-
-ul {
-    width: 90%;
-    margin: auto;
-    list-style-type: disc;
-}
-
-ol {
-    width: 90%;
-    margin: auto;
-}
-
-li {
-    line-height: 1.2;
+ul, ol {
+    list-style-type: unset;
 }
 
 table {
@@ -109,7 +123,6 @@ table {
 }
 
 td {
-    line-height: 1.2;
     padding: 8pt;
     padding-top: 0.5pt;
     padding-bottom: 0.5pt;
@@ -121,7 +134,6 @@ figcaption {
 
 .contact {
     font-family: sans-serif;
-    font-size: 24pt;
     text-align: center;
     font-weight: 500;
     text-decoration: none;
@@ -141,13 +153,11 @@ figcaption {
 }
 
 footer {
-    height: 3em;
+    padding: 2em;
     text-align: center;
-    padding-top: 20pt;
 }
 
 footer * {
-    height: 3em;
     vertical-align: middle;
 }
 
@@ -163,10 +173,9 @@ footer * {
 
     blockquote {
         border-left-color: white;
-
     }
 
-    pre {
-        color: #bbb;
+    th {
+        border-bottom-color: white;
     }
 }

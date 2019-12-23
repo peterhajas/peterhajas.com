@@ -18,7 +18,7 @@ Because `vim` is a command line editor, it makes it tougher to use it to write r
 
 I wanted to continue to use `vim` to edit my blog posts (I find `vim` plugins for other editors to be a worse approximation than "I can't believe it's not butter"). This post is about how I solved this problem.
 
-#### A Markdown preview app
+# A Markdown preview app
 
 On macOS, you can get apps to render Markdown in a window. One that I like a lot is [Marked](http://marked2app.com), which automatically refreshes its preview when the Markdown file changes. This means you can open a `.md` file in Marked and get live updates *as you change it*. This can be used with any editor, including `vim`. The flow is something like:
 
@@ -28,7 +28,7 @@ On macOS, you can get apps to render Markdown in a window. One that I like a lot
 
 As you save to it with `:w`, the preview will be auto-refreshed. I like this, but wanted to open it with a single key combination.
 
-#### Adding Marked to `vim`
+# Adding Marked to `vim`
 
 We can write a `vim` function to help us with this. Something like this:
 
@@ -36,7 +36,7 @@ We can write a `vim` function to help us with this. Something like this:
         " Open the file in Marked here
     endfunction
 
-##### Running a shell command from `vim`
+## Running a shell command from `vim`
 
 We can use `!` to run a command from our function. Technically, this is the `filter` command. From `:help !`:
 
@@ -68,7 +68,7 @@ Once we have this function, we can call it with the Ex `call` command, like this
 
 This will open the current file in Marked, but will leave us at the shell with "Press ENTER or type command to continue" there. We still have to press enter before we can edit the file live.
 
-##### Defining a mapping
+## Defining a mapping
 
 We can use a `vim` mapping to call the function for us. A mapping lets us take a key combination and map it to a command. For the key combination, I like to use `<leader>`, which is a user-controlled modifier in `vim`. This means that `<leader> _` is wide open for use in your `.vimrc`. For my `leader` key, I use `,` (comma), as it's near the other modifiers on a US keyboard. For `leader` mappings, I like a mnemonic key combination, as it makes it easier to remember.
 
@@ -86,7 +86,7 @@ Here's a decoder ring for what these commands mean:
 
 If you add this mapping and function to your `.vimrc`, you'll see that it works *kind of*. You have to hit enter to get the command to actually run, and then after doing so you're left at the shell, so you need to hit enter **again** before returning to the editor.
 
-##### Hitting enter twice
+## Hitting enter twice
 
 We can add a press of the enter key to our mapping using `<CR>`. This acts as though the user has pressed the carriage return. We'll add two of them, as we need one to run the function and another to return to the editor. Our mapping now looks like this:
 

@@ -6,7 +6,7 @@ Upgrading a Nintendo Switch SD card
 
 I own a Nintendo Switch console. Because I don't want physical games cluttering my home, I get all my games digitally. I recently started running out of room and needed a new SD card to hold my games. This path ended up being circuitous, taking me through fake flash storage, the Switch's file structure, and its operating system's treatment of Unix file attributes.
 
-#### A new card
+# A new card
 
 I purchased a Samsung 512GB SD card from Amazon for $65. I'm shocked at how cheap SD cards are now. This replaced my old 128GB card.
 
@@ -22,7 +22,7 @@ Flash memory has never been more popular. Unfortunately, there has been a recent
 
 After my new card arrived, I wanted to check its authenticity. Is this a real 512GB SD card? Or a fake?
 
-#### The `f3` tool
+# The `f3` tool
 
 [`f3`](http://oss.digirati.com.br/f3/) is a tool to verify the authenticity of flash memory. It stands for "Fight Flash Fraud" or "Fight Fake Flash". From the site:
 
@@ -71,7 +71,7 @@ This will read each of the 1GB files created by `f3write`, verifying they did no
 
 Cool, a real SD card that works! Next step: move my games over.
 
-#### Switch SD file structure
+# Switch SD file structure
 
 Plugging my old SD card into my machine, `diskutil` reports an NTFS filesystem:
 
@@ -114,7 +114,7 @@ I've used the majority of the card's 128GB space:
     $ du -skh /Volumes/Untitled
     111G    /Volumes/Untitled
 
-#### Formatting the card
+# Formatting the card
 
 Next step was to insert the 512GB card into the Switch and ask it to format. This process took about 3 seconds, then the console rebooted itself. I verified that the card was now NTFS:
 
@@ -124,7 +124,7 @@ Next step was to insert the 512GB card into the Switch and ask it to format. Thi
        0:     FDisk_partition_scheme                        *512.1 GB   disk3
        1:               Windows_NTFS                         512.0 GB   disk3s1
 
-#### Backing up the card
+# Backing up the card
 
 I don't have two SD card slots on my machine, so I'll need to copy the data first to my computer, then onto the card. We can use `rsync` to do this:
 
@@ -137,13 +137,13 @@ I used `rsync` in `archive` mode by passing the `-a` flag, which according to `m
 
 Perfect! I also passed `-v` for verbose, and `-z` to use compression as the files are moved.
 
-#### Restoring to the new card
+# Restoring to the new card
 
 Now it's time to restore to the new card. After unmounting the smaller card and inserting the new card, it's a simple matter of `rsync`ing the files back:
 
     rsync -avz nintendo_backup/Untitled/ /Volumes/Untitled
 
-#### Trying it out
+# Trying it out
 
 With the `rsync` step done, we can test out the card:
 
@@ -155,7 +155,7 @@ I then tried copying the contents of `nintendo_backup` over the `rsync`'d backup
 
 Nope, same error. I tried the original card to verify my Switch was still functional. The original card works fine.
 
-#### Debugging the issue
+# Debugging the issue
 
 So, we've got a new SD card that the Switch won't see:
 
@@ -177,12 +177,12 @@ Although it does contain this strange warning:
 
 > Important: This process may not be able to copy the microSD card contents correctly in environments other than Windows (such as Mac).
 
-#### A fix
+# A fix
 
 Turns out I was missing the archive attribute on the card. Simply running `sudo chflags -R arch /Volumes/Untitled` to fix up the Archive attribute fixed the issue (I also did a `sudo dot_clean -mn` on the directory). Phew! Look at all that space:
 
 ![A screenshot showing the free space on the new larger card](/media/nintendo_freespace.jpeg)
 
-#### Why did this break?
+# Why did this break?
 
 I'm not totally sure. My hunch is that an archive attribute on the files was confusing the Switch's SD card parsing. It looks like the Nintendo Switch's OS is not Unix-derived, but rather an [evolution of the 3DS OS](https://en.wikipedia.org/wiki/Nintendo_Switch_system_software). It's possible that some file attributes from Unix may have confused the Switch.

@@ -25,7 +25,7 @@ Doesn't this dog look like Riker? With the tail and banded coat? I thought so to
 
 Whenever other people asked me about Riker, I would tell them she's "part chihuahua, part shiba inu". They believed me, but I didn't have any proof.
 
-#### Enter Embark
+# Enter Embark
 
 A good friend of mine told me about a service where you can get your dog's DNA analyzed. It's called [EmbarkVet](https://www.talkable.com/x/Qnraz2) (disclaimer: this is a referral link). Embark gives your dog a breed report, health analysis, and some cool genetic information. It's like 23andMe for your dog.
 
@@ -33,7 +33,7 @@ I signed up for the service. A few days later they sent me a DNA swab kit. It's 
 
 Over the next few weeks, Embark notified me as the analysis progressed. After 3 weeks or so, my pressing question was answered: they told me what type of dog she was!
 
-#### Less than 50% chihuahua
+# Less than 50% chihuahua
 
 To my absolute amazement, Riker is not even mostly chihuahua! The results confirm that **Riker is a pomeranian**! The full breakdown is:
 
@@ -46,7 +46,7 @@ I also learned that she has 1.5% "Wolfiness", which indicates ancient wolf genes
 
 ***Note:*** I am not a trained biologist. Regrettably, I spent much of my college biology course playing [Pokémon Crystal](https://en.wikipedia.org/wiki/Pokémon_Crystal), although I do remember some parts of the genetics sections.
 
-#### A family tree
+# A family tree
 
 Embark also determines haplotypes, which means they can tell what genes of Riker's came from which parents. This lets them generate a family tree:
 
@@ -54,7 +54,7 @@ Embark also determines haplotypes, which means they can tell what genes of Riker
 
 This means Riker's parents were a chihuahua mix and a purebred pomeranian.
 
-#### Analyzing my dog's DNA
+# Analyzing my dog's DNA
 
 Besides finally being able to see my dog's genetic history, I was *super* happy that I could download the raw genetic data. When I unzipped the file, I was left with two text files:
 

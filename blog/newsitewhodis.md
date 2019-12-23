@@ -6,11 +6,11 @@ New Site, Who Dis?
 
 This is the first post on my new website! You're reading this on the *brand new* [peterhajas.com](http://peterhajas.com). Let's break it down.
 
-#### A (not so new) domain
+# A (not so new) domain
 
 It's worth noting that this page is also hosted on [peter.haj.as](http://peter.haj.as). I have had this domain from American Samoa for some time. I love the idea of domains that are people's names with no added alphanumeric characters, and this one fits the bill for me.
 
-#### My own static site generator - what could possibly go wrong?
+# My own static site generator - what could possibly go wrong?
 
 My old page was powered by [Hyde](https://github.com/hyde/hyde). While this project provides a lot of flexibility, I felt that I was not using all of its features. I wanted something dead-simple that could enable me to write more. As a result, I [wrote my own](https://github.com/peterhajas/peterhajas.com).
 
@@ -20,7 +20,7 @@ The site generates quickly, and it's been a great learning opportunity! For exam
 
 The site is missing some stuff (like RSS support), but I plan to iterate on it over time.
 
-#### Hopefully I'll write more
+# Hopefully I'll write more
 
 All of this is for naught if I don't actually *use the damn thing* to write and think out loud.
 

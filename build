@@ -70,8 +70,8 @@ while read datedEntry; do
 
     PRETTY_DATE=$(date -jf '%Y%m%d%H:%M' +'%B %e, %Y' "$DATE")
     RSS_DATE=$(date -jf '%Y%m%d%H:%M' +'%a, %d %b %Y %H:%M:%S %Z' "$DATE")
-    echo -e "<h2 class='title'><a href='$OUTLINK'>$TITLE</a></h2>\n" >> index.md
-    echo -e "<h3 class='date'>$PRETTY_DATE</h3>\n" >> index.md
+    echo -e "<div class='title'><a href='$OUTLINK'>$TITLE</a></div>\n" >> index.md
+    echo -e "<div class='date'>$PRETTY_DATE</div>\n" >> index.md
     cat $MARKDOWN_FILE >> index.md
 
     echo -e "<item>\n<title>$TITLE</title>\n<guid>$OUTLINK</guid>" >> $OUTPUT_RSS
