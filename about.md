@@ -2,6 +2,10 @@
 
 I am a software developer at [Apple](http://apple.com). I'm from Minnesota. I graduated from [RPI](http://rpi.edu) in 2012.
 
-<div class='contact' id='contact_twitter'><a href="http://twitter.com/peterhajas">@peterhajas</a></div>
-<div class='contact' id='contact_email'><a href='mailto:peter@haj.as'>peter@haj.as</a></div>
-<div class='contact' id='contact_web'><a href='/'>peter.haj.as</a></div>
+<center>
+<span class='contact' id='contact_twitter'><a href="http://twitter.com/peterhajas">@peterhajas</a></span>
+•
+<span class='contact' id='contact_email'><a href='mailto:peter@haj.as'>peter@haj.as</a></span>
+•
+<span class='contact' id='contact_web'><a href='/'>peter.haj.as</a></span>
+</center>
