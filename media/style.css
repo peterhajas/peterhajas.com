@@ -19,8 +19,8 @@ img {
 
 p, header, .title, .date, h1, h2, h3, h4, h5, h6, img, ul, ol, table, pre {
     line-height: 1.5;
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
 }
 
 /* turn off padding for nested lists */
@@ -29,24 +29,18 @@ ul ul, ol ol, ul ol, ol ul {
     padding-bottom: 0;
 }
 
-header, h1, h2, h3, h4, h5, h6, .title, .date {
-    /* font-family: sans-serif; */
-    font-weight: 999;
-}
-
-header h1 {
-    font-size: 3em;
+header {
+    font-size: 2em;
 }
 
 .title {
-    font-size: 2em;
+    font-size: 1.875em;
 }
 
 .date {
     color: #999;
     font-size: 1.5em;
     font-style: italic;
-    font-weight: 400;
 }
 
 blockquote, pre, ul, ol {
@@ -104,11 +98,15 @@ pre {
 }
 
 h1 {
-    font-size: 1.25em;
+    font-size: 1.75em;
 }
 
 h2 {
-    font-size: 1.125em;
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.25em;
 }
 
 ul, ol {
