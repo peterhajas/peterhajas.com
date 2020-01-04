@@ -92,7 +92,11 @@ code {
 pre {
     white-space: pre-wrap;
     background-color: rgba(253, 96, 0, 0.089);
-    padding: 20pt;
+    border-radius: 8pt;
+    border-color: rgba(253, 96, 0, 0.2);
+    border-width: 2pt;
+    border-style: solid;
+    padding: 8pt;
     vertical-align: middle;
 }
 
