@@ -8,6 +8,7 @@ body {
     background: white;
     color: black;
     margin: auto;
+    padding: 8px;
     max-width: 45em;
     text-rendering: optimizeLegibility;
 }
