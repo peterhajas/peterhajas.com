@@ -5,8 +5,6 @@
 
 body {
     font-family: Georgia, serif;
-    background: white;
-    color: black;
     border-color: black;
     margin: auto;
     padding: 8px;
@@ -20,6 +18,13 @@ em {
 
 img {
     max-width: 100%;
+}
+
+.youtube {
+    /* this matches the width of the document and height
+     * roughly following a 16:9 aspect ratio */
+    width: 45em;
+    height: 25em;
 }
 
 p, header, .title, .date, h1, h2, h3, h4, h5, h6, img, ul, ol, table, pre {
