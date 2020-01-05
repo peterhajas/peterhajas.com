@@ -23,8 +23,11 @@ img {
 .youtube {
     /* this matches the width of the document and height
      * roughly following a 16:9 aspect ratio */
-    width: 45em;
-    height: 25em;
+    width: 100%;
+    max-width: 45em;
+    height: 50vw;
+    max-height: 25em;
+    display: block;
 }
 
 p, header, .title, .date, h1, h2, h3, h4, h5, h6, img, ul, ol, table, pre {
