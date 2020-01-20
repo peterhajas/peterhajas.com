@@ -20,6 +20,7 @@ before_html = Path("before.html").read_text()
 after_html = Path("after.html").read_text()
 
 output_path = Path(output_path_string)
+index_output_path = output_path.joinpath("index.html")
 
 class MarkdownFile:
     # The title associated with this file, or None if it has none
@@ -87,12 +88,13 @@ shutil.rmtree(output_path_string)
 # Make the new path
 output_path.mkdir(parents=True, exist_ok=True)
 
+dated_markdown_files = [ ]
+
 # Process the site. We'll look for all the files in our tree
 all_file_paths = sorted(Path().rglob("*"))
 for path in all_file_paths:
     # If the path is ignored, then we can skip it
     if path.is_dir():
-        print("{} is dir, skipping".format(path))
         continue
     is_ignored = False
     parts = path.parts
@@ -115,9 +117,29 @@ for path in all_file_paths:
         path_outpath = path_outpath.with_suffix(".html")
         path_outpath.parent.mkdir(parents=True, exist_ok=True)
         path_outpath.write_text(markdownFile.page_html())
+        # If the file has a date, add it to our list for the index / RSS
+        if markdownFile.date != None:
+            dated_markdown_files.append(markdownFile)
     # Otherwise, just copy it over
     else:
         file_bytes = path.read_bytes()
         path_outpath.parent.mkdir(parents=True, exist_ok=True)
         path_outpath.write_bytes(file_bytes)
-        
+
+# Sort dated markdown files by date
+sorted_dated_markdown_files = sorted(dated_markdown_files, key=lambda entry: entry.date)
+# Reverse the list (so it is newest first)
+sorted_dated_markdown_files.reverse()
+
+index_markdown_contents = ""
+# Build the index and rss files
+for entry in sorted_dated_markdown_files:
+    # Index: add in title and date
+    index_markdown_contents += "<div class='title'><a href='LINK_HERE'>{}</a></div>\n".format(entry.title)
+    index_markdown_contents += "<div class='date'>{}</div>\n".format(entry.pretty_date())
+    # Index: add in contents
+    index_markdown_contents += entry.html()
+    index_markdown_contents += "\n"
+
+index_markdown = MarkdownFile(index_markdown_contents)
+index_output_path.write_text(index_markdown.page_html())
