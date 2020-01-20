@@ -83,7 +83,7 @@ class MarkdownFile:
 
 # Delete the current path
 # pathlib will only delete empty directories, so we use shutil
-shutil.rmtree(output_path_string, ignore_errors=False)
+shutil.rmtree(output_path_string, ignore_errors=True)
 
 # Make the new path
 output_path.mkdir(parents=True, exist_ok=True)
