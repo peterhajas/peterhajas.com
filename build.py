@@ -6,10 +6,16 @@ import shutil
 
 # Where to save contents
 output_path_string = "out"
+# Files to ignore for the site
+# If a file matches these or contains any components that match these, then it
+# is skipped. Additionally, all hidden files are skipped
+ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags"]
 # The markdown extensions to use
 # - tables gives MMD-style tables
 # - smarty gives smartypants-style quotes
 markdown_extensions = ["tables", "smarty"]
+
+# The before.html / after.html files
 before_html = Path("before.html").read_text()
 after_html = Path("after.html").read_text()
 
@@ -81,14 +87,37 @@ shutil.rmtree(output_path_string)
 # Make the new path
 output_path.mkdir(parents=True, exist_ok=True)
 
-# Process the site. We'll look for all the markdown files in our tree
-all_markdown_paths = sorted(Path().rglob("*.md"))
-for path in all_markdown_paths:
-    file_contents = path.read_text()
-    markdown_file = MarkdownFile(file_contents)
-    print(markdown_file.page_html())
+# Process the site. We'll look for all the files in our tree
+all_file_paths = sorted(Path().rglob("*"))
+for path in all_file_paths:
+    # If the path is ignored, then we can skip it
+    if path.is_dir():
+        print("{} is dir, skipping".format(path))
+        continue
+    is_ignored = False
+    parts = path.parts
+    for part in parts:
+        if part[0] == ".":
+            is_ignored = True
+            break
+        if part in ignore_files:
+            is_ignored = True
+            break
+    if is_ignored:
+        continue
 
-# We want to use these to:
-# - build the index (sorted by date, included in the file)
-# - move the compiled HTML files into the output directory
-
+    path_outpath = output_path.joinpath(path)
+    
+    # If the path is markdown, process it
+    if path.suffix == ".md":
+        markdownFile = MarkdownFile(path.read_text())
+        # Change output path to .html
+        path_outpath = path_outpath.with_suffix(".html")
+        path_outpath.parent.mkdir(parents=True, exist_ok=True)
+        path_outpath.write_text(markdownFile.page_html())
+    # Otherwise, just copy it over
+    else:
+        file_bytes = path.read_bytes()
+        path_outpath.parent.mkdir(parents=True, exist_ok=True)
+        path_outpath.write_bytes(file_bytes)
+        
