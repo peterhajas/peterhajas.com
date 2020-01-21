@@ -77,6 +77,10 @@ class MarkdownFile:
     def pretty_date(self):
         return self.date.strftime("%B %e, %Y") 
 
+    # Returns whether or not we are an article
+    def is_article(self):
+        return self.title != None and self.date != None
+
     # An RSS-formatted date for self
     def rss_date(self):
         # Always PST :-/
@@ -95,26 +99,39 @@ class MarkdownFile:
     def html(self):
         return markdown.markdown(self.contents, extensions=markdown_extensions)
 
-    # HTML that can stand alone
+    # The decorated HTML for this entry, wrapped in <article> and with title /
+    # date if appropriate
+    def decorated_html(self):
+        # The decorated html is:
+        # - the <article> entry if we are an article
+        # - the title and date if we are an article
+        # - the html
+        # - the </article> entry if we are an article
+
+        is_article = self.is_article()
+        decorated = ""
+        if is_article:
+            decorated += "<article>\n"
+            decorated += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
+            decorated += "<div class='date'>{}</div>\n".format(self.pretty_date())
+        decorated += self.html() + "\n"
+        if is_article:
+            decorated += "</article>\n"
+        return decorated
+
+    # HTML that is its own document
     def page_html(self):
-        # The page html is the html, but with:
-        # - before before it
-        # - after after it
-        # - the date and title replaced (if the page has one)
-        html = self.html()
+        # The page html is:
+        # - before.html
+        # - the decorated html
+        # - after.html
 
-        before_for_us = before_html
-        # If we don't have a title, then drop the last three lines of before.html
-        # (these contain the "TITLE_HERE" and "DATE_HERE" strings, and a newline)
-        if self.title == None:
-            before_for_us = "\n".join(before_for_us.split("\n")[:-3])
+        page_html = before_html + "\n"
+        page_html += self.decorated_html()
+        page_html += after_html
 
-        page_html = before_for_us + "\n" + html + "\n" + after_html
+        # replace the title
         page_html = page_html.replace("TITLE_FOR_PAGE_HERE", self.page_title())
-        if self.title != None:
-            page_html = page_html.replace("TITLE_HERE", self.title)
-        if self.date != None:
-            page_html = page_html.replace("DATE_HERE", self.pretty_date())
 
         return page_html
 
@@ -192,12 +209,8 @@ index_markdown_contents = ""
 rss_contents = rss_before_xml
 # Build the index and rss files
 for entry in sorted_dated_markdown_files:
-    # Index: add in title and date
-    index_markdown_contents += "<div class='title'><a href='{}'>{}</a></div>\n".format(entry.rendered_path(), entry.title)
-    index_markdown_contents += "<div class='date'>{}</div>\n".format(entry.pretty_date())
-
     # Index: add in contents
-    index_markdown_contents += entry.html()
+    index_markdown_contents += entry.decorated_html()
     index_markdown_contents += "\n"
 
     # RSS: add in item RSS contents
