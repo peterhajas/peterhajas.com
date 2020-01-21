@@ -57,10 +57,10 @@ class MarkdownFile:
     # Pass contents and export_path to be able to save
     def __init__(self, contents_path=None, export_path=None, contents=None):
         self.contents = contents
+        self.export_path = export_path
         if contents_path != None:
             self.contents = contents_path.read_text()
             self.export_path = output_path.joinpath(contents_path).with_suffix(".html")
-
         metadata = self.metadata()
         if metadata != None:
             self.title = metadata["title"]
@@ -98,6 +98,13 @@ class MarkdownFile:
         relative = self.export_path.relative_to(output_path)
         return relative
 
+    # Renders the file to its output location
+    def render(self):
+        output_path = self.export_path
+        print("rendering to {}".format(output_path))
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(self.page_html())
+
 # Delete the current path
 # pathlib will only delete empty directories, so we use shutil
 shutil.rmtree(output_path_string, ignore_errors=True)
@@ -130,10 +137,7 @@ for path in all_file_paths:
     # If the path is markdown, process it
     if path.suffix == ".md":
         markdownFile = MarkdownFile(contents_path=path)
-        # Change output path to .html
-        path_outpath = path_outpath.with_suffix(".html")
-        path_outpath.parent.mkdir(parents=True, exist_ok=True)
-        path_outpath.write_text(markdownFile.page_html())
+        markdownFile.render()
         # If the file has a date, add it to our list for the index / RSS
         if markdownFile.date != None:
             dated_markdown_files.append(markdownFile)
@@ -159,4 +163,4 @@ for entry in sorted_dated_markdown_files:
     index_markdown_contents += "\n"
 
 index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
-index_output_path.write_text(index_markdown.page_html())
+index_markdown.render()
