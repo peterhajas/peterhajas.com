@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import os, sys
 import markdown
 from datetime import datetime
