@@ -29,6 +29,8 @@ class MarkdownFile:
     date = None
     # The contents associated with this file
     contents = ""
+    # The path to export this file to, or None if it has none
+    export_path = None
 
     def metadata(self):
         lines = self.contents.split("\n")
@@ -48,8 +50,17 @@ class MarkdownFile:
         date = datetime.strptime(date_string, "%Y%m%d %H:%M")
         return { "date" : date, "title" : title }
 
-    def __init__(self, contents):
+    # contents_path: Path or None
+    # export_path: Path or None
+    # contents: String or None
+    # Pass contents_path and then export_path and contents will be inferred
+    # Pass contents and export_path to be able to save
+    def __init__(self, contents_path=None, export_path=None, contents=None):
         self.contents = contents
+        if contents_path != None:
+            self.contents = contents_path.read_text()
+            self.export_path = output_path.joinpath(contents_path).with_suffix(".html")
+
         metadata = self.metadata()
         if metadata != None:
             self.title = metadata["title"]
@@ -80,6 +91,12 @@ class MarkdownFile:
         else:
             page_html = page_html.replace("DATE_HERE", "")
         return page_html
+
+    # The path this file is rendered to in the site
+    # For example, /about.html, /blog/some_post.html, etc.
+    def rendered_path(self):
+        relative = self.export_path.relative_to(output_path)
+        return relative
 
 # Delete the current path
 # pathlib will only delete empty directories, so we use shutil
@@ -112,7 +129,7 @@ for path in all_file_paths:
     
     # If the path is markdown, process it
     if path.suffix == ".md":
-        markdownFile = MarkdownFile(path.read_text())
+        markdownFile = MarkdownFile(contents_path=path)
         # Change output path to .html
         path_outpath = path_outpath.with_suffix(".html")
         path_outpath.parent.mkdir(parents=True, exist_ok=True)
@@ -135,11 +152,11 @@ index_markdown_contents = ""
 # Build the index and rss files
 for entry in sorted_dated_markdown_files:
     # Index: add in title and date
-    index_markdown_contents += "<div class='title'><a href='LINK_HERE'>{}</a></div>\n".format(entry.title)
+    index_markdown_contents += "<div class='title'><a href='{}'>{}</a></div>\n".format(entry.rendered_path(), entry.title)
     index_markdown_contents += "<div class='date'>{}</div>\n".format(entry.pretty_date())
     # Index: add in contents
     index_markdown_contents += entry.html()
     index_markdown_contents += "\n"
 
-index_markdown = MarkdownFile(index_markdown_contents)
+index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
 index_output_path.write_text(index_markdown.page_html())
