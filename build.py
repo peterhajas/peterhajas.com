@@ -77,7 +77,10 @@ class MarkdownFile:
 
     # An RSS-formatted date for self
     def rss_date(self):
-        return self.date.strftime("%a, %d %b %Y %H:%M:%S %Z")
+        # Always PST :-/
+        # From python:
+        # "For a naive object, the %z and %Z format codes are replaced by empty strings."
+        return self.date.strftime("%a, %d %b %Y %H:%M:%S PST")
 
     # The page title, with prequel, for self
     def page_title(self):
@@ -97,33 +100,37 @@ class MarkdownFile:
         # - after after it
         # - the date and title replaced (if the page has one)
         html = self.html()
-        page_html = before_html + html + after_html
+
+        before_for_us = before_html
+        # If we don't have a title, then drop the last three lines of before.html
+        # (these contain the "TITLE_HERE" and "DATE_HERE" strings, and a newline)
+        if self.title == None:
+            before_for_us = "\n".join(before_for_us.split("\n")[:-3])
+
+        page_html = before_for_us + "\n" + html + "\n" + after_html
         page_html = page_html.replace("TITLE_FOR_PAGE_HERE", self.page_title())
         if self.title != None:
             page_html = page_html.replace("TITLE_HERE", self.title)
-        else:
-            page_html = page_html.replace("TITLE_HERE", "")
         if self.date != None:
             page_html = page_html.replace("DATE_HERE", self.pretty_date())
-        else:
-            page_html = page_html.replace("DATE_HERE", "")
+
         return page_html
 
     # The path this file is rendered to in the site
     # For example, /about.html, /blog/some_post.html, etc.
     def rendered_path(self):
         relative = self.export_path.relative_to(output_path)
-        return relative
+        return Path("/").joinpath(relative)
 
     # The RSS item for this page
     def rss_item(self):
         return """<item>
-        <title>{}</title>
-        <guid>{}</guid>
-        <pubDate>{}</pubDate>
-        <description><![CDATA[
-        {}
-        ]]></description>
+<title>{}</title>
+<guid>{}</guid>
+<pubDate>{}</pubDate>
+<description><![CDATA[
+{}
+]]></description>
         </item>""".format(self.title, self.rendered_path(), self.rss_date(), self.html())
 
     # Renders the file to its output location
