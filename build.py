@@ -79,6 +79,13 @@ class MarkdownFile:
     def rss_date(self):
         return self.date.strftime("%a, %d %b %Y %H:%M:%S %Z")
 
+    # The page title, with prequel, for self
+    def page_title(self):
+        if self.title != None:
+            return self.title
+        else:
+            return self.export_path.stem.capitalize()
+
     # Just the HTML for this entry
     def html(self):
         return markdown.markdown(self.contents, extensions=markdown_extensions)
@@ -91,6 +98,7 @@ class MarkdownFile:
         # - the date and title replaced (if the page has one)
         html = self.html()
         page_html = before_html + html + after_html
+        page_html = page_html.replace("TITLE_FOR_PAGE_HERE", self.page_title())
         if self.title != None:
             page_html = page_html.replace("TITLE_HERE", self.title)
         else:
