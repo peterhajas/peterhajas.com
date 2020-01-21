@@ -8,22 +8,21 @@ I wanted a simple website that I could make edits to and understand. This is my 
 
 ## Use
 
-If you want to build the website, you can use the included `build` script to generate the site from your clone:
+If you want to build the website, you can use the included `build.py` script to generate the site from your clone:
 
-    $ ./build
+    $ ./build.py
 
 This script will also lay down some git hooks used by the site. For example, all exif data is stripped from `media`.
 
 Note that this relies on some dependencies:
-- the macOS `date` binary
-- a `mmd` (MultiMarkdown) binary
-- `exiftool` (for stripping exif)
-- `ffmpeg` (for image recompression)
-- `python` (for sub-second dates)
+- `python3` with the following packages:
+    - `python-markdown`
+    - `pathlib`
+    - `shutil`
 
 This will create a new directory called `out`. It's automatically ignored by `git` thanks to a rule in the `.gitignore`.
 
-**Note**: The `build` script will destroy `out` on every run (to make sure everything is fresh). Files left in `out` will be destroyed on runs of `build`.
+**Note**: The `build.py` script will destroy `out` on every run (to make sure everything is fresh). Files left in `out` will be destroyed on runs of `build.py`.
 
 ## Content management
 
