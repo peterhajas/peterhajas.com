@@ -51,7 +51,7 @@ header {
 }
 
 .date {
-    color: #999;
+    color: #666;
     font-size: 1.5em;
     font-style: italic;
 }
@@ -172,11 +172,11 @@ footer * {
 @media (prefers-color-scheme: dark) {
     body {
         color: white;
-        background: black;
+        background: #333333;
         border-color: white;
     }
 
     .date {
-        color: #777;
+        color: #BBB;
     }
 }
