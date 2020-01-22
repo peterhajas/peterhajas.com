@@ -25,6 +25,15 @@ after_html = Path("after.html").read_text()
 rss_before_xml = Path("rss_before.xml").read_text()
 rss_after_xml = Path("rss_after.xml").read_text()
 
+# Command line arguments
+extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
+# live - turns on live-reloading
+live_reloading = "live" in sys.argv
+if live_reloading:
+    print("Turning on live reloading...")
+    live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
+    before_html = before_html.replace(extra_head_marker, live_js_head)
+
 output_path = Path(output_path_string)
 index_output_path = output_path.joinpath("index.html")
 rss_output_path = output_path.joinpath("rss.xml")
