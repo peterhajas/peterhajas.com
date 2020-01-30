@@ -5,6 +5,8 @@ import markdown
 from datetime import datetime
 from pathlib import Path
 import shutil
+import http.server
+import socketserver
 
 # Where to save contents
 output_path_string = "out"
@@ -33,6 +35,10 @@ if live_reloading:
     print("Turning on live reloading...")
     live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
     before_html = before_html.replace(extra_head_marker, live_js_head)
+
+# serve - turns on http serving
+# we'll do this after we build
+serve = "serve" in sys.argv
 
 output_path = Path(output_path_string)
 index_output_path = output_path.joinpath("index.html")
@@ -230,3 +236,11 @@ index_markdown.render()
 
 rss_contents += rss_after_xml
 rss_output_path.write_text(rss_contents)
+
+if serve:
+    # if we were asked to serve the site, then do so
+    print("serving at localhost:8080")
+    os.chdir(output_path_string)
+    http_handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", 8000), http_handler) as httpd:
+        httpd.serve_forever()
