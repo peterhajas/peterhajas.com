@@ -237,10 +237,14 @@ index_markdown.render()
 rss_contents += rss_after_xml
 rss_output_path.write_text(rss_contents)
 
+class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=output_path_string, **kwargs)
+
 if serve:
     # if we were asked to serve the site, then do so
-    print("serving at localhost:8080")
-    os.chdir(output_path_string)
-    http_handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", 8000), http_handler) as httpd:
+    port_number = 8000
+    print("serving at localhost:{}".format(port_number))
+    http_handler = PeterHTTPRequestHandlerHandler
+    with socketserver.TCPServer(("", port_number), http_handler) as httpd:
         httpd.serve_forever()
