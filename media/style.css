@@ -106,7 +106,6 @@ code {
 }
 
 pre {
-    white-space: pre-wrap;
     background-color: rgba(253, 96, 0, 0.089);
     border-radius: 8pt;
     border-color: rgba(253, 96, 0, 0.2);
@@ -114,6 +113,7 @@ pre {
     border-style: solid;
     padding: 8pt;
     vertical-align: middle;
+    overflow: auto;
 }
 
 h1 {
