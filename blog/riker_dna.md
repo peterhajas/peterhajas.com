@@ -19,7 +19,7 @@ Anyways, when I got her, I was  curious about what type of dog she was. She look
 
 I thought she might have been part [Shiba Inu](https://en.wikipedia.org/wiki/Shiba_Inu). These dogs are adorable and have the curled tail and gradient-banded coat. Here's one from Wikipedia:
 
-![A shiba inu dog outside on grass](https://upload.wikimedia.org/wikipedia/commons/6/6b/Taka_Shiba.jpg)
+[A shiba inu dog outside on grass](https://upload.wikimedia.org/wikipedia/commons/6/6b/Taka_Shiba.jpg)
 
 Doesn't this dog look like Riker? With the tail and banded coat? I thought so too.
 

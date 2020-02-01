@@ -10,13 +10,13 @@ Peterometer Chapter 1: Tracking Hydration
 
 I've long been inspired by people who build beautiful visualizations of their gathered metrics. For example, Nicholas Felton's annual reports. Here is an example [from his 2007 report](http://feltron.com/FAR07.html):
 
-![The first page of Nicholas Felton's 2007 annual report](http://feltron.com/images/FAR07/03.jpg)
+[The first page of Nicholas Felton's 2007 annual report](http://feltron.com/images/FAR07/03.jpg)
 
 I think this format of visualization is *really* cool. It's easy to glance at while being information-dense.
 
 Another cool example is Anand Sharma's [April Zero](http://aprilzero.com), which is now an app called [Gyroscope](http://gyrosco.pe):
 
-![An image of Gyroscope](https://cdn-images-1.medium.com/max/1200/1*4bB_yEzM7Yt_Nme-rQLkzg.png)
+[An image of Gyroscope](https://cdn-images-1.medium.com/max/1200/1*4bB_yEzM7Yt_Nme-rQLkzg.png)
 
 He has some great posts about his creative process [here](https://blog.gyrosco.pe/the-making-of-april-zero-877612ca3d24) and [here](https://blog.gyrosco.pe/the-making-of-april-zero-part-2-9fee331e2043). The Iron Man-style HUD influence shines through in the finished product.
 
