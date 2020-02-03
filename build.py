@@ -3,10 +3,13 @@
 import os, sys
 import markdown
 from datetime import datetime
+import time
 from pathlib import Path
 import shutil
 import http.server
 import socketserver
+
+start_time = time.time()
 
 # Where to save contents
 output_path_string = "out"
@@ -32,7 +35,7 @@ extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
 # live - turns on live-reloading
 live_reloading = "live" in sys.argv
 if live_reloading:
-    print("Turning on live reloading...")
+    print("turning on live reloading")
     live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
     before_html = before_html.replace(extra_head_marker, live_js_head)
 
@@ -168,10 +171,12 @@ class MarkdownFile:
         </item>""".format(self.title, self.rendered_path(), self.rss_date(), self.html())
 
     # Renders the file to its output location
+    # Returns the path that we wrote to
     def render(self):
         output_path = self.export_path
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(self.page_html())
+        return output_path
 
 # Delete the current path
 # pathlib will only delete empty directories, so we use shutil
@@ -180,7 +185,11 @@ shutil.rmtree(output_path_string, ignore_errors=True)
 # Make the new path
 output_path.mkdir(parents=True, exist_ok=True)
 
+# Keep track of dated markdown entries
 dated_markdown_files = [ ]
+
+# ...and all the file sizes
+site_size_bytes = 0
 
 # Process the site. We'll look for all the files in our tree
 all_file_paths = sorted(Path().rglob("*"))
@@ -205,7 +214,7 @@ for path in all_file_paths:
     # If the path is markdown, process it
     if path.suffix == ".md":
         markdownFile = MarkdownFile(contents_path=path)
-        markdownFile.render()
+        path_outpath = markdownFile.render()
         # If the file has a date, add it to our list for the index / RSS
         if markdownFile.date != None:
             dated_markdown_files.append(markdownFile)
@@ -214,6 +223,8 @@ for path in all_file_paths:
         file_bytes = path.read_bytes()
         path_outpath.parent.mkdir(parents=True, exist_ok=True)
         path_outpath.write_bytes(file_bytes)
+
+    site_size_bytes += path_outpath.stat().st_size
 
 # Sort dated markdown files by date
 sorted_dated_markdown_files = sorted(dated_markdown_files, key=lambda entry: entry.date)
@@ -232,10 +243,18 @@ for entry in sorted_dated_markdown_files:
     rss_contents += entry.rss_item()
 
 index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
-index_markdown.render()
+index_path = index_markdown.render()
+site_size_bytes += index_path.stat().st_size
 
 rss_contents += rss_after_xml
 rss_output_path.write_text(rss_contents)
+site_size_bytes += rss_output_path.stat().st_size
+
+end_time = time.time()
+
+elapsed = end_time - start_time
+print("built in {0:.2f}s".format(elapsed))
+print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
 
 class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
