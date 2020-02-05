@@ -1,8 +1,6 @@
-
-<!--
-Analyzing My Dog's DNA
-20190121 20:10
--->
+Title: Analyzing My Dog's DNA
+Date: 20190121 20:10
+Emoji: 🐕🧬
 
 Dogs are awesome. Since March of 2014, I've owned a little dog named Riker:
 

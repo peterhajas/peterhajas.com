@@ -1,8 +1,7 @@
+Title: The Platform Master
+Date: 20200104 17:02
+Emoji: 🕹📺
 
-<!--
-The Platform Master
-20200104 17:02
--->
 <iframe class="youtube" src="https://www.youtube-nocookie.com/embed/QFLJEIrfx9U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Watched [this documentary about Ulillillia](https://www.youtube.com/watch?v=QFLJEIrfx9U), the internet figure. It follows him and the small town of Minot, ND in the aftermath of the [2011 Souris River Flood](https://en.wikipedia.org/wiki/2011_Souris_River_flood). Despite it being from 2012, it was released at the end of 2019.

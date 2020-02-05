@@ -1,8 +1,6 @@
-
-<!--
-Peterometer Chapter 1: Tracking Hydration
-20190308 10:05
--->
+Title: Peterometer Chapter 1: Tracking Hydration
+Date: 20190308 10:05
+Emoji: 📊🚰
 
 *This is the first in a series of posts I hope to write about building tools for "Peterometer", a way to visualize stats I've collected about myself.*
 

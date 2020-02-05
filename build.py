@@ -18,9 +18,10 @@ output_path_string = "out"
 # is skipped. Additionally, all hidden files are skipped
 ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags"]
 # The markdown extensions to use
+# - meta lets us read metadata
 # - tables gives MMD-style tables
 # - smarty gives smartypants-style quotes
-markdown_extensions = ["tables", "smarty"]
+markdown_extensions = ["meta", "tables", "smarty"]
 
 # The before.html / after.html files
 before_html = Path("before.html").read_text()
@@ -48,6 +49,7 @@ index_output_path = output_path.joinpath("index.html")
 rss_output_path = output_path.joinpath("rss.xml")
 
 class MarkdownFile:
+    # The metadata dictionary associated with this file, or None if it has none
     # The title associated with this file, or None if it has none
     title = None
     # The date associated with this file, or None if it has none
@@ -58,20 +60,16 @@ class MarkdownFile:
     export_path = None
 
     def metadata(self):
-        lines = self.contents.split("\n")
-        # If this markdown file doesn't have 5 or more lines, it is missing its
-        # metadata
-        if len(lines) < 5:
+        markdownParser = markdown.Markdown(extensions = markdown_extensions)
+        html = markdownParser.convert(self.contents)
+        metadata_dictionary = markdownParser.Meta
+        # If we don't have a metadata dictionary, we have no metadata
+        if len(metadata_dictionary.keys()) == 0:
             return None
-        # If the second line isn't an HTML comment, this has no metadata
-        if lines[1] != "<!--":
-            return None
-        # If the fifth line isn't an ending comment, this has no metadata
-        if lines[4] != "-->":
-            return None
-        # OK, so now lines[2] has our title and lines[3] has our date string
-        title = lines[2]
-        date_string = lines[3]
+        # OK, so now metadata_dictionary["title"] is title and
+        # metadata_dictionary["date"] is date
+        title = metadata_dictionary["title"][0]
+        date_string = metadata_dictionary["date"][0]
         date = datetime.strptime(date_string, "%Y%m%d %H:%M")
         return { "date" : date, "title" : title }
 

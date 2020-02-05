@@ -1,8 +1,6 @@
-
-<!--
-Peterometer Chapter 2: Counting Raw Eggs
-20200129 21:24
--->
+Title: Peterometer Chapter 2: Counting Raw Eggs
+Date: 20200129 21:24
+Emoji: 📊🥚
 
 *This is the second in the Peterometer series. The first can be found [here](/blog/peterometer_1_hydration.html).*
 

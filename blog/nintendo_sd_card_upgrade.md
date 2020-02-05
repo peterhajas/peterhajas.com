@@ -1,8 +1,6 @@
-
-<!--
-Upgrading a Nintendo Switch SD card
-20191221 21:10
--->
+Title: Upgrading a Nintendo Switch SD card
+Date: 20191221 21:10
+Emoji: 🎮💾
 
 I own a Nintendo Switch console. Because I don't want physical games cluttering my home, I get all my games digitally. I recently started running out of room and needed a new SD card to hold my games. This path ended up being circuitous, taking me through fake flash storage, the Switch's file structure, and its operating system's treatment of Unix file attributes.
 

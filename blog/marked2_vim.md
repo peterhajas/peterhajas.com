@@ -1,8 +1,6 @@
-
-<!--
-Live Markdown previews from vim
-20190106 12:07
--->
+Title: Live Markdown previews from vim
+Date: 20190106 12:07
+Emoji: ✍⌨
 
 *This is more of a technical post*
 

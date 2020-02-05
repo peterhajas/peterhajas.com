@@ -1,8 +1,6 @@
-
-<!--
-New Site, Who Dis?
-20181231 17:35
--->
+Title: New Site, Who Dis?
+Date: 20181231 17:35
+Emoji: 🆕🌎
 
 This is the first post on my new website! You're reading this on the *brand new* [peterhajas.com](http://peterhajas.com). Let's break it down.
 
