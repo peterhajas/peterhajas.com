@@ -185,14 +185,14 @@ def build_website():
     rss_before_xml = Path("rss_before.xml").read_text()
     rss_after_xml = Path("rss_after.xml").read_text()
 
+    if live_reloading:
+        live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
+        before_html = before_html.replace(extra_head_marker, live_js_head)
+
     # Build our environment
     environment = SiteEnvironment()
     environment.before_html = before_html
     environment.after_html = after_html
-
-    if live_reloading:
-        live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
-        before_html = before_html.replace(extra_head_marker, live_js_head)
 
     # Delete the current path
     # pathlib will only delete empty directories, so we use shutil
