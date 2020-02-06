@@ -45,6 +45,14 @@ def write_bytes_to_path_if_different(bytes_to_write, path):
     if existing_bytes != bytes_to_write:
         path.write_bytes(bytes_to_write)
 
+# Writes the proposed text to path if they haven't changed
+def write_text_to_path_if_different(text_to_write, path):
+    existing_text = None
+    if path.exists():
+        existing_text = path.read_text()
+    if existing_text != text_to_write:
+        path.write_text(text_to_write)
+
 class SiteEnvironment:
     # The html to insert before page contents
     before_html = ""
@@ -177,7 +185,7 @@ class MarkdownFile:
     def render(self):
         output_path = self.export_path
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(self.page_html())
+        write_text_to_path_if_different(self.page_html(), output_path)
         return output_path
 
 # Builds the website
