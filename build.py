@@ -8,6 +8,7 @@ from pathlib import Path
 import shutil
 import http.server
 import socketserver
+import threading
 
 start_time = time.time()
 
@@ -265,10 +266,14 @@ class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=output_path_string, **kwargs)
 
-if serve:
-    # if we were asked to serve the site, then do so
+def start_serving():
     port_number = 8000
     print("serving at localhost:{}".format(port_number))
     http_handler = PeterHTTPRequestHandlerHandler
-    with socketserver.TCPServer(("", port_number), http_handler) as httpd:
-        httpd.serve_forever()
+    httpd = socketserver.TCPServer(("", port_number), http_handler)
+    thread = threading.Thread(target=httpd.serve_forever)
+    thread.start()
+
+if serve:
+    # if we were asked to serve the site, then do so
+    start_serving()
