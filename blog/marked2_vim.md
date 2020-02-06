@@ -1,6 +1,6 @@
 Title: Live Markdown previews from vim
 Date: 20190106 12:07
-Emoji: ✍⌨
+Emoji: 📝💻
 
 *This is more of a technical post*
 
