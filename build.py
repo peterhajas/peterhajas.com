@@ -14,8 +14,8 @@ import threading
 output_path_string = "out"
 # Files to ignore for the site
 # If a file matches these or contains any components that match these, then it
-# is skipped. Additionally, all hidden files are skipped
-ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags"]
+# is skipped. Additionally, all hidden files are skipped as are vim undo files
+ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags", "tags.lock"]
 # The markdown extensions to use
 # - meta lets us read metadata
 # - tables gives MMD-style tables
@@ -225,7 +225,7 @@ def build_website():
         is_ignored = False
         parts = path.parts
         for part in parts:
-            if part[0] == ".":
+            if part[0] == "." or part[-1] == "~":
                 is_ignored = True
                 break
             if part in ignore_files:
