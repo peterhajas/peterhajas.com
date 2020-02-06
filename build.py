@@ -194,10 +194,6 @@ def build_website():
     environment.before_html = before_html
     environment.after_html = after_html
 
-    # Delete the current path
-    # pathlib will only delete empty directories, so we use shutil
-    shutil.rmtree(output_path_string, ignore_errors=True)
-
     # Make the new path
     output_path.mkdir(parents=True, exist_ok=True)
 
@@ -269,6 +265,14 @@ def build_website():
     site_size_bytes += rss_output_path.stat().st_size
 
     print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
+
+def clean_website():
+    # Delete the current path
+    # pathlib will only delete empty directories, so we use shutil
+    shutil.rmtree(output_path_string, ignore_errors=True)
+
+# clean the site
+clean_website()
 
 # build the site
 start_time = time.time()
