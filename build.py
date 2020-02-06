@@ -271,17 +271,6 @@ def clean_website():
     # pathlib will only delete empty directories, so we use shutil
     shutil.rmtree(output_path_string, ignore_errors=True)
 
-# clean the site
-clean_website()
-
-# build the site
-start_time = time.time()
-build_website()
-end_time = time.time()
-
-elapsed = end_time - start_time
-print("built in {0:.2f}s".format(elapsed))
-
 class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=output_path_string, **kwargs)
@@ -293,6 +282,17 @@ def start_serving():
     httpd = socketserver.TCPServer(("", port_number), http_handler)
     thread = threading.Thread(target=httpd.serve_forever)
     thread.start()
+
+# clean the site
+clean_website()
+
+# build the site
+start_time = time.time()
+build_website()
+end_time = time.time()
+
+elapsed = end_time - start_time
+print("built in {0:.2f}s".format(elapsed))
 
 if serve:
     # if we were asked to serve the site, then do so
