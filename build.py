@@ -231,11 +231,15 @@ def build_website():
             # If the file has a date, add it to our list for the index / RSS
             if markdownFile.date != None:
                 dated_markdown_files.append(markdownFile)
-        # Otherwise, just copy it over
+        # Otherwise, just copy it over if it hasn't changed
         else:
             file_bytes = path.read_bytes()
             path_outpath.parent.mkdir(parents=True, exist_ok=True)
-            path_outpath.write_bytes(file_bytes)
+            existing_bytes = None
+            if path_outpath.exists():
+                existing_bytes = path_outpath.read_bytes()
+            if existing_bytes != file_bytes:
+                path_outpath.write_bytes(file_bytes)
 
         site_size_bytes += path_outpath.stat().st_size
 
@@ -286,14 +290,25 @@ def start_serving():
 # clean the site
 clean_website()
 
-# build the site
-start_time = time.time()
-build_website()
-end_time = time.time()
+# if we have live_reloading and serve on, this indicates we should be in an
+# interactive reloading mode
+interactive = live_reloading and serve
 
-elapsed = end_time - start_time
-print("built in {0:.2f}s".format(elapsed))
-
-if serve:
-    # if we were asked to serve the site, then do so
+if interactive:
+    # Serve
     start_serving()
+    # and then build in a loop
+    while True:
+        build_website()
+else:
+    # Otherwise, build the site and log the time it took
+    start_time = time.time()
+    build_website()
+    end_time = time.time()
+
+    elapsed = end_time - start_time
+    print("built in {0:.2f}s".format(elapsed))
+
+    # if we were asked to serve the site, then do so
+    if serve:
+        start_serving()
