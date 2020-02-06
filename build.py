@@ -37,6 +37,14 @@ if live_reloading:
 # we'll do this after we build
 serve = "serve" in sys.argv
 
+# Writes the proposed bytes to path if they haven't changed
+def write_bytes_to_path_if_different(bytes_to_write, path):
+    existing_bytes = None
+    if path.exists():
+        existing_bytes = path.read_bytes()
+    if existing_bytes != bytes_to_write:
+        path.write_bytes(bytes_to_write)
+
 class SiteEnvironment:
     # The html to insert before page contents
     before_html = ""
@@ -232,11 +240,7 @@ def build_website():
         else:
             file_bytes = path.read_bytes()
             path_outpath.parent.mkdir(parents=True, exist_ok=True)
-            existing_bytes = None
-            if path_outpath.exists():
-                existing_bytes = path_outpath.read_bytes()
-            if existing_bytes != file_bytes:
-                path_outpath.write_bytes(file_bytes)
+            write_bytes_to_path_if_different(file_bytes, path_outpath)
 
         site_size_bytes += path_outpath.stat().st_size
 
