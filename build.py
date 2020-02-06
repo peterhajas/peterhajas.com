@@ -294,6 +294,7 @@ def start_serving():
     http_handler = PeterHTTPRequestHandlerHandler
     httpd = socketserver.TCPServer(("", port_number), http_handler)
     thread = threading.Thread(target=httpd.serve_forever)
+    thread.daemon = True
     thread.start()
 
 # clean the site
@@ -309,6 +310,9 @@ if interactive:
     # and then build in a loop
     while True:
         build_website()
+        time.sleep(0.1)
+    while True:
+        time.sleep(1)
 else:
     # Otherwise, build the site and log the time it took
     start_time = time.time()
