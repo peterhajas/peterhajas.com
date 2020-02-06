@@ -45,7 +45,6 @@ class SiteEnvironment:
 
 # A class representing a markdown file in the site
 class MarkdownFile:
-    # The metadata dictionary associated with this file, or None if it has none
     # The title associated with this file, or None if it has none
     title = None
     # The date associated with this file, or None if it has none
@@ -54,19 +53,27 @@ class MarkdownFile:
     emoji = None
     # The contents associated with this file
     contents = ""
+    # The HTML associated with this file
+    html = None
     # The path to export this file to, or None if it has none
     export_path = None
     # The site environment to build this page with
     environment = None
 
-    def metadata(self):
+    def prepare_metadata_and_html(self):
         markdownParser = markdown.Markdown(extensions = markdown_extensions)
-        html = markdownParser.convert(self.contents)
-        metadata_dictionary = markdownParser.Meta
-        # If we don't have a metadata dictionary, we have no metadata
-        if len(metadata_dictionary.keys()) == 0:
-            return None
-        return metadata_dictionary
+        # Process our HTML and metadata
+        self.html = markdownParser.convert(self.contents)
+        metadata = markdownParser.Meta
+        # If we do have a metadata dictionary, we have no metadata
+        if len(metadata.keys()) == 0:
+            return
+        # Otherwise, populate our metadata
+        self.title = metadata["title"][0]
+        self.emoji = metadata["emoji"][0]
+
+        date_string = metadata["date"][0]
+        self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
 
     # contents_path: Path or None
     # export_path: Path or None
@@ -79,13 +86,7 @@ class MarkdownFile:
         if contents_path != None:
             self.contents = contents_path.read_text()
             self.export_path = output_path.joinpath(contents_path).with_suffix(".html")
-        metadata = self.metadata()
-        if metadata != None:
-            self.title = metadata["title"][0]
-            self.emoji = metadata["emoji"][0]
-
-            date_string = metadata["date"][0]
-            self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
+        self.prepare_metadata_and_html()
 
     # A pretty-formatted date for self
     def pretty_date(self):
@@ -109,10 +110,6 @@ class MarkdownFile:
         else:
             return self.export_path.stem.capitalize()
 
-    # Just the HTML for this entry
-    def html(self):
-        return markdown.markdown(self.contents, extensions=markdown_extensions)
-
     # The decorated HTML for this entry, wrapped in <article> and with title /
     # date if appropriate
     def decorated_html(self):
@@ -129,7 +126,7 @@ class MarkdownFile:
             decorated += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
             decorated += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
             decorated += "</div>\n"
-        decorated += self.html() + "\n"
+        decorated += self.html + "\n"
         if is_article:
             decorated += "</article>\n"
         return decorated
@@ -165,7 +162,7 @@ class MarkdownFile:
 <description><![CDATA[
 {}
 ]]></description>
-        </item>""".format(self.title, self.rendered_path(), self.rss_date(), self.html())
+        </item>""".format(self.title, self.rendered_path(), self.rss_date(), self.html)
 
     # Renders the file to its output location
     # Returns the path that we wrote to
