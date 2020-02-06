@@ -277,7 +277,7 @@ def build_website():
     write_text_to_path_if_different(rss_contents, rss_output_path)
     site_size_bytes += rss_output_path.stat().st_size
 
-    print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
+    return site_size_bytes
 
 def clean_website():
     # Delete the current path
@@ -312,11 +312,12 @@ if interactive:
 else:
     # Otherwise, build the site and log the time it took
     start_time = time.time()
-    build_website()
+    site_size_bytes = build_website()
     end_time = time.time()
 
     elapsed = end_time - start_time
     print("built in {0:.2f}s".format(elapsed))
+    print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
 
     # if we were asked to serve the site, then do so
     if serve:
