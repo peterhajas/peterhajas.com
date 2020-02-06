@@ -24,31 +24,26 @@ ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out
 # - smarty gives smartypants-style quotes
 markdown_extensions = ["meta", "tables", "smarty"]
 
-# The before.html / after.html files
-before_html = Path("before.html").read_text()
-after_html = Path("after.html").read_text()
-
-# The rss_before.xml and rss_after.xml files
-rss_before_xml = Path("rss_before.xml").read_text()
-rss_after_xml = Path("rss_after.xml").read_text()
-
-# Command line arguments
-extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
-# live - turns on live-reloading
-live_reloading = "live" in sys.argv
-if live_reloading:
-    print("turning on live reloading")
-    live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
-    before_html = before_html.replace(extra_head_marker, live_js_head)
-
-# serve - turns on http serving
-# we'll do this after we build
-serve = "serve" in sys.argv
-
 output_path = Path(output_path_string)
 index_output_path = output_path.joinpath("index.html")
 rss_output_path = output_path.joinpath("rss.xml")
 
+# Command line arguments
+extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
+
+# live - turns on live-reloading
+live_reloading = "live" in sys.argv
+# serve - turns on http serving
+# we'll do this after we build
+serve = "serve" in sys.argv
+
+class SiteEnvironment:
+    # The html to insert before page contents
+    before_html = ""
+    # The html to insert after page contents
+    after_html = ""
+
+# A class representing a markdown file in the site
 class MarkdownFile:
     # The metadata dictionary associated with this file, or None if it has none
     # The title associated with this file, or None if it has none
@@ -61,6 +56,8 @@ class MarkdownFile:
     contents = ""
     # The path to export this file to, or None if it has none
     export_path = None
+    # The site environment to build this page with
+    environment = None
 
     def metadata(self):
         markdownParser = markdown.Markdown(extensions = markdown_extensions)
@@ -150,9 +147,9 @@ class MarkdownFile:
         # - the decorated html
         # - after.html
 
-        page_html = before_html + "\n"
+        page_html = self.environment.before_html + "\n"
         page_html += self.decorated_html()
-        page_html += after_html
+        page_html += self.environment.after_html
 
         # replace the title
         page_html = page_html.replace("TITLE_FOR_PAGE_HERE", self.page_title())
@@ -184,83 +181,108 @@ class MarkdownFile:
         output_path.write_text(self.page_html())
         return output_path
 
-# Delete the current path
-# pathlib will only delete empty directories, so we use shutil
-shutil.rmtree(output_path_string, ignore_errors=True)
+# Builds the website
+def build_website():
+    # The before.html / after.html files
+    before_html = Path("before.html").read_text()
+    after_html = Path("after.html").read_text()
 
-# Make the new path
-output_path.mkdir(parents=True, exist_ok=True)
+    # The rss_before.xml and rss_after.xml files
+    rss_before_xml = Path("rss_before.xml").read_text()
+    rss_after_xml = Path("rss_after.xml").read_text()
 
-# Keep track of dated markdown entries
-dated_markdown_files = [ ]
+    # Build our environment
+    environment = SiteEnvironment()
+    environment.before_html = before_html
+    environment.after_html = after_html
 
-# ...and all the file sizes
-site_size_bytes = 0
+    if live_reloading:
+        print("turning on live reloading")
+        live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
+        before_html = before_html.replace(extra_head_marker, live_js_head)
 
-# Process the site. We'll look for all the files in our tree
-all_file_paths = sorted(Path().rglob("*"))
-for path in all_file_paths:
-    # If the path is ignored, then we can skip it
-    if path.is_dir():
-        continue
-    is_ignored = False
-    parts = path.parts
-    for part in parts:
-        if part[0] == ".":
-            is_ignored = True
-            break
-        if part in ignore_files:
-            is_ignored = True
-            break
-    if is_ignored:
-        continue
+    # Delete the current path
+    # pathlib will only delete empty directories, so we use shutil
+    shutil.rmtree(output_path_string, ignore_errors=True)
 
-    path_outpath = output_path.joinpath(path)
-    
-    # If the path is markdown, process it
-    if path.suffix == ".md":
-        markdownFile = MarkdownFile(contents_path=path)
-        path_outpath = markdownFile.render()
-        # If the file has a date, add it to our list for the index / RSS
-        if markdownFile.date != None:
-            dated_markdown_files.append(markdownFile)
-    # Otherwise, just copy it over
-    else:
-        file_bytes = path.read_bytes()
-        path_outpath.parent.mkdir(parents=True, exist_ok=True)
-        path_outpath.write_bytes(file_bytes)
+    # Make the new path
+    output_path.mkdir(parents=True, exist_ok=True)
 
-    site_size_bytes += path_outpath.stat().st_size
+    # Keep track of dated markdown entries
+    dated_markdown_files = [ ]
 
-# Sort dated markdown files by date
-sorted_dated_markdown_files = sorted(dated_markdown_files, key=lambda entry: entry.date)
-# Reverse the list (so it is newest first)
-sorted_dated_markdown_files.reverse()
+    # ...and all the file sizes
+    site_size_bytes = 0
 
-index_markdown_contents = ""
-rss_contents = rss_before_xml
-# Build the index and rss files
-for entry in sorted_dated_markdown_files:
-    # Index: add in contents
-    index_markdown_contents += entry.decorated_html()
-    index_markdown_contents += "\n"
+    # Process the site. We'll look for all the files in our tree
+    all_file_paths = sorted(Path().rglob("*"))
+    for path in all_file_paths:
+        # If the path is ignored, then we can skip it
+        if path.is_dir():
+            continue
+        is_ignored = False
+        parts = path.parts
+        for part in parts:
+            if part[0] == ".":
+                is_ignored = True
+                break
+            if part in ignore_files:
+                is_ignored = True
+                break
+        if is_ignored:
+            continue
 
-    # RSS: add in item RSS contents
-    rss_contents += entry.rss_item()
+        path_outpath = output_path.joinpath(path)
+        
+        # If the path is markdown, process it
+        if path.suffix == ".md":
+            markdownFile = MarkdownFile(contents_path=path)
+            markdownFile.environment = environment
+            path_outpath = markdownFile.render()
+            # If the file has a date, add it to our list for the index / RSS
+            if markdownFile.date != None:
+                dated_markdown_files.append(markdownFile)
+        # Otherwise, just copy it over
+        else:
+            file_bytes = path.read_bytes()
+            path_outpath.parent.mkdir(parents=True, exist_ok=True)
+            path_outpath.write_bytes(file_bytes)
 
-index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
-index_path = index_markdown.render()
-site_size_bytes += index_path.stat().st_size
+        site_size_bytes += path_outpath.stat().st_size
 
-rss_contents += rss_after_xml
-rss_output_path.write_text(rss_contents)
-site_size_bytes += rss_output_path.stat().st_size
+    # Sort dated markdown files by date
+    sorted_dated_markdown_files = sorted(dated_markdown_files, key=lambda entry: entry.date)
+    # Reverse the list (so it is newest first)
+    sorted_dated_markdown_files.reverse()
 
-end_time = time.time()
+    index_markdown_contents = ""
+    rss_contents = rss_before_xml
+    # Build the index and rss files
+    for entry in sorted_dated_markdown_files:
+        # Index: add in contents
+        index_markdown_contents += entry.decorated_html()
+        index_markdown_contents += "\n"
 
-elapsed = end_time - start_time
-print("built in {0:.2f}s".format(elapsed))
-print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
+        # RSS: add in item RSS contents
+        rss_contents += entry.rss_item()
+
+    index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
+    index_markdown.environment = environment
+    index_path = index_markdown.render()
+    site_size_bytes += index_path.stat().st_size
+
+    rss_contents += rss_after_xml
+    rss_output_path.write_text(rss_contents)
+    site_size_bytes += rss_output_path.stat().st_size
+
+    end_time = time.time()
+
+    elapsed = end_time - start_time
+    print("built in {0:.2f}s".format(elapsed))
+    print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
+
+# build the site
+build_website()
 
 class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
