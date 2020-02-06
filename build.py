@@ -10,8 +10,6 @@ import http.server
 import socketserver
 import threading
 
-start_time = time.time()
-
 # Where to save contents
 output_path_string = "out"
 # Files to ignore for the site
@@ -33,6 +31,8 @@ extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
 
 # live - turns on live-reloading
 live_reloading = "live" in sys.argv
+if live_reloading:
+    print("turning on live reloading")
 # serve - turns on http serving
 # we'll do this after we build
 serve = "serve" in sys.argv
@@ -191,7 +191,6 @@ def build_website():
     environment.after_html = after_html
 
     if live_reloading:
-        print("turning on live reloading")
         live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
         before_html = before_html.replace(extra_head_marker, live_js_head)
 
@@ -269,14 +268,15 @@ def build_website():
     rss_output_path.write_text(rss_contents)
     site_size_bytes += rss_output_path.stat().st_size
 
-    end_time = time.time()
-
-    elapsed = end_time - start_time
-    print("built in {0:.2f}s".format(elapsed))
     print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
 
 # build the site
+start_time = time.time()
 build_website()
+end_time = time.time()
+
+elapsed = end_time - start_time
+print("built in {0:.2f}s".format(elapsed))
 
 class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
