@@ -54,6 +54,8 @@ class MarkdownFile:
     title = None
     # The date associated with this file, or None if it has none
     date = None
+    # The emoji associated with this file, or None if it has none
+    emoji = None
     # The contents associated with this file
     contents = ""
     # The path to export this file to, or None if it has none
@@ -66,12 +68,15 @@ class MarkdownFile:
         # If we don't have a metadata dictionary, we have no metadata
         if len(metadata_dictionary.keys()) == 0:
             return None
-        # OK, so now metadata_dictionary["title"] is title and
-        # metadata_dictionary["date"] is date
+        # OK, so now metadata_dictionary["title"] is title,
+        # metadata_dictionary["date"] is date, and
+        # metadata_dictionary["emoji"] is emoji
         title = metadata_dictionary["title"][0]
         date_string = metadata_dictionary["date"][0]
+        emoji = metadata_dictionary["emoji"][0]
+
         date = datetime.strptime(date_string, "%Y%m%d %H:%M")
-        return { "date" : date, "title" : title }
+        return { "date" : date, "title" : title, "emoji" : emoji }
 
     # contents_path: Path or None
     # export_path: Path or None
@@ -88,6 +93,7 @@ class MarkdownFile:
         if metadata != None:
             self.title = metadata["title"]
             self.date = metadata["date"]
+            self.emoji = metadata["emoji"]
 
     # A pretty-formatted date for self
     def pretty_date(self):
@@ -129,7 +135,8 @@ class MarkdownFile:
         if is_article:
             decorated += "<article>\n"
             decorated += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
-            decorated += "<div class='date'>{}</div>\n".format(self.pretty_date())
+            decorated += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
+            decorated += "</div>\n"
         decorated += self.html() + "\n"
         if is_article:
             decorated += "</article>\n"

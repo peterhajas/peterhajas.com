@@ -34,7 +34,7 @@ img {
     display: block;
 }
 
-p, header, .title, .date, h1, h2, h3, h4, h5, h6, img, ul, ol, table, pre {
+p, header, .title, .article_subhead, h1, h2, h3, h4, h5, h6, img, ul, ol, table, pre {
     line-height: 1.5;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
@@ -54,10 +54,10 @@ header {
     font-size: 1.875em;
 }
 
-.date {
-    color: #666;
+.article_subhead {
     font-size: 1.5em;
-    font-style: italic;
+    display: inline;
+    color: #666;
 }
 
 blockquote, pre, ul, ol {
@@ -180,7 +180,7 @@ footer * {
         border-color: white;
     }
 
-    .date {
+    .article_subhead {
         color: #BBB;
     }
 }
