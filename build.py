@@ -274,7 +274,7 @@ def build_website():
     site_size_bytes += index_path.stat().st_size
 
     rss_contents += rss_after_xml
-    rss_output_path.write_text(rss_contents)
+    write_text_to_path_if_different(rss_contents, rss_output_path)
     site_size_bytes += rss_output_path.stat().st_size
 
     print("site is {0:.2f}MB".format(site_size_bytes / 1000000))
