@@ -66,15 +66,7 @@ class MarkdownFile:
         # If we don't have a metadata dictionary, we have no metadata
         if len(metadata_dictionary.keys()) == 0:
             return None
-        # OK, so now metadata_dictionary["title"] is title,
-        # metadata_dictionary["date"] is date, and
-        # metadata_dictionary["emoji"] is emoji
-        title = metadata_dictionary["title"][0]
-        date_string = metadata_dictionary["date"][0]
-        emoji = metadata_dictionary["emoji"][0]
-
-        date = datetime.strptime(date_string, "%Y%m%d %H:%M")
-        return { "date" : date, "title" : title, "emoji" : emoji }
+        return metadata_dictionary
 
     # contents_path: Path or None
     # export_path: Path or None
@@ -89,9 +81,11 @@ class MarkdownFile:
             self.export_path = output_path.joinpath(contents_path).with_suffix(".html")
         metadata = self.metadata()
         if metadata != None:
-            self.title = metadata["title"]
-            self.date = metadata["date"]
-            self.emoji = metadata["emoji"]
+            self.title = metadata["title"][0]
+            self.emoji = metadata["emoji"][0]
+
+            date_string = metadata["date"][0]
+            self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
 
     # A pretty-formatted date for self
     def pretty_date(self):
