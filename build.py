@@ -51,7 +51,7 @@ def write_text_to_path_if_different(text_to_write, path):
     if path.exists():
         existing_text = path.read_text()
     if existing_text != text_to_write:
-        path.write_text(text_to_write)
+        path.write_text(text_to_write, encoding='utf8')
 
 class SiteEnvironment:
     # The html to insert before page contents
@@ -100,7 +100,7 @@ class MarkdownFile:
         self.contents = contents
         self.export_path = export_path
         if contents_path != None:
-            self.contents = contents_path.read_text()
+            self.contents = contents_path.read_text(encoding='utf8')
             self.export_path = output_path.joinpath(contents_path).with_suffix(".html")
         self.prepare_metadata_and_html()
 
