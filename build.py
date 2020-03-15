@@ -49,7 +49,7 @@ def write_bytes_to_path_if_different(bytes_to_write, path):
 def write_text_to_path_if_different(text_to_write, path):
     existing_text = None
     if path.exists():
-        existing_text = path.read_text()
+        existing_text = path.read_text(encoding='utf8')
     if existing_text != text_to_write:
         path.write_text(text_to_write, encoding='utf8')
 
