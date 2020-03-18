@@ -15,7 +15,7 @@ output_path_string = "out"
 # Files to ignore for the site
 # If a file matches these or contains any components that match these, then it
 # is skipped. Additionally, all hidden files are skipped as are vim undo files
-ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags", "tags.lock"]
+ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags", "tags.lock", "template.md"]
 # The markdown extensions to use
 # - meta lets us read metadata
 # - tables gives MMD-style tables
