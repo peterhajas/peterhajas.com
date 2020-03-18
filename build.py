@@ -24,6 +24,7 @@ markdown_extensions = ["meta", "tables", "smarty"]
 
 output_path = Path(output_path_string)
 index_output_path = output_path.joinpath("index.html")
+roll_output_path = output_path.joinpath("roll.html")
 rss_output_path = output_path.joinpath("rss.xml")
 
 # Command line arguments
@@ -125,6 +126,12 @@ class MarkdownFile:
             return self.title
         else:
             return self.export_path.stem.capitalize()
+            
+    def article_prefix(self):
+        prefix = ""
+        prefix += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
+        prefix += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
+        return prefix
 
     # The decorated HTML for this entry, wrapped in <article> and with title /
     # date if appropriate
@@ -139,8 +146,7 @@ class MarkdownFile:
         decorated = ""
         if is_article:
             decorated += "<article>\n"
-            decorated += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
-            decorated += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
+            decorated += self.article_prefix()
             decorated += "</div>\n"
         decorated += self.html + "\n"
         if is_article:
@@ -169,6 +175,10 @@ class MarkdownFile:
         relative = self.export_path.relative_to(output_path)
         return Path("/").joinpath(relative)
 
+    # The index item for this page 
+    def index_item(self):
+    	return self.article_prefix()
+
     # The RSS item for this page
     def rss_item(self):
         return """<item>
@@ -191,12 +201,12 @@ class MarkdownFile:
 # Builds the website
 def build_website():
     # The before.html / after.html files
-    before_html = Path("before.html").read_text()
-    after_html = Path("after.html").read_text()
+    before_html = Path("before.html").read_text(encoding='utf8')
+    after_html = Path("after.html").read_text(encoding='utf8')
 
     # The rss_before.xml and rss_after.xml files
-    rss_before_xml = Path("rss_before.xml").read_text()
-    rss_after_xml = Path("rss_after.xml").read_text()
+    rss_before_xml = Path("rss_before.xml").read_text(encoding='utf8')
+    rss_after_xml = Path("rss_after.xml").read_text(encoding='utf8')
 
     if live_reloading:
         live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
@@ -241,7 +251,7 @@ def build_website():
             markdownFile = MarkdownFile(contents_path=path)
             markdownFile.environment = environment
             path_outpath = markdownFile.render()
-            # If the file has a date, add it to our list for the index / RSS
+            # If the file has a date, add it to our list of dated entries
             if markdownFile.date != None:
                 dated_markdown_files.append(markdownFile)
         # Otherwise, just copy it over if it hasn't changed
@@ -258,20 +268,30 @@ def build_website():
     sorted_dated_markdown_files.reverse()
 
     index_markdown_contents = ""
+    roll_markdown_contents = ""
     rss_contents = rss_before_xml
-    # Build the index and rss files
+    # Build the index, roll, and rss files
     for entry in sorted_dated_markdown_files:
-        # Index: add in contents
-        index_markdown_contents += entry.decorated_html()
+        # Index: add index item
+        index_markdown_contents += entry.index_item()
         index_markdown_contents += "\n"
+        
+        # Roll: add in contents
+        roll_markdown_contents += entry.decorated_html()
+        roll_markdown_contents += "\n"
 
         # RSS: add in item RSS contents
         rss_contents += entry.rss_item()
-
+    
     index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
     index_markdown.environment = environment
     index_path = index_markdown.render()
     site_size_bytes += index_path.stat().st_size
+    
+    roll_markdown = MarkdownFile(export_path=roll_output_path, contents=roll_markdown_contents)
+    roll_markdown.environment = environment
+    roll_path = roll_markdown.render()
+    site_size_bytes += roll_path.stat().st_size
 
     rss_contents += rss_after_xml
     write_text_to_path_if_different(rss_contents, rss_output_path)
