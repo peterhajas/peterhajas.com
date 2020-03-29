@@ -226,9 +226,6 @@ def build_website():
     # Keep track of dated markdown entries
     dated_markdown_files = [ ]
 
-    # ...and all the file sizes
-    site_size_bytes = 0
-
     # Process the site. We'll look for all the files in our tree
     all_file_paths = sorted(Path().rglob("*"))
     for path in all_file_paths:
@@ -263,8 +260,6 @@ def build_website():
             path_outpath.parent.mkdir(parents=True, exist_ok=True)
             write_bytes_to_path_if_different(file_bytes, path_outpath)
 
-        site_size_bytes += path_outpath.stat().st_size
-
     # Sort dated markdown files by date
     sorted_dated_markdown_files = sorted(dated_markdown_files, key=lambda entry: entry.date)
     # Reverse the list (so it is newest first)
@@ -294,16 +289,19 @@ def build_website():
     index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
     index_markdown.environment = environment
     index_path = index_markdown.render()
-    site_size_bytes += index_path.stat().st_size
     
     roll_markdown = MarkdownFile(export_path=roll_output_path, contents=roll_markdown_contents)
     roll_markdown.environment = environment
     roll_path = roll_markdown.render()
-    site_size_bytes += roll_path.stat().st_size
 
     rss_contents += rss_after_xml
     write_text_to_path_if_different(rss_contents, rss_output_path)
-    site_size_bytes += rss_output_path.stat().st_size
+
+    # Now, let's see how large the site is
+    all_file_paths = sorted(output_path.rglob("*"))
+    site_size_bytes = 0
+    for path in all_file_paths:
+        site_size_bytes += path.stat().st_size
 
     return site_size_bytes
 
