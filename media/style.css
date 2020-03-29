@@ -24,6 +24,10 @@ img {
     max-width: 100%;
 }
 
+.circle {
+    border-radius: 50%;
+}
+
 .youtube {
     /* this matches the width of the document and height
      * roughly following a 16:9 aspect ratio */
@@ -52,12 +56,17 @@ header {
 
 .title {
     font-size: 1.875em;
+    clear: both;
 }
 
 .article_subhead {
     font-size: 1.5em;
     display: inline;
     color: #666;
+}
+
+article {
+    clear: both;
 }
 
 blockquote, pre, ul, ol {
@@ -137,6 +146,7 @@ table {
 }
 
 td {
+    vertical-align: middle;
     padding: 8pt;
     padding-top: 0.5pt;
     padding-bottom: 0.5pt;
@@ -160,8 +170,13 @@ figcaption {
 }
 
 .peterAvatar {
-    border-radius: 50%;
     height: 3em;
+}
+
+.peterBlurbAvatar {
+    padding: 0.5em;
+    width: 20em;
+    height: auto;
 }
 
 footer {

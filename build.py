@@ -15,7 +15,7 @@ output_path_string = "out"
 # Files to ignore for the site
 # If a file matches these or contains any components that match these, then it
 # is skipped. Additionally, all hidden files are skipped as are vim undo files
-ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags", "tags.lock", "template.md", "favicon.afdesign", "apple-touch-icon.afdesign"]
+ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out", "readme.md", "repo_tools", "repo_setup", "rss_before.xml", "rss_after.xml", "tags", "tags.lock", "tags.temp", "template.md", "blurb.html", "favicon.afdesign", "apple-touch-icon.afdesign"]
 # The markdown extensions to use
 # - meta lets us read metadata
 # - tables gives MMD-style tables
@@ -208,6 +208,9 @@ def build_website():
     rss_before_xml = Path("rss_before.xml").read_text(encoding='utf8')
     rss_after_xml = Path("rss_after.xml").read_text(encoding='utf8')
 
+    # The blurb markdown file
+    blurb = Path("blurb.html").read_text(encoding='utf8')
+
     if live_reloading:
         live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
         before_html = before_html.replace(extra_head_marker, live_js_head)
@@ -269,6 +272,11 @@ def build_website():
 
     index_markdown_contents = ""
     roll_markdown_contents = ""
+
+    if blurb != None:
+        index_markdown_contents = blurb
+        roll_markdown_contents = blurb
+
     rss_contents = rss_before_xml
     # Build the index, roll, and rss files
     for entry in sorted_dated_markdown_files:
