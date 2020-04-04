@@ -179,6 +179,30 @@ figcaption {
     height: auto;
 }
 
+#diddly_doo {
+    transform: scale(1, 1);
+    text-align: center;
+    font-weight: 500;
+    font-size: 2em;
+    letter-spacing: 0.6em;
+}
+
+.dd_1 {
+    opacity: 1.0;
+}
+
+.dd_2 {
+    opacity: 0.75;
+}
+
+.dd_3 {
+    opacity: 0.5
+}
+
+.dd_4 {
+    opacity: 0.25
+}
+
 footer {
     padding: 2em;
     text-align: center;
