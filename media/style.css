@@ -102,7 +102,9 @@ blockquote * {
 
 
 hr {
-    margin: 1em;
+    background: linear-gradient(to right, rgba(0,0,0,0), black, rgba(0,0,0,0));
+    height: 1px;
+    border: none;
 }
 
 a {
@@ -179,30 +181,6 @@ figcaption {
     height: auto;
 }
 
-#diddly_doo {
-    transform: scale(1, 1);
-    text-align: center;
-    font-weight: 500;
-    font-size: 2em;
-    letter-spacing: 0.6em;
-}
-
-.dd_1 {
-    opacity: 1.0;
-}
-
-.dd_2 {
-    opacity: 0.75;
-}
-
-.dd_3 {
-    opacity: 0.5
-}
-
-.dd_4 {
-    opacity: 0.25
-}
-
 footer {
     padding: 2em;
     text-align: center;
@@ -217,6 +195,12 @@ footer * {
         color: white;
         background: #333333;
         border-color: white;
+    }
+
+    hr {
+        background: linear-gradient(to right, #333333, white, #333333);
+        height: 1px;
+        border: none;
     }
 
     .article_subhead {
