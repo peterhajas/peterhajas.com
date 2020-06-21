@@ -175,6 +175,11 @@ class MarkdownFile:
         relative = self.export_path.relative_to(output_path)
         return Path("/").joinpath(relative)
 
+    # The absolute URL where this file is available.
+    # For example, http://peter.haj.as/about.html, http://peter.haj.as/blog/some_post.html, etc.
+    def rendered_url(self):
+        return 'http://peter.haj.as' + str(self.rendered_path())
+
     # The index item for this page 
     def index_item(self):
     	return self.article_prefix()
@@ -184,11 +189,12 @@ class MarkdownFile:
         return """<item>
 <title>{}</title>
 <guid>{}</guid>
+<link>{}</link>
 <pubDate>{}</pubDate>
 <description><![CDATA[
 {}
 ]]></description>
-        </item>""".format(self.title, self.rendered_path(), self.rss_date(), self.html)
+        </item>""".format(self.title, self.rendered_path(), self.rendered_url(), self.rss_date(), self.html)
 
     # Renders the file to its output location
     # Returns the path that we wrote to
