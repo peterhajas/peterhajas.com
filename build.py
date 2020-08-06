@@ -30,6 +30,7 @@ rss_output_path = output_path.joinpath("rss.xml")
 
 # Command line arguments
 extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
+rss_redacted_content = "<p><center>Content unavailable in RSS feed</center></p>"
 
 # live - turns on live-reloading
 live_reloading = "live" in sys.argv
@@ -184,6 +185,27 @@ class MarkdownFile:
     def index_item(self):
     	return self.article_prefix()
 
+    # The HTML to use for the RSS feed
+    def rss_html(self):
+        html_for_rss = self.html
+        # Strip out any RSS ignored stuff
+        while 'RSS_IGNORE_START' in html_for_rss:
+            lines = html_for_rss.split('\n')
+            start_index = None
+            end_index = None
+            for line_index in range(len(lines)):
+                line = lines[line_index]
+                if 'RSS_IGNORE_START' in line:
+                    start_index = line_index
+                if 'RSS_IGNORE_END' in line:
+                    end_index = line_index
+            if start_index != None and end_index != None:
+                # Remove at start and end
+                lines[start_index:end_index+1] = [rss_redacted_content]
+                html_for_rss = '\n'.join(lines)
+
+        return html_for_rss
+
     # The RSS item for this page
     def rss_item(self):
         return """<item>
@@ -194,7 +216,7 @@ class MarkdownFile:
 <description><![CDATA[
 {}
 ]]></description>
-        </item>""".format(self.title, self.rendered_path(), self.rendered_url(), self.rss_date(), self.html)
+        </item>""".format(self.title, self.rendered_path(), self.rendered_url(), self.rss_date(), self.rss_html())
 
     # Renders the file to its output location
     # Returns the path that we wrote to
