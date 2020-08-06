@@ -21,6 +21,7 @@ ignore_files = ["before.html", "after.html", "build", "build.py", "deploy", "out
 # - tables gives MMD-style tables
 # - smarty gives smartypants-style quotes
 markdown_extensions = ["meta", "tables", "smarty"]
+markdown_parser = markdown.Markdown(extensions = markdown_extensions)
 
 output_path = Path(output_path_string)
 index_output_path = output_path.joinpath("index.html")
@@ -78,10 +79,9 @@ class MarkdownFile:
     environment = None
 
     def prepare_metadata_and_html(self):
-        markdownParser = markdown.Markdown(extensions = markdown_extensions)
         # Process our HTML and metadata
-        self.html = markdownParser.convert(self.contents)
-        metadata = markdownParser.Meta
+        self.html = markdown_parser.convert(self.contents)
+        metadata = markdown_parser.Meta
         # If we do have a metadata dictionary, we have no metadata
         if len(metadata.keys()) == 0:
             return
