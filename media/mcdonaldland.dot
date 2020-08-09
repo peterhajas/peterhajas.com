@@ -1,0 +1,28 @@
+graph D {
+    star_trek -- transformers; // https://en.wikipedia.org/wiki/Star_Trek_vs._Transformers
+    star_trek -- alien; // Star Trek: The Next Generation/Aliens: Acceptable Losses
+    star_trek -- dc_comics; // https://en.wikipedia.org/wiki/Star_Trek/Green_Lantern, https://en.wikipedia.org/wiki/Legion_of_Superheroes
+    star_trek -- planet_of_the_apes;
+    star_trek -- marvel; // https://en.wikipedia.org/wiki/Star_Trek/X-Men
+    alien -- terminator; // Aliens Versus Predator Versus The Terminator
+    sonic -- capcom; // https://en.wikipedia.org/wiki/Worlds_Collide_(Archie_Comics)
+    power_rangers -- tmnt;
+    tmnt -- dc_comics; // https://en.wikipedia.org/wiki/Batman_vs._Teenage_Mutant_Ninja_Turtles
+    alien -- mortal_kombat; // https://en.wikipedia.org/wiki/Mortal_Kombat_X
+    mortal_kombat -- god_of_war; // https://en.wikipedia.org/wiki/Mortal_Kombat_(2011_video_game)
+    mortal_kombat -- nightmare_on_elm_street; // https://en.wikipedia.org/wiki/Mortal_Kombat_(2011_video_game)
+    mortal_kombat -- texas_chainsaw_massacre; // https://en.wikipedia.org/wiki/Mortal_Kombat_X
+    marvel -- capcom; // marvel vs. capcom
+    snk -- capcom; // snk vs. capcom
+    robocop -- terminator; // https://en.wikipedia.org/wiki/RoboCop_Versus_The_Terminator
+    terminator -- dc_comics; // https://en.wikipedia.org/wiki/Superman_vs._The_Terminator:_Death_to_the_Future
+    star_trek -- dr_who; // https://en.wikipedia.org/wiki/Star_Trek:_The_Next_Generation/Doctor_Who:_Assimilation2
+    marvel -- flintstones; // https://en.wikipedia.org/wiki/Fred_and_Barney_Meet_the_Thing
+    flintstones -- jetsons; // https://en.wikipedia.org/wiki/The_Jetsons_Meet_the_Flintstones
+    mario -- inspector_gadget; // https://fictionalcrossover.fandom.com/wiki/Mario_X_Gadget
+    mario -- sonic; // super smash bros. ultimate + others
+    mario -- simcity; // https://fictionalcrossover.fandom.com/wiki/Mario_X_Sim
+    mcdonalds -- mario; // https://www.youtube.com/watch?v=CClLVbJHZZU&list=PLveTXs0ghKpmVTcyls-2k32Y0evJOrKpL
+    pokemon -- mario; // super smash bros.
+    mario -- metal_gear; // super smash bros. ultimate + others
+}
