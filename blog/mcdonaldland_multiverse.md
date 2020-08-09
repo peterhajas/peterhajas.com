@@ -6,7 +6,7 @@ Do you know about [McDonaldland](https://en.wikipedia.org/wiki/McDonaldland)? It
 
 I recently wondered: *how large is the McDonaldland universe?* Let's explore this question.
 
-Ronald McDonald was in advertisements with a lot of popular characters to promote the McDonald's restaurant. A notable ad was [this series of ads](https://www.youtube.com/watch?v=CClLVbJHZZU&list=PLveTXs0ghKpmVTcyls-2k32Y0evJOrKpL) where Ronald and Grimace run into Mario, from Super Mario Brothers. This means Mario, Peach, and the Mushroom Kingdom are *in the McDonaldland universe*. Pretty cool! Let's see how deep this goes.
+Ronald McDonald was in advertisements with a lot of popular characters to promote the McDonald's restaurant. A notable one was [this ad](https://www.youtube.com/watch?v=CClLVbJHZZU) where Ronald and Grimace run into Mario, from Super Mario Brothers. This means Mario, Peach, and the Mushroom Kingdom are *in the McDonaldland universe*. Pretty cool! Let's see how deep this goes.
 
 Mario is a very popular character, and has appeared in games with many other characters. For example, Mario's presence in the [Mario & Sonic at the Olympic Games](https://en.wikipedia.org/wiki/Mario_%26_Sonic_at_the_Olympic_Games) series. This means the characters of Sonic are also in McDonaldland.
 
