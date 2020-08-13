@@ -27,11 +27,15 @@ I feel very fortunate to be able to speak publicly about things I am passionate 
 
 ## 2015
 
-- [Getting Started With Multitasking on iPad in iOS 9](https://asciiwwdc.com/2015/sessions/205) *video unavailable*
+- [Getting Started With Multitasking on iPad in iOS 9](https://asciiwwdc.com/2015/sessions/205)
+
+    *(video unavailable)*
 
 ## 2014
 
-- [A Look Inside Presentation Controllers](https://asciiwwdc.com/2014/sessions/228) *video unavailable*
+- [A Look Inside Presentation Controllers](https://asciiwwdc.com/2014/sessions/228)
+
+    *(video unavailable)*
 
 ## 2013
 
