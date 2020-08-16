@@ -27,6 +27,7 @@ output_path = Path(output_path_string)
 index_output_path = output_path.joinpath("index.html")
 roll_output_path = output_path.joinpath("roll.html")
 rss_output_path = output_path.joinpath("rss.xml")
+atom_output_path = output_path.joinpath("atom.xml")
 
 # Command line arguments
 extra_head_marker = "<!--EXTRA_HEAD_CONTENT_HERE-->"
@@ -121,6 +122,11 @@ class MarkdownFile:
         # "For a naive object, the %z and %Z format codes are replaced by empty strings."
         return self.date.strftime("%a, %d %b %Y %H:%M:%S PST")
 
+    # The Atom-formatted date for self
+    def atom_date(self):
+        # Always PST, see above
+        return self.date.isoformat("T") + "Z"
+
     # The page title, with prequel, for self
     def page_title(self):
         if self.title != None:
@@ -185,7 +191,7 @@ class MarkdownFile:
     def index_item(self):
     	return self.article_prefix()
 
-    # The HTML to use for the RSS feed
+    # The HTML to use for the RSS/atom feeds
     def rss_html(self):
         html_for_rss = self.html
         # Strip out any RSS ignored stuff
@@ -218,6 +224,18 @@ class MarkdownFile:
 ]]></description>
         </item>""".format(self.title, self.rendered_path(), self.rendered_url(), self.rss_date(), self.rss_html())
 
+    # The atom item for this page
+    def atom_item(self):
+        return """<entry>
+<title>{}</title>
+<link href=\"{}\" />
+<updated>{}</updated>
+<content type=\"xhtml\"><xhtml:div>{}</div></content>
+<author>
+<name>Peter Hajas</name>
+</author>
+        </entry>""".format(self.title, self.rendered_url(), self.atom_date(), self.rss_html())
+
     # Renders the file to its output location
     # Returns the path that we wrote to
     def render(self):
@@ -235,6 +253,10 @@ def build_website():
     # The rss_before.xml and rss_after.xml files
     rss_before_xml = Path("rss_before.xml").read_text(encoding='utf8')
     rss_after_xml = Path("rss_after.xml").read_text(encoding='utf8')
+
+    # The atom_before.xml and atom_after.xml files
+    atom_before_xml = Path("atom_before.xml").read_text(encoding='utf8')
+    atom_after_xml = Path("atom_after.xml").read_text(encoding='utf8')
 
     # The blurb markdown file
     blurb = Path("blurb.html").read_text(encoding='utf8')
@@ -301,7 +323,8 @@ def build_website():
         roll_markdown_contents = blurb
 
     rss_contents = rss_before_xml
-    # Build the index, roll, and rss files
+    atom_contents = atom_before_xml
+    # Build the index, roll, and rss/atom files
     for entry in sorted_dated_markdown_files:
         # Index: add index item
         index_markdown_contents += entry.index_item()
@@ -313,6 +336,8 @@ def build_website():
 
         # RSS: add in item RSS contents
         rss_contents += entry.rss_item()
+        # Atom: add in item atom contents
+        atom_contents += entry.atom_item()
     
     index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
     index_markdown.environment = environment
@@ -323,7 +348,10 @@ def build_website():
     roll_path = roll_markdown.render()
 
     rss_contents += rss_after_xml
+    atom_contents += atom_after_xml
+
     write_text_to_path_if_different(rss_contents, rss_output_path)
+    write_text_to_path_if_different(atom_contents, atom_output_path)
 
     # Now, let's see how large the site is
     all_file_paths = sorted(output_path.rglob("*"))
