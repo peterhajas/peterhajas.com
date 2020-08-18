@@ -8,7 +8,7 @@ I previously wrote about [visualizing the connections between maps in Pokémon R
 
 We'll use the game's starting area, Pallet Town, as an example. If you haven't played Pokémon Red and Blue, it looks like this:
 
-![A screenshot of the player character in Pallet Town](/media/pokemon_rb_pallet_town.png)
+![A screenshot of the player character in Pallet Town](/media/pokemon_rb_pallet_town.jpeg)
 <aside>
 This image was captured from an emulator running a compiled version of `pokered`</aside>
 
@@ -46,13 +46,13 @@ Pallet Town measures 20 squares wide by 18 squares tall (where a "square" is the
 
 ## A Look at Tilesets
 
-The `pokered` repository also contains a directory of tilesets, which is our first clue about how this system works. These are stored in `gfx/tilesets`. Each tileset is represented twice - a `png` image and a `2bpp` file. There are 19 of these tilesets for use cases like "house", "gym", "forest", and "overworld". Here's what `overworld.png` looks like:
+The `pokered` repository also contains a directory of tilesets, which is our first clue about how this system works. These are stored in `gfx/tilesets`. Each tileset is represented twice - a `jpeg` image and a `2bpp` file. There are 19 of these tilesets for use cases like "house", "gym", "forest", and "overworld". Here's what `overworld.jpeg` looks like:
 
-![A picture of the overworld tileset from Pokémon Red and Blue](/media/pokemon_rb_overworld.png)
+![A picture of the overworld tileset from Pokémon Red and Blue](/media/pokemon_rb_overworld.jpeg)
 
 In the game, you move the player character around a grid of squares. These tilesets are *not* stored in squares. Notice that each 8x8 pixel tile measures exactly *half* the width and height of an in-game 16x16 pixel square. Here's a version of the tileset above where I've drawn dividers between the tiles:
 
-![A picture of the overworld tileset from Pokémon Red and Blue with tile dividers](/media/pokemon_rb_overworld_tile_divisions.png)
+![A picture of the overworld tileset from Pokémon Red and Blue with tile dividers](/media/pokemon_rb_overworld_tile_divisions.jpeg)
 
 For example, the infamous log (pillar? column?) that borders in-game areas is spread across 4 tiles. To save space and increase possibilities, each in-game square is made up of 4 tiles in a grid. This allows for creative combination of them to make more interesting maps.
 

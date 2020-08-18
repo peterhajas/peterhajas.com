@@ -142,7 +142,7 @@ We can use a simple invocation of `neato` to produce a PDF file with:
 
 Check it out:
 
-![A graph visualizing all towns and routes in Pokémon Red and Blue](/media/pokemon_rb_towns_and_routes_preview.png)
+![A graph visualizing all towns and routes in Pokémon Red and Blue](/media/pokemon_rb_towns_and_routes_preview.jpeg)
 ([PDF file here](/media/pokemon_rb_towns_and_routes.pdf))
 
 OK, so towns and routes are cool. Can we augment this file to include buildings, tunnels, and rooms? There are `warp` and `warp_to` markers in the files in `/data/mapObjects`. For example, let's look at `SaffronCity.asm`:
@@ -231,15 +231,15 @@ Now, we'll put this all into a `pokemon_rb_all.dot` file (along with the connect
 
 This graph is so cool! Check it out:
 
-![A graph visualizing all locations in Pokémon Red and Blue](/media/pokemon_rb_all_preview.png)
+![A graph visualizing all locations in Pokémon Red and Blue](/media/pokemon_rb_all_preview.jpeg)
 ([PDF file here](/media/pokemon_rb_all.pdf), [dot file here](/media/pokemon_rb_all.dot))
 
 There are so many sections of this graph with interesting details, like Victory Road leading into the Indigo Plateau and Elite Four:
 
-![A cropped version of the "all locations" graph showing just Victory Road, the Indigo Plateau, and the Elite Four sections of the graph](/media/pokemon_rb_all_e4.png)
+![A cropped version of the "all locations" graph showing just Victory Road, the Indigo Plateau, and the Elite Four sections of the graph](/media/pokemon_rb_all_e4.jpeg)
 
 Or the maze-like Silph Company building:
 
-![A cropped version of the "all locations" graph showing just the Silph Company building floors](/media/pokemon_rb_all_silph.png)
+![A cropped version of the "all locations" graph showing just the Silph Company building floors](/media/pokemon_rb_all_silph.jpeg)
 
 I think it's really cool how easy it is to use simple tools to see these games from a new angle. I hope to look at other aspects of these games sometime in the future.
