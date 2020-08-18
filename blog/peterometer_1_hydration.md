@@ -28,7 +28,7 @@ Since December 2018, I've been tracking my hydration every day. Every time I fin
 
 WaterMinder lets you export your data in CSV format. With a [little bit of Python](https://github.com/peterhajas/peterometer/blob/master/hydration/waterminder_parse.py), we can parse this into a ["stream" stacked area chart](http://leebyron.com/streamgraph/) to show how I hydrate myself:
 
-[![A stacked area plot of my hydration](/media/hydration.png)](/media/hydration.png)
+[![A stacked area plot of my hydration](/media/hydration.jpeg)](/media/hydration.jpeg)
 
 This chart is a bit tough to read due to data density. The legend is sorted in descending order of consumption. By the numbers, this is:
 
