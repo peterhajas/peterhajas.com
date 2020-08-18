@@ -41,12 +41,19 @@ if live_reloading:
 serve = "serve" in sys.argv
 
 # Writes the proposed bytes to path if they haven't changed
-def write_bytes_to_path_if_different(bytes_to_write, path):
-    existing_bytes = None
-    if path.exists():
-        existing_bytes = path.read_bytes()
-    if existing_bytes != bytes_to_write:
-        path.write_bytes(bytes_to_write)
+def copy_file_to_path_if_different(source, destination):
+    do_simple_copy = True
+    if destination.exists():
+        destination_bytes = None
+        if destination.exists():
+            destination_bytes = destination.read_bytes()
+        if destination_bytes != None:
+            source_bytes = source.read_bytes()
+            if source_bytes == destination_bytes:
+                do_simple_copy = False
+
+    if do_simple_copy:
+        shutil.copyfile(source, destination)
 
 # Writes the proposed text to path if they haven't changed
 def write_text_to_path_if_different(text_to_write, path):
@@ -284,9 +291,8 @@ def build_website():
                 dated_markdown_files.append(markdownFile)
         # Otherwise, just copy it over if it hasn't changed
         else:
-            file_bytes = path.read_bytes()
             path_outpath.parent.mkdir(parents=True, exist_ok=True)
-            write_bytes_to_path_if_different(file_bytes, path_outpath)
+            copy_file_to_path_if_different(path, path_outpath)
 
     # Sort dated markdown files by date
     sorted_dated_markdown_files = sorted(dated_markdown_files, key=lambda entry: entry.date)
