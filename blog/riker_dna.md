@@ -48,7 +48,7 @@ I also learned that she has 1.5% "Wolfiness", which indicates ancient wolf genes
 
 Embark also determines haplotypes, which means they can tell what genes of Riker's came from which parents. This lets them generate a family tree:
 
-![Riker's family tree](/media/riker_family_tree.png)
+![Riker's family tree](/media/riker_family_tree.jpeg)
 
 This means Riker's parents were a chihuahua mix and a purebred pomeranian.
 
