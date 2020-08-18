@@ -64,6 +64,8 @@ def write_text_to_path_if_different(text_to_write, path):
         path.write_text(text_to_write, encoding='utf8')
 
 class SiteEnvironment:
+    # The output root path (e.g. `.../out/`
+    output_root = None
     # The html to insert before page contents
     before_html = ""
     # The html to insert after page contents
@@ -105,12 +107,13 @@ class MarkdownFile:
     # contents: String or None
     # Pass contents_path and then export_path and contents will be inferred
     # Pass contents and export_path to be able to save
-    def __init__(self, contents_path=None, export_path=None, contents=None):
+    def __init__(self, environment, contents_path=None, export_path=None, contents=None):
+        self.environment = environment
         self.contents = contents
         self.export_path = export_path
         if contents_path != None:
             self.contents = contents_path.read_text(encoding='utf8')
-            self.export_path = output_path.joinpath(contents_path).with_suffix(".html")
+            self.export_path = self.environment.output_root.joinpath(contents_path).with_suffix(".html")
         self.prepare_metadata_and_html()
 
     # A pretty-formatted date for self
@@ -180,7 +183,7 @@ class MarkdownFile:
     # The path this file is rendered to in the site
     # For example, /about.html, /blog/some_post.html, etc.
     def rendered_path(self):
-        relative = self.export_path.relative_to(output_path)
+        relative = self.export_path.relative_to(self.environment.output_root)
         return Path("/").joinpath(relative)
 
     # The absolute URL where this file is available.
@@ -228,10 +231,9 @@ class MarkdownFile:
     # Renders the file to its output location
     # Returns the path that we wrote to
     def render(self):
-        output_path = self.export_path
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        write_text_to_path_if_different(self.page_html(), output_path)
-        return output_path
+        self.export_path.parent.mkdir(parents=True, exist_ok=True)
+        write_text_to_path_if_different(self.page_html(), self.export_path)
+        return self.export_path
 
 # Builds the website
 def build_website():
@@ -252,6 +254,7 @@ def build_website():
 
     # Build our environment
     environment = SiteEnvironment()
+    environment.output_root = output_path
     environment.before_html = before_html
     environment.after_html = after_html
 
@@ -283,8 +286,7 @@ def build_website():
         
         # If the path is markdown, process it
         if path.suffix == ".md":
-            markdownFile = MarkdownFile(contents_path=path)
-            markdownFile.environment = environment
+            markdownFile = MarkdownFile(environment, contents_path=path)
             path_outpath = markdownFile.render()
             # If the file has a date, add it to our list of dated entries
             if markdownFile.date != None:
@@ -320,11 +322,11 @@ def build_website():
         # RSS: add in item RSS contents
         rss_contents += entry.rss_item()
     
-    index_markdown = MarkdownFile(export_path=index_output_path, contents=index_markdown_contents)
+    index_markdown = MarkdownFile(environment, export_path=index_output_path, contents=index_markdown_contents)
     index_markdown.environment = environment
     index_path = index_markdown.render()
     
-    roll_markdown = MarkdownFile(export_path=roll_output_path, contents=roll_markdown_contents)
+    roll_markdown = MarkdownFile(environment, export_path=roll_output_path, contents=roll_markdown_contents)
     roll_markdown.environment = environment
     roll_path = roll_markdown.render()
 
