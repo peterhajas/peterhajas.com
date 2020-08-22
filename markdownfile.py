@@ -78,7 +78,7 @@ class MarkdownFile:
         if self.title != None:
             return self.title
         else:
-            return self.export_path.stem.capitalize()
+            return self.export_path.stem.replace('_',' ').capitalize()
             
     def article_prefix(self):
         prefix = ""
