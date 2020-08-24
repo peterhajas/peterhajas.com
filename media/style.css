@@ -1,3 +1,5 @@
+/* Reset everything browsers might be doing */
+@import 'reset.css';
 /* Here is a CSS cheat sheet: */
 /* - # for ids */
 /* - . for classes */
