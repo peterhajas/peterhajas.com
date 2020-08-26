@@ -38,11 +38,13 @@ class MarkdownFile:
         if len(metadata.keys()) == 0:
             return
         # Otherwise, populate our metadata
-        self.title = metadata["title"][0]
-        self.emoji = metadata["emoji"][0]
-
-        date_string = metadata["date"][0]
-        self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
+        if 'title' in metadata.keys():
+            self.title = metadata['title'][0]
+        if 'emoji' in metadata.keys():
+            self.emoji = metadata['emoji'][0]
+        if 'date' in metadata.keys():
+            date_string = metadata["date"][0]
+            self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
 
     # contents_path: Path or None
     # export_path: Path or None
@@ -64,7 +66,7 @@ class MarkdownFile:
 
     # Returns whether or not we are an article
     def is_article(self):
-        return self.title != None and self.date != None
+        return self.title is not None or self.emoji is not None or self.date is not None
 
     # An RSS-formatted date for self
     def rss_date(self):
@@ -82,8 +84,10 @@ class MarkdownFile:
             
     def article_prefix(self):
         prefix = ""
-        prefix += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
-        prefix += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
+        if self.title is not None:
+            prefix += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
+        if self.date is not None and self.emoji is not None:
+            prefix += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
         return prefix
 
     # The decorated HTML for this entry, wrapped in <article> and with title /
