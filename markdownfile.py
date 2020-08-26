@@ -55,7 +55,7 @@ class MarkdownFile:
         self.export_path = export_path
         if contents_path != None:
             self.contents = contents_path.read_text(encoding='utf8')
-            self.export_path = self.environment.output_root.joinpath(contents_path).with_suffix(".html")
+            self.export_path = self.environment.output_root.joinpath(contents_path.relative_to(self.environment.input_root)).with_suffix(".html")
         self.prepare_metadata_and_html()
 
     # A pretty-formatted date for self

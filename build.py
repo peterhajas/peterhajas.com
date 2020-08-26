@@ -13,6 +13,10 @@ from markdownfile import *
 from file_utils import *
 from constants import *
 
+# Where to read contents
+input_path_string = "site"
+input_path = Path(input_path_string)
+
 # Where to save contents
 output_path_string = "out"
 
@@ -34,6 +38,8 @@ serve = "serve" in sys.argv
 class SiteEnvironment:
     # The output root path (e.g. `.../out/`
     output_root = None
+    # The input root path (e.g. `.../site/`)
+    input_root = None
     # The html to insert before page contents
     before_html = ""
     # The html to insert after page contents
@@ -59,6 +65,7 @@ def build_website():
     # Build our environment
     environment = SiteEnvironment()
     environment.output_root = output_path
+    environment.input_root = input_path
     environment.before_html = before_html
     environment.after_html = after_html
 
@@ -69,7 +76,7 @@ def build_website():
     dated_markdown_files = [ ]
 
     # Process the site. We'll look for all the files in our tree
-    all_file_paths = sorted(Path().rglob("*"))
+    all_file_paths = sorted(input_path.rglob("*"))
     for path in all_file_paths:
         # If the path is ignored, then we can skip it
         if path.is_dir():
@@ -85,8 +92,7 @@ def build_website():
                 break
         if is_ignored:
             continue
-
-        path_outpath = output_path.joinpath(path)
+        path_outpath = output_path.joinpath(path.relative_to(input_path))
         
         # If the path is markdown, process it
         if path.suffix == ".md":
