@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
 <html>
 <head>
 <title>Hey</title>
@@ -29,8 +26,8 @@ function compare_exif($a, $b) {
     $b_exif = exif_read_data($b_relative);
 
     /* Grab dates */
-    $a_date = $a_exif['DateTime'];
-    $b_date = $b_exif['DateTime'];
+    $a_date = $a_exif['DateTimeOriginal'];
+    $b_date = $b_exif['DateTimeOriginal'];
     /* Some replacements */
     $a_date = str_replace(':', '', $a_date);
     $a_date = str_replace(' ', '', $a_date);
@@ -40,9 +37,45 @@ function compare_exif($a, $b) {
     return intval($b_date) - intval($a_date);
 }
 
-function datetime_for_exif($exif) {
-    $datetime_str = exif_read_data($relative_path)['DateTime'];
-    return $datetime_str;
+// plh-evil: use this for comparison above
+function timestamp_for_exif($exif) {
+    $datetime_str = $exif['DateTimeOriginal'];
+    return strtotime($datetime_str);
+}
+
+function format_timestamp($timestamp) {
+    // by default, show month + day + year
+    $date_format = 'F j, Y';
+
+    $current_year = intval(date('y'));
+    $timestamp_year = intval(date('y', $timestamp));
+    // If it's today, show the time
+    if ((time() - $timestamp) < 60 * 60 * 24) {
+        $date_format = 'h:m a';
+    }
+    // If it's this week, show the weekday
+    else if ((time() - $timestamp) < 60 * 60 * 24 * 7) {
+        $date_format = 'l';
+    }
+    // if it's this year, show the date (month + day)
+    else if ($timestamp_year == $current_year) {
+        $date_format = 'F j';
+    }
+
+    return date($date_format, $timestamp);
+}
+
+function exif_get_latlon($exifdata) {
+    if ($exifdata['GPSLatitude'] == NULL) {
+        return '';
+    }
+    $lat_str = $exifdata['GPSLatitude'][0] . ' ' . $exifdata['GPSLatitudeRef'][0];
+    $lon_str = $exifdata['GPSLongitude'][0] . ' ' . $exifdata['GPSLongitudeRef'][0];
+    return $lat_str . ' ' . $lon_str;
+}
+
+function exif_get_description($exifdata) {
+    return $exifdata['ImageDescription'];
 }
 
 $files = scandir($GLOBALS['dir']);
@@ -54,12 +87,23 @@ foreach ($files as $file) {
     /* Grab a relative path */
     $relative_path = $GLOBALS['dir'] ."/". $file;
     if (is_file($relative_path)) {
+        $exif = exif_read_data($relative_path);
         ?>
             <li>
             <img width=300 src=<?php echo($relative_path) ?>>
             <p>
             <?php
-            echo(datetime_for_exif(exif_read_data($relative_path)))
+            echo(exif_get_latlon($exif));
+            ?>
+            </p>
+            <p>
+            <?php
+            echo(exif_get_description($exif));
+            ?>
+            </p>
+            <p>
+            <?php
+            echo(format_timestamp(timestamp_for_exif($exif)));
             ?>
             </p>
             </li>
