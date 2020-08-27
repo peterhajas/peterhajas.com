@@ -212,6 +212,29 @@ footer * {
     vertical-align: middle;
 }
 
+.image-list {
+    list-style-type: none;
+}
+
+.image-item {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 16pt;
+    padding: 30pt;
+    margin: 20pt;
+}
+
+.image-location {
+    opacity: 0.33;
+}
+
+.image-description {
+    text-align: center;
+}
+
+.image-timestamp {
+    opacity: 0.66;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         color: white;
