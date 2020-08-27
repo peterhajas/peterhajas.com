@@ -95,12 +95,20 @@ def build_website():
         path_outpath = output_path.joinpath(path.relative_to(input_path))
         
         # If the path is markdown, process it
-        if path.suffix == ".md":
+        if path.suffix == '.md':
             markdownFile = MarkdownFile(environment, contents_path=path)
             path_outpath = markdownFile.render()
             # If the file has a date, add it to our list of dated entries
             if markdownFile.date != None:
                 dated_markdown_files.append(markdownFile)
+        # If it's php, apply our html and write it
+        elif path.suffix == '.php':
+            path_outpath.parent.mkdir(parents=True, exist_ok=True)
+            with path.open() as php_file:
+                contents = ' '.join(php_file.readlines())
+            contents = before_html + contents + after_html
+            write_text_to_path_if_different(contents, path_outpath)
+
         # Otherwise, just copy it over if it hasn't changed
         else:
             path_outpath.parent.mkdir(parents=True, exist_ok=True)

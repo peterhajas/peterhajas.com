@@ -1,9 +1,3 @@
-<html>
-<head>
-<title>Hey</title>
-</head>
-
-<body>
 <ul>
 <?php
 
@@ -120,7 +114,4 @@ foreach ($files as $file) {
 }
 ?>
 </ul>
-</body>
-
-</html>
 
