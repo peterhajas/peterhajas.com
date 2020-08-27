@@ -219,6 +219,7 @@ footer * {
 
 .image-list {
     list-style-type: none;
+    width: 100%;
 }
 
 .image-list img {
@@ -229,7 +230,9 @@ footer * {
     background: rgba(0, 0, 0, 0.15);
     border-radius: 16pt;
     padding: 20pt;
-    margin: 10pt;
+    margin: 0pt;
+    margin-top: 20pt;
+    margin-bottom: 20pt;
 }
 
 .image-location {
