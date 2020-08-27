@@ -1,7 +1,7 @@
 <ul class='image-list'>
 <?php
 
-$GLOBALS['dir'] = 'photos';
+$GLOBALS['dir'] = 'pix';
 
 function timestamp_for_exif($exif) {
     $datetime_str = $exif['DateTimeOriginal'];
