@@ -7,11 +7,12 @@
 </head>
 
 <body>
-<p>before</p>
+<ul>
 <?php
 
 $GLOBALS['dir'] = 'photos';
 
+/* Sorts by EXIF dates reversed */
 function compare_exif($a, $b) {
     $a_relative = $GLOBALS['dir'] ."/". $a;
     $b_relative = $GLOBALS['dir'] ."/". $b;
@@ -39,30 +40,34 @@ function compare_exif($a, $b) {
     return intval($b_date) - intval($a_date);
 }
 
-$files = scandir($GLOBALS['dir']);
+function datetime_for_exif($exif) {
+    $datetime_str = exif_read_data($relative_path)['DateTime'];
+    return $datetime_str;
+}
 
-/* var_dump($files); */
-var_dump('hey');
+$files = scandir($GLOBALS['dir']);
 
 /* Sort the files */
 usort($files, 'compare_exif');
-
-var_dump($files);
 
 foreach ($files as $file) {
     /* Grab a relative path */
     $relative_path = $GLOBALS['dir'] ."/". $file;
     if (is_file($relative_path)) {
-        var_dump(exif_read_data($relative_path));
         ?>
-            <br>
+            <li>
             <img width=300 src=<?php echo($relative_path) ?>>
-            <br>
+            <p>
+            <?php
+            echo(datetime_for_exif(exif_read_data($relative_path)))
+            ?>
+            </p>
+            </li>
         <?php
     }
 }
 ?>
-<p>after</p>
+</ul>
 </body>
 
 </html>
