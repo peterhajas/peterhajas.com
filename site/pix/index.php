@@ -1,4 +1,4 @@
-<ul>
+<ul class='image-list'>
 <?php
 
 $GLOBALS['dir'] = 'photos';
@@ -83,8 +83,8 @@ foreach ($files as $file) {
     if (is_file($relative_path)) {
         $exif = exif_read_data($relative_path);
         ?>
-            <li>
-                <img width=300 src=<?php echo($relative_path) ?>>
+            <li class='image-item'>
+                <img src=<?php echo($relative_path) ?>>
                 <?php
                     if (exif_get_latlon($exif) != NULL) {
                 ?>
