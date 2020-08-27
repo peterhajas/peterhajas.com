@@ -67,7 +67,7 @@ function format_timestamp($timestamp) {
 
 function exif_get_latlon($exifdata) {
     if ($exifdata['GPSLatitude'] == NULL) {
-        return '';
+        return NULL;
     }
     $lat_str = $exifdata['GPSLatitude'][0] . ' ' . $exifdata['GPSLatitudeRef'][0];
     $lon_str = $exifdata['GPSLongitude'][0] . ' ' . $exifdata['GPSLongitudeRef'][0];
@@ -90,22 +90,30 @@ foreach ($files as $file) {
         $exif = exif_read_data($relative_path);
         ?>
             <li>
-            <img width=300 src=<?php echo($relative_path) ?>>
-            <p>
-            <?php
-            echo(exif_get_latlon($exif));
-            ?>
-            </p>
-            <p>
-            <?php
-            echo(exif_get_description($exif));
-            ?>
-            </p>
-            <p>
-            <?php
-            echo(format_timestamp(timestamp_for_exif($exif)));
-            ?>
-            </p>
+                <img width=300 src=<?php echo($relative_path) ?>>
+                <?php
+                    if (exif_get_latlon($exif) != NULL) {
+                ?>
+                <p class='image-location'>
+                <?php
+                        echo(exif_get_latlon($exif));
+                    }
+                ?>
+                </p>
+                <?php
+                    if (exif_get_description($exif) != NULL) {
+                ?>
+                <p class='image-description'>
+                <?php
+                        echo(exif_get_description($exif));
+                    }
+                ?>
+                </p>
+                <p class='image-timestamp'>
+                <?php
+                echo(format_timestamp(timestamp_for_exif($exif)));
+                ?>
+                </p>
             </li>
         <?php
     }
