@@ -50,15 +50,15 @@ function format_timestamp($timestamp) {
     $timestamp_year = intval(date('y', $timestamp));
     // If it's today, show the time
     if ((time() - $timestamp) < 60 * 60 * 24) {
-        $date_format = 'h:m a';
+        $date_format = 'g:m a';
     }
     // If it's this week, show the weekday
     else if ((time() - $timestamp) < 60 * 60 * 24 * 7) {
-        $date_format = 'l h:m a';
+        $date_format = 'l g:m a';
     }
-    // if it's this year, show the date (month + day)
+    // if it's this year, show the date + time
     else if ($timestamp_year == $current_year) {
-        $date_format = 'F j h:m a';
+        $date_format = 'F j g:m a';
     }
 
     return date($date_format, $timestamp);
