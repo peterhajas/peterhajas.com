@@ -52,8 +52,13 @@ ul ul, ol ol, ul ol, ol ul {
     padding-bottom: 0;
 }
 
-header {
+.sitetitle {
     font-size: 2em;
+}
+
+nav {
+    text-align: center;
+    font-size: 1.25em;
 }
 
 .title {
