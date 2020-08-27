@@ -3,6 +3,17 @@
 
 $GLOBALS['dir'] = 'photos';
 
+function timestamp_for_exif($exif) {
+    $datetime_str = $exif['DateTimeOriginal'];
+    if ($datetime_str == NULL) {
+        $datetime_str = $exif['DateTime'];
+    }
+    if ($datetime_str == NULL) {
+        return intval($exif['FileDateTime']);
+    }
+    return strtotime($datetime_str);
+}
+
 /* Sorts by EXIF dates reversed */
 function compare_exif($a, $b) {
     $a_relative = $GLOBALS['dir'] ."/". $a;
@@ -28,18 +39,12 @@ function compare_exif($a, $b) {
     $b_date = str_replace(':', '', $b_date);
     $b_date = str_replace(' ', '', $b_date);
     /* Sort backwards */
-    return intval($b_date) - intval($a_date);
-}
-
-// plh-evil: use this for comparison above
-function timestamp_for_exif($exif) {
-    $datetime_str = $exif['DateTimeOriginal'];
-    return strtotime($datetime_str);
+    return timestamp_for_exif($b_exif) - timestamp_for_exif($a_exif);
 }
 
 function format_timestamp($timestamp) {
-    // by default, show month + day + year
-    $date_format = 'F j, Y';
+    // by default, show date + time
+    $date_format = 'F j h:m a, Y';
 
     $current_year = intval(date('y'));
     $timestamp_year = intval(date('y', $timestamp));
@@ -49,11 +54,11 @@ function format_timestamp($timestamp) {
     }
     // If it's this week, show the weekday
     else if ((time() - $timestamp) < 60 * 60 * 24 * 7) {
-        $date_format = 'l';
+        $date_format = 'l h:m a';
     }
     // if it's this year, show the date (month + day)
     else if ($timestamp_year == $current_year) {
-        $date_format = 'F j';
+        $date_format = 'F j h:m a';
     }
 
     return date($date_format, $timestamp);
