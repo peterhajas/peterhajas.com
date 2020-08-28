@@ -1,4 +1,4 @@
-Title: Pictures
+Title: Pix
 <ul class='image-list'>
 <?php
 
