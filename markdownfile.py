@@ -13,7 +13,7 @@ from constants import *
 markdown_extensions = ["meta", "tables", "smarty"]
 markdown_parser = markdown.Markdown(extensions = markdown_extensions)
 
-# A class representing a markdown file in the site
+# A class representing a markdown / html / php file on the site
 class MarkdownFile:
     # The title associated with this file, or None if it has none
     title = None
@@ -46,6 +46,11 @@ class MarkdownFile:
             date_string = metadata["date"][0]
             self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
 
+    def suffix(self, contents_path):
+        if contents_path.suffix == '.php':
+            return '.php'
+        return '.html'
+
     # contents_path: Path or None
     # export_path: Path or None
     # contents: String or None
@@ -57,7 +62,7 @@ class MarkdownFile:
         self.export_path = export_path
         if contents_path != None:
             self.contents = contents_path.read_text(encoding='utf8')
-            self.export_path = self.environment.output_root.joinpath(contents_path.relative_to(self.environment.input_root)).with_suffix(".html")
+            self.export_path = self.environment.output_root.joinpath(contents_path.relative_to(self.environment.input_root)).with_suffix(self.suffix(contents_path))
         self.prepare_metadata_and_html()
 
     # A pretty-formatted date for self
