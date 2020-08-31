@@ -123,6 +123,10 @@ code {
     font-family: Menlo, monospace;
 }
 
+code {
+    word-wrap: break-word;
+}
+
 pre {
     background-color: rgba(253, 96, 0, 0.089);
     border-radius: 8pt;
@@ -132,6 +136,10 @@ pre {
     padding: 8pt;
     vertical-align: middle;
     overflow: auto;
+}
+
+pre * {
+    word-wrap: unset;
 }
 
 h1 {
