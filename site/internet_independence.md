@@ -2,6 +2,8 @@ Title: Internet Independence
 
 This is a page with some tips and tricks for being more independent on the internet.
 
+[TOC]
+
 # Independence for stuff you consume
 
 The internet has all sorts of stuff to consume. For example:
