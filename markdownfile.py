@@ -94,6 +94,8 @@ class MarkdownFile:
             prefix += "<div class='title'><a href='{}'>{}</a></div>\n".format(self.rendered_path(), self.title)
         if self.date is not None and self.emoji is not None:
             prefix += "<div class='article_subhead'>{}  •  {}</div>\n".format(self.pretty_date(), self.emoji)
+        elif self.date is not None:
+            prefix += "<div class='article_subhead'>{}</div>\n".format(self.pretty_date())
         return prefix
 
     # The decorated HTML for this entry, wrapped in <article> and with title /
