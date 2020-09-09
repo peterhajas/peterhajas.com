@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import http.server
 import socketserver
+import socket
 import threading
 
 from markdownfile import *
@@ -160,14 +161,26 @@ class PeterHTTPRequestHandlerHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=output_path_string, **kwargs)
 
+def build_continuously_inner():
+    build_website()
+    time.sleep(0.1)
+    build_continuously()
+
+def build_continuously():
+    thread = threading.Thread(target=build_continuously_inner)
+    thread.daemon = True
+    thread.start()
+
 def start_serving():
     port_number = 8000
     print("serving at localhost:{}".format(port_number))
     http_handler = PeterHTTPRequestHandlerHandler
     httpd = socketserver.TCPServer(("", port_number), http_handler)
+    httpd.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     thread = threading.Thread(target=httpd.serve_forever)
     thread.daemon = True
     thread.start()
+    return httpd
 
 # clean the site
 clean_website()
@@ -178,13 +191,13 @@ interactive = live_reloading and serve
 
 if interactive:
     # Serve
-    start_serving()
+    server = start_serving()
     # and then build in a loop
-    while True:
-        build_website()
-        time.sleep(0.1)
-    while True:
-        time.sleep(1)
+    build_continuously()
+    # keep the script around until we get some input
+    command = input('')
+    server.shutdown()
+    quit()
 else:
     # Otherwise, build the site and log the time it took
     start_time = time.time()
