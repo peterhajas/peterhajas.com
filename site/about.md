@@ -14,7 +14,7 @@ I am a software developer at [Apple](http://apple.com). I'm from Minnesota. I gr
 
 # Talks
 
-I feel very fortunate to be able to speak publicly about things I am passionate about. Below is a collection of talks I’ve been apart of.
+I feel very fortunate to be able to speak publicly about things I am passionate about. Below is a collection of talks I’ve been a part of.
 
 ## 2018
 
