@@ -196,6 +196,7 @@ if interactive:
     build_continuously()
     # keep the script around until we get some input
     command = input('')
+    print('terminating...')
     server.shutdown()
     quit()
 else:
