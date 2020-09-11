@@ -243,6 +243,10 @@ footer * {
     margin-bottom: 20pt;
 }
 
+.image-link {
+    float: right;
+}
+
 .image-location {
     opacity: 0.33;
 }

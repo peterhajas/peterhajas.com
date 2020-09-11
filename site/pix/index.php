@@ -4,8 +4,7 @@ Title: Pix
 
 $GLOBALS['dir'] = 'pix';
 
-function timestamp_for_exif($exif) {
-    $datetime_str = $exif['DateTimeOriginal'];
+function timestamp_for_exif($exif) { $datetime_str = $exif['DateTimeOriginal'];
     if ($datetime_str == NULL) {
         $datetime_str = $exif['DateTime'];
     }
@@ -89,7 +88,8 @@ foreach ($files as $file) {
     if (is_file($relative_path)) {
         $exif = exif_read_data($relative_path);
         ?>
-            <li class='image-item'>
+            <li id='<?php echo timestamp_for_exif($exif); ?>' class='image-item'>
+            <a class='image-link' href='#<?php echo timestamp_for_exif($exif); ?>'>link</a>
                 <img src=<?php echo($relative_path) ?>>
                 <?php
                     if (exif_get_latlon($exif) != NULL) {
