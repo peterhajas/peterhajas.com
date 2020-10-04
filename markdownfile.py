@@ -72,7 +72,7 @@ class MarkdownFile:
 
     # Returns whether or not we are an article
     def is_article(self):
-        return self.title is not None or self.emoji is not None or self.date is not None
+        return self.emoji is not None or self.date is not None
 
     # An RSS-formatted date for self
     def rss_date(self):
