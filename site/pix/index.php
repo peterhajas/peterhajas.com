@@ -87,33 +87,21 @@ foreach ($files as $file) {
     $relative_path = $GLOBALS['dir'] ."/". $file;
     if (is_file($relative_path)) {
         $exif = exif_read_data($relative_path);
+        $latlon = exif_get_latlon($exif);
+        $description = exif_get_description($exif);
         ?>
             <li id='<?php echo timestamp_for_exif($exif); ?>' class='image-item'>
-            <a class='image-link' href='#<?php echo timestamp_for_exif($exif); ?>'>link</a>
+                <a class='image-link' href='#<?php echo timestamp_for_exif($exif); ?>'>link</a>
                 <img src=<?php echo($relative_path) ?>>
                 <?php
-                    if (exif_get_latlon($exif) != NULL) {
-                ?>
-                <p class='image-location'>
-                <?php
-                        echo(exif_get_latlon($exif));
+                    if ($latlon != NULL) {
+                        echo('<p class=\'image-location\'>' . $latlon . '</p>');
                     }
-                ?>
-                </p>
-                <?php
-                    if (exif_get_description($exif) != NULL) {
-                ?>
-                <p class='image-description'>
-                <?php
-                        echo(exif_get_description($exif));
+                    if ($description != NULL) {
+                        echo('<p class=\'image-description\'>' . $description . '</p>');
                     }
+                    echo('<p class=\'image-timestamp\'>' . format_timestamp(timestamp_for_exif($exif)) . '</p>');
                 ?>
-                </p>
-                <p class='image-timestamp'>
-                <?php
-                echo(format_timestamp(timestamp_for_exif($exif)));
-                ?>
-                </p>
             </li>
         <?php
     }
