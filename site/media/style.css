@@ -234,11 +234,18 @@ footer * {
     width: 100%;
 }
 
+.image-list p {
+    line-height: 1;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
 .image-item {
     background: rgba(0, 0, 0, 0.15);
     border-radius: 16pt;
     padding-left: 20pt;
     padding-right: 20pt;
+    padding-bottom: 10pt;
     margin-bottom: 10pt;
 }
 
