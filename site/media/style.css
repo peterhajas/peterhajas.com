@@ -181,19 +181,6 @@ figcaption {
     display: none;
 }
 
-.contact {
-    font-weight: 500;
-    text-decoration: none;
-}
-
-#contact_twitter a {
-    color: #55acee;
-}
-
-#contact_email a {
-    color: #0bd318;
-}
-
 .peterAvatar {
     height: 3em;
 }
