@@ -8,10 +8,11 @@ from constants import *
 
 # The markdown extensions to use
 # - meta lets us read metadata
-# - tables gives MMD-style tables
+# - tables gives MultiMarkdown-style tables
 # - smarty gives smartypants-style quotes
 # - toc gives us a table of contents
-markdown_extensions = ['meta', 'tables', 'smarty', 'toc']
+# - md_in_html lets us use markdown in HTML
+markdown_extensions = ['meta', 'tables', 'smarty', 'toc', 'md_in_html']
 markdown_parser = markdown.Markdown(extensions = markdown_extensions)
 
 # A class representing a markdown / html / php file on the site

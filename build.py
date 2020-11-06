@@ -57,7 +57,7 @@ def build_website():
     rss_after_xml = Path("rss_after.xml").read_text(encoding='utf8')
 
     # The blurb markdown file
-    blurb = Path("blurb.html").read_text(encoding='utf8')
+    blurb = Path('blurb.md').read_text(encoding='utf8')
 
     if live_reloading:
         live_js_head = '<script type="text/javascript" src="http://livejs.com/live.js"></script>' + '\n' + extra_head_marker
