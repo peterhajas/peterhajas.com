@@ -1,0 +1,38 @@
+<?php
+
+/* This file has some common PHP utilities I wanted to abstract. It's called */
+/* "common", as I don't want it to be emitted into the built site with */
+/* decoration. */
+
+/* Compares two timestamps and sorts them in descending order */
+function compare_timestamps($a, $b) {
+    return $b - $a;
+}
+
+/* Formats a timestamp */
+function format_timestamp($timestamp) {
+    // make sure to set to CA time
+    date_default_timezone_set('America/Los_Angeles');
+
+    // by default, show date + time
+    $date_format = 'F j h:m a, Y';
+
+    $current_year = intval(date('y'));
+    $timestamp_year = intval(date('y', $timestamp));
+    // If it's today, show the time
+    if ((time() - $timestamp) < 60 * 60 * 24) {
+        $date_format = 'g:m a';
+    }
+    // If it's this week, show the weekday
+    else if ((time() - $timestamp) < 60 * 60 * 24 * 7) {
+        $date_format = 'l g:m a';
+    }
+    // if it's this year, show the date + time
+    else if ($timestamp_year == $current_year) {
+        $date_format = 'F j g:m a';
+    }
+
+    return date($date_format, $timestamp);
+}
+
+?>

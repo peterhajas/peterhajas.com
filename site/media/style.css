@@ -197,22 +197,22 @@ footer * {
     vertical-align: middle;
 }
 
-.image-list {
+.item-list {
     list-style-type: none;
     width: 100%;
 }
 
-.image-list img {
+.item-list img {
     width: 100%;
 }
 
-.image-list p {
+.item-list p {
     line-height: 1;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
 }
 
-.image-item {
+.item {
     background: rgba(0, 0, 0, 0.15);
     border-radius: 16pt;
     padding-left: 20pt;
@@ -221,20 +221,12 @@ footer * {
     margin-bottom: 10pt;
 }
 
-.image-link {
-    float: right;
-}
-
-.image-location {
+.item-location {
     opacity: 0.33;
 }
 
-.image-description {
+.item-description {
     text-align: center;
-}
-
-.image-timestamp {
-    opacity: 0.66;
 }
 
 @media (prefers-color-scheme: dark) {
