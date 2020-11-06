@@ -2,52 +2,8 @@ Title: Pix
 <ul class='item-list'>
 <?php
 
-include '../common';
-
 $GLOBALS['dir'] = 'files';
-
-function timestamp_for_exif($exif) {
-    if ($exif == NULL) {
-        return NULL;
-    }
-
-    $datetime_str = $exif['DateTimeOriginal'];
-    if ($datetime_str == NULL) {
-        $datetime_str = $exif['DateTime'];
-    }
-    if ($datetime_str == NULL) {
-        return intval($exif['FileDateTime']);
-    }
-    return strtotime($datetime_str);
-}
-
-/* Sorts by EXIF dates reversed */
-function compare_exif($a, $b) {
-    $a_relative = $GLOBALS['dir'] ."/". $a;
-    $b_relative = $GLOBALS['dir'] ."/". $b;
-
-    /* Check for directories - these sort last */
-    if (!is_file($a_relative)) {
-        return -100;
-    }
-    if (!is_file($b_relative)) {
-        return -100;
-    }
-    /* Grab EXIF */
-    $a_exif = exif_read_data($a_relative);
-    $b_exif = exif_read_data($b_relative);
-
-    /* Grab dates */
-    $a_date = $a_exif['DateTimeOriginal'];
-    $b_date = $b_exif['DateTimeOriginal'];
-    /* Some replacements */
-    $a_date = str_replace(':', '', $a_date);
-    $a_date = str_replace(' ', '', $a_date);
-    $b_date = str_replace(':', '', $b_date);
-    $b_date = str_replace(' ', '', $b_date);
-
-    return compare_timestamps(timestamp_for_exif($a_exif), timestamp_for_exif($b_exif));
-}
+include '../common';
 
 function exif_get_latlon($exifdata) {
     if ($exifdata['GPSLatitude'] == NULL) {
@@ -83,8 +39,7 @@ function item_for($timestamp, $description, $image_relative_path, $latlon) {
 $files = scandir($GLOBALS['dir']);
 
 /* Sort the files */
-usort($files, 'compare_exif');
-
+usort($files, 'compare_files');
 
 
 foreach ($files as $file) {
@@ -92,7 +47,7 @@ foreach ($files as $file) {
     $relative_path = $GLOBALS['dir'] ."/". $file;
     if (is_file($relative_path)) {
 
-        $timestamp = 0;
+        $timestamp = timestamp_for_file($file);
         $description = NULL;
         $image_relative_path = NULL;
         $latlon = NULL;

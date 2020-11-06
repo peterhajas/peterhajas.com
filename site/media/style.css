@@ -225,10 +225,6 @@ footer * {
     opacity: 0.33;
 }
 
-.item-description {
-    text-align: center;
-}
-
 @media (prefers-color-scheme: dark) {
     body {
         color: white;
