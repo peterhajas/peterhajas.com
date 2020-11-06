@@ -89,16 +89,9 @@ blockquote, pre {
     margin-bottom: 0.75rem;
 }
 
-blockquote {
-    font-style: italic;
+blockquote, th {
     border-left-width: .125em;
     border-left-style: solid;
-}
-
-/* this styling match the blockquote above */
-th {
-    border-bottom-width: .125em;
-    border-bottom-style: solid;
 }
 
 blockquote * {
@@ -107,6 +100,9 @@ blockquote * {
     padding-bottom: 0;
 }
 
+blockquote {
+    font-style: italic;
+}
 
 hr {
     background: linear-gradient(to right, rgba(0,0,0,0), black, rgba(0,0,0,0));
