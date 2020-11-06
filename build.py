@@ -9,6 +9,7 @@ import http.server
 import socketserver
 import socket
 import threading
+import random
 
 from markdownfile import *
 from file_utils import *
@@ -172,7 +173,12 @@ def build_continuously():
     thread.start()
 
 def start_serving():
-    port_number = 8000
+    port_range_bottom = 8000
+    port_range_top = 8100
+    port_random = random.random()
+    port_random = port_random * (port_range_top - port_range_bottom)
+    port_random = int(port_random)
+    port_number = port_range_bottom + port_random
     print("serving at localhost:{}".format(port_number))
     http_handler = PeterHTTPRequestHandlerHandler
     httpd = socketserver.TCPServer(("", port_number), http_handler)
