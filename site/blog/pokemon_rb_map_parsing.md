@@ -2,6 +2,11 @@ Title: Parsing Pokémon Red and Blue Maps
 Date: 20200803 12:55
 Emoji: 🧐🗺
 
+A quick note: the [pokered](https://github.com/pret/pokered) repository has changed since I wrote this post, and the graphics are now always in `png` format. As a result, you'll *need to generate the `2bpp` files yourself to follow these steps. Thankfully, running `make` in the `pokered` root will generate these using `rgbgfx` from the [RGBDS](https://rgbds.gbdev.io) project. Here's a sample invocation:
+
+    rgbgfx  -o gfx/tilesets/overworld.2bpp gfx/tilesets/overworld.png
+---
+
 I previously wrote about [visualizing the connections between maps in Pokémon Red and Blue](/blog/pokemon_rb_connections.html). Next, I wanted to explore how the game's maps work in more detail. I couldn't find any documentation about how to read the map data. I spent some time understanding the format which I want to document here for anyone else looking to parse maps. Special thanks to the folks on the "pret" Discord channel whose comments I studied in an effort to understand the map format.
 
 ## Starting in Pallet Town
