@@ -12,11 +12,7 @@ If you want to build the website, you can use the included `build.py` script to 
 
 This will build the contents in `site`.
 
-Note that this relies on some dependencies:
-- `python3` with the following packages:
-    - `python-markdown`
-    - `pathlib`
-    - `shutil`
+Note that this relies on `python3` being installed. There are no additional dependencies.
 
 This will create a new directory called `out`. It's automatically ignored by `git` thanks to a rule in the `.gitignore`.
 

@@ -2,8 +2,6 @@ Title: Site Info
 
 This is a static webpage served from my web server. The site and its scripts are [stored in `git`](https://github.com/peterhajas/peterhajas.com/).
 
-[TOC]
-
 # Writing
 
 When composing on my Mac, I [write in `vim` and preview in Marked 2](/blog/marked2_vim.html). When writing on iPadOS or iOS, I write in iA Writer. Most content on this page is written in [Markdown](https://daringfireball.net/projects/markdown/).

@@ -1,4 +1,4 @@
-import markdown
+import markdown2
 from pathlib import Path
 from datetime import datetime
 import time
@@ -12,8 +12,7 @@ from constants import *
 # - smarty gives smartypants-style quotes
 # - toc gives us a table of contents
 # - md_in_html lets us use markdown in HTML
-markdown_extensions = ['meta', 'tables', 'smarty', 'toc', 'md_in_html']
-markdown_parser = markdown.Markdown(extensions = markdown_extensions)
+markdown_extensions = ['metadata', 'tables', 'smarty', 'toc', 'md_in_html']
 
 # A class representing a markdown / html / php file on the site
 class MarkdownFile:
@@ -34,18 +33,20 @@ class MarkdownFile:
 
     def prepare_metadata_and_html(self):
         # Process our HTML and metadata
-        self.html = markdown_parser.convert(self.contents)
-        metadata = markdown_parser.Meta
+        self.html = markdown2.markdown(self.contents, extras=markdown_extensions)
+        metadata = self.html.metadata
+        if metadata == None:
+            metadata = { }
         # If we do have a metadata dictionary, we have no metadata
         if len(metadata.keys()) == 0:
             return
         # Otherwise, populate our metadata
-        if 'title' in metadata.keys():
-            self.title = metadata['title'][0]
-        if 'emoji' in metadata.keys():
-            self.emoji = metadata['emoji'][0]
-        if 'date' in metadata.keys():
-            date_string = metadata["date"][0]
+        if 'Title' in metadata.keys():
+            self.title = metadata['Title']
+        if 'Emoji' in metadata.keys():
+            self.emoji = metadata['Emoji']
+        if 'Date' in metadata.keys():
+            date_string = metadata['Date']
             self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
 
     def suffix(self, contents_path):

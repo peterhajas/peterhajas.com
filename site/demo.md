@@ -1,6 +1,5 @@
 Title: The Demo Page
 
-[TOC]
 
 ---
 
