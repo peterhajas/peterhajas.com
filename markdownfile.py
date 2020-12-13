@@ -24,6 +24,8 @@ class MarkdownFile:
     emoji = None
     # The contents associated with this file
     contents = ""
+    # The contents path
+    contents_path = None
     # The HTML associated with this file
     html = None
     # The path to export this file to, or None if it has none
@@ -33,8 +35,12 @@ class MarkdownFile:
 
     def prepare_metadata_and_html(self):
         # Process our HTML and metadata
-        self.html = markdown2.markdown(self.contents, extras=markdown_extensions)
-        metadata = self.html.metadata
+        metadata = None
+        if self.should_skip_markdown_processing():
+            self.html = self.contents
+        else:
+            self.html = markdown2.markdown(self.contents, extras=markdown_extensions)
+            metadata = self.html.metadata
         if metadata == None:
             metadata = { }
         # If we do have a metadata dictionary, we have no metadata
@@ -49,8 +55,13 @@ class MarkdownFile:
             date_string = metadata['Date']
             self.date = datetime.strptime(date_string, "%Y%m%d %H:%M")
 
-    def suffix(self, contents_path):
-        if contents_path.suffix == '.php':
+    def should_skip_markdown_processing(self):
+        if self.contents_path == None:
+            return False
+        return self.contents_path.suffix == '.php'
+
+    def suffix(self):
+        if self.contents_path.suffix == '.php':
             return '.php'
         return '.html'
 
@@ -62,10 +73,11 @@ class MarkdownFile:
     def __init__(self, environment, contents_path=None, export_path=None, contents=None):
         self.environment = environment
         self.contents = contents
+        self.contents_path = contents_path
         self.export_path = export_path
         if contents_path != None:
             self.contents = contents_path.read_text(encoding='utf8')
-            self.export_path = self.environment.output_root.joinpath(contents_path.relative_to(self.environment.input_root)).with_suffix(self.suffix(contents_path))
+            self.export_path = self.environment.output_root.joinpath(contents_path.relative_to(self.environment.input_root)).with_suffix(self.suffix())
         self.prepare_metadata_and_html()
 
     # A pretty-formatted date for self
@@ -128,6 +140,7 @@ class MarkdownFile:
         # - after.html
 
         page_html = self.environment.before_html + "\n"
+
         page_html += self.decorated_html()
         page_html += self.environment.after_html
 

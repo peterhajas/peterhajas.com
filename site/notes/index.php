@@ -1,4 +1,3 @@
-Title: Notes
 <ul class='item-list'>
 <?php
 
