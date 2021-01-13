@@ -14,8 +14,10 @@ I previously wrote about [visualizing the connections between maps in Pokémon R
 We'll use the game's starting area, Pallet Town, as an example. If you haven't played Pokémon Red and Blue, it looks like this:
 
 ![A screenshot of the player character in Pallet Town](/media/pokemon_rb_pallet_town.jpeg)
+
 <aside>
-This image was captured from an emulator running a compiled version of `pokered`</aside>
+This image was captured from an emulator running a compiled version of `pokered`
+</aside>
 
 In the [`pokered`](https://github.com/pret/pokered) repository, individual city, route, and interior maps are stored in the `maps` directory as `.blk` files. Within the Pokémon map editing community these are known as "blockfiles".
 
