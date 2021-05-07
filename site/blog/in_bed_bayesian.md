@@ -16,31 +16,30 @@ While spending some time at my home alone recently, I wanted to play with automa
 
 Here's my "am I at home in bed" `binary_sensor`:
 
-```
-# Am I at home in bed?
-- platform: bayesian
-  name: "peter_in_bed"
-  prior: 0.33
-  probability_threshold: 0.9
-  observations:
-    - entity_id: "person.peter_hajas"
-      prob_given_true: 0.5
-      platform: "state"
-      to_state: "home"
-    - entity_id: "sensor.phajas_phone_battery_state"
-      prob_given_true: 0.75
-      prob_given_false: 0.05
-      platform: "state"
-      to_state: "Charging"
-    - entity_id: "sun.sun"
-      prob_given_true: 0.75
-      platform: "state"
-      to_state: "below_horizon"
-    - entity_id: "binary_sensor.orion_active"
-      prob_given_true: 0.4
-      platform: "state"
-      to_state: "off"
-```
+
+    # Am I at home in bed?
+    - platform: bayesian
+      name: "peter_in_bed"
+      prior: 0.33
+      probability_threshold: 0.9
+      observations:
+        - entity_id: "person.peter_hajas"
+          prob_given_true: 0.5
+          platform: "state"
+          to_state: "home"
+        - entity_id: "sensor.phajas_phone_battery_state"
+          prob_given_true: 0.75
+          prob_given_false: 0.05
+          platform: "state"
+          to_state: "Charging"
+        - entity_id: "sun.sun"
+          prob_given_true: 0.75
+          platform: "state"
+          to_state: "below_horizon"
+        - entity_id: "binary_sensor.orion_active"
+          prob_given_true: 0.4
+          platform: "state"
+          to_state: "off"
 
 These sensors are written in YAML. You describe a prior (at any given time, how likely is it this is true?), an optional threshold (only be true if the chance is above the threshold), and observations. These observations are in terms of entities or Home Assistant templates. Here's a breakdown of this sensor:
 
