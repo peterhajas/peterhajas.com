@@ -53,6 +53,7 @@ These sensors are written in YAML. You describe a prior (at any given time, how 
 # How Well Does it Work?
 
 I'd say it works pretty well. Some observations:
+
 - It's awesome to throw the phone on the nightstand charging pad and have everything shut off.
 - It stinks when I charge my phone at night and everything turns off. I might need to play with the probabilities (if my machine is logged in, there's basically a 0% chance I'm in bed, for example) or add other sensing (did another room recently see motion?) to help in this case.
 - I have yet to try it with multiple users :-). My wife (yes, wife! More on this in a future post) would need her own version of this sensor to enable turning lights off, otherwise I could leave her in the dark.
