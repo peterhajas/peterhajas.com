@@ -225,6 +225,11 @@ footer * {
     opacity: 0.33;
 }
 
+.pokemon_map_generator_shots * {
+    width: 100%;
+    image-rendering: crisp-edges;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         color: white;
