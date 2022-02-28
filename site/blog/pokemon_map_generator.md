@@ -35,7 +35,7 @@ In addition to letting you visualize maps from Pokémon Red and Blue, this site 
 
 Here's how it works:
 
-- I wrote a small python program to gather data from the [pokered repository](plh-evil) in JSON format. It scrapes out the built-in maps and their metadata, the blocksets, and the tilesets.
+- I wrote a small python program to gather data from the [pokered repository](https://github.com/pret/pokered) in JSON format. It scrapes out the built-in maps and their metadata, the blocksets, and the tilesets.
 - When you click "Generate", we find all the maps in Pokémon that have the tileset you chose.
 - For each of these maps, we record their blocks and what blocks neighbor them. For example, if block `77` in `OVERWORLD` has block `12` north of it in a map, we record this. I also record the frequency that these blocks occur, but this is not currently used in map generation. These neighbors are stored in a dictionary.
 - Starting from the top-left, we choose a random block that is known to be used by maps with this tileset. These are just the keys for the above neighbors dictionary.
