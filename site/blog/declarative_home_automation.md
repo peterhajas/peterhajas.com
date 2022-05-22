@@ -53,7 +53,7 @@ I have a simple [blueprint](https://www.home-assistant.io/docs/automation/using_
 
     blueprint:
       name: Binary Sensor to Entity
-      description: Tie a binary sensor (likely from a template) to a entity state
+      description: Tie a binary sensor (likely from a template) to an entity state
       domain: automation
       input:
         source_sensor:
