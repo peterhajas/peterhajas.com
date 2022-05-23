@@ -24,7 +24,7 @@ While these rules sound simple, they have edge cases that will bite you when the
 2. 9:00PM comes, and the lights turn off
 3. I'm out in the dark!
 
-You could solve this by introducing more state. You might add a "lights on due to time" and "lights on due to door opening" state to bookkeep when to perform actions of the automation. But what if we add another rule? For example: if the back camera detects a person or dog, turn the lights on for three minutes
+You could solve this by introducing more state. You might add a "lights on due to time" and "lights on due to door opening" state to bookkeep when to perform actions of the automation. But what if we add another rule? For example: if the back camera detects a person or dog, turn the lights on for three minutes.
 
 Adding additional "what am I doing" state makes the complexity explode for state bookkeeping.
 
