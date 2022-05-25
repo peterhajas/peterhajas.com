@@ -28,7 +28,7 @@ You could solve this by introducing more state. You might add a "lights on due t
 
 Adding additional "what am I doing" state makes the complexity explode for state bookkeeping.
 
-## A Declarative Model: "Should" [State](State.md)
+## A Declarative Model: "Should" State
 
 In my smart home, I take all this input state and derive a "should be" state out of it. The patio light automation has just one rule:
 
