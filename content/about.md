@@ -4,7 +4,7 @@ title: About
 
 ![Peter looking cool in front of a pool](/peter_pool.jpg "Peter looking cool in front of a pool")
 
-I am a software developer at [Apple](http://apple.com). I'm from Minnesota. I graduated from [RPI](http://rpi.edu) in 2012.
+I am a software developer at [Apple](http://apple.com). I'm from Minnesota. I graduated from [RPI](http://rpi.edu) in 2012. I am a strong advocate of [internet independence](/internet_independence).
 
 You can contact me at [peter@haj.as](mailto:peter@haj.as).
 
