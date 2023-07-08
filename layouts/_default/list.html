@@ -1,0 +1,17 @@
+{{ define "title" -}}
+{{ .Title | title }}
+{{- end }}
+{{ define "main" -}}
+{{ .Content }}
+<ul>
+{{- range.RegularPages }}
+<li>
+    {{ if .Param "Date" }}
+	<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+    &nbsp;
+    {{- end }}
+	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+</li>
+{{- end }}
+</ul>
+{{- end }}

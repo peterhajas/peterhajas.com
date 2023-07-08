@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Pokémon Map Generator </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Pokémon Map Generator"><h2>Pokémon Map Generator</h2>
+<h3>
+
+<time datetime="2022-02-27T20:00:00-07:00">2022-02-27</time>
+
+</h3></h1>
+<article>
+
+<p><img src="/pokemon_map_generator/cave_city.png" alt="A map with caves in a city"></p>
+<p><a href="/pokemon_mapgen">The generator is available on my website here</a>.</p>
+<p>I recently took a week long vacation. I love working on recreational programming projects during a vacation. It&rsquo;s a great chance to try programming in a space I am less familiar with.</p>
+<p>This vacation, I worked on something I&rsquo;ve wanted for a long time: a Pokémon map generator! I&rsquo;ve always been interested in the maps in the Game Boy Pokémon games (read more about <a href="/blog/pokemon_rb_map_parsing">parsing the data format</a> and <a href="/blog/pokemon_rb_connections">visualizing the map connections</a>). There was something magical about exploring these areas, pouring over towns in strategy guides, and designing my own maps on paper.</p>
+<h1 id="generated-maps">Generated Maps</h1>
+<p>I love looking at the maps you can generate with this. Here are a few of them that stood out to me:</p>
+<p>A Town with a Cave</p>
+<p><img src="/pokemon_map_generator/cave_town.png" alt="A map with a cave next to a town with large buildings"></p>
+<p>Shop by the Sea</p>
+<p><img src="/pokemon_map_generator/shop_by_the_sea.png" alt="A map with a shop near the water"></p>
+<p>Skyscraper By a Lab</p>
+<p><img src="/pokemon_map_generator/skyscraper_by_lab.png" alt="A map with a lab next to a skyscraper"></p>
+<p>Mountain Route</p>
+<p><img src="/pokemon_map_generator/mountain_route.png" alt="A route map with mountains next to it"></p>
+<p>The Super Nintendo Room</p>
+<p><img src="/pokemon_map_generator/snes_room.png" alt="A map with a bunch of Super Nintendo consoles on tables"></p>
+<h1 id="the-algorithm">The Algorithm</h1>
+<p>In addition to letting you visualize maps from Pokémon Red and Blue, this site also lets you generate your own maps using a (naive) <a href="https://en.wikipedia.org/wiki/Markov_chain">Markov</a>-style approach.</p>
+<p>Here&rsquo;s how it works:</p>
+<ul>
+<li>I wrote a small python program to gather data from the <a href="https://github.com/pret/pokered">pokered repository</a> in JSON format. It scrapes out the built-in maps and their metadata, the blocksets, and the tilesets.</li>
+<li>When you click &ldquo;Generate&rdquo;, we find all the maps in Pokémon that have the tileset you chose.</li>
+<li>For each of these maps, we record their blocks and what blocks neighbor them. For example, if block <code>77</code> in <code>OVERWORLD</code> has block <code>12</code> north of it in a map, we record this. I also record the frequency that these blocks occur, but this is not currently used in map generation. These neighbors are stored in a dictionary.</li>
+<li>Starting from the top-left, we choose a random block that is known to be used by maps with this tileset. These are just the keys for the above neighbors dictionary.</li>
+<li>We then fill the map from left to right, top to bottom, trying to find blocks that can fit in with the constraints of the already built map. If the map is unsatisfiable, it&rsquo;s thrown out and we attempt again (up to 2000 iterations - and we may sometimes never find a solution). This is part of the generation algorithm that I&rsquo;d like to improve and get feedback on.</li>
+<li>Once the map is complete, we render it using the techniques described below.</li>
+</ul>
+<p>Note that it has bugs! I&rsquo;d recommend not getting larger than 8x8 for most tilesets. Some tilesets are missing, like &ldquo;DOJO&rdquo; and &ldquo;REDS_HOUSE&rdquo;.</p>
+<h1 id="rendering-maps">Rendering Maps</h1>
+<p>To render both built-in and generated maps, the site uses a similar mechanism to my Emoji-based approach (although much faster than rendering all that unicode!). It parses the tileset and blocksets, and renders them using <a href="http://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> into an image element. This is great for saving the map for use offline.</p>
+<p>Because of my very fond nostalgia for the <a href="https://en.wikipedia.org/wiki/Game_Boy_Color">Game Boy Color</a>, I also added support for rendering using multiple palettes. The Game Boy Color could <a href="https://en.wikipedia.org/wiki/Game_Boy_Color#Color_palettes">switch palettes</a> based off of the button combination you held down when it booted. As a kid, I found it fun to hold down the buttons and see what cool palettes I could see Pokémon in. I also added a &ldquo;grayscale&rdquo; and &ldquo;gameboy&rdquo; palette for completeness - you can see maps rendered in their green original Game Boy glory!</p>
+<hr>
+<p>I had fun building this generator, and I hope you have fun playing with it! <a href="/about">Get in touch</a> if you have questions, feedback, or if you generate any really cool maps!</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

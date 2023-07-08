@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+<head>
+	<title>{{ .Site.Title }} / {{ if not .IsHome }}{{ .Title | title }} {{ end }}</title>
+	<link rel="canonical" href="{{ .Site.BaseURL }}">
+	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+{{ partial "nav.html" }}
+<main>
+<h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
+<article>
+{{ block "main" . }}
+{{ .Content }}
+{{ end }}
+</article>
+</main>
+<hr>
+{{ block "footer" . }}
+{{ partial "footer" }}
+{{ end }}
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Peterometer </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Peterometer"><h2>Peterometer</h2>
+<h3>
+
+<time datetime="2022-12-18T06:10:00-07:00">2022-12-18</time>
+
+</h3></h1>
+<article>
+
+<p>I&rsquo;ve written a few times on this site about the Peterometer, my name for a quantified-self dashboard.</p>
+<p>Over the recent Thanksgiving holiday, I worked on <a href="/peterometer/">a new version of the Peterometer</a> that I&rsquo;m ready to share.</p>
+<p><a href="/peterometer/"><img src="/peterometer.jpeg" alt="An image of the peterometer"></a></p>
+<h1 id="inspiration">Inspiration</h1>
+<p>The site is themed after the visuals in the 2013 film <a href="https://en.wikipedia.org/wiki/Oblivion_(2013_film)">Oblivion</a>, which is a great movie with excellent futuristic UI (and music). I found <a href="https://gmunk.com/OBLIVION-GFX">a page</a> by one of the visual artists explaining how they built the UI for the movie. I like the clean lines, simple colors, and graphs. I used this as inspiration for building the website itself - a cool futuristic font, a neat color palette, and 3D graphics animating in a subtle way.</p>
+<p>I got feedback from friends and family - thanks to <a href="https://buzzert.net">James</a> and <a href="http://zanneth.com">Charles</a> for pushing me to use a consistent palette, and thanks to my sister for pointing out that my previously chosen palette was ugly.</p>
+<p>I listened to the <a href="https://en.wikipedia.org/wiki/Tron:_Legacy_(soundtrack)">TRON: Legacy soundtrack</a> while working on this site.</p>
+<h1 id="the-data">The Data</h1>
+<p>I log a lot of data about myself:</p>
+<ul>
+<li>Health data automatically through my watch, which I&rsquo;ve worn since April 2015</li>
+<li>Food, which I have logged since March 2019</li>
+<li>Hydration, which I have logged since December 2018</li>
+</ul>
+<p>It&rsquo;s not hard or irritating for me to log when I eat or drink, and it makes me more mindful of what I <em>do</em> end up ingesting.</p>
+<p>The site is populated by the <a href="https://www.healthexportapp.com">Health Auto Export</a> app, which runs in the background on my phone. It takes my HealthKit database and periodically slurps up the last 7 days of data and sends it to the website. I like this because I don&rsquo;t have to think about the site at all - I just log data like I normally do, and it shows up on the Peterometer after a few days. I like that the Peterometer fits seamlessly into habits I&rsquo;ve already built.</p>
+<h1 id="the-site">The Site</h1>
+<p>I use the <a href="https://threejs.org">Three.js</a> library for rendering the 3D data. I wrote some code to line up Three.js objects with DOM elements, which made it easy to use flexbox to position the elements of the site. The site is responsive to window size changes.</p>
+<h1 id="next-steps">Next Steps</h1>
+<p>I have a 3D scan of my body that I&rsquo;d like to add to the page. I wish I could use a tool like <code>ffmpeg</code> to downsize the model, make it low-poly, and put it on the site. If you know how to do this, email me!</p>
+<p>I would also like to have a display in my home dedicated to showing this information. It would be nice to see this as a kind of &ldquo;Peter Health Dashboard&rdquo; throughout the day, and it may end up influencing my behavior.</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

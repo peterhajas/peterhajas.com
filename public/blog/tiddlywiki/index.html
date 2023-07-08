@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / The Recursive Power of TiddlyWiki </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_The Recursive Power of TiddlyWiki"><h2>The Recursive Power of TiddlyWiki</h2>
+<h3>
+
+<time datetime="2022-06-02T22:22:00-07:00">2022-06-02</time>
+
+</h3></h1>
+<article>
+
+<p>I recently learned about <a href="https://tiddlywiki.com">TiddlyWiki</a>. It&rsquo;s wiki software that you run on your computer.</p>
+<p>There are lots of these &ldquo;second brain&rdquo; pieces of software - Notion, Obsidian, vimwiki. But TiddlyWiki has some special tricks up its sleeve that I think put it into a league of its own. There are two components of it that I find so intriguing.</p>
+<h1 id="it-includes-its-own-viewer-and-editor">It includes its own viewer and editor</h1>
+<p>If I were using vimwiki (which I used to, heavily!), I&rsquo;d store all my files on my computer (like in <code>~/.vimwiki</code>, which I had symlinked to my NextCloud instance). But I&rsquo;d need a way to view and edit those files. I used <code>vim</code> and Marked 2. TiddlyWiki is a self-contained HTML file. It has everything in it - the editor, the viewer, a filesystem implementation, but it&rsquo;s all saved to one HTML file. This is very novel - it&rsquo;s the ultimate portability. I can sync one file to copy my entire database, viewing experience and all. I can make copies of to back it up or try new things.</p>
+<h1 id="it-is-built-in-itself">It is built in itself</h1>
+<p>This TiddlyWiki&rsquo;s superpower. It is a tool that is built inside of itself. Besides a small kernel of core functionality, the rest of the system is represented as &ldquo;tiddlers&rdquo; - individual notes / files. The sidebar menu, the story list of tiddlers, the editor toolbar, <em>all of this</em> is represented as Tiddlers. This makes it very easy to add new functionality to these views. For example, I added an Emoji picker and indicator to all my Tiddlers in a few minutes. This can be done with the embedded powerful template language. TiddlyWiki supports key-value storage (called &ldquo;fields&rdquo;) on tiddlers, enabling you to make your own taxonomy and relationships.</p>
+<p>To help you wrap your mind around this concept, here are things that are <em>just tiddlers</em> in TiddlyWiki:</p>
+<ul>
+<li>the menus and user interface</li>
+<li>the stylesheets that customize the UI</li>
+<li>the user settings (metrics, themes, behaviors)</li>
+<li>the state of the wiki, like open tiddlers</li>
+<li>plugins, which can contain JavaScript, CSS, and tiddlers</li>
+<li>keyboard shortcuts, including the ability to make your own</li>
+</ul>
+<p>Much of this UI comes from use of tags, which is just another field on a tiddler. This lets you put things into the system easily. If you want a new item in the sidebar, just tag it with <code>$:/tags/SideBarSegment</code>. If you want something new in the view for each tiddler, tag it with <code>$:/tags/ViewTemplate</code>.</p>
+<hr>
+<p>I found this software a few days ago, and I&rsquo;ve already become enamored with it. I think this site might eventually become a TiddlyWiki.</p>
+<p>As they say in their <a href="https://tiddlywiki.com/static/Discover%2520TiddlyWiki.html">Discover</a> page:</p>
+<blockquote>
+<p>You&rsquo;ve never seen anything like TiddlyWiki</p>
+</blockquote>
+<p>I agree - I recommend you <a href="https://tiddlywiki.com">go play with it</a>!</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-./build.py
-rsync -azvvr --exclude '.*' out/* peterhajas.com:/var/www/html

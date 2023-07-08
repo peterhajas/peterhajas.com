@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Peterometer Chapter 2: Counting Raw Eggs </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Peterometer Chapter 2: Counting Raw Eggs"><h2>Peterometer Chapter 2: Counting Raw Eggs</h2>
+<h3>
+
+<time datetime="2020-01-29T21:24:00-07:00">2020-01-29</time>
+
+</h3></h1>
+<article>
+
+<p><em>This is the second in the Peterometer series. The first can be found <a href="/blog/peterometer_1_hydration">here</a>.</em></p>
+<p>After I felt comfortable tracking hydration, I wanted to introduce other metrics tracking into my life. I&rsquo;ve been tracking the food I&rsquo;ve eaten since March 2019. With less than a week of downtime, I&rsquo;ve tracked <strong>everything I&rsquo;ve eaten</strong> since that time.</p>
+<p>I track my food in the <a href="https://loseit.com/">LoseIt</a> app. I usually log the food right after eating it, and I really enjoy seeing how many calories I&rsquo;ve eaten that day.</p>
+<p>In the past year, I&rsquo;ve also become <em>really</em> into eating raw eggs. I enjoy them on starchy foods, like ramen or rice. Kind of like my own version of <a href="https://en.wikipedia.org/wiki/Tamago_kake_gohan">tamago kake gohan</a>. In a given week, I&rsquo;ll end up eating a few meals with raw eggs.</p>
+<p>But how many raw eggs? Let&rsquo;s find out!</p>
+<h1 id="exporting-loseit-data">Exporting LoseIt Data</h1>
+<p>LoseIt lets you export the food you&rsquo;ve eaten on a weekly basis from their website. These export as a CSV file, which is perfect for processing and backup. If you&rsquo;re a Premium member, go to your &ldquo;Insights&rdquo; tab on the website and then look for &ldquo;Weekly Summary&rdquo; and &ldquo;Export to spreadsheet&rdquo;. I export my data every 2 or 3 weeks, and collect it all in a folder on my machine. These files are numbered based on their starting day since January 1 2000:</p>
+<pre><code>$ ls
+WeeklySummary6637.csv
+WeeklySummary6644.csv
+WeeklySummary6651.csv
+WeeklySummary6658.csv
+WeeklySummary6665.csv
+WeeklySummary6672.csv
+WeeklySummary6679.csv
+...
+</code></pre>
+<h1 id="generating-a-master-food-csv">Generating a master food CSV</h1>
+<p>I wrote a simple shell script to combine all these summaries, remove workouts (I track these separately), and then generate a master <code>combine.csv</code> file with all my food in one place:</p>
+<pre><code>#!/bin/sh
+# delete the combine file
+rm combine.csv
+# concatenate all the csvs, sorting
+echo &quot;Date,Name,Type,Quantity,Units,Calories,Fat (g),Protein (g),Carbohydrates (g),Saturated Fat (g),Sugars (g),Fiber (g),Cholesterol (mg),Sodium (mg)&quot; &gt; combine.csv
+cat *.csv | grep -v &quot;Calorie Burn&quot; | grep -v &quot;Date,Name&quot; | grep -v &quot;HealthKit&quot; | sort &gt;&gt; combine.csv
+</code></pre>
+<p>With this, we can <code>cat</code> out the combined CSV file to see the food I&rsquo;ve eaten:</p>
+<pre><code>$ cat combine.csv
+Date,Name,Type,Quantity,Units,Calories,Fat (g),Protein (g),Carbohydrates (g),Saturated Fat (g),Sugars (g),Fiber (g),Cholesterol (mg),Sodium (mg)
+01/01/2020,&quot;Sandwich, Sub, JJ Gargantuan&quot;,Lunch,1.5,Each,&quot;1,656&quot;,82.50,108,124.50,22.50,n/a,7.50,268.50,5121
+01/01/2020,Cookie,Snacks,4.0,Servings,144,12,4,72,6,32,0,0,230
+...
+</code></pre>
+<p>(this example highlights a problem with my use of <code>sort</code> in the script: 01/01/2020 sorts alphabetically before 12/01/2019)</p>
+<h1 id="analyzing-the-food-ive-eaten">Analyzing the food I&rsquo;ve eaten</h1>
+<p>We can use some simple utilities to query the file. For example, how many food entries have I logged?</p>
+<pre><code>$ cat combine.csv | wc -l
+3984
+</code></pre>
+<p>Wow! That&rsquo;s a lot of food. This averages to around 12 entries per day.</p>
+<p>We can <code>grep</code> for other data, like how many burritos I&rsquo;ve had.</p>
+<pre><code>$ cat combine.csv | grep -i burrito | wc -l
+38
+</code></pre>
+<p>I&rsquo;ve eaten a burrito every 9 days or so.</p>
+<h1 id="counting-raw-eggs">Counting raw eggs</h1>
+<p>But <strong>how many raw eggs</strong> have I eaten? I usually log these when I eat <em>actual raw eggs</em> (when I cook an egg dish on the stove without oil I will also count it as raw eggs). Let&rsquo;s <code>grep</code> the CSV file:</p>
+<pre><code>$ cat combine.csv |grep -i egg
+01/02/2020,Egg raw,Dinner,2.0,Servings,140,9.60,12.60,0.80,3.20,n/a,n/a,372,142
+01/02/2020,Scrambled Eggs,Breakfast,1.0,Each,91,7,6,1,2,0.80,0,169,88
+...
+</code></pre>
+<p>This <code>grep</code> picked up anything with &ldquo;egg&rdquo; in the title, like scrambled eggs. We only want to look for raw eggs - it&rsquo;s simple enough to do that by modifying our <code>grep</code> invocation. But keep in mind the header line of <code>combine.csv</code>:</p>
+<pre><code>Date,Name,Type,Quantity,...
+</code></pre>
+<p>The fourth column is the <em>quantity</em>. This is how many raw eggs I actually ate. So we really want to sum that column.</p>
+<p>We can print the fourth column with a bit of <code>awk</code>:</p>
+<pre><code>$ cat combine.csv |grep -i egg |grep -i raw | awk -F, '{ print $4; }'
+2.0
+2.0
+2.0
+2.0
+2.0
+...
+</code></pre>
+<p>and sum it with a bit more:</p>
+<pre><code>$ cat combine.csv |grep -i egg |grep -i raw | awk -F, '{ eggs+=$4; } END { print eggs; } '
+276.75
+</code></pre>
+<p>(yes, I did eat non-whole portions of eggs some days)</p>
+<p>276.75 raw eggs. That&rsquo;s nearly two dozen dozen raw eggs!</p>
+<h1 id="raw-egg-consumption-based-on-day-of-the-week">Raw egg consumption based on day of the week</h1>
+<p>As a fun visualization, I wanted to see if I ate raw eggs more on a particular day of the week. I did this using some simple categorization in Numbers:</p>
+<p><img src="/peterometer_2a_eggs_per_day.png" alt="Raw eggs visualized by day"></p>
+<p>Wow! Based on this, I had way fewer raw eggs on Fridays. Tuesdays and Thursdays are lighter weekdays for raw egg consumption.</p>
+<h1 id="looking-forward-to-more-food-analysis">Looking forward to more food analysis</h1>
+<p>Counting raw egg was a fun test of the data I&rsquo;ve been gathering for the past 10 months. I&rsquo;m really excited about the other visualizations and analysis I can do on the food that I&rsquo;ve eaten.</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

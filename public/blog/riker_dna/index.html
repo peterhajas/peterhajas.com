@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Analyzing My Dog&#39;s DNA </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Analyzing My Dog&#39;s DNA"><h2>Analyzing My Dog&#39;s DNA</h2>
+<h3>
+
+<time datetime="2019-01-21T20:10:00-07:00">2019-01-21</time>
+
+</h3></h1>
+<article>
+
+<p>Dogs are awesome. Since March of 2014, I&rsquo;ve owned a little dog named Riker:</p>
+<p><img src="/riker.jpeg" alt="Riker the small dog outside"></p>
+<p>I adopted her from the Humane Society in Milpitas. She was 8 weeks old. She recently had her fifth birthday. Happy birthday Riker! I love her very much.</p>
+<p>Anyways, when I got her, I was  curious about what type of dog she was. She looks like a chihuahua, but has some features that don&rsquo;t match the traditional chihuahua:</p>
+<ul>
+<li>Curled, fluffy tail</li>
+<li>Gradient-banded coat near her front legs</li>
+<li>Sheds <em>mountains</em> of fur</li>
+<li>Generally pleasant demeanor</li>
+</ul>
+<p>I thought she might have been part <a href="https://en.wikipedia.org/wiki/Shiba_Inu">Shiba Inu</a>. These dogs are adorable and have the curled tail and gradient-banded coat. Here&rsquo;s one from Wikipedia:</p>
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/6/6b/Taka_Shiba.jpg">A shiba inu dog outside on grass</a></p>
+<p>Doesn&rsquo;t this dog look like Riker? With the tail and banded coat? I thought so too.</p>
+<p>Whenever other people asked me about Riker, I would tell them she&rsquo;s &ldquo;part chihuahua, part shiba inu&rdquo;. They believed me, but I didn&rsquo;t have any proof.</p>
+<h1 id="enter-embark">Enter Embark</h1>
+<p>A good friend of mine told me about a service where you can get your dog&rsquo;s DNA analyzed. It&rsquo;s called <a href="https://www.talkable.com/x/Qnraz2">EmbarkVet</a> (disclaimer: this is a referral link). Embark gives your dog a breed report, health analysis, and some cool genetic information. It&rsquo;s like 23andMe for your dog.</p>
+<p>I signed up for the service. A few days later they sent me a DNA swab kit. It&rsquo;s like an oversized q-tip. After sticking this in Riker&rsquo;s cheeks for 30 seconds or so (she wasn&rsquo;t happy about this, but I told her it was for science), I packed the kit in the return shipping and sent it off.</p>
+<p>Over the next few weeks, Embark notified me as the analysis progressed. After 3 weeks or so, my pressing question was answered: they told me what type of dog she was!</p>
+<h1 id="less-than-50-chihuahua">Less than 50% chihuahua</h1>
+<p>To my absolute amazement, Riker is not even mostly chihuahua! The results confirm that <strong>Riker is a pomeranian</strong>! The full breakdown is:</p>
+<ul>
+<li>50% <a href="https://en.wikipedia.org/wiki/Pomeranian_(dog)">Pomeranian</a> (this accounts for the curved tail, banded coat, shedding, and how she&rsquo;s nice to be around)</li>
+<li>32.5% <a href="https://en.wikipedia.org/wiki/Chihuahua_(dog)">Chihuahua</a></li>
+<li>6.9% <a href="https://en.wikipedia.org/wiki/Miniature_Pinscher">Miniature Pinscher</a> (no relation to the <a href="https://en.wikipedia.org/wiki/Dobermann">larger dog</a>)</li>
+<li>10.6% &ldquo;Supermutt&rdquo; (small amounts of DNA from other dogs, including <a href="https://en.wikipedia.org/wiki/Cocker_Spaniel">Cocker Spaniel</a>)</li>
+</ul>
+<p>I also learned that she has 1.5% &ldquo;Wolfiness&rdquo;, which indicates ancient wolf genes that have survived through to modern domesticated dogs. Cool!</p>
+<p><em><strong>Note:</strong></em> I am not a trained biologist. Regrettably, I spent much of my college biology course playing <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Crystal">Pokémon Crystal</a>, although I do remember some parts of the genetics sections.</p>
+<h1 id="a-family-tree">A family tree</h1>
+<p>Embark also determines haplotypes, which means they can tell what genes of Riker&rsquo;s came from which parents. This lets them generate a family tree:</p>
+<p><img src="/riker_family_tree.jpeg" alt="Riker&rsquo;s family tree"></p>
+<p>This means Riker&rsquo;s parents were a chihuahua mix and a purebred pomeranian.</p>
+<h1 id="analyzing-my-dogs-dna">Analyzing my dog&rsquo;s DNA</h1>
+<p>Besides finally being able to see my dog&rsquo;s genetic history, I was <em>super</em> happy that I could download the raw genetic data. When I unzipped the file, I was left with two text files:</p>
+<pre><code>riker.tfam // 75B
+riker.tped // 6.7MB
+</code></pre>
+<p>(I renamed them for brevity)</p>
+<p>I searched for information on these file types. They both seem to be related to the free <a href="https://www.cog-genomics.org/plink2">PLINK</a> genetics software package.</p>
+<p>If we download PLINK and run it on these files, we get:</p>
+<pre><code>$ plink --tfile riker
+Processing .tped file... 77%
+Error: Invalid chromosome code '27' on line 166046 of .tped file.
+(This is disallowed for humans.  Check if the problem is with your data, or if
+you forgot to define a different chromosome set with e.g. --chr-set.)
+</code></pre>
+<p>This is pretty cool! PLINK defaults to human DNA. This file is from a dog, not a person. Looking through the plink <code>--help</code> file, we can see that they have support for lots of species:</p>
+<pre><code>--cow/--dog/--horse/--mouse/--rice/--sheep : Shortcuts for those species.
+</code></pre>
+<p>(I wonder why rice is so interesting to the software&hellip;)</p>
+<p>Anyways, let&rsquo;s run it with the <code>--dog</code> flag:</p>
+<pre><code>$ plink --dog --tfile riker
+Processing .tped file... done.
+plink.bed + plink.bim + plink.fam written.
+</code></pre>
+<p>PLINK wrote these files to the same directory:</p>
+<pre><code>$ ls
+plink.bed
+plink.bim
+plink.fam
+plink.log
+riker.tfam
+riker.tped
+</code></pre>
+<p>These look to be PLINK metadata files that the software uses to do its processing.</p>
+<p>We can use PLINK to do some interesting sounding genetic computations. For example, if we run it with the <code>--homozyg</code> flag, we can see homozygosity reports. According to Wikipedia (I must have been in <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_universe#Johto">Johto</a> during this part of biology), <a href="https://en.wikipedia.org/wiki/Zygosity">zygosity</a> is &ldquo;the degree of similarity of the alleles for a trait in an organism&rdquo;. Running it produces:</p>
+<pre><code>$ plink --dog --tfile riker --homozyg
+1 dog (0 males, 1 female) loaded from .fam.
+--homozyg: Scan complete, found 27 ROH.
+Results saved to plink.hom + plink.hom.indiv + plink.hom.summary .
+</code></pre>
+<p>The software knows that the dog is female, which is pretty cool. The files it generated seem to indicate the degree of homozygosity for her individual genes. Neat!</p>
+<p>If we run with the <code>--het</code> flag, we can see inbreeding coefficients. The file it produces show this:</p>
+<pre><code>O(HOM)    E(HOM) N(NM)  F
+     0 3.051e+04 61022 -1
+</code></pre>
+<p>From <a href="http://zzz.bwh.harvard.edu/plink/ibdibs.shtml">this helpful documentation</a> I found online:</p>
+<pre><code>O(HOM)    Observed number of homozygotes
+E(HOM)    Expected number of homozygotes
+N(NM)     Number of non-missing genotypes
+F         F inbreeding coefficient estimate
+</code></pre>
+<p>-1 looks like it indicates a sampling error or contamination according to the docs:</p>
+<blockquote>
+<p>The estimate of F can sometimes be negative. Often this will just reflect random sampling error, but a result that is strongly negative (i.e. an individual has fewer homozygotes than one would expect by chance at the genome-wide level) can reflect other factors, e.g. sample contamination events perhaps.</p>
+</blockquote>
+<p>We can also use the software to find what parts of the genotyping are missing with the <code>--missing</code> flag. From this, I was able to gather that Riker only has a missing SNP rate of 0.0009034 (less than 1%). I <em>think</em> this means that Riker&rsquo;s DNA in this sample is over 99% complete. Cool!</p>
+<p>I may make Riker&rsquo;s DNA available online some day for others to do genetic analysis.</p>
+<p>Anyways, I thought this was a fun exercise into how genetic data is stored and processed. It&rsquo;s really cool that there is open source software to analyze this data. Thanks for reading!</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

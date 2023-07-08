@@ -1,0 +1,11 @@
+baseURL = 'http://peterhajas.com'
+languageCode = 'en-us'
+title = 'Peter Hajas'
+
+[markup.goldmark.renderer]
+unsafe= true
+
+[outputFormats]
+  [outputFormats.rss]
+    mediatype = "application/rss"
+    baseName = "rss"

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Upgrading a Nintendo Switch SD Card </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Upgrading a Nintendo Switch SD card"><h2>Upgrading a Nintendo Switch SD card</h2>
+<h3>
+
+<time datetime="2019-12-21T21:10:00-07:00">2019-12-21</time>
+
+</h3></h1>
+<article>
+
+<p>I own a Nintendo Switch console. Because I don&rsquo;t want physical games cluttering my home, I get all my games digitally. I recently started running out of room and needed a new SD card to hold my games. This path ended up being circuitous, taking me through fake flash storage, the Switch&rsquo;s file structure, and its operating system&rsquo;s treatment of Unix file attributes.</p>
+<h1 id="a-new-card">A new card</h1>
+<p>I purchased a Samsung 512GB SD card from Amazon for $65. I&rsquo;m shocked at how cheap SD cards are now. This replaced my old 128GB card.</p>
+<p>Here&rsquo;s the old card:</p>
+<p><img src="/nintendo_oldcard.jpeg" alt="The old SD card"></p>
+<p>And here&rsquo;s the new card:</p>
+<p><img src="/nintendo_newcard.jpeg" alt="The new SD card"></p>
+<p>Flash memory has never been more popular. Unfortunately, there has been a recent rise of <strong>fake flash</strong> memory. These are USB keys, SD cards, and solid state disks that masquerade as a larger capacity, but will lose your data or fail to read / write properly.</p>
+<p>After my new card arrived, I wanted to check its authenticity. Is this a real 512GB SD card? Or a fake?</p>
+<h1 id="the-f3-tool">The <code>f3</code> tool</h1>
+<p><a href="http://oss.digirati.com.br/f3/"><code>f3</code></a> is a tool to verify the authenticity of flash memory. It stands for &ldquo;Fight Flash Fraud&rdquo; or &ldquo;Fight Fake Flash&rdquo;. From the site:</p>
+<blockquote>
+<p>I started this project when I bought a 32GB microSDHC card for my Android phone back in 2010, and found out that this card always fails when one fills it up.</p>
+</blockquote>
+<p>I installed it on my Mac with <code>brew install f3</code>. This installed two binaries: <code>f3write</code> and <code>f3read</code>.</p>
+<p><code>f3write</code> writes contiguous 1GB files to your card until it has exhausted its space. It will also report on the write speed for this operation. You use it by running it on the path you want to write to. It will report progress when running:</p>
+<pre><code>$ f3write /Volumes/test
+F3 write 7.2
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+Free space: 476.69 GB
+Creating file 1.h2w ... OK!                           
+Creating file 2.h2w ... OK!                           
+...
+Creating file 476.h2w ... OK!                        
+Creating file 477.h2w ... OK!                       
+Free space: 1.38 MB
+Average writing speed: 77.17 MB/s
+</code></pre>
+<p>My card got 77MB/s, which comes out to about 2 hours of write time (this is about how long it felt). After doing the write step, you can run <code>f3read</code> to verify that the files made it there successfully:</p>
+<pre><code>$ f3read /Volumes/test
+F3 read 7.2
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+                  SECTORS      ok/corrupted/changed/overwritten
+Validating file 1.h2w ... 2097152/        0/      0/      0
+Validating file 2.h2w ... 2097152/        0/      0/      0
+...
+Validating file 476.h2w ... 2097152/        0/      0/      0
+Validating file 477.h2w ... 1432983/        0/      0/      0
+
+  Data OK: 476.68 GB (999677335 sectors)
+Data LOST: 0.00 Byte (0 sectors)
+           Corrupted: 0.00 Byte (0 sectors)
+    Slightly changed: 0.00 Byte (0 sectors)
+         Overwritten: 0.00 Byte (0 sectors)
+Average reading speed: 71.12 MB/s
+</code></pre>
+<p>This will read each of the 1GB files created by <code>f3write</code>, verifying they did not experience any data loss. This will also report on your card&rsquo;s read speed. Mine was 71MB/s, which also felt like around 2 hours.</p>
+<p>Cool, a real SD card that works! Next step: move my games over.</p>
+<h1 id="switch-sd-file-structure">Switch SD file structure</h1>
+<p>Plugging my old SD card into my machine, <code>diskutil</code> reports an NTFS filesystem:</p>
+<pre><code>$ diskutil list
+/dev/disk3 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *127.9 GB   disk3
+   1:               Windows_NTFS                         127.8 GB   disk3s1
+</code></pre>
+<p>The hierarchy on the card (named &ldquo;Untitled&rdquo;) has a single &ldquo;Nintendo&rdquo; folder on it. What&rsquo;s in there?</p>
+<pre><code>$ tree Nintendo
+Nintendo/
+├── Album
+│   ├── 2017
+│   ├── 2018
+│   └── 2019
+├── Contents
+│   ├── placehld
+│   ├── private
+│   ├── private1
+│   └── registered
+├── save
+└── saveMeta
+
+829 directories, 688 files
+</code></pre>
+<p>(heavily truncated)</p>
+<p>So, it looks like:</p>
+<ul>
+<li><code>Album</code>, which includes all my screenshots and video recordings arranged by year</li>
+<li><code>Content</code>, which has some subdirectories:
+<ul>
+<li><code>placehld</code>, which has some empty directories - likely placeholders given the filename</li>
+<li><code>private</code>, a 16B file which looks like it contains a key</li>
+<li><code>private1</code>, a 32B file which looks like it contains a different key</li>
+<li><code>registered</code>, which appears to contain all the games</li>
+</ul>
+</li>
+</ul>
+<p>I&rsquo;ve used the majority of the card&rsquo;s 128GB space:</p>
+<pre><code>$ du -skh /Volumes/Untitled
+111G    /Volumes/Untitled
+</code></pre>
+<h1 id="formatting-the-card">Formatting the card</h1>
+<p>Next step was to insert the 512GB card into the Switch and ask it to format. This process took about 3 seconds, then the console rebooted itself. I verified that the card was now NTFS:</p>
+<pre><code>$ diskutil list
+/dev/disk3 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *512.1 GB   disk3
+   1:               Windows_NTFS                         512.0 GB   disk3s1
+</code></pre>
+<h1 id="backing-up-the-card">Backing up the card</h1>
+<p>I don&rsquo;t have two SD card slots on my machine, so I&rsquo;ll need to copy the data first to my computer, then onto the card. We can use <code>rsync</code> to do this:</p>
+<pre><code>$ mkdir nintendo_backup
+$ rsync -avz /Volumes/Untitled nintendo_backup/
+</code></pre>
+<p>I used <code>rsync</code> in <code>archive</code> mode by passing the <code>-a</code> flag, which according to <code>man rsync</code> will:</p>
+<blockquote>
+<p>&hellip;ensure that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved&hellip;</p>
+</blockquote>
+<p>Perfect! I also passed <code>-v</code> for verbose, and <code>-z</code> to use compression as the files are moved.</p>
+<h1 id="restoring-to-the-new-card">Restoring to the new card</h1>
+<p>Now it&rsquo;s time to restore to the new card. After unmounting the smaller card and inserting the new card, it&rsquo;s a simple matter of <code>rsync</code>ing the files back:</p>
+<pre><code>rsync -avz nintendo_backup/Untitled/ /Volumes/Untitled
+</code></pre>
+<h1 id="trying-it-out">Trying it out</h1>
+<p>With the <code>rsync</code> step done, we can test out the card:</p>
+<p><img src="/nintendo_error.jpeg" alt="The card&rsquo;s not working"></p>
+<p>It doesn&rsquo;t work! The Switch responds with error <code>2016-0247</code> and is unable to access the card</p>
+<p>I then tried copying the contents of <code>nintendo_backup</code> over the <code>rsync</code>&rsquo;d backup files with Finder. Perhaps the <code>rsync</code> step missed something? Or my machine fell asleep?</p>
+<p>Nope, same error. I tried the original card to verify my Switch was still functional. The original card works fine.</p>
+<h1 id="debugging-the-issue">Debugging the issue</h1>
+<p>So, we&rsquo;ve got a new SD card that the Switch won&rsquo;t see:</p>
+<ul>
+<li>it was formatted by the Switch&rsquo;s software, so any secret partitions or files should be there</li>
+<li>it contains an <code>rsync</code> archive copy of the games and media from the original card</li>
+<li>the Switch read the card successfully when formatting it, but hasn&rsquo;t since the restore succeeded</li>
+</ul>
+<p>The <a href="https://en-americas-support.nintendo.com/app/answers/detail/a_id/27595/">Nintendo support site</a> seems to suggest similar steps to those I followed:</p>
+<blockquote>
+<ul>
+<li>Open Windows Explorer (for PC) and access the microSD card.</li>
+<li>Highlight the data and drag it to the desktop.</li>
+<li>If you are moving your content to a new microSD card, be sure to first format the new card per our recommendations.</li>
+<li>Once the new card has been formatted, continue with the instructions below.</li>
+<li>Eject the first microSD card, then insert the second microSD card into the slot or reader/writer.</li>
+<li>Using Windows Explorer access the microSD card again.</li>
+<li>Drag the data from the desktop to the new microSD card, then insert the new microSD card into the Nintendo Switch console.</li>
+</ul>
+</blockquote>
+<p>Although it does contain this strange warning:</p>
+<blockquote>
+<p>Important: This process may not be able to copy the microSD card contents correctly in environments other than Windows (such as Mac).</p>
+</blockquote>
+<h1 id="a-fix">A fix</h1>
+<p>Turns out I was missing the archive attribute on the card. Simply running <code>sudo chflags -R arch /Volumes/Untitled</code> to fix up the Archive attribute fixed the issue (I also did a <code>sudo dot_clean -mn</code> on the directory). Phew! Look at all that space:</p>
+<p><img src="/nintendo_freespace.jpeg" alt="A screenshot showing the free space on the new larger card"></p>
+<h1 id="why-did-this-break">Why did this break?</h1>
+<p>I&rsquo;m not totally sure. My hunch is that an archive attribute on the files was confusing the Switch&rsquo;s SD card parsing. It looks like the Nintendo Switch&rsquo;s OS is not Unix-derived, but rather an <a href="https://en.wikipedia.org/wiki/Nintendo_Switch_system_software">evolution of the 3DS OS</a>. It&rsquo;s possible that some file attributes from Unix may have confused the Switch.</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

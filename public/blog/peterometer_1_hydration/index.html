@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Peterometer Chapter 1: Tracking Hydration </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Peterometer Chapter 1: Tracking Hydration"><h2>Peterometer Chapter 1: Tracking Hydration</h2>
+<h3>
+
+<time datetime="2019-03-08T10:05:00-07:00">2019-03-08</time>
+
+</h3></h1>
+<article>
+
+<p><em>This is the first in a series of posts I hope to write about building tools for &ldquo;Peterometer&rdquo;, a way to visualize stats I&rsquo;ve collected about myself.</em></p>
+<h1 id="inspiration-for-peterometer">Inspiration for Peterometer</h1>
+<p>I&rsquo;ve long been inspired by people who build beautiful visualizations of their gathered metrics. For example, Nicholas Felton&rsquo;s annual reports. Here is an example <a href="http://feltron.com/FAR07.html">from his 2007 report</a>:</p>
+<p><a href="http://feltron.com/images/FAR07/03.jpg">The first page of Nicholas Felton&rsquo;s 2007 annual report</a></p>
+<p>I think this format of visualization is <em>really</em> cool. It&rsquo;s easy to glance at while being information-dense.</p>
+<p>Another cool example is Anand Sharma&rsquo;s <a href="http://aprilzero.com">April Zero</a>, which is now an app called <a href="http://gyrosco.pe">Gyroscope</a>:</p>
+<p><a href="https://cdn-images-1.medium.com/max/1200/1*4bB_yEzM7Yt_Nme-rQLkzg.png">An image of Gyroscope</a></p>
+<p>He has some great posts about his creative process <a href="https://blog.gyrosco.pe/the-making-of-april-zero-877612ca3d24">here</a> and <a href="https://blog.gyrosco.pe/the-making-of-april-zero-part-2-9fee331e2043">here</a>. The Iron Man-style HUD influence shines through in the finished product.</p>
+<p>These visualizations are really cool ways to show stats gathered about your life. I&rsquo;ve recently been getting more into tracking my day-to-day life, and experimenting with visualization techniques to showcase this data.</p>
+<h1 id="hydration-tracking">Hydration Tracking</h1>
+<p>Since December 2018, I&rsquo;ve been tracking my hydration every day. Every time I finish drinking something, I log the type of drink it was, and how much of it I drank. I log the data using the <a href="http://waterminder.com">WaterMinder</a> app on my watch and phone. WaterMinder lets you have saved drinks, which is really helpful if you drink the same thing often (my Nalgene, a cup of coffee from the machine at work, etc.)</p>
+<h1 id="some-visualizations">Some Visualizations</h1>
+<p>WaterMinder lets you export your data in CSV format. With a <a href="https://github.com/peterhajas/peterometer/blob/master/hydration/waterminder_parse.py">little bit of Python</a>, we can parse this into a <a href="http://leebyron.com/streamgraph/">&ldquo;stream&rdquo; stacked area chart</a> to show how I hydrate myself:</p>
+<p><a href="/hydration.jpeg"><img src="/hydration.jpeg" alt="A stacked area plot of my hydration"></a></p>
+<p>This chart is a bit tough to read due to data density. The legend is sorted in descending order of consumption. By the numbers, this is:</p>
+<table>
+<thead>
+<tr>
+<th>Drink</th>
+<th>fluid oz.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water</td>
+<td><code>4159.7</code></td>
+</tr>
+<tr>
+<td>Coffee</td>
+<td><code>1482.7</code></td>
+</tr>
+<tr>
+<td>Soda</td>
+<td><code>826.9</code></td>
+</tr>
+<tr>
+<td>Sports Drink</td>
+<td><code>761.9</code></td>
+</tr>
+<tr>
+<td>Tea</td>
+<td><code>751.4</code></td>
+</tr>
+<tr>
+<td>Smoothie</td>
+<td><code>398.0</code></td>
+</tr>
+<tr>
+<td>Carbonated Water</td>
+<td><code>381.4</code></td>
+</tr>
+<tr>
+<td>Energy Drink</td>
+<td><code>273.6</code></td>
+</tr>
+<tr>
+<td>Beer</td>
+<td><code>225.0</code></td>
+</tr>
+<tr>
+<td>Protein Shake</td>
+<td><code>162.0</code></td>
+</tr>
+<tr>
+<td>Liquor</td>
+<td><code>130.0</code></td>
+</tr>
+<tr>
+<td>Juice</td>
+<td><code>94.0</code></td>
+</tr>
+<tr>
+<td>Coconut Water</td>
+<td><code>81.6</code></td>
+</tr>
+<tr>
+<td>Milk</td>
+<td><code>55.1</code></td>
+</tr>
+<tr>
+<td>Wine</td>
+<td><code>17.6</code></td>
+</tr>
+<tr>
+<td>Hot Chocolate</td>
+<td><code>15.0</code></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong><code>9815.9</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Using the chart and table there are some interesting takeaways:</p>
+<ul>
+<li>I drink a lot of coffee. Almost 44 liters during this period!</li>
+<li>There&rsquo;s coconut water consumption in late December - I had this while skiing</li>
+<li>In early February, there are a few days with only water, smoothies, and some soda. This corresponds to when I had my wisdom teeth removed</li>
+<li>I have energy drinks on the same day as protein shakes. This matches reality - I have a pre-workout energy drink and protein shake on days that I lift</li>
+<li>I seldom have beer, but I have more beer than I have protein shakes</li>
+<li>I infrequently have wine and liquor. This is good!
+<ul>
+<li>You can see wine consumption during the New Years period</li>
+<li>Most liquor consumption was during vacations</li>
+</ul>
+</li>
+</ul>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

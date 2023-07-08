@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Peter Hajas / Live Markdown Previews From Vim </title>
+	<link rel="canonical" href="http://peterhajas.com">
+	<link rel='alternate' type='application/rss+xml' title="Peter Hajas RSS" href='/rss.xml'>
+	<link rel='stylesheet' type='text/css' href='/reset.css'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_96x96.png" sizes="96x96">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+</head>
+<body>
+<header>
+    <a href="/">
+        <h1 class='sitetitle'>Peter Hajas</h1>
+    </a>
+    <nav>
+        <a href="/about">About</a>
+        •
+        <a href="/internet_independence">Internet Independence</a>
+        <br>
+        <a href="/peterometer">Peterometer</a>
+        •
+        <a href="/pokemon_mapgen">Pokémon mapgen</a>
+        •
+        <a href="/forge">forge</a>
+        •
+        <a href="/draw">draw</a>
+    </nav>
+</header>
+
+<main>
+<h1 id="tag_Live Markdown previews from vim"><h2>Live Markdown previews from vim</h2>
+<h3>
+
+<time datetime="2019-01-06T12:07:00-07:00">2019-01-06</time>
+
+</h3></h1>
+<article>
+
+<p><em>This is more of a technical post</em></p>
+<p>This site is written using <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, which:</p>
+<blockquote>
+<p>allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)</p>
+</blockquote>
+<p>It&rsquo;s a common technique for writing blogs, as it lets the author write text in the text editor of their choice.</p>
+<p>I write this page in <code>vim</code>, which is a command line text editor. I love <code>vim</code> for many reasons that are outside the scope of this post. I&rsquo;ve been using it as my primary editor for almost 5 years. I wanted a good solution for writing Markdown in <code>vim</code>.</p>
+<p>Because <code>vim</code> is a command line editor, it makes it tougher to use it to write rich text. In a GUI program, rich text can be rendered inline and as-you-edit. A command line tool can show you the formatting you have applied to text, but it does not give you an accurate rendering of how your content will look as you edit it.</p>
+<p>I wanted to continue to use <code>vim</code> to edit my blog posts (I find <code>vim</code> plugins for other editors to be a worse approximation than &ldquo;I can&rsquo;t believe it&rsquo;s not butter&rdquo;). This post is about how I solved this problem.</p>
+<h1 id="a-markdown-preview-app">A Markdown preview app</h1>
+<p>On macOS, you can get apps to render Markdown in a window. One that I like a lot is <a href="http://marked2app.com">Marked</a>, which automatically refreshes its preview when the Markdown file changes. This means you can open a <code>.md</code> file in Marked and get live updates <em>as you change it</em>. This can be used with any editor, including <code>vim</code>. The flow is something like:</p>
+<ul>
+<li><code>touch</code> or <code>:e</code> the file you want to write</li>
+<li>Open Marked</li>
+<li>Open the file in Marked</li>
+</ul>
+<p>As you save to it with <code>:w</code>, the preview will be auto-refreshed. I like this, but wanted to open it with a single key combination.</p>
+<h1 id="adding-marked-to-vim">Adding Marked to <code>vim</code></h1>
+<p>We can write a <code>vim</code> function to help us with this. Something like this:</p>
+<pre><code>function OpenInMarked2()
+    &quot; Open the file in Marked here
+endfunction
+</code></pre>
+<h2 id="running-a-shell-command-from-vim">Running a shell command from <code>vim</code></h2>
+<p>We can use <code>!</code> to run a command from our function. Technically, this is the <code>filter</code> command. From <code>:help !</code>:</p>
+<blockquote>
+<p><code>!{motion}{filter}</code> Filter <code>{motion}</code> text lines through the external program <code>{filter}</code>.</p>
+</blockquote>
+<p>You can try this in your <code>vim</code>. Just run <code>:!pwd,</code> and you should be presented with your shell and your current working directory. Below it, <code>vim</code> helpfully tells us &ldquo;Press ENTER or type command to continue&rdquo;.</p>
+<p>This is great! Using this and the macOS <code>open</code> command, we can at least <em>launch</em> Marked 2 with something like this:</p>
+<pre><code>!open -a Marked\ 2.app
+</code></pre>
+<p>But what about opening the current file? <code>vim</code> lets us use <code>%</code> from Ex commands as a stand-in for the path to the current file. So we can do something like:</p>
+<pre><code>!echo %
+</code></pre>
+<p>to see the current file. We can use this with <code>open</code> to open the current file in <code>vim</code>:</p>
+<pre><code>!open -a Marked\ 2.app %
+</code></pre>
+<p>This is the body of our <code>OpenInMarked2</code> function:</p>
+<pre><code>function OpenInMarked2()
+    !open -a Marked\ 2.app %
+endfunction
+</code></pre>
+<p>Once we have this function, we can call it with the Ex <code>call</code> command, like this:</p>
+<pre><code>:call OpenInMarked2()
+</code></pre>
+<p>This will open the current file in Marked, but will leave us at the shell with &ldquo;Press ENTER or type command to continue&rdquo; there. We still have to press enter before we can edit the file live.</p>
+<h2 id="defining-a-mapping">Defining a mapping</h2>
+<p>We can use a <code>vim</code> mapping to call the function for us. A mapping lets us take a key combination and map it to a command. For the key combination, I like to use <code>&lt;leader&gt;</code>, which is a user-controlled modifier in <code>vim</code>. This means that <code>&lt;leader&gt; _</code> is wide open for use in your <code>.vimrc</code>. For my <code>leader</code> key, I use <code>,</code> (comma), as it&rsquo;s near the other modifiers on a US keyboard. For <code>leader</code> mappings, I like a mnemonic key combination, as it makes it easier to remember.</p>
+<p>A good choice for this mapping, which is applicable for <strong>M</strong>arkdown and for opening <strong>M</strong>arked, is <code>&lt;leader&gt;m</code>. Our mapping to call the function might look like this:</p>
+<pre><code>nmap &lt;silent&gt; &lt;leader&gt;m :call OpenInMarked2()
+</code></pre>
+<p>Here&rsquo;s a decoder ring for what these commands mean:</p>
+<ul>
+<li><code>nmap</code> means a mapping that exists in <code>vim</code>&rsquo;s normal mode</li>
+<li><code>&lt;silent&gt;</code> means the mapping will not be echoed on the command line</li>
+<li><code>&lt;leader&gt;m</code> is the mapping we&rsquo;ve picked for this particular command</li>
+<li><code>:call</code> will call a particular function</li>
+<li><code>OpenInMarked2()</code> is the name of the function we&rsquo;d like to call</li>
+</ul>
+<p>If you add this mapping and function to your <code>.vimrc</code>, you&rsquo;ll see that it works <em>kind of</em>. You have to hit enter to get the command to actually run, and then after doing so you&rsquo;re left at the shell, so you need to hit enter <strong>again</strong> before returning to the editor.</p>
+<h2 id="hitting-enter-twice">Hitting enter twice</h2>
+<p>We can add a press of the enter key to our mapping using <code>&lt;CR&gt;</code>. This acts as though the user has pressed the carriage return. We&rsquo;ll add two of them, as we need one to run the function and another to return to the editor. Our mapping now looks like this:</p>
+<pre><code>nmap &lt;silent&gt; &lt;leader&gt;m :call OpenInMarked2() &lt;CR&gt; &lt;CR&gt;
+</code></pre>
+<p>which is the mapping you&rsquo;ll find in my <a href="https://github.com/peterhajas/dotfiles/blob/master/vim/.vimrc"><code>.vimrc</code></a>.</p>
+<p>I hope you found this post helpful. I have been using <code>OpenInMarked2</code> to help me write Markdown for 2 years now, and I think it&rsquo;s a cool example of how to extend <code>vim</code> to fit your needs.</p>
+
+
+</article>
+</main>
+<hr>
+
+<footer>
+    <nav>
+        <a href="/cool_sites">Cool Sites</a>
+        •
+        <a href="/site_info">Site Info</a>
+        •
+        <a href="/rss.xml">RSS</a>
+        <br>
+        <a href="/timer.html">Rummikub Timer</a>
+    </nav>
+    <a href="/">
+        <img class="peterAvatar circle" src="/peter.jpg" alt="Peter smiling against a blue background">
+    </a>
+</footer>
+
+
+</body>
+</html>

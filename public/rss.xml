@@ -1,0 +1,1533 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+	<title>Peter Hajas</title>
+	<link>http://peterhajas.com/</link>
+	<description>Posts by Peter Hajas</description>
+	<generator>Hugo -- gohugo.io</generator>
+	<language>en-us</language>
+	<lastBuildDate>Sun, 18 Dec 2022 06:10:00 -0700</lastBuildDate>
+    
+        <atom:link href="http://peterhajas.com/rss.xml" rel="self" type="application/rss+xml" />
+	
+	
+    
+	<item>
+		<title>Peterometer</title>
+		<link>http://peterhajas.com/blog/peterometer/</link>
+		<pubDate>Sun, 18 Dec 2022 06:10:00 -0700</pubDate>
+		
+		<guid>/blog/peterometer/</guid>
+        
+		<description>&lt;p&gt;I&amp;rsquo;ve written a few times on this site about the Peterometer, my name for a quantified-self dashboard.&lt;/p&gt;
+&lt;p&gt;Over the recent Thanksgiving holiday, I worked on &lt;a href=&#34;http://peterhajas.com/peterometer/&#34;&gt;a new version of the Peterometer&lt;/a&gt; that I&amp;rsquo;m ready to share.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://peterhajas.com/peterometer/&#34;&gt;&lt;img src=&#34;http://peterhajas.com/peterometer.jpeg&#34; alt=&#34;An image of the peterometer&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;inspiration&#34;&gt;Inspiration&lt;/h1&gt;
+&lt;p&gt;The site is themed after the visuals in the 2013 film &lt;a href=&#34;https://en.wikipedia.org/wiki/Oblivion_(2013_film)&#34;&gt;Oblivion&lt;/a&gt;, which is a great movie with excellent futuristic UI (and music). I found &lt;a href=&#34;https://gmunk.com/OBLIVION-GFX&#34;&gt;a page&lt;/a&gt; by one of the visual artists explaining how they built the UI for the movie. I like the clean lines, simple colors, and graphs. I used this as inspiration for building the website itself - a cool futuristic font, a neat color palette, and 3D graphics animating in a subtle way.&lt;/p&gt;
+&lt;p&gt;I got feedback from friends and family - thanks to &lt;a href=&#34;https://buzzert.net&#34;&gt;James&lt;/a&gt; and &lt;a href=&#34;http://zanneth.com&#34;&gt;Charles&lt;/a&gt; for pushing me to use a consistent palette, and thanks to my sister for pointing out that my previously chosen palette was ugly.&lt;/p&gt;
+&lt;p&gt;I listened to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Tron:_Legacy_(soundtrack)&#34;&gt;TRON: Legacy soundtrack&lt;/a&gt; while working on this site.&lt;/p&gt;
+&lt;h1 id=&#34;the-data&#34;&gt;The Data&lt;/h1&gt;
+&lt;p&gt;I log a lot of data about myself:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Health data automatically through my watch, which I&amp;rsquo;ve worn since April 2015&lt;/li&gt;
+&lt;li&gt;Food, which I have logged since March 2019&lt;/li&gt;
+&lt;li&gt;Hydration, which I have logged since December 2018&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s not hard or irritating for me to log when I eat or drink, and it makes me more mindful of what I &lt;em&gt;do&lt;/em&gt; end up ingesting.&lt;/p&gt;
+&lt;p&gt;The site is populated by the &lt;a href=&#34;https://www.healthexportapp.com&#34;&gt;Health Auto Export&lt;/a&gt; app, which runs in the background on my phone. It takes my HealthKit database and periodically slurps up the last 7 days of data and sends it to the website. I like this because I don&amp;rsquo;t have to think about the site at all - I just log data like I normally do, and it shows up on the Peterometer after a few days. I like that the Peterometer fits seamlessly into habits I&amp;rsquo;ve already built.&lt;/p&gt;
+&lt;h1 id=&#34;the-site&#34;&gt;The Site&lt;/h1&gt;
+&lt;p&gt;I use the &lt;a href=&#34;https://threejs.org&#34;&gt;Three.js&lt;/a&gt; library for rendering the 3D data. I wrote some code to line up Three.js objects with DOM elements, which made it easy to use flexbox to position the elements of the site. The site is responsive to window size changes.&lt;/p&gt;
+&lt;h1 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h1&gt;
+&lt;p&gt;I have a 3D scan of my body that I&amp;rsquo;d like to add to the page. I wish I could use a tool like &lt;code&gt;ffmpeg&lt;/code&gt; to downsize the model, make it low-poly, and put it on the site. If you know how to do this, email me!&lt;/p&gt;
+&lt;p&gt;I would also like to have a display in my home dedicated to showing this information. It would be nice to see this as a kind of &amp;ldquo;Peter Health Dashboard&amp;rdquo; throughout the day, and it may end up influencing my behavior.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Avoiding Ads</title>
+		<link>http://peterhajas.com/blog/avoiding_ads/</link>
+		<pubDate>Fri, 15 Jul 2022 20:45:00 -0700</pubDate>
+		
+		<guid>/blog/avoiding_ads/</guid>
+        
+		<description>&lt;p&gt;I hate ads. I don&amp;rsquo;t like watching them, I don&amp;rsquo;t like seeing them, and I don&amp;rsquo;t like hearing them. The attention economy is very sad and I want no part of it. &amp;ldquo;Ethical ads&amp;rdquo; are about as oxymoronic as &amp;ldquo;healthy cigarettes&amp;rdquo;. A &lt;a href=&#34;https://buzzert.net&#34;&gt;friend&lt;/a&gt; recently told me that advertising &lt;a href=&#34;https://www.sciencedaily.com/releases/2011/09/110920163318.htm&#34;&gt;reduces activity in the decision-making parts of your brain&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Funnily enough, the more visual ads are, the easier they are to avoid. Here is how I avoid most advertisements.&lt;/p&gt;
+&lt;h1 id=&#34;avoiding-audio-ads&#34;&gt;Avoiding Audio Ads&lt;/h1&gt;
+&lt;p&gt;This one is easiest to set up. Most podcatchers support a different &amp;ldquo;Skip Forward&amp;rdquo; and &amp;ldquo;Skip Backward&amp;rdquo; duration. Everyone I know who listens to podcasts has these set to &amp;ldquo;Skip forward 30 seconds&amp;rdquo; and &amp;ldquo;Skip backward 15 seconds&amp;rdquo;. Each time you hear the start of an ad about a great new mattress (that the hosts only ever have in their guest room), or a non-FDA approved CBD vendor, you skip forward 30 seconds. You keep pressing this until the show - the thing you&amp;rsquo;re there to listen to - comes back on, and then you back up by 15 seconds until you&amp;rsquo;re between the ad and the show.&lt;/p&gt;
+&lt;p&gt;Usually this means you&amp;rsquo;re still subject to &amp;ldquo;thanks to our friends at wherever&amp;rdquo; narration, perhaps with a coupon code, but it&amp;rsquo;s better than listening to the whole ad.&lt;/p&gt;
+&lt;h1 id=&#34;avoiding-web-ads&#34;&gt;Avoiding Web Ads&lt;/h1&gt;
+&lt;p&gt;This one takes a bit more effort, depending on how far you want to go. I use ad blockers (extensions that run on your device) to block web ads. These involve filters or rules to omit content from webpages before it is rendered (or in some cases fetched). I use 12+ of these on my devices.&lt;/p&gt;
+&lt;p&gt;I also run &lt;a href=&#34;https://pi-hole.net&#34;&gt;pihole&lt;/a&gt; on a computer in my house, and route all my internet traffic through it. This filters out content before devices fetch it by blocking the domain name resolution of advertising and analytics. This accounts for a shockingly high 8% of all domain queries on my network.&lt;/p&gt;
+&lt;h1 id=&#34;avoiding-video-ads&#34;&gt;Avoiding Video Ads&lt;/h1&gt;
+&lt;p&gt;This one takes the most effort to configure, but it&amp;rsquo;s well worth the setup time. I love web video, but hate the ads that hosting providers and content creators sprinkle in their videos. For avoiding ads that the site inserts (usually for vacation rentals and car insurance), I use &lt;code&gt;yt-dlp&lt;/code&gt;. This program downloads a video to your local computer, and you never need to see the pre-roll / mid-roll ads the hosting provider inserts.&lt;/p&gt;
+&lt;p&gt;To avoid ads that content creators place in the middle of their videos (for VPN services and wallets, usually), I use the &lt;code&gt;--sponsorblock-remove&lt;/code&gt; flag of &lt;code&gt;yt-dlp&lt;/code&gt;. There&amp;rsquo;s a community-maintained database of ad segments of videos called &lt;a href=&#34;https://sponsor.ajay.app&#34;&gt;SponsorBlock&lt;/a&gt;. The &lt;code&gt;--sponsorblock-remove&lt;/code&gt; flag hits this database, finds the time codes for the ad segments, and then &lt;em&gt;stitches them out of the video file&lt;/em&gt;. This feature is awesome, and there&amp;rsquo;s a &lt;a href=&#34;https://wiki.sponsor.ajay.app/w/Guidelines&#34;&gt;list of the different types&lt;/a&gt; of video segments that SponsorBlock can stitch out.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve mapped my invocation of &lt;code&gt;yt-dlp&lt;/code&gt; to a simple hotkey, so with one keypress I can download and watch (ad free!) any video link in my clipboard.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I hope this article was helpful for avoiding ads in your day-to-day life. These techniques help me move through the cloud of engagement metrics and sketchy tracking, and towards a place where I own my time and attention.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>The Recursive Power of TiddlyWiki</title>
+		<link>http://peterhajas.com/blog/tiddlywiki/</link>
+		<pubDate>Thu, 02 Jun 2022 22:22:00 -0700</pubDate>
+		
+		<guid>/blog/tiddlywiki/</guid>
+        
+		<description>&lt;p&gt;I recently learned about &lt;a href=&#34;https://tiddlywiki.com&#34;&gt;TiddlyWiki&lt;/a&gt;. It&amp;rsquo;s wiki software that you run on your computer.&lt;/p&gt;
+&lt;p&gt;There are lots of these &amp;ldquo;second brain&amp;rdquo; pieces of software - Notion, Obsidian, vimwiki. But TiddlyWiki has some special tricks up its sleeve that I think put it into a league of its own. There are two components of it that I find so intriguing.&lt;/p&gt;
+&lt;h1 id=&#34;it-includes-its-own-viewer-and-editor&#34;&gt;It includes its own viewer and editor&lt;/h1&gt;
+&lt;p&gt;If I were using vimwiki (which I used to, heavily!), I&amp;rsquo;d store all my files on my computer (like in &lt;code&gt;~/.vimwiki&lt;/code&gt;, which I had symlinked to my NextCloud instance). But I&amp;rsquo;d need a way to view and edit those files. I used &lt;code&gt;vim&lt;/code&gt; and Marked 2. TiddlyWiki is a self-contained HTML file. It has everything in it - the editor, the viewer, a filesystem implementation, but it&amp;rsquo;s all saved to one HTML file. This is very novel - it&amp;rsquo;s the ultimate portability. I can sync one file to copy my entire database, viewing experience and all. I can make copies of to back it up or try new things.&lt;/p&gt;
+&lt;h1 id=&#34;it-is-built-in-itself&#34;&gt;It is built in itself&lt;/h1&gt;
+&lt;p&gt;This TiddlyWiki&amp;rsquo;s superpower. It is a tool that is built inside of itself. Besides a small kernel of core functionality, the rest of the system is represented as &amp;ldquo;tiddlers&amp;rdquo; - individual notes / files. The sidebar menu, the story list of tiddlers, the editor toolbar, &lt;em&gt;all of this&lt;/em&gt; is represented as Tiddlers. This makes it very easy to add new functionality to these views. For example, I added an Emoji picker and indicator to all my Tiddlers in a few minutes. This can be done with the embedded powerful template language. TiddlyWiki supports key-value storage (called &amp;ldquo;fields&amp;rdquo;) on tiddlers, enabling you to make your own taxonomy and relationships.&lt;/p&gt;
+&lt;p&gt;To help you wrap your mind around this concept, here are things that are &lt;em&gt;just tiddlers&lt;/em&gt; in TiddlyWiki:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the menus and user interface&lt;/li&gt;
+&lt;li&gt;the stylesheets that customize the UI&lt;/li&gt;
+&lt;li&gt;the user settings (metrics, themes, behaviors)&lt;/li&gt;
+&lt;li&gt;the state of the wiki, like open tiddlers&lt;/li&gt;
+&lt;li&gt;plugins, which can contain JavaScript, CSS, and tiddlers&lt;/li&gt;
+&lt;li&gt;keyboard shortcuts, including the ability to make your own&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Much of this UI comes from use of tags, which is just another field on a tiddler. This lets you put things into the system easily. If you want a new item in the sidebar, just tag it with &lt;code&gt;$:/tags/SideBarSegment&lt;/code&gt;. If you want something new in the view for each tiddler, tag it with &lt;code&gt;$:/tags/ViewTemplate&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I found this software a few days ago, and I&amp;rsquo;ve already become enamored with it. I think this site might eventually become a TiddlyWiki.&lt;/p&gt;
+&lt;p&gt;As they say in their &lt;a href=&#34;https://tiddlywiki.com/static/Discover%2520TiddlyWiki.html&#34;&gt;Discover&lt;/a&gt; page:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You&amp;rsquo;ve never seen anything like TiddlyWiki&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I agree - I recommend you &lt;a href=&#34;https://tiddlywiki.com&#34;&gt;go play with it&lt;/a&gt;!&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Declarative Home Automation</title>
+		<link>http://peterhajas.com/blog/declarative_home_automation/</link>
+		<pubDate>Sat, 21 May 2022 20:30:00 -0700</pubDate>
+		
+		<guid>/blog/declarative_home_automation/</guid>
+        
+		<description>&lt;p&gt;My home is powered by &lt;a href=&#34;https://www.home-assistant.io&#34;&gt;Home Assistant&lt;/a&gt;, which is a great software package for running a smart home. In this post, I&amp;rsquo;ll talk about how I&amp;rsquo;m automating my home &lt;em&gt;declaratively&lt;/em&gt; rather than using an &amp;ldquo;if-this-then-that&amp;rdquo; approach.&lt;/p&gt;
+&lt;h1 id=&#34;lighting-the-patio&#34;&gt;Lighting The Patio&lt;/h1&gt;
+&lt;p&gt;We have lights on our patio. I want them on if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it&amp;rsquo;s after sunset and before 9:00PM
+&lt;em&gt;or&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;the patio door was opened within the last 3 minutes at night (if I&amp;rsquo;m going outside, or letting the dogs out)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-classic-model-if-this-then-that&#34;&gt;The Classic Model: &amp;ldquo;If-This-Then-That&amp;rdquo;&lt;/h2&gt;
+&lt;p&gt;If you did an &amp;ldquo;if-this-then-that&amp;rdquo; approach, you might have rules like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if it&amp;rsquo;s after sunset but before 9:00PM, turn the lights on&lt;/li&gt;
+&lt;li&gt;if the back door opens while the sun is below the horizon, turn the lights on for 3 minutes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While these rules sound simple, they have edge cases that will bite you when the cases fight each other. Imagine I&amp;rsquo;m letting the dogs out at 8:59PM. Following the above rules:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Door opens at 8:59PM, and the lights turn on&lt;/li&gt;
+&lt;li&gt;9:00PM comes, and the lights turn off&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;m out in the dark!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You could solve this by introducing more state. You might add a &amp;ldquo;lights on due to time&amp;rdquo; and &amp;ldquo;lights on due to door opening&amp;rdquo; state to bookkeep when to perform actions of the automation. But what if we add another rule? For example: if the back camera detects a person or dog, turn the lights on for three minutes.&lt;/p&gt;
+&lt;p&gt;Adding additional &amp;ldquo;what am I doing&amp;rdquo; state makes the complexity explode for state bookkeeping.&lt;/p&gt;
+&lt;h2 id=&#34;a-declarative-model-should-state&#34;&gt;A Declarative Model: &amp;ldquo;Should&amp;rdquo; State&lt;/h2&gt;
+&lt;p&gt;In my smart home, I take all this input state and derive a &amp;ldquo;should be&amp;rdquo; state out of it. The patio light automation has just one rule:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the patio lights &lt;em&gt;should&lt;/em&gt; be on, then turn them on. Otherwise turn them off.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I define these &amp;ldquo;should be&amp;rdquo; states with simple boolean logic in a &lt;a href=&#34;https://www.home-assistant.io/integrations/template/&#34;&gt;template binary sensor&lt;/a&gt;. Here&amp;rsquo;s the one for my patio lights:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;template:
+  - binary_sensor:
+    - name: &amp;quot;Patio Lights Should Be On&amp;quot;
+      delay_off:
+        minutes: 3
+      state: &amp;gt;
+        {% set before9 = now().hour &amp;lt; 21  %}
+        {% set doorOpen = states(&#39;binary_sensor.patio_door&#39;) == &#39;on&#39; %}
+        {% set night = is_state(&#39;binary_sensor.night&#39;, &#39;on&#39;) %}
+        {% set people = is_state(&#39;binary_sensor.patio_person_motion&#39;, &#39;on&#39;) %}
+        {% set dog = is_state(&#39;binary_sensor.patio_dog_motion&#39;, &#39;on&#39;) %}
+        {{ night and (before9 or doorOpen or people or dog) }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I have a simple &lt;a href=&#34;https://www.home-assistant.io/docs/automation/using_blueprints/&#34;&gt;blueprint&lt;/a&gt;, &lt;code&gt;binary_sensor_entity&lt;/code&gt;, that manages these automations for me:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blueprint:
+  name: Binary Sensor to Entity
+  description: Tie a binary sensor (likely from a template) to an entity state
+  domain: automation
+  input:
+    source_sensor:
+      name: Source Sensor
+      description: This sensor will be used to drive the entity
+      selector:
+        entity:
+          domain: binary_sensor
+    target_entity:
+      name: Target Entity
+      description: The entity to be driven by the sensor
+      selector:
+        entity:
+
+variables:
+  source_sensor: !input source_sensor
+
+trigger:
+  - platform: state
+    entity_id: !input source_sensor
+
+action:
+  - service: &amp;gt;
+      {% if is_state(source_sensor, &amp;quot;on&amp;quot;) %}
+        homeassistant.turn_on
+      {% else %}
+        homeassistant.turn_off
+      {% endif %}
+    entity_id: !input target_entity
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This makes the patio lights automation very simple:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;automation:
+- alias: Lights - Patio - Primary
+  use_blueprint:
+    path: binary_sensor_entity.yaml
+    input:
+      source_sensor: binary_sensor.patio_lights_should_be_on
+      target_entity: switch.patio_shelly_channel_1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;My entire home is driven this way. I think this is easier to understand and extend than the classic way of doing Home Assistant automations. I also prefer it over &lt;a href=&#34;https://nodered.org&#34;&gt;Node-RED&lt;/a&gt;, although I still use Node-RED for some tasks in my home (this may be a subject of a future post).&lt;/p&gt;
+&lt;p&gt;I like how well this addresses the edge case described above, and how easy it is to experiment with new states driving the &amp;ldquo;should be&amp;rdquo; sensors. I tried keeping the lights on during severe weather (I have since removed this), and it only took one change to the &amp;ldquo;should be&amp;rdquo; sensor for the patio lights. These sensors are also really easy to debug - you can view them in the History section of Home Assistant.&lt;/p&gt;
+&lt;p&gt;Please feel free to &lt;a href=&#34;http://peterhajas.com/about&#34;&gt;drop me a line&lt;/a&gt; if you have any feedback on this post. Thanks for reading!&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Pokémon Map Generator</title>
+		<link>http://peterhajas.com/blog/pokemon_map_generator/</link>
+		<pubDate>Sun, 27 Feb 2022 20:00:00 -0700</pubDate>
+		
+		<guid>/blog/pokemon_map_generator/</guid>
+        
+		<description>&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_map_generator/cave_city.png&#34; alt=&#34;A map with caves in a city&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://peterhajas.com/pokemon_mapgen&#34;&gt;The generator is available on my website here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I recently took a week long vacation. I love working on recreational programming projects during a vacation. It&amp;rsquo;s a great chance to try programming in a space I am less familiar with.&lt;/p&gt;
+&lt;p&gt;This vacation, I worked on something I&amp;rsquo;ve wanted for a long time: a Pokémon map generator! I&amp;rsquo;ve always been interested in the maps in the Game Boy Pokémon games (read more about &lt;a href=&#34;http://peterhajas.com/blog/pokemon_rb_map_parsing&#34;&gt;parsing the data format&lt;/a&gt; and &lt;a href=&#34;http://peterhajas.com/blog/pokemon_rb_connections&#34;&gt;visualizing the map connections&lt;/a&gt;). There was something magical about exploring these areas, pouring over towns in strategy guides, and designing my own maps on paper.&lt;/p&gt;
+&lt;h1 id=&#34;generated-maps&#34;&gt;Generated Maps&lt;/h1&gt;
+&lt;p&gt;I love looking at the maps you can generate with this. Here are a few of them that stood out to me:&lt;/p&gt;
+&lt;p&gt;A Town with a Cave&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_map_generator/cave_town.png&#34; alt=&#34;A map with a cave next to a town with large buildings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Shop by the Sea&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_map_generator/shop_by_the_sea.png&#34; alt=&#34;A map with a shop near the water&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Skyscraper By a Lab&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_map_generator/skyscraper_by_lab.png&#34; alt=&#34;A map with a lab next to a skyscraper&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Mountain Route&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_map_generator/mountain_route.png&#34; alt=&#34;A route map with mountains next to it&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The Super Nintendo Room&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_map_generator/snes_room.png&#34; alt=&#34;A map with a bunch of Super Nintendo consoles on tables&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;the-algorithm&#34;&gt;The Algorithm&lt;/h1&gt;
+&lt;p&gt;In addition to letting you visualize maps from Pokémon Red and Blue, this site also lets you generate your own maps using a (naive) &lt;a href=&#34;https://en.wikipedia.org/wiki/Markov_chain&#34;&gt;Markov&lt;/a&gt;-style approach.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s how it works:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I wrote a small python program to gather data from the &lt;a href=&#34;https://github.com/pret/pokered&#34;&gt;pokered repository&lt;/a&gt; in JSON format. It scrapes out the built-in maps and their metadata, the blocksets, and the tilesets.&lt;/li&gt;
+&lt;li&gt;When you click &amp;ldquo;Generate&amp;rdquo;, we find all the maps in Pokémon that have the tileset you chose.&lt;/li&gt;
+&lt;li&gt;For each of these maps, we record their blocks and what blocks neighbor them. For example, if block &lt;code&gt;77&lt;/code&gt; in &lt;code&gt;OVERWORLD&lt;/code&gt; has block &lt;code&gt;12&lt;/code&gt; north of it in a map, we record this. I also record the frequency that these blocks occur, but this is not currently used in map generation. These neighbors are stored in a dictionary.&lt;/li&gt;
+&lt;li&gt;Starting from the top-left, we choose a random block that is known to be used by maps with this tileset. These are just the keys for the above neighbors dictionary.&lt;/li&gt;
+&lt;li&gt;We then fill the map from left to right, top to bottom, trying to find blocks that can fit in with the constraints of the already built map. If the map is unsatisfiable, it&amp;rsquo;s thrown out and we attempt again (up to 2000 iterations - and we may sometimes never find a solution). This is part of the generation algorithm that I&amp;rsquo;d like to improve and get feedback on.&lt;/li&gt;
+&lt;li&gt;Once the map is complete, we render it using the techniques described below.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that it has bugs! I&amp;rsquo;d recommend not getting larger than 8x8 for most tilesets. Some tilesets are missing, like &amp;ldquo;DOJO&amp;rdquo; and &amp;ldquo;REDS_HOUSE&amp;rdquo;.&lt;/p&gt;
+&lt;h1 id=&#34;rendering-maps&#34;&gt;Rendering Maps&lt;/h1&gt;
+&lt;p&gt;To render both built-in and generated maps, the site uses a similar mechanism to my Emoji-based approach (although much faster than rendering all that unicode!). It parses the tileset and blocksets, and renders them using &lt;a href=&#34;http://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas&#34;&gt;&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;&lt;/a&gt; into an image element. This is great for saving the map for use offline.&lt;/p&gt;
+&lt;p&gt;Because of my very fond nostalgia for the &lt;a href=&#34;https://en.wikipedia.org/wiki/Game_Boy_Color&#34;&gt;Game Boy Color&lt;/a&gt;, I also added support for rendering using multiple palettes. The Game Boy Color could &lt;a href=&#34;https://en.wikipedia.org/wiki/Game_Boy_Color#Color_palettes&#34;&gt;switch palettes&lt;/a&gt; based off of the button combination you held down when it booted. As a kid, I found it fun to hold down the buttons and see what cool palettes I could see Pokémon in. I also added a &amp;ldquo;grayscale&amp;rdquo; and &amp;ldquo;gameboy&amp;rdquo; palette for completeness - you can see maps rendered in their green original Game Boy glory!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I had fun building this generator, and I hope you have fun playing with it! &lt;a href=&#34;http://peterhajas.com/about&#34;&gt;Get in touch&lt;/a&gt; if you have questions, feedback, or if you generate any really cool maps!&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>My Custom Stream Deck Toolkit</title>
+		<link>http://peterhajas.com/blog/streamdeck/</link>
+		<pubDate>Sun, 01 Aug 2021 18:05:00 -0700</pubDate>
+		
+		<guid>/blog/streamdeck/</guid>
+        
+		<description>&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/streamdeck/hero.jpeg&#34; alt=&#34;My Stream Deck and its buttons&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Last September, I bought an &lt;a href=&#34;https://www.elgato.com/en/stream-deck-xl&#34;&gt;Elgato Stream Deck XL&lt;/a&gt;. It&amp;rsquo;s a USB input device with 32 programmable buttons, each with an individual display. I think the target market is video game streamers, who use it to switch cameras, control lighting, play sound effects, and do &lt;a href=&#34;https://www.youtube.com/watch?v=72bUheqRE5o&#34;&gt;star wipe transitions&lt;/a&gt;. I don&amp;rsquo;t stream video games, but I&amp;rsquo;ve found myself using the Stream Deck frequently with my computer. This post shows what I&amp;rsquo;m doing with it and how I built it.&lt;/p&gt;
+&lt;h1 id=&#34;hammerspoon-and-hsstreamdeck&#34;&gt;Hammerspoon and &lt;code&gt;hs.streamdeck&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;I don&amp;rsquo;t use the Elgato Stream Deck software. Instead, I use &lt;a href=&#34;https://www.hammerspoon.org&#34;&gt;Hammerspoon&lt;/a&gt;, the amazing macOS customization tool I&amp;rsquo;ve had for years on my systems. You configure it with Lua files, and there is a module for using the Stream Deck called &lt;a href=&#34;https://www.hammerspoon.org/docs/hs.streamdeck.html&#34;&gt;&lt;code&gt;hs.streamdeck&lt;/code&gt;&lt;/a&gt;. This module lets you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;run a callback when a Stream Deck is connected or disconnected&lt;/li&gt;
+&lt;li&gt;react to button press-down and press-up events&lt;/li&gt;
+&lt;li&gt;assign images to buttons&lt;/li&gt;
+&lt;li&gt;set brightness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;my-stream-deck-toolkit&#34;&gt;My Stream Deck Toolkit&lt;/h1&gt;
+&lt;video title=&#34;Navigation Stacks in my toolkit&#34; width=&#34;100%&#34; controls&gt;
+    &lt;source src=&#34;http://peterhajas.com/streamdeck/nav_stack.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;a href=&#34;http://peterhajas.com/streamdeck/nav_stack.mp4&#34;&gt;(download)&lt;/a&gt;
+
+&lt;p&gt;Using the Hammerspoon support, I built a declarative toolkit for populating the Stream Deck as part of my &lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck.lua&#34;&gt;dotfiles&lt;/a&gt;. I define buttons &lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/about.md&#34;&gt;as Lua tables with simple properties like &lt;code&gt;image&lt;/code&gt; and &lt;code&gt;onClick&lt;/code&gt; callbacks&lt;/a&gt;. My toolkit also supports navigation stacks, scrolling, and &amp;ldquo;panels&amp;rdquo; - buttons where X and Y on the grid are important (like in the number pad and clone window buttons below).&lt;/p&gt;
+&lt;p&gt;This toolkit lets me write buttons very easily, and experiment with new functionality quickly. Making it easy to iterate was essential to my success with this project. For example, the button to lock my computer is a few lines of Lua:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lockButton = {
+    [&#39;name&#39;] = &#39;Lock&#39;,
+    [&#39;image&#39;] = streamdeck_imageFromText(&#39;🔒&#39;),
+    [&#39;onClick&#39;] = function()
+        hs.caffeinate.lockScreen()
+    end
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(lock emoji added for clarity - I use the &lt;code&gt;lock.fill&lt;/code&gt; symbol from SF Symbols on my system)&lt;/p&gt;
+&lt;h1 id=&#34;my-buttons&#34;&gt;My Buttons&lt;/h1&gt;
+&lt;p&gt;Here are the buttons I use in my personal configuration at home:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/weather.lua&#34;&gt;Weather&lt;/a&gt;: loads weather from &lt;a href=&#34;https://wttr.in&#34;&gt;wttr.in&lt;/a&gt; (and shows a few more places when tapped)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Calendar &lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/peek.lua&#34;&gt;Peek&lt;/a&gt;: shows today&amp;rsquo;s date and acts as a way to &amp;ldquo;peek&amp;rdquo; at my calendar. These peek buttons have some &lt;em&gt;very useful&lt;/em&gt; behavior which I am proud of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;when &lt;em&gt;pressed&lt;/em&gt;, they will show Calendar if it is not frontmost, or hide it if it is frontmost&lt;/li&gt;
+&lt;li&gt;when &lt;em&gt;held&lt;/em&gt;, they will show Calendar &lt;em&gt;only while held&lt;/em&gt;, hiding it when released&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These make it really easy to check my Calendar during a meeting, or quickly see what my next day looks like.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reeder Peek: peeks at Reeder, my feed reader&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/lock.lua&#34;&gt;Lock&lt;/a&gt;: locks my Mac when pressed&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/audio_devices.lua&#34;&gt;Audio&lt;/a&gt;: shows my connected output and input devices. This helps when switching between audio devices during meetings. These buttons also show a little bar indicating the selected device&amp;rsquo;s current volume (dimmed if it does not support volume)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/streamdeck/audio_switcher.jpeg&#34; alt=&#34;My audio output and audio input buttons&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/itunes.lua&#34;&gt;Media Controls&lt;/a&gt;: Skips tracks. I don&amp;rsquo;t use these very much&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/app_switcher.lua&#34;&gt;App Switcher&lt;/a&gt;: Pushes a grid of open apps onto the navigation stack. Each of these buttons act as peek buttons for that app&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/window_switcher.lua&#34;&gt;Window switcher&lt;/a&gt;: Pushes a grid of open windows, with snapshots and app icons, onto the navigation stack. Pushing one of these makes that window frontmost&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/home_assistant.lua&#34;&gt;Home Assistant&lt;/a&gt;: Pushes a grid of all my Home Assistant entities onto the navigation stack. This lets me control lights, switches, scenes, run scripts, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/numpad.lua&#34;&gt;Numpad&lt;/a&gt;: Pushes a panel which is a software number pad / calculator for the currently foreground app&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/streamdeck/number_pad.jpeg&#34; alt=&#34;The numberpad button panel&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/window_clone.lua&#34;&gt;Window Clone&lt;/a&gt;: Pushes a grid of open windows onto the navigation stack. Selecting one pushes a panel-based live-updating version of it on the Stream Deck. This can be handy for keeping an eye on something, and lets the Stream Deck act as a slow-updating external display for a window&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/streamdeck/window_zoom.jpeg&#34; alt=&#34;A Window Zoom panel showing peterhajas.com&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/function_keys.lua&#34;&gt;Function Keys&lt;/a&gt;: Pushes a grid of software F-keys, going from F1 to F20&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/streamdeck/function_keys.jpeg&#34; alt=&#34;The software function keys grid&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Office Regular, Office Mood, Office Off: Each of these act as shortcuts to activate a specific Home Assistant scene in my office&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/shortcuts.lua&#34;&gt;Shortcuts&lt;/a&gt;: Pushes a grid of my Shortcut folders onto the navigation stack. From these, I can pick a Shortcut and run it from the Stream Deck&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/camera.lua&#34;&gt;Camera 1, Camera 2, Dash Close&lt;/a&gt;: Shows a camera feed from an external camera on my &amp;ldquo;dash&amp;rdquo; display in my office (a subject of a future post). The &amp;ldquo;dash close&amp;rdquo; button lets me close any open windows on my dash display&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/shelf.lua&#34;&gt;Shelf A, B, and C&lt;/a&gt;: lets me store anything on the clipboard into a scratch buffer and later recall it by pressing the button. Holding the button clears that buffer&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The colored buttons at the bottom are &lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/hammerspoon/.hammerspoon/streamdeck/nonce.lua&#34;&gt;nonce buttons&lt;/a&gt;. They show a random color and cycle between it at an interval, because it looks cool.&lt;/p&gt;
+&lt;p&gt;If you like what you see, or if you end up using my toolkit, please &lt;a href=&#34;http://peterhajas.com/about&#34;&gt;write me an email&lt;/a&gt;!&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Just Married</title>
+		<link>http://peterhajas.com/blog/just_married/</link>
+		<pubDate>Sat, 29 May 2021 20:10:00 -0700</pubDate>
+		
+		<guid>/blog/just_married/</guid>
+        
+		<description>&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/wedding.jpg&#34; alt=&#34;A photo from my wedding&#34;&gt;&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Detecting Whether I&#39;m in Bed or Not</title>
+		<link>http://peterhajas.com/blog/in_bed_bayesian/</link>
+		<pubDate>Thu, 06 May 2021 18:15:00 -0700</pubDate>
+		
+		<guid>/blog/in_bed_bayesian/</guid>
+        
+		<description>&lt;h1 id=&#34;some-background&#34;&gt;Some Background&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;ve been learning about and using &lt;a href=&#34;https://www.home-assistant.io&#34;&gt;Home Assistant&lt;/a&gt; for the past few months. It&amp;rsquo;s an open source home automation platform, but it can be turned into much more. It&amp;rsquo;s kind of like your own personal &amp;ldquo;if-this-happens, do-that&amp;rdquo; service.&lt;/p&gt;
+&lt;p&gt;At the core of the system are &lt;em&gt;entities&lt;/em&gt;, which represent stuff the system knows about. Entities are prefixed with their &lt;em&gt;type&lt;/em&gt;, for example &lt;code&gt;person.peter_hajas&lt;/code&gt;, &lt;code&gt;light.bedside_table&lt;/code&gt;, &lt;code&gt;sensor.patio_temperature&lt;/code&gt;, or &lt;code&gt;sun.sun&lt;/code&gt;. Home Assistant supports a suite of user-authored entities for sensors (things that feed the system data), commands (actions triggered by the system), and semantic devices (like &amp;ldquo;covers&amp;rdquo;, Home Assistant&amp;rsquo;s catchall for garage doors, sun shades, etc.).&lt;/p&gt;
+&lt;h1 id=&#34;building-the-sensor&#34;&gt;Building the Sensor&lt;/h1&gt;
+&lt;p&gt;One of the platforms for a binary sensor (determines if something is true or false) is the &lt;a href=&#34;https://www.home-assistant.io/integrations/bayesian/&#34;&gt;Bayesian&lt;/a&gt; binary sensor. This lets you use &lt;a href=&#34;https://en.wikipedia.org/wiki/Bayes%27_theorem&#34;&gt;Bayes&amp;rsquo; theorem&lt;/a&gt; to combine observations into a sensor value.&lt;/p&gt;
+&lt;p&gt;While spending some time at my home alone recently, I wanted to play with automations keyed off of whether or not I was in bed. This could be used to shut off lights and turn off appliances. I&amp;rsquo;ve read about some of the &lt;a href=&#34;https://everythingsmarthome.co.uk/howto/building-a-bed-occupancy-sensor-for-home-assistant/&#34;&gt;bed occupancy sensors&lt;/a&gt; you can build, but I wanted to see how far Bayesian sensing could get me.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s my &amp;ldquo;am I at home in bed&amp;rdquo; &lt;code&gt;binary_sensor&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Am I at home in bed?
+- platform: bayesian
+  name: &amp;quot;peter_in_bed&amp;quot;
+  prior: 0.33
+  probability_threshold: 0.9
+  observations:
+    - entity_id: &amp;quot;person.peter_hajas&amp;quot;
+      prob_given_true: 0.5
+      platform: &amp;quot;state&amp;quot;
+      to_state: &amp;quot;home&amp;quot;
+    - entity_id: &amp;quot;sensor.phajas_phone_battery_state&amp;quot;
+      prob_given_true: 0.75
+      prob_given_false: 0.05
+      platform: &amp;quot;state&amp;quot;
+      to_state: &amp;quot;Charging&amp;quot;
+    - entity_id: &amp;quot;sun.sun&amp;quot;
+      prob_given_true: 0.75
+      platform: &amp;quot;state&amp;quot;
+      to_state: &amp;quot;below_horizon&amp;quot;
+    - entity_id: &amp;quot;binary_sensor.orion_active&amp;quot;
+      prob_given_true: 0.4
+      platform: &amp;quot;state&amp;quot;
+      to_state: &amp;quot;off&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These sensors are written in YAML. You describe a prior (at any given time, how likely is it this is true?), an optional threshold (only be true if the chance is above the threshold), and observations. These observations are in terms of entities or Home Assistant templates. Here&amp;rsquo;s a breakdown of this sensor:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s a 33% chance I&amp;rsquo;m in bed, represented by the &lt;code&gt;prior&lt;/code&gt;. This assumes I spend 8 hours in bed.&lt;/li&gt;
+&lt;li&gt;I only want the sensor to trigger when the sensor is at least 90% confident. It&amp;rsquo;d be annoying if it activated at a lower threshold. This is set in &lt;code&gt;probability_threshold&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If I&amp;rsquo;m at home, there&amp;rsquo;s a 50% chance of me being asleep (this is a bit less true while working from home, but tracks for a typical commute schedule).&lt;/li&gt;
+&lt;li&gt;If my phone is charging, there&amp;rsquo;s a 75% chance I&amp;rsquo;m asleep. I usually only charge at night, so if I&amp;rsquo;m unplugged, there&amp;rsquo;s only a 5% chance of me being in bed.&lt;/li&gt;
+&lt;li&gt;If the sun is below the horizon, there&amp;rsquo;s a 75% chance that I&amp;rsquo;m in bed.&lt;/li&gt;
+&lt;li&gt;If my workstation (Orion) is not active, there&amp;rsquo;s a 40% chance that I&amp;rsquo;m in bed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;how-well-does-it-work&#34;&gt;How Well Does it Work?&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;d say it works pretty well. Some observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s awesome to throw the phone on the nightstand charging pad and have everything shut off.&lt;/li&gt;
+&lt;li&gt;It stinks when I charge my phone at night and everything turns off. I might need to play with the probabilities (if my machine is logged in, there&amp;rsquo;s basically a 0% chance I&amp;rsquo;m in bed, for example) or add other sensing (did another room recently see motion?) to help in this case.&lt;/li&gt;
+&lt;li&gt;I have yet to try it with multiple users :-). My wife (yes, wife! More on this in a future post) would need her own version of this sensor to enable turning lights off, otherwise I could leave her in the dark.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Pre-Victorian Revival Reading</title>
+		<link>http://peterhajas.com/blog/pre-victorian-revival-reading/</link>
+		<pubDate>Wed, 30 Dec 2020 10:35:00 -0700</pubDate>
+		
+		<guid>/blog/pre-victorian-revival-reading/</guid>
+        
+		<description>&lt;p&gt;A thought that has stuck with me is this passage from &lt;a href=&#34;https://www.penguinrandomhouse.com/books/172835/the-diamond-age-by-neal-stephenson/&#34;&gt;&lt;em&gt;The Diamond Age&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One of the insights of the Victorian Revival was that it was not necessarily a good thing for everyone to read a completely different newspaper in the morning; so the higher one rose in the society, the more similar one&amp;rsquo;s Times became to one&amp;rsquo;s peers&#39;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I think about this a lot when it comes to &lt;a href=&#34;http://www.aaronsw.com/weblog/hatethenews&#34;&gt;the news&lt;/a&gt;. In the Stephenson &lt;em&gt;Diamond Age&lt;/em&gt;-sense, I strive to read like the pre-Victorian Revival (or lower-status) folks.&lt;/p&gt;
+&lt;p&gt;Thanks to the &lt;a href=&#34;http://peterhajas.com/internet_independence&#34;&gt;power of feeds&lt;/a&gt;, I have tailored my reading experience exactly to my liking. As I read more, I end up collecting feeds of people&amp;rsquo;s writing I find interesting (from friend recommendations, Hacker News, and other sources). Each time I discover a new feed, I do a deep dive on the page contents to come up to speed. As I get more feeds, I find myself reading aggregators less, and other sites more.&lt;/p&gt;
+&lt;p&gt;I find myself less inclined to habitually check for the next piece of information. This leaves more time for creative pursuits, spending time with my family and friends, and critical thinking.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re willing to change your habits, I&amp;rsquo;ve found that this manner of reading can be very fulfilling.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>December 2020 Links</title>
+		<link>http://peterhajas.com/blog/december_2020_links/</link>
+		<pubDate>Tue, 29 Dec 2020 10:10:00 -0700</pubDate>
+		
+		<guid>/blog/december_2020_links/</guid>
+        
+		<description>&lt;p&gt;Here are the links I found this month:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://rarehistoricalphotos.com/tintype-occupational-portraits-19th-century/&#34;&gt;Occupational Portraits&lt;/a&gt; - people posing with their tools&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.blog/2020/12/10/the-semantic-future-of-the-web/?cb=1&#34;&gt;The Semantic Future of the Web&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ciechanow.ski/cameras-and-lenses/&#34;&gt;Cameras and Lenses&lt;/a&gt; - Bartosz never fails to teach very effectively&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.robrhinehart.com/read-the-olds/&#34;&gt;Read the Olds&lt;/a&gt; - good advice&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://play0ad.com&#34;&gt;0 A.D. A free, open-source game of ancient warfare&lt;/a&gt; - I was impressed by the performance on older machines&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>November 2020 Links</title>
+		<link>http://peterhajas.com/blog/november_2020_links/</link>
+		<pubDate>Sun, 29 Nov 2020 12:30:00 -0700</pubDate>
+		
+		<guid>/blog/november_2020_links/</guid>
+        
+		<description>&lt;p&gt;Here are some neat links I found this month:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://games.moria.org.uk/doom/research/shooting-through-things&#34;&gt;Shooting Through Things&lt;/a&gt; - why do some shots in DOOM not land?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://rg3.name/202011071352.html&#34;&gt;Origins of the youtube-dl project&lt;/a&gt; - the history behind one of my favorite pieces of software&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.spencermounta.in/2020/should-we-stop/index.html&#34;&gt;Should we stop?&lt;/a&gt; - a wonderful piece on software&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://frankchimero.com/blog/2015/the-webs-grain/&#34;&gt;The Web&amp;rsquo;s Grain&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.kevra.org/TheBestOfNext/Timeline/TImeline.html&#34;&gt;NeXT Timeline&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.newsweek.com/vegans-more-likely-break-bones-meat-eaters-study-finds-1549425&#34;&gt;Vegans More Likely To Break Bones Than Meat Eaters, Study Finds&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.plover.com/math/divisibility-by-19.html&#34;&gt;Testing for divisibility by 19&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Balzac and Coffee</title>
+		<link>http://peterhajas.com/blog/balzac_coffee/</link>
+		<pubDate>Tue, 15 Sep 2020 07:40:00 -0700</pubDate>
+		
+		<guid>/blog/balzac_coffee/</guid>
+        
+		<description>&lt;p&gt;From Balzac&amp;rsquo;s &amp;ldquo;&lt;a href=&#34;http://blissbat.net/balzac.html&#34;&gt;The Pleasures and Pains of Coffee&lt;/a&gt;&amp;rdquo;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Coffee affects the diaphragm and the plexus of the stomach, from which it reaches the brain by barely perceptible radiations that escape complete analysis; that aside, we may surmise that our primary nervous flux conducts an electricity emitted by coffee when we drink it. Coffee&amp;rsquo;s power changes over time. Rossini has personally experienced some of these effects as, of course, have I. &amp;ldquo;Coffee,&amp;rdquo; Rossini told me, &amp;ldquo;is an affair of fifteen or twenty days; just the right amount of time, fortunately, to write an opera.&amp;rdquo; This is true. But the length of time during which one can enjoy the benefits of coffee can be extended.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a great essay with some vivid descriptions of coffee from 1830.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>September 2020 Site Updates</title>
+		<link>http://peterhajas.com/blog/september_2020_site_updates/</link>
+		<pubDate>Tue, 08 Sep 2020 22:00:00 -0700</pubDate>
+		
+		<guid>/blog/september_2020_site_updates/</guid>
+        
+		<description>&lt;p&gt;I&amp;rsquo;ve made a few updates to the site that I wanted to write about:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;There is a new &lt;a href=&#34;http://peterhajas.com/internet_independence&#34;&gt;Internet Independence&lt;/a&gt; section which has some helpful tips for being more independent online.&lt;/li&gt;
+&lt;li&gt;I added a &lt;a href=&#34;http://peterhajas.com/cool_sites&#34;&gt;Cool Sites&lt;/a&gt; page with links to cool sites. Please check it out. If you operate a site that is cool, email me and I will consider adding it.&lt;/li&gt;
+&lt;li&gt;I made a &lt;a href=&#34;http://peterhajas.com/notes/index.php&#34;&gt;Pix&lt;/a&gt; site with a feed of photos that I update occasionally.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I hope you like these changes to the site.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Get a Website</title>
+		<link>http://peterhajas.com/blog/get_a_website/</link>
+		<pubDate>Sun, 23 Aug 2020 14:50:00 -0700</pubDate>
+		
+		<guid>/blog/get_a_website/</guid>
+        
+		<description>&lt;p&gt;There&amp;rsquo;s never been a better time to get a website!&lt;/p&gt;
+&lt;p&gt;Rather than speaking your mind through a centralized service, you can get your own place on the internet to share. It&amp;rsquo;s much better to have your own platform for expressing yourself and sharing your passions.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Get Hosted&lt;/p&gt;
+&lt;p&gt;Hosting is inexpensive. A simple web host can cost you less than $80 US per year. You could also use a free service like &lt;a href=&#34;https://pages.github.com&#34;&gt;GitHub Pages&lt;/a&gt;, but I feel most comfortable with a service I&amp;rsquo;m paying for. Be sure to check the terms of use for the service before using it. It&amp;rsquo;s important to understand specifically what could cause the provider to deny you service.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Make Your Site&lt;/p&gt;
+&lt;p&gt;Webpages are written in HTML and styled with CSS. While this may seem daunting if you&amp;rsquo;ve never written code before, it&amp;rsquo;s easy to get started. Mozilla has &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Learn&#34;&gt;some good resources&lt;/a&gt; for learning web development. You can follow along and have a simple page up quickly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Do Your Thing&lt;/p&gt;
+&lt;p&gt;This is the fun part! Share your passion with the world, start writing about your thoughts, ideas, and interests. Writing is really hard work (something I&amp;rsquo;m trying to work on) and having a website can be a good way to work on this important skill. I&amp;rsquo;ve discovered that I feel the best about my writing when I&amp;rsquo;m writing &lt;em&gt;for myself&lt;/em&gt;. Writing the type of stuff &lt;em&gt;I would like to read&lt;/em&gt;. This is better than whatever will get the most points on an aggregator or social site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now is a &lt;em&gt;great&lt;/em&gt; time to get a website! If you make your own site, please write to me.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Checking food expiration with StillTasty</title>
+		<link>http://peterhajas.com/blog/stilltasty/</link>
+		<pubDate>Sat, 22 Aug 2020 12:40:00 -0700</pubDate>
+		
+		<guid>/blog/stilltasty/</guid>
+        
+		<description>&lt;p&gt;I love websites that are great expressions of the medium. Many of my favorites do one thing well. One of my favorite sites is &lt;a href=&#34;https://www.stilltasty.com&#34;&gt;www.stilltasty.com&lt;/a&gt;. It has a simple purpose:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How long will your favorite food or beverage stay safe and tasty? What&amp;rsquo;s the best way to store it?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For packaged foods, manufacturers often put expiration dates on them, but &lt;a href=&#34;https://www.youtube.com/watch?v=qguDBXXOsWw&#34;&gt;how do they know the &lt;em&gt;exact date&lt;/em&gt;&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;I use this site while shopping or preparing meals. Here are some sample links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.stilltasty.com/fooditems/index/16451&#34;&gt;How long can you keep bananas in the freezer?&lt;/a&gt;?&lt;/li&gt;
+&lt;li&gt;What&amp;rsquo;s the preservation time for &lt;a href=&#34;https://www.stilltasty.com/Fooditems/index/19075&#34;&gt;shelf stable almond milk&lt;/a&gt; versus the &lt;a href=&#34;https://www.stilltasty.com/Fooditems/index/19067&#34;&gt;refrigerated version&lt;/a&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>The McDonaldland Multiverse</title>
+		<link>http://peterhajas.com/blog/mcdonaldland_multiverse/</link>
+		<pubDate>Sun, 09 Aug 2020 11:20:00 -0700</pubDate>
+		
+		<guid>/blog/mcdonaldland_multiverse/</guid>
+        
+		<description>&lt;p&gt;Do you know about &lt;a href=&#34;https://en.wikipedia.org/wiki/McDonaldland&#34;&gt;McDonaldland&lt;/a&gt;? It&amp;rsquo;s the fantastical world of fictional characters created by McDonald&amp;rsquo;s. Ronald McDonald, Grimace, Birdie, the Hamburglar, etc. These were staple characters in the 80s and 90s.&lt;/p&gt;
+&lt;p&gt;I recently wondered: &lt;em&gt;how large is the McDonaldland universe?&lt;/em&gt; Let&amp;rsquo;s explore this question.&lt;/p&gt;
+&lt;p&gt;Ronald McDonald was in advertisements with a lot of popular characters to promote the McDonald&amp;rsquo;s restaurant. A notable one was &lt;a href=&#34;https://www.youtube.com/watch?v=CClLVbJHZZU&#34;&gt;this ad&lt;/a&gt; where Ronald and Grimace run into Mario, from Super Mario Brothers. This means Mario, Peach, and the Mushroom Kingdom are &lt;em&gt;in the McDonaldland universe&lt;/em&gt;. Pretty cool! Let&amp;rsquo;s see how deep this goes.&lt;/p&gt;
+&lt;p&gt;Mario is a very popular character, and has appeared in games with many other characters. For example, Mario&amp;rsquo;s presence in the &lt;a href=&#34;https://en.wikipedia.org/wiki/Mario_%26_Sonic_at_the_Olympic_Games&#34;&gt;Mario &amp;amp; Sonic at the Olympic Games&lt;/a&gt; series. This means the characters of Sonic are also in McDonaldland.&lt;/p&gt;
+&lt;p&gt;Sonic is also very popular. In 2013, he appeared in the &lt;a href=&#34;https://archiesonic.fandom.com/wiki/Worlds_Collide&#34;&gt;&amp;ldquo;Worlds Collide&amp;rdquo; Archie comic&lt;/a&gt;. This involved a crossover with the Capcom character, &lt;a href=&#34;https://en.wikipedia.org/wiki/Mega_Man&#34;&gt;Mega Man&lt;/a&gt;. This means that Mega Man also resides in McDonaldland.&lt;/p&gt;
+&lt;p&gt;Capcom pursued some ambitious games with their characters. A popular title was 1998&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Marvel_vs._Capcom:_Clash_of_Super_Heroes&#34;&gt;Marvel vs. Capcom: Clash of Super Heroes&lt;/a&gt; where Capcom characters (including the Blue Bomber, Mega Man) appeared alongside Marvel superheroes. All of the Marvel characters (Iron Man, Rogue, Wolverine, etc.) are part of McDonaldland.&lt;/p&gt;
+&lt;p&gt;Marvel characters haven&amp;rsquo;t just appeared in crossovers with their own properties. There were two comics where the characters of the Marvel universe also met with the crew of the Enterprise from both &lt;a href=&#34;https://en.wikipedia.org/wiki/Star_Trek/X-Men&#34;&gt;the original series in &amp;ldquo;Star Trek/X-Men&amp;rdquo;&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Planet_X_(Star_Trek)&#34;&gt;the Next Generation in &amp;ldquo;Planet X&amp;rdquo;&lt;/a&gt;. All of Star Fleet exists in McDonaldland.&lt;/p&gt;
+&lt;p&gt;The Star Trek characters were in many films, books, and comics. An important one for the McDonaldland continuity was the &lt;a href=&#34;https://en.wikipedia.org/wiki/Star_Trek/Green_Lantern&#34;&gt;&amp;ldquo;Star Trek/Green Lantern&amp;rdquo;&lt;/a&gt; series. This involved the crew of the Enterprise meeting the Green Lantern. Unsurprisingly, the DC Comics characters also exist in McDonaldland.&lt;/p&gt;
+&lt;p&gt;Superman has fought a lot of tough enemies. One of the most difficult was published in the year 2000. He battled against &lt;a href=&#34;https://en.wikipedia.org/wiki/Superman_vs._The_Terminator:_Death_to_the_Future&#34;&gt;The Terminator in &amp;ldquo;Superman vs. The Terminator: Death to the Future&amp;rdquo;&lt;/a&gt;. Obviously, Sarah Connor and the Terminator are also from McDonaldland.&lt;/p&gt;
+&lt;p&gt;There were other comics featuring The Terminator. One put him in the middle of a triangle against two other battling foes in &lt;a href=&#34;https://en.wikipedia.org/wiki/Aliens_versus_Predator_versus_The_Terminator&#34;&gt;Aliens versus Predator versus The Terminator&lt;/a&gt;. This means the characters of &amp;ldquo;Alien&amp;rdquo; (Ripley, Peter Weyland, the alien, and others) are in McDonaldland.&lt;/p&gt;
+&lt;p&gt;The Alien franchise didn&amp;rsquo;t just feature in the popular films, but also video games. An important title was 2015&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Mortal_Kombat_X&#34;&gt;Mortal Kombat X&lt;/a&gt;. Here, you could play as Alien and fight Freddy from &amp;ldquo;A Nightmare on Elm Street&amp;rdquo;. Freddy Krueger also exists in McDonaldland.&lt;/p&gt;
+&lt;p&gt;Freddy Krueger also appeared in &lt;a href=&#34;https://en.wikipedia.org/wiki/Mortal_Kombat_(2011_video_game)&#34;&gt;Mortal Kombat (9)&lt;/a&gt; alongside some other characters. The roster included Kratos from God of War, another resident of McDonaldland.&lt;/p&gt;
+&lt;p&gt;The McDonaldland Multiverse (also called the McDonaldland / Mario / Sonic / Mega Man / Marvel / Star Trek / DC / Terminator / Alien / Nightmare on Elm Street / God of War Multiverse) is an expansive one. To help visualize it, I prepared &lt;a href=&#34;http://peterhajas.com/mcdonaldland.dot&#34;&gt;this DOT file&lt;/a&gt; which you can see here:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://peterhajas.com/mcdonaldland.png&#34;&gt;&lt;img src=&#34;http://peterhajas.com/mcdonaldland.png&#34; alt=&#34;The McDonaldland Multiverse shown in an undirected graph&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;aside&gt;Click the image above to see it full-size&lt;/aside&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Parsing Pokémon Red and Blue Maps</title>
+		<link>http://peterhajas.com/blog/pokemon_rb_map_parsing/</link>
+		<pubDate>Mon, 03 Aug 2020 12:55:00 -0700</pubDate>
+		
+		<guid>/blog/pokemon_rb_map_parsing/</guid>
+        
+        <description>I previously wrote about visualizing the connections between maps in Pokémon Red and Blue. Next, I wanted to explore how the game&amp;rsquo;s maps work in more detail. I couldn&amp;rsquo;t find any documentation about how to read the map data. I spent some time understanding the format which I want to document here for anyone else looking to parse maps. Special thanks to the folks on the &amp;ldquo;pret&amp;rdquo; Discord channel whose comments I studied in an effort to understand the map format.(read more on webpage)
+        </description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Office Space features an N64</title>
+		<link>http://peterhajas.com/blog/office_space_n64/</link>
+		<pubDate>Sat, 04 Jul 2020 23:45:00 -0700</pubDate>
+		
+		<guid>/blog/office_space_n64/</guid>
+        
+		<description>&lt;p&gt;In the film Office Space, there&amp;rsquo;s a great montage to &lt;a href=&#34;https://music.apple.com/us/album/damn-it-feels-good-to-be-a-gangsta/710128784?i=710130888&#34;&gt;&amp;ldquo;Damn It Feels Good To Be A Gangsta&amp;rdquo;&lt;/a&gt;. There&amp;rsquo;s a version of that montage &lt;a href=&#34;https://www.youtube.com/watch?v=I1L8l3LrzLA&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s something interesting in this montage, around &lt;a href=&#34;https://youtu.be/I1L8l3LrzLA?t=64&#34;&gt;the 1:04 mark&lt;/a&gt;. Near the right side of the screen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/office_space_n64_1.jpeg&#34; alt=&#34;Image of an N64 on the right side of the screen in the movie Office Space. Standard aspect ratio&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a Nintendo 64!&lt;/p&gt;
+&lt;p&gt;Right at the edge of the frame is part of a cartridge. Because of cropping, we can&amp;rsquo;t tell what game is in the console in the standard-definition version of the film.&lt;/p&gt;
+&lt;p&gt;Very thankfully, in the &lt;a href=&#34;https://tv.apple.com/us/movie/office-space/umc.cmc.6jlilk9yf1ozlv281w6rnw5pu&#34;&gt;widescreen version of the movie&lt;/a&gt;, we can more clearly see what Game Pak is in the console:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/office_space_n64_2.jpeg&#34; alt=&#34;Image of an N64 on the right side of the screen in the movie Office Space. The game is more visible in the cartridge. Widescreen aspect ratio&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s enhance a bit more:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/office_space_n64_3.jpeg&#34; alt=&#34;A close up of the image showing Mario Kart 64&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s Mario Kart 64!&lt;/p&gt;
+&lt;p&gt;As we see later on in the film, the controller is plugged into Player 4&amp;rsquo;s port:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/office_space_n64_4.jpeg&#34; alt=&#34;Image of the three programmers from Office Space dancing, with a Nintendo 64 on the right side of the frame&#34;&gt;&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Visualizing Pokémon Red and Blue Connections</title>
+		<link>http://peterhajas.com/blog/pokemon_rb_connections/</link>
+		<pubDate>Tue, 14 Apr 2020 20:45:00 -0700</pubDate>
+		
+		<guid>/blog/pokemon_rb_connections/</guid>
+        
+		<description>&lt;p&gt;I love Pokémon. My fascination with the series began with the original games released in the US, Pokémon Red and Blue (I had the Blue version).&lt;/p&gt;
+&lt;p&gt;In the past few years, people have been disassembling Pokémon games. You can check these out for Pokémon &lt;a href=&#34;https://github.com/pret/pokered&#34;&gt;Red and Blue&lt;/a&gt;, &lt;a href=&#34;https://github.com/pret/pokecrystal&#34;&gt;Crystal&lt;/a&gt;, &lt;a href=&#34;https://github.com/pret/pokeemerald&#34;&gt;Emerald&lt;/a&gt;, and others. It&amp;rsquo;s really cool to be able to compile and build a game that was such a huge part of my youth.&lt;/p&gt;
+&lt;p&gt;I thought it would be fun to play with this source code, viewing these games through a new lens. A few months ago, I discovered &lt;a href=&#34;https://www.graphviz.org&#34;&gt;Graphviz&lt;/a&gt;, a software package for rendering graphs written in the &lt;a href=&#34;https://en.wikipedia.org/wiki/DOT_(graph_description_language)&#34;&gt;Dot language&lt;/a&gt;. Dot is a very simple language, and it&amp;rsquo;s easy to filter data into its format. Graphviz includes some command line tools that can render dot files to nice human-readable output. Let&amp;rsquo;s see how we can use Graphviz to visualize Pokémon Red and Blue.&lt;/p&gt;
+&lt;p&gt;Inside of &lt;code&gt;pokered&lt;/code&gt;, there&amp;rsquo;s a &lt;code&gt;data&lt;/code&gt; directory with a &lt;code&gt;mapHeaders&lt;/code&gt; subdirectory inside. &lt;code&gt;mapHeaders&lt;/code&gt; includes metadata about every overworld map in the game. This includes the connections between maps. For example, here is the metadata for Route 10:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat Route10.asm 
+Route10_h:
+    db OVERWORLD ; tileset
+    db ROUTE_10_HEIGHT, ROUTE_10_WIDTH ; dimensions (y, x)
+    dw Route10_Blocks ; blocks
+    dw Route10_TextPointers ; texts
+    dw Route10_Script ; scripts
+    db SOUTH | WEST ; connections
+    SOUTH_MAP_CONNECTION ROUTE_10, LAVENDER_TOWN, 0, 0, LavenderTown_Blocks
+    WEST_MAP_CONNECTION ROUTE_10, ROUTE_9, 0, 0, Route9_Blocks
+    dw Route10_Object ; objects
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So south of Route 10 is Lavender Town, and west is Route 9. We can use this connection data and some simple uses of &lt;code&gt;grep&lt;/code&gt; and &lt;code&gt;awk&lt;/code&gt; to generate Dot code representing these connections. The following commands are all run from &lt;code&gt;/data/mapHeaders&lt;/code&gt; in the &lt;code&gt;pokered&lt;/code&gt; repository. First, we use &lt;code&gt;grep&lt;/code&gt; to see the connections:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ grep -R &amp;quot;MAP_CONNECTION&amp;quot; ./
+.//PewterCity.asm:	SOUTH_MAP_CONNECTION PEWTER_CITY, ROUTE_2, 5, 0, Route2_Blocks
+.//PewterCity.asm:	EAST_MAP_CONNECTION PEWTER_CITY, ROUTE_3, 4, 0, Route3_Blocks
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, let&amp;rsquo;s pipe that to &lt;code&gt;awk&lt;/code&gt; to print the endpoints of that connection:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ grep -R &amp;quot;MAP_CONNECTION&amp;quot; ./ | awk -F&amp;quot; &amp;quot; &#39;{ print $3 $4; }&#39;
+PEWTER_CITY,ROUTE_2,
+PEWTER_CITY,ROUTE_3,
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can use a second &lt;code&gt;awk&lt;/code&gt; invocation to print these as Dot edges:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ grep -R &amp;quot;MAP_CONNECTION&amp;quot; ./ | awk -F&amp;quot; &amp;quot; &#39;{ print $3 $4; }&#39; | awk -F&amp;quot;,&amp;quot; &#39;{ print $1&amp;quot; -- &amp;quot;$2 }&#39;
+PEWTER_CITY -- ROUTE_2
+PEWTER_CITY -- ROUTE_3
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Undirected Dot edges are represented with the two nodes and a &lt;code&gt;--&lt;/code&gt; between them.&lt;/p&gt;
+&lt;p&gt;We can represent a strict (one connection between nodes) graph (non-directed, as these are bidirectional connections) by wrapping all these connections in a &lt;code&gt;strict graph {}&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;strict graph {
+    PEWTER_CITY -- ROUTE_2
+    PEWTER_CITY -- ROUTE_3
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can add two other options (&lt;code&gt;overlap=false&lt;/code&gt; to avoid edge overlap and &lt;code&gt;splines=true&lt;/code&gt; to use splines for edges) to get a better looking graph. Here&amp;rsquo;s my &lt;code&gt;pokemon_rb_towns_and_routes.dot&lt;/code&gt; generated from the above steps:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;strict graph {
+    overlap=false;
+    splines=true;
+    PEWTER_CITY -- ROUTE_2
+    PEWTER_CITY -- ROUTE_3
+    CELADON_CITY -- ROUTE_16
+    CELADON_CITY -- ROUTE_7
+    ROUTE_9 -- CERULEAN_CITY
+    ROUTE_9 -- ROUTE_10
+    ROUTE_8 -- SAFFRON_CITY
+    ROUTE_8 -- LAVENDER_TOWN
+    ROUTE_21 -- PALLET_TOWN
+    ROUTE_21 -- CINNABAR_ISLAND
+    ROUTE_20 -- CINNABAR_ISLAND
+    ROUTE_20 -- ROUTE_19
+    ROUTE_22 -- ROUTE_23
+    ROUTE_22 -- VIRIDIAN_CITY
+    PALLET_TOWN -- ROUTE_1
+    PALLET_TOWN -- ROUTE_21
+    ROUTE_23 -- INDIGO_PLATEAU
+    ROUTE_23 -- ROUTE_22
+    VERMILION_CITY -- ROUTE_6
+    VERMILION_CITY -- ROUTE_11
+    ROUTE_24 -- CERULEAN_CITY
+    ROUTE_24 -- ROUTE_25
+    ROUTE_18 -- ROUTE_17
+    ROUTE_18 -- FUCHSIA_CITY
+    ROUTE_19 -- FUCHSIA_CITY
+    ROUTE_19 -- ROUTE_20
+    ROUTE_25 -- ROUTE_24
+    LAVENDER_TOWN -- ROUTE_10
+    LAVENDER_TOWN -- ROUTE_12
+    LAVENDER_TOWN -- ROUTE_8
+    ROUTE_14 -- ROUTE_15
+    ROUTE_14 -- ROUTE_13
+    ROUTE_15 -- FUCHSIA_CITY
+    ROUTE_15 -- ROUTE_14
+    ROUTE_17 -- ROUTE_16
+    ROUTE_17 -- ROUTE_18
+    ROUTE_16 -- ROUTE_17
+    ROUTE_16 -- CELADON_CITY
+    ROUTE_12 -- LAVENDER_TOWN
+    ROUTE_12 -- ROUTE_13
+    ROUTE_12 -- ROUTE_11
+    ROUTE_13 -- ROUTE_12
+    ROUTE_13 -- ROUTE_14
+    ROUTE_11 -- VERMILION_CITY
+    ROUTE_11 -- ROUTE_12
+    CERULEAN_CITY -- ROUTE_24
+    CERULEAN_CITY -- ROUTE_5
+    CERULEAN_CITY -- ROUTE_4
+    CERULEAN_CITY -- ROUTE_9
+    ROUTE_10 -- LAVENDER_TOWN
+    ROUTE_10 -- ROUTE_9
+    ROUTE_5 -- CERULEAN_CITY
+    ROUTE_5 -- SAFFRON_CITY
+    FUCHSIA_CITY -- ROUTE_19
+    FUCHSIA_CITY -- ROUTE_18
+    FUCHSIA_CITY -- ROUTE_15
+    SAFFRON_CITY -- ROUTE_5
+    SAFFRON_CITY -- ROUTE_6
+    SAFFRON_CITY -- ROUTE_7
+    SAFFRON_CITY -- ROUTE_8
+    ROUTE_4 -- ROUTE_3
+    ROUTE_4 -- CERULEAN_CITY
+    ROUTE_6 -- SAFFRON_CITY
+    ROUTE_6 -- VERMILION_CITY
+    VIRIDIAN_CITY -- ROUTE_2
+    VIRIDIAN_CITY -- ROUTE_1
+    VIRIDIAN_CITY -- ROUTE_22
+    INDIGO_PLATEAU -- ROUTE_23
+    ROUTE_7 -- CELADON_CITY
+    ROUTE_7 -- SAFFRON_CITY
+    ROUTE_3 -- ROUTE_4
+    ROUTE_3 -- PEWTER_CITY
+    ROUTE_2 -- PEWTER_CITY
+    ROUTE_2 -- VIRIDIAN_CITY
+    CINNABAR_ISLAND -- ROUTE_21
+    CINNABAR_ISLAND -- ROUTE_20
+    ROUTE_1 -- VIRIDIAN_CITY
+    ROUTE_1 -- PALLET_TOWN
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can use a simple invocation of &lt;code&gt;neato&lt;/code&gt; to produce a PDF file with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;neato -Tpdf pokemon_rb_towns_and_routes.dot &amp;gt; pokemon_rb_towns_and_routes.pdf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Check it out:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_rb_towns_and_routes_preview.jpeg&#34; alt=&#34;A graph visualizing all towns and routes in Pokémon Red and Blue&#34;&gt;
+(&lt;a href=&#34;http://peterhajas.com/pokemon_rb_towns_and_routes.pdf&#34;&gt;PDF file here&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;OK, so towns and routes are cool. Can we augment this file to include buildings, tunnels, and rooms? There are &lt;code&gt;warp&lt;/code&gt; and &lt;code&gt;warp_to&lt;/code&gt; markers in the files in &lt;code&gt;/data/mapObjects&lt;/code&gt;. For example, let&amp;rsquo;s look at &lt;code&gt;SaffronCity.asm&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat data/mapObjects/SaffronCity.asm
+SaffronCity_Object:
+    db $f ; border block
+
+    db 8 ; warps
+    warp 7, 5, 0, COPYCATS_HOUSE_1F
+    warp 26, 3, 0, FIGHTING_DOJO
+    warp 34, 3, 0, SAFFRON_GYM
+    warp 13, 11, 0, SAFFRON_PIDGEY_HOUSE
+    warp 25, 11, 0, SAFFRON_MART
+    warp 18, 21, 0, SILPH_CO_1F
+    warp 9, 29, 0, SAFFRON_POKECENTER
+    warp 29, 29, 0, MR_PSYCHICS_HOUSE
+
+    ...
+
+    ; warp-to
+    warp_to 7, 5, SAFFRON_CITY_WIDTH ; COPYCATS_HOUSE_1F
+    warp_to 26, 3, SAFFRON_CITY_WIDTH ; FIGHTING_DOJO
+    warp_to 34, 3, SAFFRON_CITY_WIDTH ; SAFFRON_GYM
+    warp_to 13, 11, SAFFRON_CITY_WIDTH ; SAFFRON_PIDGEY_HOUSE
+    warp_to 25, 11, SAFFRON_CITY_WIDTH ; SAFFRON_MART
+    warp_to 18, 21, SAFFRON_CITY_WIDTH ; SILPH_CO_1F
+    warp_to 9, 29, SAFFRON_CITY_WIDTH ; SAFFRON_POKECENTER
+    warp_to 29, 29, SAFFRON_CITY_WIDTH ; MR_PSYCHICS_HOUSE
+
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(These &lt;code&gt;_WIDTH&lt;/code&gt; suffixes seem to indicate the coordinates are inside of the width of the map. We&amp;rsquo;ll clean them up later.)&lt;/p&gt;
+&lt;p&gt;So, if we parse out the &lt;code&gt;warp_to&lt;/code&gt; statements, we should be able to get a more complete view of the game&amp;rsquo;s locations and how they connect. Let&amp;rsquo;s start with a simple &lt;code&gt;grep&lt;/code&gt; to find all the &lt;code&gt;warp_to&lt;/code&gt; statements (run from &lt;code&gt;/data/mapObjects&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grep -R &amp;quot;warp_to &amp;quot; ./
+.//RocketHideoutB4F.asm:	warp_to 19, 10, ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_B3F
+.//RocketHideoutB4F.asm:	warp_to 24, 15, ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_ELEVATOR
+.//RocketHideoutB4F.asm:	warp_to 25, 15, ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_ELEVATOR
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, pipe to &lt;code&gt;awk&lt;/code&gt; to find the endpoints of the warp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ grep -R &amp;quot;warp_to &amp;quot; ./ | awk -F&amp;quot;,&amp;quot; &#39;{ print $3; }&#39;
+ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_B3F
+ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_ELEVATOR
+ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_ELEVATOR
+CELADON_MART_3F_WIDTH ; CELADON_MART_4F
+CELADON_MART_3F_WIDTH ; CELADON_MART_2F
+CELADON_MART_3F_WIDTH ; CELADON_MART_ELEVATOR
+BRUNOS_ROOM_WIDTH ; LORELEIS_ROOM
+BRUNOS_ROOM_WIDTH ; LORELEIS_ROOM
+BRUNOS_ROOM_WIDTH ; AGATHAS_ROOM
+BRUNOS_ROOM_WIDTH ; AGATHAS_ROOM
+BIKE_SHOP_WIDTH
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is close, but includes some warps that appear to point to themselves (like &lt;code&gt;BIKE_SHOP_WIDTH&lt;/code&gt; above). No problem - we can only print lines with &lt;code&gt;;&lt;/code&gt; in them using &lt;code&gt;grep&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ grep -R &amp;quot;warp_to &amp;quot; ./ | awk -F&amp;quot;,&amp;quot; &#39;{ print $3; }&#39; | grep &amp;quot;;&amp;quot;
+ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_B3F
+ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_ELEVATOR
+ROCKET_HIDEOUT_B4F_WIDTH ; ROCKET_HIDEOUT_ELEVATOR
+CELADON_MART_3F_WIDTH ; CELADON_MART_4F
+CELADON_MART_3F_WIDTH ; CELADON_MART_2F
+CELADON_MART_3F_WIDTH ; CELADON_MART_ELEVATOR
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OK, almost done. Next, let&amp;rsquo;s strip out the &lt;code&gt;_WIDTH&lt;/code&gt; text and put in edge connections:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ grep -R &amp;quot;warp_to &amp;quot; ./ | awk -F&amp;quot;,&amp;quot; &#39;{ print $3; }&#39; | grep &amp;quot;;&amp;quot; | sed -e &amp;quot;s/_WIDTH//&amp;quot; | sed -e &amp;quot;s/;/--/&amp;quot;
+ ROCKET_HIDEOUT_B4F -- ROCKET_HIDEOUT_B3F
+ ROCKET_HIDEOUT_B4F -- ROCKET_HIDEOUT_ELEVATOR
+ ROCKET_HIDEOUT_B4F -- ROCKET_HIDEOUT_ELEVATOR
+ CELADON_MART_3F -- CELADON_MART_4F
+ CELADON_MART_3F -- CELADON_MART_2F
+ CELADON_MART_3F -- CELADON_MART_ELEVATOR
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(note the leading space here - not a big deal for the Graphviz tools)&lt;/p&gt;
+&lt;p&gt;Now, we&amp;rsquo;ll put this all into a &lt;code&gt;pokemon_rb_all.dot&lt;/code&gt; file (along with the connections from &lt;code&gt;pokemon_rb_towns_and_routes.dot&lt;/code&gt;) to make a graph of all of the locations in Pokémon Red and Blue. For this invocation, I also used &lt;code&gt;neato&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;neato -Tpdf pokemon_rb_all.dot &amp;gt; pokemon_rb_all.pdf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This graph is so cool! Check it out:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_rb_all_preview.jpeg&#34; alt=&#34;A graph visualizing all locations in Pokémon Red and Blue&#34;&gt;
+(&lt;a href=&#34;http://peterhajas.com/pokemon_rb_all.pdf&#34;&gt;PDF file here&lt;/a&gt;, &lt;a href=&#34;http://peterhajas.com/pokemon_rb_all.dot&#34;&gt;dot file here&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;There are so many sections of this graph with interesting details, like Victory Road leading into the Indigo Plateau and Elite Four:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_rb_all_e4.jpeg&#34; alt=&#34;A cropped version of the &amp;ldquo;all locations&amp;rdquo; graph showing just Victory Road, the Indigo Plateau, and the Elite Four sections of the graph&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Or the maze-like Silph Company building:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/pokemon_rb_all_silph.jpeg&#34; alt=&#34;A cropped version of the &amp;ldquo;all locations&amp;rdquo; graph showing just the Silph Company building floors&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I think it&amp;rsquo;s really cool how easy it is to use simple tools to see these games from a new angle. I hope to look at other aspects of these games sometime in the future.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>February Trip to Death Valley</title>
+		<link>http://peterhajas.com/blog/february_death_valley/</link>
+		<pubDate>Mon, 30 Mar 2020 20:00:00 -0700</pubDate>
+		
+		<guid>/blog/february_death_valley/</guid>
+        
+		<description>&lt;p&gt;In February, I had the opportunity to go on a trip to &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Death_Valley_National_Park&#34;&gt;Death Valley National Park&lt;/a&gt; with some friends. It was an awesome time! Here’s what happened:&lt;/p&gt;
+&lt;h1 id=&#34;gear&#34;&gt;Gear&lt;/h1&gt;
+&lt;p&gt;I was lucky enough to go to REI with one of my buddies, a camping veteran, before the trip. He was also the organizer of our trip to Death Valley. At REI, I secured some supplies, including essentials (sleeping bag, freeze-dried food), things I thought were unnecessary but ended up being very useful (utensils, sleeping pad), and things I had no idea you needed or wanted on a camping trip (pillow, chair). It helps to go with people who are experienced!&lt;/p&gt;
+&lt;h1 id=&#34;the-trip-out&#34;&gt;The Trip Out&lt;/h1&gt;
+&lt;p&gt;We left at an early 5AM towards our destination. The Death Valley area is a good 6-7 hours from the Bay Area. The drive was pretty, complete with an early morning coffee pit stop in Gilroy. Onwards&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;campsite-one-the-trona-pinnacles&#34;&gt;Campsite One: The Trona Pinnacles&lt;/h1&gt;
+&lt;p&gt;We arrived in our first campsite: the &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Trona_Pinnacles&#34;&gt;Trona Pinnacles&lt;/a&gt;. This area looks like another planet:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_pinnacles.jpeg&#34; alt=&#34;photo I took of Trona Pinnacles&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In fact, it’s been used for just that in movie and TV sets (Star Trek V was filmed here). It was also the setting for &lt;a href=&#34;https://m.youtube.com/watch?v=5L6xyaeiV58&#34;&gt;Lady Gaga’s latest video&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is also where fighter jets do test flights, which is really cool to see up close:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_jet.jpeg&#34; alt=&#34;photo I took of fighter jet&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The area is part of &lt;a href=&#34;https://en.wikipedia.org/wiki/Bureau_of_Land_Management&#34;&gt;California’s BLM lands&lt;/a&gt;. This made it a great spot for camping and for a fire.&lt;/p&gt;
+&lt;p&gt;Along with some Ardbeg, I enjoyed some a delicious freeze dried meal: chili macaroni and cheese with beef.&lt;/p&gt;
+&lt;h1 id=&#34;campsite-two-in-the-park&#34;&gt;Campsite Two: In The Park&lt;/h1&gt;
+&lt;p&gt;After a nice oatmeal and some instant coffee, we pushed off to &lt;a href=&#34;https://en.wikipedia.org/wiki/Trona,_San_Bernardino_County,_California&#34;&gt;Trona, CA&lt;/a&gt; to stock up on some snacks and get gas. Trona is an industrial town in the middle of nowhere. My fiancé and I fell in love with it on our first visit. They mine borax and salt. I love this note from the &lt;a href=&#34;https://en.wikipedia.org/wiki/Trona_High_School&#34;&gt;Trona High School Wikipedia page&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Until several years ago an annual game was played against Boron High School. Referred to as the Borax Bowl by some, the game was a matchup of two mining towns that are world leaders in producing potash and borax, minerals used in a number of products.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While in Trona, we saw a motorcycle group with a dog that rode along. Cool!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_dog.jpeg&#34; alt=&#34;photo of dog on motorcycle&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We took off to enter Death Valley. Rather than entering through the visitor center from California, we took a side route. We saw some amazing sites on the way in to the park:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_enter.jpeg&#34; alt=&#34;photo from Inyokern entering the park&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I even saw an abandoned mineshaft - cool!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_mineshaft.jpeg&#34; alt=&#34;photo of abandoned mineshaft&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We then arrived at our next camp site. We set up our tents, and imbibed and ate.&lt;/p&gt;
+&lt;p&gt;The night was a bit windy, but the tent I was loaned stood up just fine after some rocks were placed inside.&lt;/p&gt;
+&lt;h1 id=&#34;campsite-three-echo-canyon&#34;&gt;Campsite Three: Echo Canyon&lt;/h1&gt;
+&lt;p&gt;We awoke, had some breakfast, and pushed off. We stopped off at some abandoned campgrounds and checked out a cool natural spring:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_spring.jpeg&#34; alt=&#34;photo of natural spring&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We headed off to &lt;a href=&#34;https://en.wikipedia.org/wiki/Beatty,_Nevada&#34;&gt;Beatty, NV&lt;/a&gt; for a stop at a diner:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_diner.jpeg&#34; alt=&#34;photo of food at diner&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We had to make a game-time decision about where to stay on this third night. We had thought of staying that night in a canyon, but the park was experiencing snow (in a desert no less):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_snow.jpeg&#34; alt=&#34;photo of snow&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I was &lt;em&gt;really&lt;/em&gt; hoping we would not have to call off our trip a day early. We decided to stay the night - I was happy we did - and headed off to Echo Canyon.&lt;/p&gt;
+&lt;p&gt;Inside the canyon, we found a nice campsite against some rocks:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_echo.jpeg&#34; alt=&#34;photo of campsite in echo canyon&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We pitched our tents, and had dinner for the evening.&lt;/p&gt;
+&lt;p&gt;As the night wore on, the wind picked up more and more. I awoke at around 4 in the morning to the wall of the tent covering my body, pushed by a strong wind. I figured I wouldn’t suffocate (I was getting barraged by oxygen), so I went back to bed.&lt;/p&gt;
+&lt;h1 id=&#34;the-trip-back&#34;&gt;The Trip Back&lt;/h1&gt;
+&lt;p&gt;The next morning, after our customary breakfast, we packed up and headed back to civilization. We saw some beautiful views on our way out:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/dv_exit1.jpeg&#34; alt=&#34;photo of mountains on last day&#34;&gt;
+&lt;img src=&#34;http://peterhajas.com/dv_exit2.jpeg&#34; alt=&#34;photo of snow on last day&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We stopped at a truck stop for some food. I had a Double Quarter Pounder with Cheese - it was delicious.&lt;/p&gt;
+&lt;p&gt;All in all, a great trip! I hope to get back soon.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Peterometer Chapter 2: Counting Raw Eggs</title>
+		<link>http://peterhajas.com/blog/peterometer_2a_eggs/</link>
+		<pubDate>Wed, 29 Jan 2020 21:24:00 -0700</pubDate>
+		
+		<guid>/blog/peterometer_2a_eggs/</guid>
+        
+		<description>&lt;p&gt;&lt;em&gt;This is the second in the Peterometer series. The first can be found &lt;a href=&#34;http://peterhajas.com/blog/peterometer_1_hydration&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;After I felt comfortable tracking hydration, I wanted to introduce other metrics tracking into my life. I&amp;rsquo;ve been tracking the food I&amp;rsquo;ve eaten since March 2019. With less than a week of downtime, I&amp;rsquo;ve tracked &lt;strong&gt;everything I&amp;rsquo;ve eaten&lt;/strong&gt; since that time.&lt;/p&gt;
+&lt;p&gt;I track my food in the &lt;a href=&#34;https://loseit.com/&#34;&gt;LoseIt&lt;/a&gt; app. I usually log the food right after eating it, and I really enjoy seeing how many calories I&amp;rsquo;ve eaten that day.&lt;/p&gt;
+&lt;p&gt;In the past year, I&amp;rsquo;ve also become &lt;em&gt;really&lt;/em&gt; into eating raw eggs. I enjoy them on starchy foods, like ramen or rice. Kind of like my own version of &lt;a href=&#34;https://en.wikipedia.org/wiki/Tamago_kake_gohan&#34;&gt;tamago kake gohan&lt;/a&gt;. In a given week, I&amp;rsquo;ll end up eating a few meals with raw eggs.&lt;/p&gt;
+&lt;p&gt;But how many raw eggs? Let&amp;rsquo;s find out!&lt;/p&gt;
+&lt;h1 id=&#34;exporting-loseit-data&#34;&gt;Exporting LoseIt Data&lt;/h1&gt;
+&lt;p&gt;LoseIt lets you export the food you&amp;rsquo;ve eaten on a weekly basis from their website. These export as a CSV file, which is perfect for processing and backup. If you&amp;rsquo;re a Premium member, go to your &amp;ldquo;Insights&amp;rdquo; tab on the website and then look for &amp;ldquo;Weekly Summary&amp;rdquo; and &amp;ldquo;Export to spreadsheet&amp;rdquo;. I export my data every 2 or 3 weeks, and collect it all in a folder on my machine. These files are numbered based on their starting day since January 1 2000:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ls
+WeeklySummary6637.csv
+WeeklySummary6644.csv
+WeeklySummary6651.csv
+WeeklySummary6658.csv
+WeeklySummary6665.csv
+WeeklySummary6672.csv
+WeeklySummary6679.csv
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;generating-a-master-food-csv&#34;&gt;Generating a master food CSV&lt;/h1&gt;
+&lt;p&gt;I wrote a simple shell script to combine all these summaries, remove workouts (I track these separately), and then generate a master &lt;code&gt;combine.csv&lt;/code&gt; file with all my food in one place:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+# delete the combine file
+rm combine.csv
+# concatenate all the csvs, sorting
+echo &amp;quot;Date,Name,Type,Quantity,Units,Calories,Fat (g),Protein (g),Carbohydrates (g),Saturated Fat (g),Sugars (g),Fiber (g),Cholesterol (mg),Sodium (mg)&amp;quot; &amp;gt; combine.csv
+cat *.csv | grep -v &amp;quot;Calorie Burn&amp;quot; | grep -v &amp;quot;Date,Name&amp;quot; | grep -v &amp;quot;HealthKit&amp;quot; | sort &amp;gt;&amp;gt; combine.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With this, we can &lt;code&gt;cat&lt;/code&gt; out the combined CSV file to see the food I&amp;rsquo;ve eaten:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat combine.csv
+Date,Name,Type,Quantity,Units,Calories,Fat (g),Protein (g),Carbohydrates (g),Saturated Fat (g),Sugars (g),Fiber (g),Cholesterol (mg),Sodium (mg)
+01/01/2020,&amp;quot;Sandwich, Sub, JJ Gargantuan&amp;quot;,Lunch,1.5,Each,&amp;quot;1,656&amp;quot;,82.50,108,124.50,22.50,n/a,7.50,268.50,5121
+01/01/2020,Cookie,Snacks,4.0,Servings,144,12,4,72,6,32,0,0,230
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(this example highlights a problem with my use of &lt;code&gt;sort&lt;/code&gt; in the script: 01/01/2020 sorts alphabetically before 12/01/2019)&lt;/p&gt;
+&lt;h1 id=&#34;analyzing-the-food-ive-eaten&#34;&gt;Analyzing the food I&amp;rsquo;ve eaten&lt;/h1&gt;
+&lt;p&gt;We can use some simple utilities to query the file. For example, how many food entries have I logged?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat combine.csv | wc -l
+3984
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Wow! That&amp;rsquo;s a lot of food. This averages to around 12 entries per day.&lt;/p&gt;
+&lt;p&gt;We can &lt;code&gt;grep&lt;/code&gt; for other data, like how many burritos I&amp;rsquo;ve had.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat combine.csv | grep -i burrito | wc -l
+38
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I&amp;rsquo;ve eaten a burrito every 9 days or so.&lt;/p&gt;
+&lt;h1 id=&#34;counting-raw-eggs&#34;&gt;Counting raw eggs&lt;/h1&gt;
+&lt;p&gt;But &lt;strong&gt;how many raw eggs&lt;/strong&gt; have I eaten? I usually log these when I eat &lt;em&gt;actual raw eggs&lt;/em&gt; (when I cook an egg dish on the stove without oil I will also count it as raw eggs). Let&amp;rsquo;s &lt;code&gt;grep&lt;/code&gt; the CSV file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat combine.csv |grep -i egg
+01/02/2020,Egg raw,Dinner,2.0,Servings,140,9.60,12.60,0.80,3.20,n/a,n/a,372,142
+01/02/2020,Scrambled Eggs,Breakfast,1.0,Each,91,7,6,1,2,0.80,0,169,88
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This &lt;code&gt;grep&lt;/code&gt; picked up anything with &amp;ldquo;egg&amp;rdquo; in the title, like scrambled eggs. We only want to look for raw eggs - it&amp;rsquo;s simple enough to do that by modifying our &lt;code&gt;grep&lt;/code&gt; invocation. But keep in mind the header line of &lt;code&gt;combine.csv&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Date,Name,Type,Quantity,...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The fourth column is the &lt;em&gt;quantity&lt;/em&gt;. This is how many raw eggs I actually ate. So we really want to sum that column.&lt;/p&gt;
+&lt;p&gt;We can print the fourth column with a bit of &lt;code&gt;awk&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat combine.csv |grep -i egg |grep -i raw | awk -F, &#39;{ print $4; }&#39;
+2.0
+2.0
+2.0
+2.0
+2.0
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and sum it with a bit more:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat combine.csv |grep -i egg |grep -i raw | awk -F, &#39;{ eggs+=$4; } END { print eggs; } &#39;
+276.75
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(yes, I did eat non-whole portions of eggs some days)&lt;/p&gt;
+&lt;p&gt;276.75 raw eggs. That&amp;rsquo;s nearly two dozen dozen raw eggs!&lt;/p&gt;
+&lt;h1 id=&#34;raw-egg-consumption-based-on-day-of-the-week&#34;&gt;Raw egg consumption based on day of the week&lt;/h1&gt;
+&lt;p&gt;As a fun visualization, I wanted to see if I ate raw eggs more on a particular day of the week. I did this using some simple categorization in Numbers:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/peterometer_2a_eggs_per_day.png&#34; alt=&#34;Raw eggs visualized by day&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Wow! Based on this, I had way fewer raw eggs on Fridays. Tuesdays and Thursdays are lighter weekdays for raw egg consumption.&lt;/p&gt;
+&lt;h1 id=&#34;looking-forward-to-more-food-analysis&#34;&gt;Looking forward to more food analysis&lt;/h1&gt;
+&lt;p&gt;Counting raw egg was a fun test of the data I&amp;rsquo;ve been gathering for the past 10 months. I&amp;rsquo;m really excited about the other visualizations and analysis I can do on the food that I&amp;rsquo;ve eaten.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>The Platform Master</title>
+		<link>http://peterhajas.com/blog/the_platform_master/</link>
+		<pubDate>Sat, 04 Jan 2020 17:02:00 -0700</pubDate>
+		
+		<guid>/blog/the_platform_master/</guid>
+        
+		<description>&lt;iframe class=&#34;youtube&#34; src=&#34;https://www.youtube-nocookie.com/embed/QFLJEIrfx9U&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;
+&lt;/iframe&gt;
+
+&lt;p&gt;Watched &lt;a href=&#34;https://www.youtube.com/watch?v=QFLJEIrfx9U&#34;&gt;this documentary about Ulillillia&lt;/a&gt;, the internet figure. It follows him and the small town of Minot, ND in the aftermath of the &lt;a href=&#34;https://en.wikipedia.org/wiki/2011_Souris_River_flood&#34;&gt;2011 Souris River Flood&lt;/a&gt;. Despite it being from 2012, it was released at the end of 2019.&lt;/p&gt;
+&lt;p&gt;While the film moved at a slower pace, I found some of Ulillillia&amp;rsquo;s quotes from it interesting. In the documentary, Ulillillia lives with his parents:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There&amp;rsquo;s very little I can do, so I don&amp;rsquo;t get much enjoyment &amp;hellip; I definitely wish I could travel more, or see the world &amp;hellip; it&amp;rsquo;s like I can&amp;rsquo;t get out of the cage&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://ulillillia.fandom.com/wiki/Ulillillia&#34;&gt;According to this wiki page&lt;/a&gt;, he has since gotten a driver&amp;rsquo;s license and moved out of his parent&amp;rsquo;s home to Florida.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Upgrading a Nintendo Switch SD card</title>
+		<link>http://peterhajas.com/blog/nintendo_sd_card_upgrade/</link>
+		<pubDate>Sat, 21 Dec 2019 21:10:00 -0700</pubDate>
+		
+		<guid>/blog/nintendo_sd_card_upgrade/</guid>
+        
+		<description>&lt;p&gt;I own a Nintendo Switch console. Because I don&amp;rsquo;t want physical games cluttering my home, I get all my games digitally. I recently started running out of room and needed a new SD card to hold my games. This path ended up being circuitous, taking me through fake flash storage, the Switch&amp;rsquo;s file structure, and its operating system&amp;rsquo;s treatment of Unix file attributes.&lt;/p&gt;
+&lt;h1 id=&#34;a-new-card&#34;&gt;A new card&lt;/h1&gt;
+&lt;p&gt;I purchased a Samsung 512GB SD card from Amazon for $65. I&amp;rsquo;m shocked at how cheap SD cards are now. This replaced my old 128GB card.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the old card:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/nintendo_oldcard.jpeg&#34; alt=&#34;The old SD card&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And here&amp;rsquo;s the new card:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/nintendo_newcard.jpeg&#34; alt=&#34;The new SD card&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Flash memory has never been more popular. Unfortunately, there has been a recent rise of &lt;strong&gt;fake flash&lt;/strong&gt; memory. These are USB keys, SD cards, and solid state disks that masquerade as a larger capacity, but will lose your data or fail to read / write properly.&lt;/p&gt;
+&lt;p&gt;After my new card arrived, I wanted to check its authenticity. Is this a real 512GB SD card? Or a fake?&lt;/p&gt;
+&lt;h1 id=&#34;the-f3-tool&#34;&gt;The &lt;code&gt;f3&lt;/code&gt; tool&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;http://oss.digirati.com.br/f3/&#34;&gt;&lt;code&gt;f3&lt;/code&gt;&lt;/a&gt; is a tool to verify the authenticity of flash memory. It stands for &amp;ldquo;Fight Flash Fraud&amp;rdquo; or &amp;ldquo;Fight Fake Flash&amp;rdquo;. From the site:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I started this project when I bought a 32GB microSDHC card for my Android phone back in 2010, and found out that this card always fails when one fills it up.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I installed it on my Mac with &lt;code&gt;brew install f3&lt;/code&gt;. This installed two binaries: &lt;code&gt;f3write&lt;/code&gt; and &lt;code&gt;f3read&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;f3write&lt;/code&gt; writes contiguous 1GB files to your card until it has exhausted its space. It will also report on the write speed for this operation. You use it by running it on the path you want to write to. It will report progress when running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ f3write /Volumes/test
+F3 write 7.2
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+Free space: 476.69 GB
+Creating file 1.h2w ... OK!                           
+Creating file 2.h2w ... OK!                           
+...
+Creating file 476.h2w ... OK!                        
+Creating file 477.h2w ... OK!                       
+Free space: 1.38 MB
+Average writing speed: 77.17 MB/s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;My card got 77MB/s, which comes out to about 2 hours of write time (this is about how long it felt). After doing the write step, you can run &lt;code&gt;f3read&lt;/code&gt; to verify that the files made it there successfully:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ f3read /Volumes/test
+F3 read 7.2
+Copyright (C) 2010 Digirati Internet LTDA.
+This is free software; see the source for copying conditions.
+
+                  SECTORS      ok/corrupted/changed/overwritten
+Validating file 1.h2w ... 2097152/        0/      0/      0
+Validating file 2.h2w ... 2097152/        0/      0/      0
+...
+Validating file 476.h2w ... 2097152/        0/      0/      0
+Validating file 477.h2w ... 1432983/        0/      0/      0
+
+  Data OK: 476.68 GB (999677335 sectors)
+Data LOST: 0.00 Byte (0 sectors)
+           Corrupted: 0.00 Byte (0 sectors)
+    Slightly changed: 0.00 Byte (0 sectors)
+         Overwritten: 0.00 Byte (0 sectors)
+Average reading speed: 71.12 MB/s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will read each of the 1GB files created by &lt;code&gt;f3write&lt;/code&gt;, verifying they did not experience any data loss. This will also report on your card&amp;rsquo;s read speed. Mine was 71MB/s, which also felt like around 2 hours.&lt;/p&gt;
+&lt;p&gt;Cool, a real SD card that works! Next step: move my games over.&lt;/p&gt;
+&lt;h1 id=&#34;switch-sd-file-structure&#34;&gt;Switch SD file structure&lt;/h1&gt;
+&lt;p&gt;Plugging my old SD card into my machine, &lt;code&gt;diskutil&lt;/code&gt; reports an NTFS filesystem:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ diskutil list
+/dev/disk3 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *127.9 GB   disk3
+   1:               Windows_NTFS                         127.8 GB   disk3s1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The hierarchy on the card (named &amp;ldquo;Untitled&amp;rdquo;) has a single &amp;ldquo;Nintendo&amp;rdquo; folder on it. What&amp;rsquo;s in there?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tree Nintendo
+Nintendo/
+├── Album
+│   ├── 2017
+│   ├── 2018
+│   └── 2019
+├── Contents
+│   ├── placehld
+│   ├── private
+│   ├── private1
+│   └── registered
+├── save
+└── saveMeta
+
+829 directories, 688 files
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(heavily truncated)&lt;/p&gt;
+&lt;p&gt;So, it looks like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Album&lt;/code&gt;, which includes all my screenshots and video recordings arranged by year&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Content&lt;/code&gt;, which has some subdirectories:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;placehld&lt;/code&gt;, which has some empty directories - likely placeholders given the filename&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;private&lt;/code&gt;, a 16B file which looks like it contains a key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;private1&lt;/code&gt;, a 32B file which looks like it contains a different key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;registered&lt;/code&gt;, which appears to contain all the games&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;ve used the majority of the card&amp;rsquo;s 128GB space:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ du -skh /Volumes/Untitled
+111G    /Volumes/Untitled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;formatting-the-card&#34;&gt;Formatting the card&lt;/h1&gt;
+&lt;p&gt;Next step was to insert the 512GB card into the Switch and ask it to format. This process took about 3 seconds, then the console rebooted itself. I verified that the card was now NTFS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ diskutil list
+/dev/disk3 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *512.1 GB   disk3
+   1:               Windows_NTFS                         512.0 GB   disk3s1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;backing-up-the-card&#34;&gt;Backing up the card&lt;/h1&gt;
+&lt;p&gt;I don&amp;rsquo;t have two SD card slots on my machine, so I&amp;rsquo;ll need to copy the data first to my computer, then onto the card. We can use &lt;code&gt;rsync&lt;/code&gt; to do this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mkdir nintendo_backup
+$ rsync -avz /Volumes/Untitled nintendo_backup/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I used &lt;code&gt;rsync&lt;/code&gt; in &lt;code&gt;archive&lt;/code&gt; mode by passing the &lt;code&gt;-a&lt;/code&gt; flag, which according to &lt;code&gt;man rsync&lt;/code&gt; will:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;ensure that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Perfect! I also passed &lt;code&gt;-v&lt;/code&gt; for verbose, and &lt;code&gt;-z&lt;/code&gt; to use compression as the files are moved.&lt;/p&gt;
+&lt;h1 id=&#34;restoring-to-the-new-card&#34;&gt;Restoring to the new card&lt;/h1&gt;
+&lt;p&gt;Now it&amp;rsquo;s time to restore to the new card. After unmounting the smaller card and inserting the new card, it&amp;rsquo;s a simple matter of &lt;code&gt;rsync&lt;/code&gt;ing the files back:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rsync -avz nintendo_backup/Untitled/ /Volumes/Untitled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;trying-it-out&#34;&gt;Trying it out&lt;/h1&gt;
+&lt;p&gt;With the &lt;code&gt;rsync&lt;/code&gt; step done, we can test out the card:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/nintendo_error.jpeg&#34; alt=&#34;The card&amp;rsquo;s not working&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It doesn&amp;rsquo;t work! The Switch responds with error &lt;code&gt;2016-0247&lt;/code&gt; and is unable to access the card&lt;/p&gt;
+&lt;p&gt;I then tried copying the contents of &lt;code&gt;nintendo_backup&lt;/code&gt; over the &lt;code&gt;rsync&lt;/code&gt;&amp;rsquo;d backup files with Finder. Perhaps the &lt;code&gt;rsync&lt;/code&gt; step missed something? Or my machine fell asleep?&lt;/p&gt;
+&lt;p&gt;Nope, same error. I tried the original card to verify my Switch was still functional. The original card works fine.&lt;/p&gt;
+&lt;h1 id=&#34;debugging-the-issue&#34;&gt;Debugging the issue&lt;/h1&gt;
+&lt;p&gt;So, we&amp;rsquo;ve got a new SD card that the Switch won&amp;rsquo;t see:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it was formatted by the Switch&amp;rsquo;s software, so any secret partitions or files should be there&lt;/li&gt;
+&lt;li&gt;it contains an &lt;code&gt;rsync&lt;/code&gt; archive copy of the games and media from the original card&lt;/li&gt;
+&lt;li&gt;the Switch read the card successfully when formatting it, but hasn&amp;rsquo;t since the restore succeeded&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;a href=&#34;https://en-americas-support.nintendo.com/app/answers/detail/a_id/27595/&#34;&gt;Nintendo support site&lt;/a&gt; seems to suggest similar steps to those I followed:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Open Windows Explorer (for PC) and access the microSD card.&lt;/li&gt;
+&lt;li&gt;Highlight the data and drag it to the desktop.&lt;/li&gt;
+&lt;li&gt;If you are moving your content to a new microSD card, be sure to first format the new card per our recommendations.&lt;/li&gt;
+&lt;li&gt;Once the new card has been formatted, continue with the instructions below.&lt;/li&gt;
+&lt;li&gt;Eject the first microSD card, then insert the second microSD card into the slot or reader/writer.&lt;/li&gt;
+&lt;li&gt;Using Windows Explorer access the microSD card again.&lt;/li&gt;
+&lt;li&gt;Drag the data from the desktop to the new microSD card, then insert the new microSD card into the Nintendo Switch console.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Although it does contain this strange warning:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Important: This process may not be able to copy the microSD card contents correctly in environments other than Windows (such as Mac).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;a-fix&#34;&gt;A fix&lt;/h1&gt;
+&lt;p&gt;Turns out I was missing the archive attribute on the card. Simply running &lt;code&gt;sudo chflags -R arch /Volumes/Untitled&lt;/code&gt; to fix up the Archive attribute fixed the issue (I also did a &lt;code&gt;sudo dot_clean -mn&lt;/code&gt; on the directory). Phew! Look at all that space:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/nintendo_freespace.jpeg&#34; alt=&#34;A screenshot showing the free space on the new larger card&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;why-did-this-break&#34;&gt;Why did this break?&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;m not totally sure. My hunch is that an archive attribute on the files was confusing the Switch&amp;rsquo;s SD card parsing. It looks like the Nintendo Switch&amp;rsquo;s OS is not Unix-derived, but rather an &lt;a href=&#34;https://en.wikipedia.org/wiki/Nintendo_Switch_system_software&#34;&gt;evolution of the 3DS OS&lt;/a&gt;. It&amp;rsquo;s possible that some file attributes from Unix may have confused the Switch.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Peterometer Chapter 1: Tracking Hydration</title>
+		<link>http://peterhajas.com/blog/peterometer_1_hydration/</link>
+		<pubDate>Fri, 08 Mar 2019 10:05:00 -0700</pubDate>
+		
+		<guid>/blog/peterometer_1_hydration/</guid>
+        
+		<description>&lt;p&gt;&lt;em&gt;This is the first in a series of posts I hope to write about building tools for &amp;ldquo;Peterometer&amp;rdquo;, a way to visualize stats I&amp;rsquo;ve collected about myself.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;inspiration-for-peterometer&#34;&gt;Inspiration for Peterometer&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;ve long been inspired by people who build beautiful visualizations of their gathered metrics. For example, Nicholas Felton&amp;rsquo;s annual reports. Here is an example &lt;a href=&#34;http://feltron.com/FAR07.html&#34;&gt;from his 2007 report&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://feltron.com/images/FAR07/03.jpg&#34;&gt;The first page of Nicholas Felton&amp;rsquo;s 2007 annual report&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I think this format of visualization is &lt;em&gt;really&lt;/em&gt; cool. It&amp;rsquo;s easy to glance at while being information-dense.&lt;/p&gt;
+&lt;p&gt;Another cool example is Anand Sharma&amp;rsquo;s &lt;a href=&#34;http://aprilzero.com&#34;&gt;April Zero&lt;/a&gt;, which is now an app called &lt;a href=&#34;http://gyrosco.pe&#34;&gt;Gyroscope&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cdn-images-1.medium.com/max/1200/1*4bB_yEzM7Yt_Nme-rQLkzg.png&#34;&gt;An image of Gyroscope&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;He has some great posts about his creative process &lt;a href=&#34;https://blog.gyrosco.pe/the-making-of-april-zero-877612ca3d24&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://blog.gyrosco.pe/the-making-of-april-zero-part-2-9fee331e2043&#34;&gt;here&lt;/a&gt;. The Iron Man-style HUD influence shines through in the finished product.&lt;/p&gt;
+&lt;p&gt;These visualizations are really cool ways to show stats gathered about your life. I&amp;rsquo;ve recently been getting more into tracking my day-to-day life, and experimenting with visualization techniques to showcase this data.&lt;/p&gt;
+&lt;h1 id=&#34;hydration-tracking&#34;&gt;Hydration Tracking&lt;/h1&gt;
+&lt;p&gt;Since December 2018, I&amp;rsquo;ve been tracking my hydration every day. Every time I finish drinking something, I log the type of drink it was, and how much of it I drank. I log the data using the &lt;a href=&#34;http://waterminder.com&#34;&gt;WaterMinder&lt;/a&gt; app on my watch and phone. WaterMinder lets you have saved drinks, which is really helpful if you drink the same thing often (my Nalgene, a cup of coffee from the machine at work, etc.)&lt;/p&gt;
+&lt;h1 id=&#34;some-visualizations&#34;&gt;Some Visualizations&lt;/h1&gt;
+&lt;p&gt;WaterMinder lets you export your data in CSV format. With a &lt;a href=&#34;https://github.com/peterhajas/peterometer/blob/master/hydration/waterminder_parse.py&#34;&gt;little bit of Python&lt;/a&gt;, we can parse this into a &lt;a href=&#34;http://leebyron.com/streamgraph/&#34;&gt;&amp;ldquo;stream&amp;rdquo; stacked area chart&lt;/a&gt; to show how I hydrate myself:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://peterhajas.com/hydration.jpeg&#34;&gt;&lt;img src=&#34;http://peterhajas.com/hydration.jpeg&#34; alt=&#34;A stacked area plot of my hydration&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This chart is a bit tough to read due to data density. The legend is sorted in descending order of consumption. By the numbers, this is:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Drink&lt;/th&gt;
+&lt;th&gt;fluid oz.&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Water&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;4159.7&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Coffee&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1482.7&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Soda&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;826.9&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Sports Drink&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;761.9&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Tea&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;751.4&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Smoothie&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;398.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Carbonated Water&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;381.4&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Energy Drink&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;273.6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Beer&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;225.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Protein Shake&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;162.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Liquor&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;130.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Juice&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;94.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Coconut Water&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;81.6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Milk&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;55.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wine&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;17.6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hot Chocolate&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;15.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;&lt;code&gt;9815.9&lt;/code&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Using the chart and table there are some interesting takeaways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I drink a lot of coffee. Almost 44 liters during this period!&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s coconut water consumption in late December - I had this while skiing&lt;/li&gt;
+&lt;li&gt;In early February, there are a few days with only water, smoothies, and some soda. This corresponds to when I had my wisdom teeth removed&lt;/li&gt;
+&lt;li&gt;I have energy drinks on the same day as protein shakes. This matches reality - I have a pre-workout energy drink and protein shake on days that I lift&lt;/li&gt;
+&lt;li&gt;I seldom have beer, but I have more beer than I have protein shakes&lt;/li&gt;
+&lt;li&gt;I infrequently have wine and liquor. This is good!
+&lt;ul&gt;
+&lt;li&gt;You can see wine consumption during the New Years period&lt;/li&gt;
+&lt;li&gt;Most liquor consumption was during vacations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Analyzing My Dog&#39;s DNA</title>
+		<link>http://peterhajas.com/blog/riker_dna/</link>
+		<pubDate>Mon, 21 Jan 2019 20:10:00 -0700</pubDate>
+		
+		<guid>/blog/riker_dna/</guid>
+        
+		<description>&lt;p&gt;Dogs are awesome. Since March of 2014, I&amp;rsquo;ve owned a little dog named Riker:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/riker.jpeg&#34; alt=&#34;Riker the small dog outside&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I adopted her from the Humane Society in Milpitas. She was 8 weeks old. She recently had her fifth birthday. Happy birthday Riker! I love her very much.&lt;/p&gt;
+&lt;p&gt;Anyways, when I got her, I was  curious about what type of dog she was. She looks like a chihuahua, but has some features that don&amp;rsquo;t match the traditional chihuahua:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Curled, fluffy tail&lt;/li&gt;
+&lt;li&gt;Gradient-banded coat near her front legs&lt;/li&gt;
+&lt;li&gt;Sheds &lt;em&gt;mountains&lt;/em&gt; of fur&lt;/li&gt;
+&lt;li&gt;Generally pleasant demeanor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I thought she might have been part &lt;a href=&#34;https://en.wikipedia.org/wiki/Shiba_Inu&#34;&gt;Shiba Inu&lt;/a&gt;. These dogs are adorable and have the curled tail and gradient-banded coat. Here&amp;rsquo;s one from Wikipedia:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://upload.wikimedia.org/wikipedia/commons/6/6b/Taka_Shiba.jpg&#34;&gt;A shiba inu dog outside on grass&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Doesn&amp;rsquo;t this dog look like Riker? With the tail and banded coat? I thought so too.&lt;/p&gt;
+&lt;p&gt;Whenever other people asked me about Riker, I would tell them she&amp;rsquo;s &amp;ldquo;part chihuahua, part shiba inu&amp;rdquo;. They believed me, but I didn&amp;rsquo;t have any proof.&lt;/p&gt;
+&lt;h1 id=&#34;enter-embark&#34;&gt;Enter Embark&lt;/h1&gt;
+&lt;p&gt;A good friend of mine told me about a service where you can get your dog&amp;rsquo;s DNA analyzed. It&amp;rsquo;s called &lt;a href=&#34;https://www.talkable.com/x/Qnraz2&#34;&gt;EmbarkVet&lt;/a&gt; (disclaimer: this is a referral link). Embark gives your dog a breed report, health analysis, and some cool genetic information. It&amp;rsquo;s like 23andMe for your dog.&lt;/p&gt;
+&lt;p&gt;I signed up for the service. A few days later they sent me a DNA swab kit. It&amp;rsquo;s like an oversized q-tip. After sticking this in Riker&amp;rsquo;s cheeks for 30 seconds or so (she wasn&amp;rsquo;t happy about this, but I told her it was for science), I packed the kit in the return shipping and sent it off.&lt;/p&gt;
+&lt;p&gt;Over the next few weeks, Embark notified me as the analysis progressed. After 3 weeks or so, my pressing question was answered: they told me what type of dog she was!&lt;/p&gt;
+&lt;h1 id=&#34;less-than-50-chihuahua&#34;&gt;Less than 50% chihuahua&lt;/h1&gt;
+&lt;p&gt;To my absolute amazement, Riker is not even mostly chihuahua! The results confirm that &lt;strong&gt;Riker is a pomeranian&lt;/strong&gt;! The full breakdown is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;50% &lt;a href=&#34;https://en.wikipedia.org/wiki/Pomeranian_(dog)&#34;&gt;Pomeranian&lt;/a&gt; (this accounts for the curved tail, banded coat, shedding, and how she&amp;rsquo;s nice to be around)&lt;/li&gt;
+&lt;li&gt;32.5% &lt;a href=&#34;https://en.wikipedia.org/wiki/Chihuahua_(dog)&#34;&gt;Chihuahua&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;6.9% &lt;a href=&#34;https://en.wikipedia.org/wiki/Miniature_Pinscher&#34;&gt;Miniature Pinscher&lt;/a&gt; (no relation to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Dobermann&#34;&gt;larger dog&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;10.6% &amp;ldquo;Supermutt&amp;rdquo; (small amounts of DNA from other dogs, including &lt;a href=&#34;https://en.wikipedia.org/wiki/Cocker_Spaniel&#34;&gt;Cocker Spaniel&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also learned that she has 1.5% &amp;ldquo;Wolfiness&amp;rdquo;, which indicates ancient wolf genes that have survived through to modern domesticated dogs. Cool!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/em&gt; I am not a trained biologist. Regrettably, I spent much of my college biology course playing &lt;a href=&#34;https://en.wikipedia.org/wiki/Pok%C3%A9mon_Crystal&#34;&gt;Pokémon Crystal&lt;/a&gt;, although I do remember some parts of the genetics sections.&lt;/p&gt;
+&lt;h1 id=&#34;a-family-tree&#34;&gt;A family tree&lt;/h1&gt;
+&lt;p&gt;Embark also determines haplotypes, which means they can tell what genes of Riker&amp;rsquo;s came from which parents. This lets them generate a family tree:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://peterhajas.com/riker_family_tree.jpeg&#34; alt=&#34;Riker&amp;rsquo;s family tree&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This means Riker&amp;rsquo;s parents were a chihuahua mix and a purebred pomeranian.&lt;/p&gt;
+&lt;h1 id=&#34;analyzing-my-dogs-dna&#34;&gt;Analyzing my dog&amp;rsquo;s DNA&lt;/h1&gt;
+&lt;p&gt;Besides finally being able to see my dog&amp;rsquo;s genetic history, I was &lt;em&gt;super&lt;/em&gt; happy that I could download the raw genetic data. When I unzipped the file, I was left with two text files:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;riker.tfam // 75B
+riker.tped // 6.7MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(I renamed them for brevity)&lt;/p&gt;
+&lt;p&gt;I searched for information on these file types. They both seem to be related to the free &lt;a href=&#34;https://www.cog-genomics.org/plink2&#34;&gt;PLINK&lt;/a&gt; genetics software package.&lt;/p&gt;
+&lt;p&gt;If we download PLINK and run it on these files, we get:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ plink --tfile riker
+Processing .tped file... 77%
+Error: Invalid chromosome code &#39;27&#39; on line 166046 of .tped file.
+(This is disallowed for humans.  Check if the problem is with your data, or if
+you forgot to define a different chromosome set with e.g. --chr-set.)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is pretty cool! PLINK defaults to human DNA. This file is from a dog, not a person. Looking through the plink &lt;code&gt;--help&lt;/code&gt; file, we can see that they have support for lots of species:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--cow/--dog/--horse/--mouse/--rice/--sheep : Shortcuts for those species.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(I wonder why rice is so interesting to the software&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;Anyways, let&amp;rsquo;s run it with the &lt;code&gt;--dog&lt;/code&gt; flag:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ plink --dog --tfile riker
+Processing .tped file... done.
+plink.bed + plink.bim + plink.fam written.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;PLINK wrote these files to the same directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ls
+plink.bed
+plink.bim
+plink.fam
+plink.log
+riker.tfam
+riker.tped
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These look to be PLINK metadata files that the software uses to do its processing.&lt;/p&gt;
+&lt;p&gt;We can use PLINK to do some interesting sounding genetic computations. For example, if we run it with the &lt;code&gt;--homozyg&lt;/code&gt; flag, we can see homozygosity reports. According to Wikipedia (I must have been in &lt;a href=&#34;https://en.wikipedia.org/wiki/Pok%C3%A9mon_universe#Johto&#34;&gt;Johto&lt;/a&gt; during this part of biology), &lt;a href=&#34;https://en.wikipedia.org/wiki/Zygosity&#34;&gt;zygosity&lt;/a&gt; is &amp;ldquo;the degree of similarity of the alleles for a trait in an organism&amp;rdquo;. Running it produces:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ plink --dog --tfile riker --homozyg
+1 dog (0 males, 1 female) loaded from .fam.
+--homozyg: Scan complete, found 27 ROH.
+Results saved to plink.hom + plink.hom.indiv + plink.hom.summary .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The software knows that the dog is female, which is pretty cool. The files it generated seem to indicate the degree of homozygosity for her individual genes. Neat!&lt;/p&gt;
+&lt;p&gt;If we run with the &lt;code&gt;--het&lt;/code&gt; flag, we can see inbreeding coefficients. The file it produces show this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;O(HOM)    E(HOM) N(NM)  F
+     0 3.051e+04 61022 -1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From &lt;a href=&#34;http://zzz.bwh.harvard.edu/plink/ibdibs.shtml&#34;&gt;this helpful documentation&lt;/a&gt; I found online:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;O(HOM)    Observed number of homozygotes
+E(HOM)    Expected number of homozygotes
+N(NM)     Number of non-missing genotypes
+F         F inbreeding coefficient estimate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-1 looks like it indicates a sampling error or contamination according to the docs:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The estimate of F can sometimes be negative. Often this will just reflect random sampling error, but a result that is strongly negative (i.e. an individual has fewer homozygotes than one would expect by chance at the genome-wide level) can reflect other factors, e.g. sample contamination events perhaps.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can also use the software to find what parts of the genotyping are missing with the &lt;code&gt;--missing&lt;/code&gt; flag. From this, I was able to gather that Riker only has a missing SNP rate of 0.0009034 (less than 1%). I &lt;em&gt;think&lt;/em&gt; this means that Riker&amp;rsquo;s DNA in this sample is over 99% complete. Cool!&lt;/p&gt;
+&lt;p&gt;I may make Riker&amp;rsquo;s DNA available online some day for others to do genetic analysis.&lt;/p&gt;
+&lt;p&gt;Anyways, I thought this was a fun exercise into how genetic data is stored and processed. It&amp;rsquo;s really cool that there is open source software to analyze this data. Thanks for reading!&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>Live Markdown previews from vim</title>
+		<link>http://peterhajas.com/blog/marked2_vim/</link>
+		<pubDate>Sun, 06 Jan 2019 12:07:00 -0700</pubDate>
+		
+		<guid>/blog/marked2_vim/</guid>
+        
+		<description>&lt;p&gt;&lt;em&gt;This is more of a technical post&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This site is written using &lt;a href=&#34;https://daringfireball.net/projects/markdown/&#34;&gt;Markdown&lt;/a&gt;, which:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It&amp;rsquo;s a common technique for writing blogs, as it lets the author write text in the text editor of their choice.&lt;/p&gt;
+&lt;p&gt;I write this page in &lt;code&gt;vim&lt;/code&gt;, which is a command line text editor. I love &lt;code&gt;vim&lt;/code&gt; for many reasons that are outside the scope of this post. I&amp;rsquo;ve been using it as my primary editor for almost 5 years. I wanted a good solution for writing Markdown in &lt;code&gt;vim&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Because &lt;code&gt;vim&lt;/code&gt; is a command line editor, it makes it tougher to use it to write rich text. In a GUI program, rich text can be rendered inline and as-you-edit. A command line tool can show you the formatting you have applied to text, but it does not give you an accurate rendering of how your content will look as you edit it.&lt;/p&gt;
+&lt;p&gt;I wanted to continue to use &lt;code&gt;vim&lt;/code&gt; to edit my blog posts (I find &lt;code&gt;vim&lt;/code&gt; plugins for other editors to be a worse approximation than &amp;ldquo;I can&amp;rsquo;t believe it&amp;rsquo;s not butter&amp;rdquo;). This post is about how I solved this problem.&lt;/p&gt;
+&lt;h1 id=&#34;a-markdown-preview-app&#34;&gt;A Markdown preview app&lt;/h1&gt;
+&lt;p&gt;On macOS, you can get apps to render Markdown in a window. One that I like a lot is &lt;a href=&#34;http://marked2app.com&#34;&gt;Marked&lt;/a&gt;, which automatically refreshes its preview when the Markdown file changes. This means you can open a &lt;code&gt;.md&lt;/code&gt; file in Marked and get live updates &lt;em&gt;as you change it&lt;/em&gt;. This can be used with any editor, including &lt;code&gt;vim&lt;/code&gt;. The flow is something like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;touch&lt;/code&gt; or &lt;code&gt;:e&lt;/code&gt; the file you want to write&lt;/li&gt;
+&lt;li&gt;Open Marked&lt;/li&gt;
+&lt;li&gt;Open the file in Marked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As you save to it with &lt;code&gt;:w&lt;/code&gt;, the preview will be auto-refreshed. I like this, but wanted to open it with a single key combination.&lt;/p&gt;
+&lt;h1 id=&#34;adding-marked-to-vim&#34;&gt;Adding Marked to &lt;code&gt;vim&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;We can write a &lt;code&gt;vim&lt;/code&gt; function to help us with this. Something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function OpenInMarked2()
+    &amp;quot; Open the file in Marked here
+endfunction
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;running-a-shell-command-from-vim&#34;&gt;Running a shell command from &lt;code&gt;vim&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;We can use &lt;code&gt;!&lt;/code&gt; to run a command from our function. Technically, this is the &lt;code&gt;filter&lt;/code&gt; command. From &lt;code&gt;:help !&lt;/code&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;!{motion}{filter}&lt;/code&gt; Filter &lt;code&gt;{motion}&lt;/code&gt; text lines through the external program &lt;code&gt;{filter}&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can try this in your &lt;code&gt;vim&lt;/code&gt;. Just run &lt;code&gt;:!pwd,&lt;/code&gt; and you should be presented with your shell and your current working directory. Below it, &lt;code&gt;vim&lt;/code&gt; helpfully tells us &amp;ldquo;Press ENTER or type command to continue&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;This is great! Using this and the macOS &lt;code&gt;open&lt;/code&gt; command, we can at least &lt;em&gt;launch&lt;/em&gt; Marked 2 with something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;!open -a Marked\ 2.app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But what about opening the current file? &lt;code&gt;vim&lt;/code&gt; lets us use &lt;code&gt;%&lt;/code&gt; from Ex commands as a stand-in for the path to the current file. So we can do something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;!echo %
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to see the current file. We can use this with &lt;code&gt;open&lt;/code&gt; to open the current file in &lt;code&gt;vim&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;!open -a Marked\ 2.app %
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the body of our &lt;code&gt;OpenInMarked2&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function OpenInMarked2()
+    !open -a Marked\ 2.app %
+endfunction
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once we have this function, we can call it with the Ex &lt;code&gt;call&lt;/code&gt; command, like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:call OpenInMarked2()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will open the current file in Marked, but will leave us at the shell with &amp;ldquo;Press ENTER or type command to continue&amp;rdquo; there. We still have to press enter before we can edit the file live.&lt;/p&gt;
+&lt;h2 id=&#34;defining-a-mapping&#34;&gt;Defining a mapping&lt;/h2&gt;
+&lt;p&gt;We can use a &lt;code&gt;vim&lt;/code&gt; mapping to call the function for us. A mapping lets us take a key combination and map it to a command. For the key combination, I like to use &lt;code&gt;&amp;lt;leader&amp;gt;&lt;/code&gt;, which is a user-controlled modifier in &lt;code&gt;vim&lt;/code&gt;. This means that &lt;code&gt;&amp;lt;leader&amp;gt; _&lt;/code&gt; is wide open for use in your &lt;code&gt;.vimrc&lt;/code&gt;. For my &lt;code&gt;leader&lt;/code&gt; key, I use &lt;code&gt;,&lt;/code&gt; (comma), as it&amp;rsquo;s near the other modifiers on a US keyboard. For &lt;code&gt;leader&lt;/code&gt; mappings, I like a mnemonic key combination, as it makes it easier to remember.&lt;/p&gt;
+&lt;p&gt;A good choice for this mapping, which is applicable for &lt;strong&gt;M&lt;/strong&gt;arkdown and for opening &lt;strong&gt;M&lt;/strong&gt;arked, is &lt;code&gt;&amp;lt;leader&amp;gt;m&lt;/code&gt;. Our mapping to call the function might look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nmap &amp;lt;silent&amp;gt; &amp;lt;leader&amp;gt;m :call OpenInMarked2()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s a decoder ring for what these commands mean:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nmap&lt;/code&gt; means a mapping that exists in &lt;code&gt;vim&lt;/code&gt;&amp;rsquo;s normal mode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;silent&amp;gt;&lt;/code&gt; means the mapping will not be echoed on the command line&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;leader&amp;gt;m&lt;/code&gt; is the mapping we&amp;rsquo;ve picked for this particular command&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:call&lt;/code&gt; will call a particular function&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OpenInMarked2()&lt;/code&gt; is the name of the function we&amp;rsquo;d like to call&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you add this mapping and function to your &lt;code&gt;.vimrc&lt;/code&gt;, you&amp;rsquo;ll see that it works &lt;em&gt;kind of&lt;/em&gt;. You have to hit enter to get the command to actually run, and then after doing so you&amp;rsquo;re left at the shell, so you need to hit enter &lt;strong&gt;again&lt;/strong&gt; before returning to the editor.&lt;/p&gt;
+&lt;h2 id=&#34;hitting-enter-twice&#34;&gt;Hitting enter twice&lt;/h2&gt;
+&lt;p&gt;We can add a press of the enter key to our mapping using &lt;code&gt;&amp;lt;CR&amp;gt;&lt;/code&gt;. This acts as though the user has pressed the carriage return. We&amp;rsquo;ll add two of them, as we need one to run the function and another to return to the editor. Our mapping now looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nmap &amp;lt;silent&amp;gt; &amp;lt;leader&amp;gt;m :call OpenInMarked2() &amp;lt;CR&amp;gt; &amp;lt;CR&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which is the mapping you&amp;rsquo;ll find in my &lt;a href=&#34;https://github.com/peterhajas/dotfiles/blob/master/vim/.vimrc&#34;&gt;&lt;code&gt;.vimrc&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I hope you found this post helpful. I have been using &lt;code&gt;OpenInMarked2&lt;/code&gt; to help me write Markdown for 2 years now, and I think it&amp;rsquo;s a cool example of how to extend &lt;code&gt;vim&lt;/code&gt; to fit your needs.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	<item>
+		<title>New Site, Who Dis?</title>
+		<link>http://peterhajas.com/blog/newsitewhodis/</link>
+		<pubDate>Mon, 31 Dec 2018 17:35:00 -0700</pubDate>
+		
+		<guid>/blog/newsitewhodis/</guid>
+        
+		<description>&lt;p&gt;This is the first post on my new website! You&amp;rsquo;re reading this on the &lt;em&gt;brand new&lt;/em&gt; &lt;a href=&#34;http://peterhajas.com&#34;&gt;peterhajas.com&lt;/a&gt;. Let&amp;rsquo;s break it down.&lt;/p&gt;
+&lt;h1 id=&#34;a-not-so-new-domain&#34;&gt;A (not so new) domain&lt;/h1&gt;
+&lt;p&gt;It&amp;rsquo;s worth noting that this page is also hosted on &lt;a href=&#34;http://peter.haj.as&#34;&gt;peter.haj.as&lt;/a&gt;. I have had this domain from American Samoa for some time. I love the idea of domains that are people&amp;rsquo;s names with no added alphanumeric characters, and this one fits the bill for me.&lt;/p&gt;
+&lt;h1 id=&#34;my-own-static-site-generator---what-could-possibly-go-wrong&#34;&gt;My own static site generator - what could possibly go wrong?&lt;/h1&gt;
+&lt;p&gt;My old page was powered by &lt;a href=&#34;https://github.com/hyde/hyde&#34;&gt;Hyde&lt;/a&gt;. While this project provides a lot of flexibility, I felt that I was not using all of its features. I wanted something dead-simple that could enable me to write more. As a result, I &lt;a href=&#34;https://github.com/peterhajas/peterhajas.com&#34;&gt;wrote my own&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This site is still statically-generated from Markdown, but it&amp;rsquo;s now done with a Bash script with only one dependency (a &lt;code&gt;markdown&lt;/code&gt; binary). This makes it easier to set up on a new machine. It also lets me really understand how the site works.&lt;/p&gt;
+&lt;p&gt;The site generates quickly, and it&amp;rsquo;s been a great learning opportunity! For example, I learned how to format dates using &lt;code&gt;date&lt;/code&gt; (see &lt;a href=&#34;https://github.com/peterhajas/peterhajas.com/blob/master/build#L44&#34;&gt;here&lt;/a&gt;). I&amp;rsquo;m still learning (I don&amp;rsquo;t know web layout very well, for example) but I think it&amp;rsquo;s better to jump in with both feet when learning something new.&lt;/p&gt;
+&lt;p&gt;The site is missing some stuff (like RSS support), but I plan to iterate on it over time.&lt;/p&gt;
+&lt;h1 id=&#34;hopefully-ill-write-more&#34;&gt;Hopefully I&amp;rsquo;ll write more&lt;/h1&gt;
+&lt;p&gt;All of this is for naught if I don&amp;rsquo;t actually &lt;em&gt;use the damn thing&lt;/em&gt; to write and think out loud.&lt;/p&gt;
+&lt;p&gt;I hadn&amp;rsquo;t updated my old webpage in &lt;strong&gt;over 6 years&lt;/strong&gt;. There&amp;rsquo;s so much that has happened in that time that I want to write about, like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I have a dog!&lt;/li&gt;
+&lt;li&gt;Living in the Bay Area&lt;/li&gt;
+&lt;li&gt;My obsession with &lt;a href=&#34;https://github.com/peterhajas/dotfiles&#34;&gt;dotfiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Music that I&amp;rsquo;m listening to&lt;/li&gt;
+&lt;li&gt;Trips I&amp;rsquo;ve gone on&lt;/li&gt;
+&lt;li&gt;Pictures I&amp;rsquo;ve taken&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fingers crossed I&amp;rsquo;ll write about these things in the (near) future on this page.&lt;/p&gt;
+</description>
+        
+	</item>
+	
+    
+	
+    
+	
+    
+	
+    
+	
+    
+	
+    
+	
+	</channel>
+</rss>
