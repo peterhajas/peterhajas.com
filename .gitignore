@@ -4,6 +4,6 @@ __pycache__/*
 
 drafts/*
 site/notes/files
-public
+public/
 
 .hugo_build.lock
