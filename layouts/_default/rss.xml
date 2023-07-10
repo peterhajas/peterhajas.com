@@ -20,13 +20,16 @@
 		<pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
 		{{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
 		<guid>{{ .RelPermalink }}</guid>
-        {{ if .Params.summarize }}
         <description>
-            {{- .Summary | html -}} (read more on webpage)
+            {{ if .Params.summarize }}
+                {{- .Summary | html -}} (read more on the webpage)
+            {{ else }}
+                {{- .Content | html -}}
+            {{ end }}
+            {{ if eq .Type "movie" }}
+            This is a movie review - read more on the webpage.
+            {{- end }}
         </description>
-        {{ else }}
-		<description>{{- .Content | html -}}</description>
-        {{ end }}
 	</item>
 	{{- end }}
 	{{ end }}

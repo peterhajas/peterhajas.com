@@ -11,6 +11,14 @@
     &nbsp;
     {{- end }}
 	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ if .Param "Rating" }}
+    {{ range seq .Params.Rating }}
+    <span class="star"></span>
+    {{ end }}
+    {{ range (seq ( sub 5 .Params.Rating )) }}
+    <span class="emptyStar"></span>
+    {{ end }}
+    {{- end }}
 </li>
 {{- end }}
 </ul>

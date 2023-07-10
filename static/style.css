@@ -206,6 +206,24 @@ footer * {
     vertical-align: middle;
 }
 
+.pill {
+    font-weight: bold;
+    padding: 4px;
+    color: #2d2d2d;
+}
+
+.movie {
+    background: #66cccc;
+}
+
+.star:after {
+    content: "★";
+}
+
+.emptyStar:after {
+    content: "☆";
+}
+
 .item-list {
     list-style-type: none;
     width: 100%;

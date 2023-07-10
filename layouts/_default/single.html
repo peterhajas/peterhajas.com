@@ -4,5 +4,17 @@
 {{ if .Param "Date" }}
 <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
 {{ end }}
+{{ if .Param "Rating" }}
+|
+{{ range seq .Params.Rating }}
+<span class="star"></span>
+{{ end }}
+{{ range (seq ( sub 5 .Params.Rating )) }}
+<span class="emptyStar"></span>
+{{ end }}
+|
+<a href="/ratings"> details on my rating system</a>
+{{ end }}
 </h3>
+{{ if .Param "tvdb" }}<a href="https://thetvdb.com/{{ .Params.TVDB }}">TVDB link</a>{{- end }}
 {{- end }}

@@ -17,7 +17,7 @@
 <body>
 {{ partial "nav.html" }}
 <main>
-<h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
+{{ block "title" . }}{{end}}
 <article>
 {{ block "main" . }}
 {{ .Content }}

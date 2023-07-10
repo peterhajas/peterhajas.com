@@ -10,6 +10,17 @@
 	<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
     &nbsp;
 	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ if .Param "Rating" }}
+    {{ range seq .Params.Rating }}
+    <span class="star"></span>
+    {{ end }}
+    {{ range (seq ( sub 5 .Params.Rating )) }}
+    <span class="emptyStar"></span>
+    {{ end }}
+    {{- end }}
+    {{ if eq .Type "movie" }}
+    <a href="/movie" class="pill movie">movie</a>
+    {{- end }}
 </li>
 {{- end }}
 {{- end }}
