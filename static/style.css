@@ -210,10 +210,15 @@ footer * {
     font-weight: bold;
     padding: 4px;
     color: #2d2d2d;
+    background: rgba(253, 96, 0, 1);
 }
 
 .movie {
     background: #66cccc;
+}
+
+.soda {
+    background: #99cc99;
 }
 
 .star:after {

@@ -18,8 +18,8 @@
     <span class="emptyStar"></span>
     {{ end }}
     {{- end }}
-    {{ if eq .Type "movie" }}
-    <a href="/movie" class="pill movie">movie</a>
+    {{ if not (eq .Type "blog") }}
+    <a href="/{{ .Type }}" class="pill {{ .Type }}">{{ .Type }}</a>
     {{- end }}
 </li>
 {{- end }}

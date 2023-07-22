@@ -7,6 +7,7 @@ I'm Peter Hajas, and this is my website. You can read more [about me](/about) or
 
 * [Blog Posts](/blog)
 * [Movie Reviews](/movie)
+* [Soda Reviews](/soda)
 
 ## Toys
 

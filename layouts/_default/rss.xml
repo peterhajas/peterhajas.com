@@ -26,8 +26,8 @@
             {{ else }}
                 {{- .Content | html -}}
             {{ end }}
-            {{ if eq .Type "movie" }}
-            This is a movie review - read more on the webpage.
+            {{ if .Param "Rating" }}
+            This is a review - read more on the webpage.
             {{- end }}
         </description>
 	</item>
