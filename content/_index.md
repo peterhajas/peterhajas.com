@@ -1,13 +1,17 @@
 ---
 ---
 
-I'm Peter Hajas, and this is my website. You can read more [about me](/about) or [this site](/site_info).
+I'm Peter Hajas, and this is my website.
 
-## Post Categories
+* Read more [about me](/about) 
+* Read about [this site](/site_info)
 
-* [Blog Posts](/blog)
-* [Movie Reviews](/movie)
-* [Soda Reviews](/soda)
+Here are the sections of my site:
+
+* Check out [photos I've taken with notable people](/people)
+* Read my [blog posts](/blog)
+* Read my [movie reviews](/movie)
+* Read my [soda reviews](/soda)
 
 ## Toys
 
