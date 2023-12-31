@@ -162,6 +162,12 @@ ul {
     list-style-type: unset;
 }
 
+.ulWithoutBullets {
+    list-style-type: none;
+    list-style: none;
+    margin: unset;
+}
+
 table {
     margin: auto;
 }

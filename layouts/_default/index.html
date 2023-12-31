@@ -3,13 +3,16 @@
 {{- end }}
 {{ define "main" -}}
 {{ .Content }}
-<ul>
+<ul class="ulWithoutBullets">
 {{- range.Site.RegularPages }}
 {{ if .Param "Date" }}
 <li>
 	<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
     &nbsp;
 	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ if not (eq .Type "blog") }}
+    <a href="/{{ .Type }}" class="pill {{ .Type }}">{{ .Type }}</a>
+    {{- end }}
     {{ if .Param "Rating" }}
     {{ range seq .Params.Rating }}
     <span class="star"></span>
@@ -17,9 +20,6 @@
     {{ range (seq ( sub 5 .Params.Rating )) }}
     <span class="emptyStar"></span>
     {{ end }}
-    {{- end }}
-    {{ if not (eq .Type "blog") }}
-    <a href="/{{ .Type }}" class="pill {{ .Type }}">{{ .Type }}</a>
     {{- end }}
 </li>
 {{- end }}
