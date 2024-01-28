@@ -53,7 +53,7 @@ Not all sites support feeds out of the box, but there is usually a way to subscr
 
 #### Twitter
 
-While Twitter doesn't support RSS, there's a great way to subscribe to Twitter pages via [nitter](https://nitter.net). You can replace any `twitter.com` URL with `nitter.net`. Nitter exposes RSS feeds for individual users. For example, my Twitter profile's RSS feed is at [https://nitter.net/peterhajas/rss](https://nitter.net/peterhajas/rss).
+Unfortunately, there's no alternate method for Twitter. [Nitter is no longer around](https://nitter.d420.de/). If you know of one, please email me.
 
 # Independence for stuff you produce
 
