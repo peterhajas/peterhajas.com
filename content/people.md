@@ -9,6 +9,12 @@ Notable people I have taken photos with.
 ![A picture of Peter with Gary Stern](/people/garystern.jpeg) 
 ## [Gary Stern](https://en.wikipedia.org/wiki/Stern_Pinball) 2023 
 
+![A picture of Peter with Merlin Mann](/people/merlinmann_again.jpeg)
+## [Merlin Mann](https://en.wikipedia.org/wiki/Merlin_Mann) 2020 
+
+![A picture of Peter with John Roderick](/people/roderick.jpeg)
+## [John Roderick](https://en.wikipedia.org/wiki/John_Roderick_(musician)) 2020
+
 ![A picture of Peter with Redfoo](/people/redfoo.jpeg) 
 ## [Redfoo](https://en.wikipedia.org/wiki/Redfoo) 2017 
 
