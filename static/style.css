@@ -71,6 +71,12 @@ h4 {
     font-size: 1.2em;
 }
 
+/* tighter spacing for header elements */
+header * {
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+
 /* turn off padding for nested lists */
 ul ul, ol ol, ul ol, ol ul {
     padding-top: 0;
