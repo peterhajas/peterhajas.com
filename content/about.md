@@ -23,3 +23,7 @@ I feel very fortunate to be able to speak publicly about things I am passionate 
     - [A Look Inside Presentation Controllers](https://asciiwwdc.com/2014/sessions/228) *(video unavailable)*
 - 2013
     - [Advanced Text Layout and Effects with TextKit](https://developer.apple.com/videos/play/wwdc2013/220/)
+
+# Paper
+
+In college, I was fortunate enough to co-author a paper with my research advisor and friend [Moorthy](http://cs.rpi.edu/~moorthy/). It's about Yelp reviews. You can read it [here](https://arxiv.org/abs/1407.1443).
