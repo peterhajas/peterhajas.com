@@ -10,3 +10,5 @@ This is a static webpage served from my web server. It's:
 
 Unless otherwise stated, this site does not use Javascript.
 
+My [Notes](/notes.html) page is powered by [TiddlyWiki](https://tiddlywiki.com), and uses Javascript.
+
