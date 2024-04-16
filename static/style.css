@@ -71,6 +71,13 @@ h4 {
     font-size: 1.2em;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+}
+
 /* tighter spacing for header elements */
 header * {
     padding-top: 0.1em;
@@ -90,6 +97,26 @@ ul ul, ol ol, ul ol, ol ul {
 nav {
     text-align: center;
     font-size: 1.25em;
+}
+
+header h1, header h2, header h3 {
+    display: inline;
+}
+
+.sitenav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    margin-right: -2px;
+}
+
+.sitenav * {
+    padding: 2px;
+}
+
+.right {
+    margin-left: auto;
 }
 
 time {

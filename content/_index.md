@@ -12,6 +12,7 @@ Here are the sections of my site:
 * Read my [blog posts](/blog)
 * Read my [movie reviews](/movie)
 * Read my [soda reviews](/soda)
+* Check out [other cool sites](/cool_sites)
 
 ## Toys
 
