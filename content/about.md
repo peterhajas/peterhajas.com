@@ -26,4 +26,4 @@ I feel very fortunate to be able to speak publicly about things I am passionate 
 
 # Paper
 
-In college, I was fortunate enough to co-author a paper with my research advisor and friend [Moorthy](http://cs.rpi.edu/~moorthy/). It's about Yelp reviews. You can read it [here](https://arxiv.org/abs/1407.1443).
+In college, I was lucky to co-author a paper with my research advisor and friend [Moorthy](http://cs.rpi.edu/~moorthy/). It's about Yelp reviews. You can read it [here](https://arxiv.org/abs/1407.1443).
