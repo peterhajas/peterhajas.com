@@ -14,9 +14,9 @@ Here are the sections of my site:
 * Read my [soda reviews](/soda)
 * Check out [other cool sites](/cool_sites)
 
-## Toys
+## Programs
 
-I love programming. I have made a few toys you can play with:
+I love programming. I have a few programs you can try out online:
 
 * [Peterometer](/peterometer), my personal [health dashboard](/blog/peterometer)
 * [Pokémon mapgen](/pokemon_mapgen), generate Pokémon Red and Blue maps using [a Markov approach](/blog/pokemon_map_generator)
