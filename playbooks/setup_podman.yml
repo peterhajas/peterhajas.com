@@ -1,0 +1,19 @@
+---
+- name: Setup Podman
+  hosts: site
+  tasks:
+    - name: Create services directory
+      file:
+        path: /home/phajas/services
+        state: directory
+    - name: Enable and start podman.socket
+      systemd:
+        name: podman.socket
+        enabled: yes
+        state: started
+        scope: user
+    - name: Allow podman to bind to ports 53 and above
+      become: true
+      sysctl:
+        name: net.ipv4.ip_unprivileged_port_start
+        value: 53

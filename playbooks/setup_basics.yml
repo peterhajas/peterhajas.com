@@ -1,0 +1,21 @@
+---
+- name: Install basic tools
+  hosts: site
+  become: true
+  tasks:
+    - name: Install git
+      package:
+        name: git
+        state: latest
+    - name: Install podman
+      package:
+        name: podman
+        state: latest
+    - name: Install htop
+      package:
+        name: htop
+        state: latest
+    - name: Install ncdu
+      package:
+        name: ncdu
+        state: latest

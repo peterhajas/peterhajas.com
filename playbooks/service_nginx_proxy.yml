@@ -1,0 +1,87 @@
+---
+- name: setup nginx_proxy
+  hosts: site
+  tasks:
+    - name: Enable resolved
+      become: true
+      systemd:
+        name: systemd-resolved
+        enabled: true
+        state: started
+    - name: Make nginx_proxy root
+      file:
+        path: /home/phajas/services/nginx_proxy
+        state: directory
+    - name: Make nginx_proxy conf
+      file:
+        path: /home/phajas/services/nginx_proxy/conf
+        state: directory
+    - name: Make nginx_proxy vhost
+      file:
+        path: /home/phajas/services/nginx_proxy/vhost
+        state: directory
+    - name: Make nginx_proxy html
+      file:
+        path: /home/phajas/services/nginx_proxy/html
+        state: directory
+    - name: Make nginx_proxy dhparam
+      file:
+        path: /home/phajas/services/nginx_proxy/dhparam
+        state: directory
+    - name: Make nginx_proxy certs
+      file:
+        path: /home/phajas/services/nginx_proxy/certs
+        state: directory
+    - name: Copy over config
+      copy:
+        src: ../configs/nginx_proxy/peter.conf
+        dest: /home/phajas/services/nginx_proxy/peter.conf
+    - name: Copy over config
+      copy:
+        src: ../configs/nginx_proxy/peter.conf
+        dest: /home/phajas/services/nginx_proxy/acme.sh
+    - name: Create nginx_proxy Container
+      containers.podman.podman_container:
+        name: nginx_proxy
+        image: docker.io/nginxproxy/nginx-proxy:1.6
+        volumes:
+        - /home/phajas/services/nginx_proxy/conf:/etc/nginx/conf.d
+        - /home/phajas/services/nginx_proxy/vhost:/etc/nginx/vhost.d
+        - /home/phajas/services/nginx_proxy/html:/usr/share/nginx/html
+        - /home/phajas/services/nginx_proxy/dhparam:/etc/nginx/dhparam
+        - /home/phajas/services/nginx_proxy/certs:/etc/nginx/certs:ro
+        - /home/phajas/services/nginx_proxy/peter.conf:/etc/nginx/conf.d/peter.conf:ro,z
+        - /run/user/1000/podman/podman.sock:/tmp/docker.sock:ro,z
+        ports:
+        - "80:80"
+        - "443:443"
+        network:
+        - podman
+        privileged: true
+    - name: Create acme-companion Container
+      containers.podman.podman_container:
+        name: nginx_proxy
+        image: docker.io/nginxproxy/acme-companion
+        volumes:
+        - /home/phajas/services/nginx_proxy/conf:/etc/nginx/conf.d
+        - /home/phajas/services/nginx_proxy/vhost:/etc/nginx/vhost.d
+        - /home/phajas/services/nginx_proxy/html:/usr/share/nginx/html
+        - /home/phajas/services/nginx_proxy/dhparam:/etc/nginx/dhparam
+        - /home/phajas/services/nginx_proxy/certs:/etc/nginx/certs:ro
+        - /home/phajas/services/nginx_proxy/acme.sh:/etc/ame.sh
+        - /run/user/1000/podman/podman.sock:/tmp/docker.sock:ro,z
+        network:
+        - podman
+        privileged: true
+- name: nginx_proxy firewall rules
+  hosts: site
+  become: true
+  tasks:
+    - ansible.posix.firewalld:
+        zone: FedoraServer
+        port: 80/tcp
+        state: enabled
+    - ansible.posix.firewalld:
+        zone: FedoraServer
+        port: 443/tcp
+        state: enabled
