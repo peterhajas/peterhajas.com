@@ -3,3 +3,4 @@
 - import_playbook: setup_basics.yml
 - import_playbook: setup_podman.yml
 - import_playbook: service_nginx_proxy.yml
+- import_playbook: service_webserver.yml

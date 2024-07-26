@@ -1,0 +1,25 @@
+---
+- name: setup nginx_server
+  hosts: site
+  tasks:
+    - name: Make nginx_server root
+      file:
+        path: /home/phajas/services/nginx_server
+        state: directory
+    - name: Make HTML root
+      file:
+        path: /home/phajas/html
+        state: directory
+    - name: Create nginx_server Container
+      containers.podman.podman_container:
+        name: nginx_server
+        image: docker.io/nginx:1.27.0
+        expose: 80
+        environment:
+          VIRTUAL_PORT: 80
+          VIRTUAL_HOST: demo.peterhajas.com
+        volumes:
+          - /etc/localtime:/etc/localtime:ro
+          - /home/phajas/html:/usr/share/nginx/html
+        network:
+        - podman
