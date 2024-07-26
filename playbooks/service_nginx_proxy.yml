@@ -60,16 +60,18 @@
         privileged: true
     - name: Create acme-companion Container
       containers.podman.podman_container:
-        name: nginx_proxy
+        name: acme_companion
         image: docker.io/nginxproxy/acme-companion
         volumes:
         - /home/phajas/services/nginx_proxy/conf:/etc/nginx/conf.d
         - /home/phajas/services/nginx_proxy/vhost:/etc/nginx/vhost.d
         - /home/phajas/services/nginx_proxy/html:/usr/share/nginx/html
         - /home/phajas/services/nginx_proxy/dhparam:/etc/nginx/dhparam
-        - /home/phajas/services/nginx_proxy/certs:/etc/nginx/certs:ro
+        - /home/phajas/services/nginx_proxy/certs:/etc/nginx/certs
         - /home/phajas/services/nginx_proxy/acme.sh:/etc/ame.sh
-        - /run/user/1000/podman/podman.sock:/tmp/docker.sock:ro,z
+        - /run/user/1000/podman/podman.sock:/var/run/docker.sock:ro,z
+        env:
+          NGINX_PROXY_CONTAINER: nginx_proxy
         network:
         - podman
         privileged: true
