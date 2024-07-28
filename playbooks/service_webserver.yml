@@ -2,10 +2,6 @@
 - name: setup nginx_server
   hosts: site
   tasks:
-    - name: Make nginx_server root
-      file:
-        path: /home/phajas/services/nginx_server
-        state: directory
     - name: Make HTML root
       file:
         path: /home/phajas/html
