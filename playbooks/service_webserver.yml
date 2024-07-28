@@ -11,7 +11,6 @@
         name: nginx_server
         image: docker.io/nginx:1.27.0
         expose: 80
-        environment:
         env:
           VIRTUAL_PORT: 80
           VIRTUAL_HOST: peterhajas.com,demo.peterhajas.com
