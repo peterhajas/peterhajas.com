@@ -16,6 +16,6 @@
           VIRTUAL_HOST: peterhajas.com,demo.peterhajas.com
         volumes:
           - /etc/localtime:/etc/localtime:ro
-          - /home/phajas/html:/usr/share/nginx/html
+          - /home/phajas/html:/usr/share/nginx/html:z
         network:
         - podman
