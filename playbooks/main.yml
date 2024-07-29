@@ -4,3 +4,4 @@
 - import_playbook: setup_podman.yml
 - import_playbook: service_nginx_proxy.yml
 - import_playbook: service_webserver.yml
+- import_playbook: service_tiddlywiki.yml
