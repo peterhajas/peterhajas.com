@@ -13,6 +13,24 @@ echo "STRIPPING PUBLIC TAGS"
 echo "IMPORTING INTO BASE WIKI"
 tiddlywiki --verbose --load /base.html --import /tmp/public.json application/json --output /tmp/ --render "\$:/core/save/all" "/out/out.html" "text/plain"
 
+echo "GENERATING STATIC VARIANT"
+mkdir -p /out/static
+
+# HTML representations of individual tiddlers
+tiddlywiki --verbose --load /out/out.html --rendertiddlers '[!is[system]]' $:/core/templates/static.tiddler.html /out/static text/plain
+
+# Static Homepage
+tiddlywiki --verbose --load /out/out.html --rendertiddler $:/core/templates/static.template.html /out/static.html text/plain
+
+# CSS
+tiddlywiki --verbose --load /out/out.html --rendertiddler $:/core/templates/static.template.css /out/static/static.css text/plain
+
+# TiddlyWiki likes to take ownership over the directory it operates in, which
+# is fine. To help us get the behavior we want with images, move things up a
+# level so they're all in `/out/` (and nix `/out/static`).
+mv /out/static/* /out/
+rm -r /out/static
+
 echo "GRABBING PUBLIC EXTERNAL ASSETS"
 tiddlywiki --verbose --load /wiki/wiki.html --output /tmp/ --render '.' external_assets.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]has[_canonical_uri]]'
 
