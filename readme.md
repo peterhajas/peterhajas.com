@@ -8,5 +8,6 @@ This repository hosts the files and scripts for `peterhajas.com`.
 
 1. Install Linux
 2. `ssh` into it
-3. Add your public key to `~/.ssh/authorized_keys`
-4. Run `./password && ansible-playbook playbooks/main.yml --ask-become-pass` and enjoy
+3. Update packages
+4. Add your public key to `~/.ssh/authorized_keys`
+5. Run `./password && ansible-playbook playbooks/main.yml --ask-become-pass` and enjoy
