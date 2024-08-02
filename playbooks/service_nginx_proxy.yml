@@ -36,10 +36,6 @@
       copy:
         src: ../configs/nginx_proxy/peter.conf
         dest: /home/phajas/services/nginx_proxy/peter.conf
-    - name: Copy over config
-      copy:
-        src: ../configs/nginx_proxy/peter.conf
-        dest: /home/phajas/services/nginx_proxy/acme.sh
     - name: Create nginx_proxy Container
       containers.podman.podman_container:
         name: nginx_proxy
@@ -58,6 +54,10 @@
         network:
         - podman
         privileged: true
+    - name: Make acme.sh root
+      file:
+        path: /home/phajas/services/nginx_proxy/acme.sh
+        state: directory
     - name: Create acme-companion Container
       containers.podman.podman_container:
         name: acme_companion
@@ -68,7 +68,7 @@
         - /home/phajas/services/nginx_proxy/html:/usr/share/nginx/html
         - /home/phajas/services/nginx_proxy/dhparam:/etc/nginx/dhparam
         - /home/phajas/services/nginx_proxy/certs:/etc/nginx/certs
-        - /home/phajas/services/nginx_proxy/acme.sh:/etc/ame.sh
+        - /home/phajas/services/nginx_proxy/acme.sh:/etc/acme.sh
         - /run/user/1000/podman/podman.sock:/var/run/docker.sock:ro,z
         env:
           NGINX_PROXY_CONTAINER: nginx_proxy
