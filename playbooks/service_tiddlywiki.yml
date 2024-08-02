@@ -1,0 +1,16 @@
+---
+- name: setup tiddlywiki listener
+  hosts: site
+  tasks:
+    - name: Make tiddlywiki listener root
+      file:
+        path: /home/phajas/services/tiddlywiki_listener
+        state: directory
+    - name: Copy over files
+      copy:
+        src: ../configs/tiddlywiki_listener/
+        dest: /home/phajas/services/tiddlywiki_listener/
+    - name: Build TiddlyWiki image with Podman
+      command: podman build -t tiddlywiki_listener /home/phajas/services/tiddlywiki_listener
+      args:
+        chdir: /home/phajas/services/tiddlywiki_listener
