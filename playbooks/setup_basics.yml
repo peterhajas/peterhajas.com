@@ -11,6 +11,14 @@
       package:
         name: podman
         state: latest
+    - name: Install rootlesskit
+      package:
+        name: rootlesskit
+        state: latest
+    - name: Install slirp4netns
+      package:
+        name: slirp4netns
+        state: latest
     - name: Install htop
       package:
         name: htop
