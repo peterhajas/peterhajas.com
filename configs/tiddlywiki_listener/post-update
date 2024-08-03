@@ -4,4 +4,4 @@ podman run -it \
     -v /home/phajas/services/tiddlywiki_listener/base.html:/base.html:ro,z \
     -v /home/phajas/phajas-wiki.git:/wiki:ro,z \
     -v /home/phajas/html/wiki:/out:z \
-    --rm tiddlywiki_listener:latest
+    --rm tiddlywiki_listener:latest >/dev/null 2>&1 &

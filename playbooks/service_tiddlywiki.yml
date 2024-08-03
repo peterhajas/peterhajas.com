@@ -14,10 +14,15 @@
       file:
         path: /home/phajas/phajas-wiki.git/hooks
         state: directory
-    - name: Set phajas-wiki repo post-receive hook
+    - name: Set phajas-wiki repo post-update hook
       copy:
         src: ../configs/tiddlywiki_listener/post-update
         dest: /home/phajas/phajas-wiki.git/hooks/post-update
+    - name: Make post-update hook executable
+      file:
+        path: /home/phajas/phajas-wiki.git/hooks/post-update
+        mode: '0755'
+        state: file
     - name: Build TiddlyWiki image with Podman
       command: podman build -t tiddlywiki_listener /home/phajas/services/tiddlywiki_listener
       args:
