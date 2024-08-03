@@ -80,15 +80,16 @@
         network:
         - podman
         privileged: true
-- name: nginx_proxy firewall rules
-  hosts: site
-  become: true
-  tasks:
-    - ansible.posix.firewalld:
-        zone: FedoraServer
-        port: 80/tcp
-        state: enabled
-    - ansible.posix.firewalld:
-        zone: FedoraServer
-        port: 443/tcp
-        state: enabled
+# - this does not seem to be required on debian
+# - name: nginx_proxy firewall rules
+#   hosts: site
+#   become: true
+#   tasks:
+#     - ansible.posix.firewalld:
+#         zone: FedoraServer
+#         port: 80/tcp
+#         state: enabled
+#     - ansible.posix.firewalld:
+#         zone: FedoraServer
+#         port: 443/tcp
+#         state: enabled
