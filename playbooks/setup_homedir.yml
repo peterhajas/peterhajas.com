@@ -1,0 +1,16 @@
+---
+- name: Set up home directory
+  hosts: site
+  tasks:
+    - name: Make roots
+      file:
+        path: "/home/phajas/{{ item }}"
+        state: directory
+      loop:
+        - phajas-wiki
+        - password-store
+    - name: Initialize repos
+      ansible.builtin.shell: "git init {{ item }}"
+      loop:
+        - phajas-wiki
+        - password-store
