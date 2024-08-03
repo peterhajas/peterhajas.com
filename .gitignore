@@ -7,3 +7,5 @@ site/notes/files
 public/
 
 .hugo_build.lock
+
+whoogle.env

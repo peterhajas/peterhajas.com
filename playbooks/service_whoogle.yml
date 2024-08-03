@@ -1,0 +1,24 @@
+---
+- name: setup whoogle
+  hosts: site
+  tasks:
+    - name: Make whoogle root
+      file:
+        path: /home/phajas/services/whoogle
+        state: directory
+    - name: Copy over config
+      copy:
+        src: ../configs/whoogle/whoogle.env
+        dest: /home/phajas/services/whoogle/whoogle.env
+    - name: Create whoogle Container
+      containers.podman.podman_container:
+        name: whoogle
+        image: docker.io/benbusby/whoogle-search
+        expose: 5000
+        env:
+          VIRTUAL_PORT: 5000
+          VIRTUAL_HOST: 'search.peterhajas.com'
+          LETSENCRYPT_HOST: 'search.peterhajas.com'
+        env_file: /home/phajas/services/whoogle/whoogle.env
+        network:
+        - podman
