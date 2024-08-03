@@ -7,10 +7,11 @@
         path: "/home/phajas/{{ item }}"
         state: directory
       loop:
-        - phajas-wiki
+        - phajas-wiki.git
         - password-store
     - name: Initialize repos
       ansible.builtin.shell: "git init {{ item }}"
       loop:
-        - phajas-wiki
         - password-store
+    - name: Initialize wiki
+      ansible.builtin.shell: "git init --bare phajas-wiki.git"

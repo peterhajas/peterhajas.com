@@ -6,7 +6,9 @@ RUN apk add npm \
     && npm install -g tiddlywiki \
     && apk add python3 \
     && apk add jq \
-    && apk add bash
+    && apk add bash \
+    && apk add tar \
+    && apk add git
 
 # Create a directory for the TiddlyWiki
 RUN mkdir -p /usr/local/tiddlywiki

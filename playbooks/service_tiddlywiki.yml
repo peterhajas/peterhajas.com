@@ -10,6 +10,14 @@
       copy:
         src: ../configs/tiddlywiki_listener/
         dest: /home/phajas/services/tiddlywiki_listener/
+    - name: Make sure phajas-wiki repo is present
+      file:
+        path: /home/phajas/phajas-wiki.git/hooks
+        state: directory
+    - name: Set phajas-wiki repo post-receive hook
+      copy:
+        src: ../configs/tiddlywiki_listener/post-update
+        dest: /home/phajas/phajas-wiki.git/hooks/post-update
     - name: Build TiddlyWiki image with Podman
       command: podman build -t tiddlywiki_listener /home/phajas/services/tiddlywiki_listener
       args:

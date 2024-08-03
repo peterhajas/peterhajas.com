@@ -1,14 +1,18 @@
 #!/bin/bash
 
 echo "PREPARING"
-TIDDLYWIKI="tiddlywiki +plugins/tiddlywiki/markdown --verbose"
+# TIDDLYWIKI="tiddlywiki +plugins/tiddlywiki/markdown --verbose"
+TIDDLYWIKI="tiddlywiki +plugins/tiddlywiki/markdown"
+
+mkdir /tmp/input
+git --git-dir=/wiki archive master | tar -x -C /tmp/input/
 
 echo "CLEANING UP"
 rm /out/*
 rm -r /out/*
 
 echo "EXPORTING"
-$TIDDLYWIKI --load /wiki/phajas-wiki.html --output /tmp/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]'
+$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]'
 
 echo "STRIPPING PUBLIC TAGS"
 /tiddlywiki_strip_public_tag /tmp/public.json
@@ -32,16 +36,16 @@ mv /out/static/* /out/
 rm -r /out/static
 
 echo "GRABBING PUBLIC EXTERNAL ASSETS"
-$TIDDLYWIKI --load /wiki/phajas-wiki.html --output /tmp/ --render '.' external_assets.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]has[_canonical_uri]]'
+$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' external_assets.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]has[_canonical_uri]]'
 
 cat /tmp/external_assets.json | jq -r '.[] | ._canonical_uri' | sed 's/%20/ /g' | while read -r uri; do
   dir_path="/out/$(dirname "$uri")"
   mkdir -p "$dir_path"
-  cp "/wiki/$uri" "$dir_path/"
+  cp "/tmp/input/$uri" "$dir_path/"
 done
 
 echo "GENERATING RSS FEED"
-$TIDDLYWIKI --load /wiki/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "feed.xml" "text/plain" "$:/core/templates/wikified-tiddler"
+$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "feed.xml" "text/plain" "$:/core/templates/wikified-tiddler"
 mv output/feed.xml /out/feed.xml
 
 echo "ALL DONE"

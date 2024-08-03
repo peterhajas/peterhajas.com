@@ -11,3 +11,6 @@ This repository hosts the files and scripts for `peterhajas.com`.
 3. Update packages
 4. Add your public key to `~/.ssh/authorized_keys`
 5. Run `./password && ansible-playbook playbooks/main.yml --ask-become-pass` and enjoy
+6. Make sure expected repos exist and are configured right
+7. Make sure post-receive hook on phajas-wiki.git is executable
+
