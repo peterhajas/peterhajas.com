@@ -14,16 +14,16 @@ echo "STRIPPING PUBLIC TAGS"
 /tiddlywiki_strip_public_tag /tmp/public.json
 
 echo "IMPORTING INTO BASE WIKI"
-$TIDDLYWIKI --load /base.html --import /tmp/public.json application/json --output /tmp/ --render "\$:/core/save/all" "/out/out.html" "text/plain"
+$TIDDLYWIKI --load /base.html --import /tmp/public.json application/json --output /tmp/ --render "\$:/core/save/all" "/out/index.html" "text/plain"
 
 echo "GENERATING STATIC VARIANT"
 mkdir -p /out/static
 
 # HTML representations of individual tiddlers
-$TIDDLYWIKI --load /out/out.html --rendertiddlers '[!is[system]]' $:/core/templates/static.tiddler.html /out/static text/plain
+$TIDDLYWIKI --load /out/index.html --rendertiddlers '[!is[system]]' $:/core/templates/static.tiddler.html /out/static text/plain
 
 # CSS
-$TIDDLYWIKI --load /out/out.html --rendertiddler $:/core/templates/static.template.css /out/static/static.css text/plain
+$TIDDLYWIKI --load /out/index.html --rendertiddler $:/core/templates/static.template.css /out/static/static.css text/plain
 
 # TiddlyWiki likes to take ownership over the directory it operates in, which
 # is fine. To help us get the behavior we want with images, move things up a
