@@ -21,6 +21,6 @@
           LETSENCRYPT_HOST: 'rss.peterhajas.com'
           HTTPS_METHOD: redirect
         volumes:
-          - /home/phajas/services/rss/config:/config
+          - /home/phajas/services/rss/config:/config:z
         network:
         - podman
