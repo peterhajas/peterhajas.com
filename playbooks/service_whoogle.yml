@@ -14,6 +14,7 @@
       containers.podman.podman_container:
         name: whoogle
         image: docker.io/benbusby/whoogle-search
+        restart_policy: always
         expose: 5000
         env:
           VIRTUAL_PORT: 5000

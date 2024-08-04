@@ -45,6 +45,7 @@
       containers.podman.podman_container:
         name: nginx_proxy
         image: docker.io/nginxproxy/nginx-proxy:1.6
+        restart_policy: always
         volumes:
         - /home/phajas/services/nginx_proxy/conf:/etc/nginx/conf.d
         - /home/phajas/services/nginx_proxy/vhost:/etc/nginx/vhost.d

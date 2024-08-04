@@ -10,6 +10,7 @@
       containers.podman.podman_container:
         name: nginx_server
         image: docker.io/nginx:1.27.0
+        restart_policy: always
         expose: 80
         env:
           VIRTUAL_PORT: 80

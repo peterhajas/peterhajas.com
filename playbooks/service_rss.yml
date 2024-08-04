@@ -14,6 +14,7 @@
       containers.podman.podman_container:
         name: freshrss
         image: lscr.io/linuxserver/freshrss:latest
+        restart_policy: always
         expose: 80
         env:
           VIRTUAL_PORT: 80
