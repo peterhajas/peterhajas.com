@@ -10,8 +10,7 @@
         - phajas-wiki.git
         - password-store
     - name: Initialize repos
-      ansible.builtin.shell: "git init {{ item }}"
+      ansible.builtin.shell: "git init --bare {{ item }}"
       loop:
         - password-store
-    - name: Initialize wiki
-      ansible.builtin.shell: "git init --bare phajas-wiki.git"
+        - phajas-wiki.git
