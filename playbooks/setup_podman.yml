@@ -17,3 +17,6 @@
       sysctl:
         name: net.ipv4.ip_unprivileged_port_start
         value: 53
+    - name: Enable linger # allows our containers to run after logout
+      shell: "loginctl enable-linger phajas"
+      become: true
