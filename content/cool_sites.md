@@ -2,7 +2,7 @@
 title: Cool Sites
 ---
 
-This is a list of cool sites that you should check out, alphabetized
+This is a list of cool sites that you should check out, un-alphabetized
 
 - [buzzert.net](https://buzzert.net)
 - [max.town](https://max.town)
