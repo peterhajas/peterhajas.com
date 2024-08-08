@@ -1,0 +1,26 @@
+---
+- name: setup rss_bridge
+  hosts: site
+  tasks:
+    - name: Make rss_bridge root and config
+      file:
+        path: /home/phajas/services/rss_bridge/config
+        state: directory
+    - name: Copy over config
+      copy:
+        src: ../configs/rssbridge/config.ini.php
+        dest: /home/phajas/services/rss_bridge/config
+    - name: Create rss_bridge Container
+      containers.podman.podman_container:
+        name: rss_bridge
+        image: docker.io/rssbridge/rss-bridge:latest
+        restart_policy: always
+        expose: 80
+        env:
+          VIRTUAL_PORT: 80
+          VIRTUAL_HOST: 'rssbridge.peterhajas.com'
+          LETSENCRYPT_HOST: 'rssbridge.peterhajas.com'
+        volumes:
+          - /home/phajas/services/rss_bridge/config:/config:z
+        network:
+        - podman

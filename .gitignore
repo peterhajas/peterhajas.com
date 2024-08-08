@@ -9,3 +9,4 @@ public/
 .hugo_build.lock
 
 whoogle.env
+config.ini.php

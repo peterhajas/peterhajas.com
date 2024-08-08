@@ -8,3 +8,4 @@
 - import_playbook: service_webserver.yml
 - import_playbook: service_whoogle.yml
 - import_playbook: service_tiddlywiki.yml
+- import_playbook: service_rssbridge.yml
