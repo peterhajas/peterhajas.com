@@ -27,3 +27,7 @@
       package:
         name: ncdu
         state: latest
+    - name: Install tree
+      package:
+        name: tree
+        state: latest
