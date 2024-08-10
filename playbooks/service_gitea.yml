@@ -1,0 +1,27 @@
+---
+- name: setup gitea
+  hosts: site
+  tasks:
+    - name: Make gitea root
+      file:
+        path: /home/phajas/services/gitea
+        state: directory
+    - name: Make gitea data
+      file:
+        path: /home/phajas/services/gitea/data
+        state: directory
+    - name: Create gitea Container
+      containers.podman.podman_container:
+        name: gitea
+        image: docker.io/gitea/gitea:1.22.1
+        restart_policy: always
+        expose: 3000
+        env:
+          VIRTUAL_PORT: 3000
+          VIRTUAL_HOST: 'git.peterhajas.com'
+          LETSENCRYPT_HOST: 'git.peterhajas.com'
+          GITEA__service__DISABLE_REGISTRATION: true
+        volumes:
+          - /home/phajas/services/gitea/data:/data
+        network:
+        - podman
