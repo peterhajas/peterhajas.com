@@ -4,9 +4,11 @@ echo "PREPARING"
 # TIDDLYWIKI="tiddlywiki +plugins/tiddlywiki/markdown --verbose"
 TIDDLYWIKI="tiddlywiki +plugins/tiddlywiki/markdown"
 OUTPUT=/out/NEW
+BASE=/out/BASE
 
 mkdir /tmp/input
 mkdir -p $OUTPUT
+mkdir -p $BASE
 git --git-dir=/wiki archive master | tar -x -C /tmp/input/
 
 echo "CLEANING UP"
@@ -19,8 +21,12 @@ $TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' publi
 echo "STRIPPING PUBLIC TAGS"
 /tiddlywiki_strip_public_tag /tmp/public.json
 
+echo "CREAETING NEW BASE WIKI"
+$TIDDLYWIKI $BASE --init empty
+$TIDDLYWIKI $BASE --build index
+
 echo "IMPORTING INTO BASE WIKI"
-$TIDDLYWIKI --load /base.html --import /tmp/public.json application/json --output /tmp/ --render "\$:/core/save/all" "$OUTPUT/index.html" "text/plain"
+$TIDDLYWIKI --load $BASE/output/index.html --import /tmp/public.json application/json --output /tmp/ --render "\$:/core/save/all" "$OUTPUT/index.html" "text/plain"
 
 echo "GENERATING STATIC VARIANT"
 mkdir -p $OUTPUT/static
