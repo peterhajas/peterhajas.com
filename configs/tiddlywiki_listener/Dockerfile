@@ -18,12 +18,15 @@ WORKDIR /usr/local/tiddlywiki
 
 # Copy over entrypoint script
 COPY entrypoint.bash /
-# Copy over tiddlywiki_strip_public_tag
+
+# Copy over scripts
 COPY tiddlywiki_strip_public_tag /
+COPY tiddlywiki_apply_public_fields /
 
 # Make executables have +x
 RUN chmod +x /entrypoint.bash
 RUN chmod +x /tiddlywiki_strip_public_tag
+RUN chmod +x /tiddlywiki_apply_public_fields
 
 # Install TiddlyWiki globally using npm
 RUN npm install -g tiddlywiki

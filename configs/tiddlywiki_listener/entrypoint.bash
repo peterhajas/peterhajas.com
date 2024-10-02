@@ -21,6 +21,9 @@ $TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' publi
 echo "STRIPPING PUBLIC TAGS"
 /tiddlywiki_strip_public_tag /tmp/public.json
 
+echo "APPLYING PUBLIC FIELDs"
+/tiddlywiki_apply_public_fields /tmp/public.json
+
 echo "CREAETING NEW BASE WIKI"
 $TIDDLYWIKI $BASE --init empty
 $TIDDLYWIKI $BASE --build index
