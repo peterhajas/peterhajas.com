@@ -11,9 +11,9 @@ mkdir -p $OUTPUT
 mkdir -p $BASE
 git --git-dir=/wiki archive master | tar -x -C /tmp/input/
 
-echo "CLEANING UP"
-rm /out/*
-rm -r /out/*
+# echo "CLEANING UP"
+# rm /out/*
+# rm -r /out/*
 
 echo "EXPORTING"
 $TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]'
