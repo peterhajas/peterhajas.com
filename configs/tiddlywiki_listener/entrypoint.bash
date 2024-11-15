@@ -56,8 +56,8 @@ cat /tmp/external_assets.json | jq -r '.[] | ._canonical_uri' | sed 's/%20/ /g' 
 done
 
 echo "GENERATING RSS FEED"
-$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "feed.xml" "text/plain" "$:/core/templates/wikified-tiddler"
-mv output/feed.xml $OUTPUT/feed.xml
+$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "rss.xml" "text/plain" "$:/core/templates/wikified-tiddler"
+mv output/rss.xml $OUTPUT/rss.xml
 
 echo "CLEANING UP"
 rm /out/*
