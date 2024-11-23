@@ -13,7 +13,6 @@ with open(tiddler_path, 'r') as tiddler_file:
             if field.startswith("public_"):
                 newFieldName = field.replace("public_", "", 1)
                 tiddler[newFieldName] = tiddler.get(field, "")
-                print(tiddler)
         out_tiddler_data.append(tiddler)
 
 with open(tiddler_path, 'w') as tiddler_file:
