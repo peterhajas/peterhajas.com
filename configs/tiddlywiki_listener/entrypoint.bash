@@ -13,24 +13,18 @@ mkdir -p $OUTPUT
 mkdir -p $BASE
 git --git-dir=/wiki archive master | tar -x -C /tmp/input/
 
-$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]'
+$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]' +plugins/tiddlywiki/markdown
 
 /tiddlywiki_strip_public_tag /tmp/public.json
 
 /tiddlywiki_apply_public_fields /tmp/public.json
 
-$TIDDLYWIKI /out/BASE --init empty
-$TIDDLYWIKI /out/BASE --build index
-
-ls /out/BASE
+$TIDDLYWIKI /out/BASE --init empty 
+$TIDDLYWIKI +plugins/tiddlywiki/markdown /out/BASE --build index
 
 mv $BASE/output/index.html $BASE/
 
-ls $BASE
-
 $TIDDLYWIKI --load $BASE/index.html --import /tmp/public.json application/json --output /tmp/ --render "\$:/core/save/all" "$OUTPUT/index.html" "text/plain"
-
-ls $OUTPUT
 
 mkdir -p $OUTPUT/static
 
@@ -54,7 +48,7 @@ cat /tmp/external_assets.json | jq -r '.[] | ._canonical_uri' | sed 's/%20/ /g' 
   cp "/tmp/input/$uri" "$dir_path/"
 done
 
-$TIDDLYWIKI --load /tmp/input/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "rss.xml" "text/plain" "$:/core/templates/wikified-tiddler" +plugins/tiddlywiki/markdown --verbose
+$TIDDLYWIKI +plugins/tiddlywiki/markdown --verbose --load /tmp/input/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "rss.xml" "text/plain" "$:/core/templates/wikified-tiddler"
 mv output/rss.xml $OUTPUT/rss.xml
 
 rm /out/*
