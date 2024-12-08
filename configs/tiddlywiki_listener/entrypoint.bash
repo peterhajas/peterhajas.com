@@ -13,6 +13,24 @@ mkdir -p $OUTPUT
 mkdir -p $BASE
 git --git-dir=/wiki archive master | tar -x -C /tmp/input/
 
+# clean up old manifest
+while IFS= read -r filepath
+do
+    # Trim whitespace and expand any potential wildcards
+    filepath=$(echo "$filepath" | xargs)
+    
+    # Skip empty lines
+    if [ -z "$filepath" ]; then
+        continue
+    fi
+    
+    # Remove file, count failures
+    if ! rm "$filepath" 2>/dev/null; then
+        echo "Failed to remove: $filepath"
+        ((FAILED_REMOVALS++))
+    fi
+done < "/out/manifest.txt"
+
 $TIDDLYWIKI --load /tmp/input/phajas-wiki.html --output /tmp/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]' +plugins/tiddlywiki/markdown
 
 /tiddlywiki_strip_public_tag /tmp/public.json
@@ -51,8 +69,9 @@ done
 $TIDDLYWIKI +plugins/tiddlywiki/markdown --verbose --load /tmp/input/phajas-wiki.html --render "[[$:/plugins/sq/feeds/templates/rss]]" "rss.xml" "text/plain" "$:/core/templates/wikified-tiddler"
 mv output/rss.xml $OUTPUT/rss.xml
 
-rm /out/*
-rm -r /out/*
+find /tmp/NEW -type f | sed 's/tmp\/NEW/out/' | sort > /out/manifest.txt
+
 rm -r /out/BASE
+
 mv --force /tmp/NEW/* /out/
 
