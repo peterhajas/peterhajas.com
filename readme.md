@@ -6,12 +6,17 @@ This repository hosts the files and scripts for `peterhajas.com`.
 
 ## Setup
 
-1. Install Linux
+1. Install Debian Linux
 2. `ssh` into it
 3. Update packages
-4. Add your public key to `~/.ssh/authorized_keys`
-5. Run `./password && ansible-playbook playbooks/main.yml --ask-become-pass` and enjoy
-6. Make sure expected repos exist and are configured right
+4. Install `sudo`
+5. Add `phajas` to `sudoers`:
+```
+echo "phajas ALL=(ALL:ALL) ALL" >> /etc/sudoers
+```
+6. Add your public key to `~/.ssh/authorized_keys`
+7. Run `./password && ansible-playbook playbooks/main.yml --ask-become-pass` and enjoy
+8. Make sure expected repos exist and are configured right
 
 ## Wiki Notes
 
