@@ -2,5 +2,5 @@
 # podman run -it --log-level debug \
 podman run -it \
     -v /home/phajas/phajas-wiki.git:/wiki:ro,z \
-    -v /home/phajas/html/wiki:/out:z \
+    -v /home/phajas/html:/out:z \
     --rm tiddlywiki_listener:latest >/dev/null 2>&1 &
