@@ -14,8 +14,8 @@
         expose: 80
         env:
           VIRTUAL_PORT: 80
-          VIRTUAL_HOST: 'peterhajas.com,www.peterhajas.com,peter.haj.as'
-          LETSENCRYPT_HOST: 'peterhajas.com,www.peterhajas.com,peter.haj.as'
+          VIRTUAL_HOST: 'peterhajas.com,www.peterhajas.com,peter.haj.as,daringfireball.org'
+          LETSENCRYPT_HOST: 'peterhajas.com,www.peterhajas.com,peter.haj.as,daringfireball.org'
           HTTPS_METHOD: noredirect # preserve http forever
         volumes:
           - /etc/localtime:/etc/localtime:ro
