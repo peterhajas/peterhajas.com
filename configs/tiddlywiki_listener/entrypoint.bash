@@ -25,7 +25,7 @@ mkdir -p $OUTPUT
 mkdir -p $BASE
 git --git-dir="$WIKI_SRC" archive master | tar -x -C $TMP/input/
 
-$TIDDLYWIKI --load $TMP/input/phajas-wiki.html --output $TMP/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]' +plugins/tiddlywiki/markdown
+$TIDDLYWIKI --load $TMP/input/phajas-wiki.html --output $TMP/ --render '.' public.json 'text/plain' '$:/core/templates/exporters/JsonFile' 'exportFilter' '[!is[draft]tag[Public]]:or[tag[phajas]]:or[prefix[$:/phajas]]:except[tag[Private]]' +plugins/tiddlywiki/markdown
 
 /tiddlywiki_strip_public_tag $TMP/public.json
 /tiddlywiki_apply_public_fields $TMP/public.json
