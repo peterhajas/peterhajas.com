@@ -1,0 +1,30 @@
+---
+- name: setup ladylor scraper
+  hosts: site
+  tasks:
+    - name: Make ladylor scraper root
+      file:
+        path: /home/phajas/services/ladylor_scrape
+        state: directory
+    - name: Make ladylor scraper data directory
+      file:
+        path: /home/phajas/services/ladylor_scrape/data
+        state: directory
+    - name: Copy over scraper files
+      copy:
+        src: ../configs/ladylor_scrape/
+        dest: /home/phajas/services/ladylor_scrape/
+    - name: Build ladylor scraper image with Podman
+      command: podman build -t ladylor_scraper /home/phajas/services/ladylor_scrape
+      args:
+        chdir: /home/phajas/services/ladylor_scrape
+    - name: Create ladylor scraper Container
+      containers.podman.podman_container:
+        name: ladylor_scraper
+        image: ladylor_scraper
+        restart_policy: always
+        volumes:
+          - /etc/localtime:/etc/localtime:ro
+          - /home/phajas/services/ladylor_scrape/data:/data:z
+        network:
+        - podman

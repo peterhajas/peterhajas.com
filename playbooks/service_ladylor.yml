@@ -1,0 +1,25 @@
+---
+- name: setup ladylor_server
+  hosts: site
+  tasks:
+    - name: Make ladylor root
+      file:
+        path: /home/phajas/ladylor
+        state: directory
+    - name: Create ladylor_server Container
+      containers.podman.podman_container:
+        name: ladylor_server
+        image: docker.io/nginx:1.27.0
+        restart_policy: always
+        expose: 80
+        env:
+          VIRTUAL_PORT: 80
+          VIRTUAL_HOST: 'ladylor.com,www.ladylor.com'
+          LETSENCRYPT_HOST: 'ladylor.com,www.ladylor.com'
+          HTTPS_METHOD: redirect # no http, sorry
+        volumes:
+          - /etc/localtime:/etc/localtime:ro
+          - /home/phajas/ladylor:/usr/share/nginx/html:z
+          - /home/phajas/services/ladylor_scrape/data:/usr/share/nginx/html/data:z
+        network:
+        - podman
